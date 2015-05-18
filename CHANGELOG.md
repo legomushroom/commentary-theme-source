@@ -1,3 +1,21 @@
+### V1.1.0 - May 15th, 2015
+IMPROVED: Shortcode editor when using Visual Composer
+IMPROVED: Custom tiled gallery layout
+IMPROVED: Responsiveness of Featured post slider
+IMRPOVED: Site header for mobile
+IMPROVED: Optimized for mobile
+IMPROVED: Internal plugins
+
+```
+M themes\espresso\components\class-tgm-plugin-activation.php
+M themes\espresso\css\admin.css
+M themes\espresso\inc\custom-tiled-gallery.php
+M themes\espresso\inc\options.php
+M themes\espresso\languages\default.pot
+M themes\espresso\style-rtl.css
+M themes\espresso\style.css
+```
+
 ### V1.0.5 - May 3rd, 2015
 IMPROVED: Theme documentation
 IMPROVED: Demo content

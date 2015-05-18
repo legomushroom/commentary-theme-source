@@ -1734,6 +1734,7 @@ Redux::setSection( $vw_opt_name, array(
 	),
 ) );
 
+do_action( 'vw_action_init_theme_options', $vw_opt_name );
 
 /* -----------------------------------------------------------------------------
  * Actions

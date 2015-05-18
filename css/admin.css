@@ -585,6 +585,7 @@ body.modal-open,
     }
 }
 
+.vwsce-modal.fade.in + .modal-backdrop,
 .modal-backdrop {
     z-index: 2000;
 }

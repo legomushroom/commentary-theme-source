@@ -11,7 +11,6 @@
 					<?php do_action( 'vw_action_before_single_post' ); ?>
 
 					<?php while ( have_posts() ) : the_post(); ?>
-					
 						<article <?php post_class( 'vw-main-post' ); ?>>
 
 							<?php vw_the_breadcrumb(); ?>

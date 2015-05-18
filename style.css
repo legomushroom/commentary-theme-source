@@ -4,7 +4,7 @@ Theme URI: http://envirra.com/themes/espresso
 Author: envirra
 Author URI: http://themeforest.net/user/envirra?ref=envirra
 Description: Magazine WordPress Theme
-Version: 1.0.5
+Version: 1.1.0
 License: GPL
 License URI: http://www.gnu.org/licenses/gpl.html‎
 Tags: black, white, one-column, two-columns, three-columns, right-sidebar, fluid-layout, custom-colors, custom-menu, featured-images, post-formats, theme-options, translation-ready, photoblogging
@@ -684,8 +684,8 @@ button,
 }
 @media (max-width: 767px) {
     .vw-logo-link {
-        margin-top: 15px !important;
-        margin-bottom: 15px !important;
+        margin-top: 5px !important;
+        margin-bottom: 5px !important;
     }
 }
 
@@ -1029,7 +1029,7 @@ button,
  * -------------------------------------------------------------------------- */
 @media (max-width: 991px) {
     .vw-header-ads-wrapper {
-        margin-top: 2em;
+        margin-top: 1em;
     }
 }
 
@@ -1490,6 +1490,13 @@ button,
 }
 .vw-post-meta-large a {
     color: inherit;
+}
+@media (max-width: 479px) {
+    .vw-post-meta-large .vw-post-date + .vw-post-meta-separator {
+        display: block;
+        height: 1px;
+        opacity: 0;
+    }
 }
 
 /* -------------------------------------
@@ -2394,6 +2401,14 @@ button,
 
 .vw-post-loop-slider-large .vw-post-style-slide {
     height: 500px;
+}
+@media (max-width: 991px) {
+    .vw-post-loop-slider-large .vw-post-style-slide {
+        height: 350px;
+    }
+    .vw-post-loop-slider-large .vw-post-style-slide .wp-post-image {
+        height: 400px;
+    }
 }
 
 .vw-post-loop-slider-large-carousel .swiper-slide {
