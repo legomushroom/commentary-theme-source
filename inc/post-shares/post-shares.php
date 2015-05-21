@@ -103,8 +103,11 @@ if ( ! function_exists( 'vwpsh_get_total_shares' ) ) {
 		if ( empty( $post_id ) ) {
 			$post_id = get_the_id();
 		}
-
-		return intval( get_post_meta( $post_id, VW_CONST_POST_SHARES_META_KEY, true ) );
+		$shares  = intval(get_post_meta( $post_id, VW_CONST_POST_SHARES_META_KEY, true ));
+		$forgery = intval(get_post_meta($post_id,'vw_post_shares_forgery_explicit',true));
+		$totalShares = $shares+$forgery;
+		update_post_meta( $post_id, 'vw_post_total_shares_forgery', $totalShares );
+		return $totalShares;
 	}
 }
 

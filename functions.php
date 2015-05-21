@@ -38,11 +38,11 @@ if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_POST_SLIDER_LARGE_CAROUSEL' ) ) define(
 if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_PAGE_TILE_BACKGROUND' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_PAGE_TILE_BACKGROUND', 'vw_full_width_thumbnail' );
 if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_INSTANT_SEARCH' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_INSTANT_SEARCH', 'vw_small_thumbnail' );
 if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_EMBEDED_GALLERY_SLIDER' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_EMBEDED_GALLERY_SLIDER', 'vw_full_width_thumbnail' );
-/*new*/if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_POST_LARGE' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_POST_LARGE', 'vw_two_third_thumbnail' );
+/*new*/if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_POST_LARGE' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_POST_LARGE', 'vw_full_width_thumbnail_no_crop' );
 /*new*/if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_POST_MEDIUM' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_POST_MEDIUM', 'vw_one_third_thumbnail' );
 
 if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_CATEGORY' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_CATEGORY', 'vw_category_thumbnail' );
-if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_SINGLE_POST_CLASSIC' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_SINGLE_POST_CLASSIC', 'vw_two_third_thumbnail_no_crop' );
+if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_SINGLE_POST_CLASSIC' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_SINGLE_POST_CLASSIC', 'vw_full_width_thumbnail_no_crop' );
 if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_CUSTOM_TILED_GALLERY' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_CUSTOM_TILED_GALLERY', 'vw_two_third_thumbnail' );
 
 // Excerpt length
@@ -93,6 +93,13 @@ require_once get_template_directory().'/inc/custom-tiled-gallery.php';
 require_once get_template_directory().'/inc/custom-font.php';
 require_once get_template_directory().'/inc/custom-css.php';
 // require_once get_template_directory().'/inc/quick-translation.php';
+
+add_filter('the_excerpt', 'do_my_shortcode_in_excerpt');
+if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
+	function do_my_shortcode_in_excerpt($excerpt) {
+	    return do_shortcode(wp_trim_words(get_the_content(), 55));
+	}
+}
 
 /**
  * Third-party plugins support
@@ -663,7 +670,6 @@ if ( ! function_exists( 'vw_get_template_part' ) ) {
 		}
 	}
 }
-
 /* -----------------------------------------------------------------------------
  * Start with
  * -------------------------------------------------------------------------- */

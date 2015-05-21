@@ -574,7 +574,8 @@ if ( ! function_exists( 'vw_render_spc_section_post_box_sidebar' ) ) {
 
 		} elseif ( $posts_order == 'most_viewed' ) {
 			$query_args['orderby'] = 'meta_value_num';
-			$query_args['meta_key'] = 'vw_post_views_all';
+			// $query_args['meta_key'] = 'vw_post_views_all';
+			$query_args['meta_key'] = 'vw_post_total_forgery';
 
 		}
 

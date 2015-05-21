@@ -481,7 +481,6 @@ Redux::setSection( $vw_opt_name, array(
 			'subtitle'=> 'Turn on this option to show the post views.',
 			'default' => 1,
 		),
-
 		array(
 			'id'		=> 'post_views_forgery',
 			'type'		=> 'text',
@@ -491,6 +490,24 @@ Redux::setSection( $vw_opt_name, array(
 			'validate'	=> 'numeric',
 			'default'	=> '0',
 		),
+		array(
+			'id'		=> 'post_views_forgery_random_start',
+			'type'		=> 'text',
+			'title'		=> 'Post Views Forgery Random -- Start', 
+			'subtitle'	=> 'Enter the start number of the random to add',
+			'desc'	=> 'i.e. 0 will start form 0',
+			'validate'	=> 'numeric',
+			'default'	=> '0',
+		),
+		array(
+			'id'		=> 'post_views_forgery_random_end',
+			'type'		=> 'text',
+			'title'		=> 'Post Views Forgery Random -- End', 
+			'subtitle'	=> 'Enter the end number of the random to add',
+			'desc'	=> 'i.e. 10 will end at 10',
+			'validate'	=> 'numeric',
+			'default'	=> '10',
+		)
 	),
 ) );
 
@@ -1376,7 +1393,7 @@ Redux::setSection( $vw_opt_name, array(
 			'mode' => 'background',
 			'transparent'=> false,
 			'output' => array( '.vw-menu-main-inner' ),
-			'default' => '#3e3e3e',
+			'default' => 'transparent',
 		),
 		array(
 			'id'=>'main_main_menu_link',
@@ -1748,3 +1765,5 @@ if ( ! function_exists( 'vw_options_saved' ) ) {
 		}
 	}
 }
+
+?>

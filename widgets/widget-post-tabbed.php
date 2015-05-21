@@ -18,7 +18,7 @@ if ( ! class_exists( 'Vw_widget_post_tabbed' ) ) {
 			// widget actual processes
 			parent::__construct(
 		 		'vw_widget_post_tabbed', // Base ID
-				VW_THEME_NAME.': Popular, Recent, Comments', // Name
+				VW_THEME_NAME.': Popular, Recent, Most Shared', // Name
 				array( 'description' => 'Display latest posts in a tabbed style' ) // Args
 			);
 		}
@@ -41,7 +41,7 @@ if ( ! class_exists( 'Vw_widget_post_tabbed' ) ) {
 				<ul>
 					<li><a href="#" class="vw-fixed-tab-title is-active"><i class="vw-icon icon-entypo-star"></i></a></li>
 					<li><a href="#" class="vw-fixed-tab-title"><i class="vw-icon icon-entypo-clock"></i></a></li>
-					<li><a href="#" class="vw-fixed-tab-title"><i class="vw-icon icon-entypo-comment"></i></a></li>
+					<li><a href="#" class="vw-fixed-tab-title"><i class="vw-icon icon-entypo-share"></i></a></li>
 				</ul>
 
 				<div class="vw-fixed-tab-content vw-fixed-tab-id-1 is-active">
@@ -58,8 +58,7 @@ if ( ! class_exists( 'Vw_widget_post_tabbed' ) ) {
 
 					} else { // ( 'viewed' == $order )
 						$query_args['orderby'] = 'meta_value_num';
-						$query_args['meta_key'] = 'vw_post_views_all';
-
+						$query_args['meta_key'] = 'vw_post_total_forgery';
 					}
 					
 					query_posts( $query_args );
@@ -90,15 +89,30 @@ if ( ! class_exists( 'Vw_widget_post_tabbed' ) ) {
 				</div>
 
 				<div class="vw-fixed-tab-content vw-fixed-tab-id-3">
-					<?php 
-					$comments = get_comments( array(
-						'status' => 'approve',
-						'number' => $count,
-					) );
+					<?php
+					$query_args = array(
+						'post_type' => 'post',
+						'ignore_sticky_posts' => true,
+						'posts_per_page' => $count,
+					);
+					$query_args['orderby'] = 'meta_value_num';
+					$query_args['meta_key'] = 'vw_post_total_shares_forgery';
 
-					$template_file = sprintf( 'templates/post-loop/loop-small-comments.php' );
+					query_posts( $query_args );
+
+					$template_file = 'templates/post-loop/loop-small-left-thumbnail-col-1.php';
 
 					include( locate_template( $template_file, false, false ) );
+					wp_reset_query();
+
+					// $comments = get_comments( array(
+					// 	'status' => 'approve',
+					// 	'number' => $count,
+					// ) );
+
+					// $template_file = sprintf( 'templates/post-loop/loop-small-comments.php' );
+
+					// include( locate_template( $template_file, false, false ) );
 					?>
 				</div>
 

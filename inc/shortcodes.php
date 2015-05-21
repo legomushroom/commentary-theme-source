@@ -558,7 +558,7 @@ if ( ! function_exists( 'vw_shortcode_posts' ) ) {
 
 		} elseif ( 'most_viewed' == $order ) {
 			$query_args['orderby'] = 'meta_value_num';
-			$query_args['meta_key'] = 'vw_post_views_all';
+			$query_args['meta_key'] = 'vw_post_total_forgery';
 			
 		} elseif ( 'most_review_score' == $order ) {
 			$query_args['orderby'] = 'meta_value_num';

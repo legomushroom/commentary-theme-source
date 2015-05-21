@@ -252,6 +252,11 @@ a img.aligncenter {
     margin-right: auto;
 }
 
+div.fb-page {
+    display:     block;
+    text-align:  center;
+}
+
 /* -------------------------------------
  * Image Caption */
 .wp-caption {
@@ -1624,14 +1629,31 @@ button,
     font-weight: 300;
 }
 
+.vw-post-navigation {
+    /*overflow: hidden;*/
+   display: -webkit-box;
+   display: -moz-box;
+   display: -ms-flexbox;
+   display: -webkit-flex;
+   display: flex;
+}
+
 .vw-post-navigation-next,
 .vw-post-navigation-previous {
     width: 49%;
     float: left;
-    padding-top: 10px;
+    /*padding-top: 10px;*/
     color: inherit;
     word-wrap: break-word;
+    /*padding-bottom: 9999999999px;*/
+    /*margin-bottom: -9999999999px;*/
 }
+
+/*.vw-post-navigation-next,
+.vw-post-navigation-previous {
+    height: 100%;
+}*/
+
 .vw-post-navigation-next:hover,
 .vw-post-navigation-previous:hover {
     text-decoration: none;
@@ -3005,7 +3027,7 @@ button,
  * $MEGA MENU */
 .vw-menu-type-mega-post {
     display: table;
-    margin: 0 auto;
+    /*margin: 0 auto;*/
 }
 
 .vw-mega-menu-type-category.menu-item-depth-0 > .sub-menu-wrapper,
@@ -3137,11 +3159,61 @@ button,
  * $MAIN MENU */
 .vw-menu-main-wrapper {
     z-index: 1000;
+    background: rgba(62,62,62, .95);
 }
 
+.vw-header-logo {
+    height:      44px;
+    width:       120px;
+    background:  #F4356B;
+    display:     block;
+    position:    absolute;
+    opacity:     0;
+    -webkit-transform: translateX(-120px);
+    -ms-transform: translateX(-120px);
+    -o-transform: translateX(-120px);
+    transform: translateX(-120px);
+}
+
+.is-sticky .vw-header-logo {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+    opacity:  1;
+}
+
+.is-sticky .vw-menu-location-main {
+   -webkit-transform: translateX(120px);
+   -ms-transform: translateX(120px);
+   -o-transform: translateX(120px);
+   transform: translateX(120px);
+}
+
+.vw-menu-main-wrapper .vw-menu-location-main,
+.vw-menu-main-wrapper .vw-header-logo {
+    -webkit-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+
+.vw-menu-main-wrapper .vw-instant-search-buton {
+    position:   absolute;
+    right:      15px;
+    top:        0;
+    color:      white;
+    height:     100%;
+    padding-top: 12px;
+}
+
+.vw-menu-main-wrapper .vw-icon:before {
+    font-size:  20px;
+}
+
+/*
 .vw-menu-main-inner {
     margin-bottom: -20px;
-}
+} */
 
 .vw-menu-location-main .main-menu-link {
     padding: 10px 12px;
