@@ -150,6 +150,15 @@ if(function_exists("register_field_group"))
         'default_value' => 0,
       ),
       array (
+        'key' => 'field_540004d5673dd',
+        'label' => 'Post Image Vertical Position',
+        'name' => 'vw_post_vertical_position',
+        'type' => 'text',
+        'instructions' => 'in percents',
+        'message' => '',
+        'default_value' => '50',
+      ),
+      array (
         'key' => 'field_53ccc0137ec6d',
         'label' => 'Post Layout',
         'name' => 'vw_post_layout',

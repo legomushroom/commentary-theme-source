@@ -35,7 +35,7 @@ if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_POST_SLIDER_MEDIUM' ) ) define( 'VW_CON
 if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_POST_SLIDER_MEDIUM_2' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_POST_SLIDER_MEDIUM_2', 'vw_one_half_thumbnail' );
 if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_POST_SLIDER_LARGE' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_POST_SLIDER_LARGE', 'vw_full_width_thumbnail' );
 if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_POST_SLIDER_LARGE_CAROUSEL' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_POST_SLIDER_LARGE_CAROUSEL', 'vw_one_third_thumbnail' );
-if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_PAGE_TILE_BACKGROUND' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_PAGE_TILE_BACKGROUND', 'vw_full_width_thumbnail' );
+if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_PAGE_TILE_BACKGROUND' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_PAGE_TILE_BACKGROUND', 'vw_full_width_thumbnail_no_crop' );
 if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_INSTANT_SEARCH' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_INSTANT_SEARCH', 'vw_small_thumbnail' );
 if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_EMBEDED_GALLERY_SLIDER' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_EMBEDED_GALLERY_SLIDER', 'vw_full_width_thumbnail' );
 /*new*/if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_POST_LARGE' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_POST_LARGE', 'vw_full_width_thumbnail_no_crop' );

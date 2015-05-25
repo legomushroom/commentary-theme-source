@@ -757,6 +757,66 @@ button,
     border-bottom: 3px solid #3E3E3E;
 }
 
+.vw-post-comments-title {
+    border-top:     3px solid #3E3E3E;
+    padding:        8px 0;
+    padding-right:  25px;
+    padding-left:   8px;
+    text-align:     left;
+    position:       relative;
+    display:        inline-block;
+}
+
+.vw-post-comments-title:hover {
+    background-color:   rgba(0,0,0,.03);
+    cursor:             pointer;
+}
+
+.vw-post-comments-title__arrow {
+    width:      0;
+    height:     0;
+    position:   absolute;
+    right:      7px;
+    top:        18px;
+    border:     6px solid transparent;
+    border-top-color: #3E3E3E;
+    -webkit-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+
+.commentlist {
+    height:         0;
+    overflow:       hidden;
+    -webkit-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+
+.comment {
+    padding: 1px;
+}
+
+.is-comments-open .vw-post-comments-title__arrow {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+    -webkit-transform-origin: 6px 3px;
+    -moz-transform-origin: 6px 3px;
+    -ms-transform-origin: 6px 3px;
+    -o-transform-origin: 6px 3px;
+    transform-origin: 6px 3px;
+}
+
+/*.is-comments-open .commentlist {
+    height:     auto;
+}*/
+
+/*.vw-post-comments {
+
+}*/
+
 * + .vw-title-shortcode {
     margin-top: 30px;
 }
@@ -3163,16 +3223,19 @@ button,
 }
 
 .vw-header-logo {
-    height:      44px;
-    width:       120px;
-    background:  #F4356B;
-    display:     block;
-    position:    absolute;
-    opacity:     0;
-    -webkit-transform: translateX(-120px);
-    -ms-transform: translateX(-120px);
-    -o-transform: translateX(-120px);
-    transform: translateX(-120px);
+    height:             44px;
+    width:              140px;
+    background:         #e1e1e1 url('images/commentary-logo-black.svg') no-repeat center center;
+    background-size:    120px auto;
+    display:            block;
+    position:           absolute;
+    opacity:            0;
+    /*border-bottom:      4px solid #333;
+    border-top:         4px solid #333;*/
+    -webkit-transform: translateX(-142px);
+    -ms-transform: translateX(-142px);
+    -o-transform: translateX(-142px);
+    transform: translateX(-142px);
 }
 
 .is-sticky .vw-header-logo {
@@ -3184,10 +3247,10 @@ button,
 }
 
 .is-sticky .vw-menu-location-main {
-   -webkit-transform: translateX(120px);
-   -ms-transform: translateX(120px);
-   -o-transform: translateX(120px);
-   transform: translateX(120px);
+   -webkit-transform: translateX(142px);
+   -ms-transform: translateX(142px);
+   -o-transform: translateX(142px);
+   transform: translateX(142px);
 }
 
 .vw-menu-main-wrapper .vw-menu-location-main,

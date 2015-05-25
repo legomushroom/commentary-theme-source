@@ -13,7 +13,12 @@
 		}
 	?>
 	
-	<h3 class="vw-post-comments-title"><span><?php comments_number( __( 'No Comment', 'envirra' ), __('<span>1</span> Comment', 'envirra'), __( '<span>%</span> Comments', 'envirra' ) );?></span></h3>
+	<h3 class="vw-post-comments-title" id="js-comments-title">
+		<span>
+			<?php comments_number( __( 'No Comment', 'envirra' ), __('<span>1</span> Comment', 'envirra'), __( '<span>%</span> Comments', 'envirra' ) );?>
+		</span>
+		<div class="vw-post-comments-title__arrow"></div>
+	</h3>
 	
 	<?php if ( have_comments() ) : ?>
 	
@@ -22,8 +27,33 @@
 			<div class="prev-posts"><?php next_comments_link() ?></div>
 		</div>
 	
-		<ol class="commentlist clearfix">
-			<?php wp_list_comments( array( 'before' => ' &mdash; ', 'callback' => 'vw_render_comments' ) ); ?>
+		<ol class="commentlist clearfix" id="js-comment-list">
+			<div id="js-comment-list-inner" class="commentlist__inner">
+				<?php wp_list_comments( array( 'before' => ' &mdash; ', 'callback' => 'vw_render_comments' ) ); ?>
+				<?php
+				
+					$req = get_option( 'require_name_email' );
+					$aria_req = ( $req ? " aria-required='true'" : '' );
+
+					//Custom Fields
+					$fields =  array(
+						'author'=> '<div id="respond-inputs" class="clearfix"><p><input name="author" type="text" placeholder="' . esc_attr__( 'Name (required)', 'envirra' ) . '" size="30"' . $aria_req . ' /></p>',
+						'email' => '<p><input name="email" type="text" placeholder="' . esc_attr__( 'E-Mail (required)', 'envirra' ) . '" size="30"' . $aria_req . ' /></p>',
+						'url' => '<p class="last"><input name="url" type="text" placeholder="' . esc_attr__( 'Website', 'envirra' ) . '" size="30" /></p></div>',
+					);
+
+					//Comment Form Args
+					$comments_args = array(
+						'fields' => $fields,
+						'title_reply'=> __('Leave a reply', 'envirra'),
+						'comment_field' => '<div id="respond-textarea"><p><textarea id="comment" name="comment" aria-required="true" cols="58" rows="10" tabindex="4"></textarea></p></div>',
+						'label_submit' => __('Submit comment','envirra')
+					);
+					
+					// Show Comment Form
+					comment_form($comments_args); 
+				?>
+			</div>
 		</ol>
 	
 		<div class="navigation">
@@ -33,28 +63,5 @@
 		
 	<?php endif; ?>
 
-	<?php
-	
-		$req = get_option( 'require_name_email' );
-		$aria_req = ( $req ? " aria-required='true'" : '' );
-
-		//Custom Fields
-		$fields =  array(
-			'author'=> '<div id="respond-inputs" class="clearfix"><p><input name="author" type="text" placeholder="' . esc_attr__( 'Name (required)', 'envirra' ) . '" size="30"' . $aria_req . ' /></p>',
-			'email' => '<p><input name="email" type="text" placeholder="' . esc_attr__( 'E-Mail (required)', 'envirra' ) . '" size="30"' . $aria_req . ' /></p>',
-			'url' => '<p class="last"><input name="url" type="text" placeholder="' . esc_attr__( 'Website', 'envirra' ) . '" size="30" /></p></div>',
-		);
-
-		//Comment Form Args
-		$comments_args = array(
-			'fields' => $fields,
-			'title_reply'=> __('Leave a reply', 'envirra'),
-			'comment_field' => '<div id="respond-textarea"><p><textarea id="comment" name="comment" aria-required="true" cols="58" rows="10" tabindex="4"></textarea></p></div>',
-			'label_submit' => __('Submit comment','envirra')
-		);
-		
-		// Show Comment Form
-		comment_form($comments_args); 
-	?>
 </div>
 <?php endif; ?>

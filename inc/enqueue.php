@@ -80,6 +80,7 @@ if ( ! function_exists( 'vw_register_scripts' ) ) {
 
 			// Main script
 			wp_enqueue_script( 'vwjs-main', get_template_directory_uri().'/js/main.js', array( 'jquery' ), VW_THEME_VERSION, VW_CONST_ENQUEUE_SCRIPTS_ON_FOOTER );
+			wp_enqueue_script( 'vwjs-any-resize-event', get_template_directory_uri().'/js/any-resize-event.min.js', array( 'any-resize-event' ), VW_THEME_VERSION, VW_CONST_ENQUEUE_SCRIPTS_ON_FOOTER );
 			wp_localize_script( 'vwjs-main', 'vw_main_js', apply_filters( 'vw_filter_localize_main_js', array(
 				'theme_path' => get_template_directory_uri(),
 				'ajaxurl' => admin_url( 'admin-ajax.php' ),
