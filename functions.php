@@ -101,6 +101,20 @@ if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
 	}
 }
 
+// Allow SVG files upload
+function cc_mime_types($mimes) {
+  $mimes['svg'] = 'image/svg+xml';
+  return $mimes;
+}
+add_filter('upload_mimes', 'cc_mime_types');
+
+function gawd_allowed_tags() {
+	global $allowedtags;
+	$allowedtags['br'] = array('style'=>array());
+	$allowedtags['p']  = array('style'=>array());
+}
+add_action('init', 'gawd_allowed_tags', 10);
+
 /**
  * Third-party plugins support
  */

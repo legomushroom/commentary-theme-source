@@ -26,10 +26,11 @@
 
 			<?php vw_the_post_date(); ?>
 
+			<!-- 
 			<span class="vw-post-meta-separator">/</span>
-
 			<?php vw_the_comment_link(); ?>
-			
+ 			-->
+
 		</div>
 
 		<div class="vw-post-box-excerpt"><?php vw_the_excerpt( VW_CONST_EXCERPT_LENGTH_MEDIUM_6 ); ?></div>

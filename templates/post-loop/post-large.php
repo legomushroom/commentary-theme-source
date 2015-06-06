@@ -25,12 +25,13 @@
 
 			<?php vw_the_post_date(); ?>
 
+			<!-- 
 			<?php if ( comments_open() ) : ?>
 				<span class="vw-post-meta-separator">/</span>
-
 				<?php vw_the_comment_link(); ?>
 			<?php endif; ?>
-
+			 -->
+			 
 		</div>
 
 		<div class="vw-post-box-excerpt">

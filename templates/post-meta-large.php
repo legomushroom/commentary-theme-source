@@ -30,12 +30,13 @@
 		<?php vw_the_post_meta_separator(); ?>
 
 		<?php vw_the_post_date(); ?>
-
+		<!-- 
 		<?php
 		if ( comments_open() ) {
 			vw_the_post_meta_separator();
 			vw_the_comment_link();
 		} ?>
+		 -->
 
 		<?php if ( vw_post_views_enabled() ) : ?>
 

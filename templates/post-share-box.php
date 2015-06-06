@@ -13,6 +13,7 @@ $twitter_url = sprintf( 'http://twitter.com/home?status=%s', $post_title.'%20-%2
 $pinterest_url = sprintf( 'http://pinterest.com/pin/create/button/?url=%s&media=%s&description=%s', $post_url, $thumbnail_url, $post_title );
 $gplus_url = sprintf( 'http://plus.google.com/share?url=%s', $post_url );
 ?>
+
 <div class="vw-post-share-box">
 	<div class="vw-post-share-big-number">
 		<div class="vw-number"><?php echo vw_number_prefixes( vwpsh_get_total_shares() ); ?></div>
@@ -39,3 +40,4 @@ $gplus_url = sprintf( 'http://plus.google.com/share?url=%s', $post_url );
 		<span class="vw-button-label"><?php _e( 'Google+', 'envirra' ); ?></span>
 	</a>
 </div>
+

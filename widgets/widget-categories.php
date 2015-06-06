@@ -44,7 +44,7 @@ if ( ! class_exists( 'Vw_widget_categories' ) ) {
 			);
 
 			if ( ! empty( $cat_ids ) ) {
-				$cats_args['include'] = implode( ',', $cat_ids );
+				$cats_args['include'] = implode( ',', (array)$cat_ids );
 			}
 
 			$categories = get_categories( apply_filters( 'vw_filter_widget_categories_args', $cats_args ) );

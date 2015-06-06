@@ -37,7 +37,7 @@
 
 					<?php endwhile; ?>
 
-					<?php if ( ! vw_get_theme_option( 'page_force_disable_comments' ) && ( comments_open() || get_comments_number() ) ) comments_template(); ?>
+					<?php // if ( ! vw_get_theme_option( 'page_force_disable_comments' ) && ( comments_open() || get_comments_number() ) ) comments_template(); ?>
 
 				<?php endif; ?>
 
