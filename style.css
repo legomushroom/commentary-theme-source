@@ -7138,7 +7138,8 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
   .is-sticky-contents .sticky-contents__header {
     display:  block;
   }
-  .is-tablet-layout .sticky-contents__header {
+  .is-tablet-layout .sticky-contents__header,
+  .is-mobile-layout .sticky-contents__header{
     display:  none;
   }
   .is-tablet-layout .sticky-contents__items {
@@ -7221,5 +7222,6 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
   .is-mobile-layout .vw-post-share-box-button {
     float:        left;
     width:        25%;
+    padding-top:  6px;
   }
 

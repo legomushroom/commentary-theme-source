@@ -23,14 +23,8 @@ jQuery.noConflict();
 			var main = {
 				init: function () {
 					this.vars();
-					if (this.wWidth < 768) {
-						new Headroom(this.$stickyContents[0]).init();
-						return this.$stickyContents.addClass('is-mobile-layout');
-					}
-					// this.initSticky();
 					this.$stickyContents.length && this.addContents();
-					this.loop();
-					this.defineQueries();
+					this.loop(); this.defineQueries();
 				},
 				vars: function () {
 					this.$post  				 = $('.vw-post-content');
@@ -158,10 +152,11 @@ jQuery.noConflict();
 
 					enquire.register("screen and (max-width:768px)", {
 					    match : function() {
-					    	it.destroySticky();
+					    	it.isStickyInited && it.destroySticky();
 					    	it.$stickyContents.addClass('is-mobile-layout');
-					    	it.$stickyContents.removeClass('is-sticky-contents');
+					    	// it.$stickyContents.removeClass('is-sticky-contents');
 					    	it.$stickyContents.css({ width: '100%' });
+					    	it.headroom = new Headroom(it.$stickyContents[0]).init();
 					    },
 					    unmatch : function() {
 					    	it.$stickyContents.removeClass('is-mobile-layout');
