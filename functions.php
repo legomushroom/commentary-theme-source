@@ -94,12 +94,56 @@ require_once get_template_directory().'/inc/custom-font.php';
 require_once get_template_directory().'/inc/custom-css.php';
 // require_once get_template_directory().'/inc/quick-translation.php';
 
+function getShareButtons () {
+	$post_id = get_the_id();
+	$post_url = urlencode( get_permalink() );
+	$post_title = urlencode( get_the_title() );
+	$thumbnail_url = '';
+	if ( has_post_thumbnail() ) {
+	    $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_id() ), 'full' );
+	    $thumbnail_url = $thumbnail[0];
+	}
+
+	$facebook_url = sprintf( 'http://www.facebook.com/sharer.php?u=%s', $post_url );
+	$twitter_url = sprintf( 'http://twitter.com/home?status=%s', $post_title.'%20-%20'.$post_url );
+	$pinterest_url = sprintf( 'http://pinterest.com/pin/create/button/?url=%s&media=%s&description=%s', $post_url, $thumbnail_url, $post_title );
+	$gplus_url = sprintf( 'http://plus.google.com/share?url=%s', $post_url );
+
+
+	return '<div class="vw-post-share-box">
+              <a class="vw-post-share-box-button vw-post-shares-social vw-post-shares-social-facebook" href="' . esc_url( $facebook_url ) . '" data-post-id="' . esc_attr( $post_id ) . '" data-share-to="facebook" data-width="500" data-height="300" title="' . esc_attr__( 'Share to Facebook', 'envirra' ) . '">
+                  <i class="vw-icon icon-social-facebook"></i>
+									<span class="vw-button-label"> Facebook </span>
+              </a>
+              <a class="vw-post-share-box-button vw-post-shares-social vw-post-shares-social-twitter" href="' . esc_url( $twitter_url ) . '" data-post-id="' . esc_attr( $post_id ) . '" data-share-to="twitter" data-width="500" data-height="300" title="' . esc_attr__( 'Share to Twitter', 'envirra' ) . '">
+                  <i class="vw-icon icon-social-twitter"></i>
+									<span class="vw-button-label"> Twitter </span>
+              </a>
+              <a class="vw-post-share-box-button vw-post-shares-social vw-post-shares-social-gplus" href="' . esc_url( $gplus_url ). '" data-post-id="' . esc_attr( $post_id ) . '" data-share-to="gplus" data-width="500" data-height="475" title="' . esc_attr__( 'Share to Google+', 'envirra' ) . '">
+                  <i class="vw-icon icon-social-gplus"></i>
+									<span class="vw-button-label"> Google+ </span>
+              </a>
+              <a href="mailto:?subject=An%20article%20I%20thought%20you\'d%20find%20interesting&body=Here%20it%20is,%20on%20Commentary%20Magazine:%20'. $post_url .'" target="_blank" class="vw-post-share-box-button vw-post-shares-social vw-post-shares-social-email">
+                  <i class="vw-icon icon-social-email"></i>
+									<span class="vw-button-label"> Email </span>
+              </a>
+          </div>';
+}
+
 add_filter('the_excerpt', 'do_my_shortcode_in_excerpt');
 if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
 	function do_my_shortcode_in_excerpt($excerpt) {
 	    return do_shortcode(wp_trim_words(get_the_content(), 55));
 	}
 }
+
+function theme_slug_filter_the_content( $content ) {
+		$buttons = getShareButtons();
+    $custom_content = "<div id=\"js-sticky-contents\" class='intense sticky-contents clearfix'><div class=\"sticky-contents__header\" id=\"js-sticky-contents-header\">Contents</div><div class=\"sticky-contents__items clearfix\" id=\"js-sticky-content-items\"></div>" . $buttons . "</div>";
+    $custom_content .= $content;
+    return $custom_content;
+}
+add_filter( 'the_content', 'theme_slug_filter_the_content' );
 
 // Allow SVG files upload
 function cc_mime_types($mimes) {

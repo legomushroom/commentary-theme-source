@@ -28,15 +28,17 @@
 							
 							<?php vw_the_post_share_box() ?>
 
-							<?php if ( vw_get_paged() == 1 ) : ?>
+							<div class="vw-post-content clearfix">
+								<?php if ( vw_get_paged() == 1 ) : ?>
 
-								<?php if ( ! has_post_format() ) vw_the_featured_image(); ?>
+									<?php if ( ! has_post_format() ) vw_the_featured_image(); ?>
 
-								<?php vw_the_embeded_media(); ?>
+									<?php vw_the_embeded_media(); ?>
+									
+								<?php endif; ?>
 								
-							<?php endif; ?>
-
-							<div class="vw-post-content clearfix"><?php the_content(); ?></div>
+								<?php the_content(); ?>
+							</div>
 
 							<?php vw_the_link_pages(); ?>
 

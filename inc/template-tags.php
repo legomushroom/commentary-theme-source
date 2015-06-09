@@ -496,14 +496,14 @@ if ( ! function_exists( 'vw_the_author' ) ) {
  * The Author Avatar
  * -------------------------------------------------------------------------- */
 if ( ! function_exists( 'vw_the_author_avatar' ) ) {
-	function vw_the_author_avatar( $author = null, $size = VW_CONST_AVATAR_SIZE_LARGE ) {
+	function vw_the_author_avatar( $author = null, $size = VW_CONST_AVATAR_SIZE_LARGE, $className = '' ) {
 		if ( ! $author ) {
 			$author = vw_get_current_author();
 		}
 
 		$author_avatar = vw_get_avatar( get_the_author_meta( 'user_email', $author->ID ), $size, '', get_the_author_meta( 'display_name', $author->ID ) );
 
-		echo '<a class="vw-author-avatar" href="' . get_author_posts_url( $author->ID ).'" title="' . sprintf( esc_attr__('Posts by %s', 'envirra'), get_the_author_meta( 'display_name', $author->ID ) ) . '">';
+		echo '<a class="vw-author-avatar ' . $className . '" href="' . get_author_posts_url( $author->ID ).'" title="' . sprintf( esc_attr__('Posts by %s', 'envirra'), get_the_author_meta( 'display_name', $author->ID ) ) . '">';
 		echo $author_avatar;
 		echo '</a>';
 	}

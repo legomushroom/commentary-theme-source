@@ -23,12 +23,13 @@ jQuery.noConflict();
 			var main = {
 				init: function () {
 					this.vars();
-					this.$stickyContents.length && this.addContents();
+					this.$stickyContentsItems.length && this.addContents();
 					this.loop(); this.defineQueries();
 				},
 				vars: function () {
 					this.$post  				 = $('.vw-post-content');
 					this.$stickyContents = this.$post.find('#js-sticky-contents');
+					this.$stickyContentsItems = this.$post.find('#js-sticky-contents-with-items');
 					this.$itemsContainer = this.$post.find('#js-sticky-content-items');
 					this.$items 				 = this.$post.find('.intense.heading');
 					this.items 					 = [];
@@ -44,9 +45,7 @@ jQuery.noConflict();
 					this.$w.on('resize', function () {
 						this.wWidth  = this.$w.outerWidth();
 						clearTimeout(timeout);
-						timeout = setTimeout(function () {
-							it.getYs();
-						}, 100);
+						timeout = setTimeout(function () { it.getYs(); }, 100);
 					}.bind(this));
 				},
 				initSticky: function () {
@@ -56,7 +55,8 @@ jQuery.noConflict();
 					setTimeout(function () {
 						this.$stickyContents.hcSticky({
 								top: 			  offsetTop,
-								bottomEnd: 	300
+								bottomEnd: 	-232
+								// bottomEnd: 	0
 							});
 						this.$stickyWrapper = this.$stickyContents.parent();
 						this.isStickyInited = true;
@@ -133,7 +133,7 @@ jQuery.noConflict();
 					enquire.register("screen and (min-width:768px) and (max-width:1510px)", {
 					    match : function() {
 					    	it.$stickyContents.addClass('is-tablet-layout');
-					    	it.$stickyContents.css({ width: this.containerWidth+5 + 'px' });
+					    	it.$stickyContents.css({ width: it.containerWidth+5 + 'px' });
 					    	it.initSticky();
 					    	// it.$stickyContents.hcSticky('reinit');
 					    },
@@ -150,12 +150,13 @@ jQuery.noConflict();
 					    match : function() { it.initSticky(); }
 					});
 
-					enquire.register("screen and (max-width:768px)", {
+					enquire.register("screen and (max-width:767px)", {
 					    match : function() {
 					    	it.isStickyInited && it.destroySticky();
 					    	it.$stickyContents.addClass('is-mobile-layout');
 					    	// it.$stickyContents.removeClass('is-sticky-contents');
 					    	it.$stickyContents.css({ width: '100%' });
+					    	it.$stickyContents.css({ top: 'auto' });
 					    	it.headroom = new Headroom(it.$stickyContents[0]).init();
 					    },
 					    unmatch : function() {
@@ -216,7 +217,10 @@ jQuery.noConflict();
 		// More articles
 		// 
 		var $more_articles = $('.vw-more-articles');
-		$more_articles.vwScroller( { visibleClass: 'vw-more-articles-visible' } )
+
+		setTimeout(function () {
+			$more_articles.vwScroller( { visibleClass: 'vw-more-articles-visible', selector: '#comments' } )
+		}, 2000);
 		$more_articles.find( '.vw-close-button' ).click( function() {
 			$more_articles.hide();
 		} );
@@ -449,12 +453,6 @@ jQuery.noConflict();
 				$( document ).bind( 'vw_content_height_changed', function() {
 					vw_sticky_sidebar.hcSticky( 'reinit' );
 				} );
-
-				// setTimeout(function () {
-				// 	$( document ).trigger('vw_content_height_changed');
-				// 	console.log('trgger');
-				// }, 1500);
-
 			}
 		}
 
@@ -512,11 +510,6 @@ jQuery.noConflict();
 
 
 
-
-
-
-
-
 	/* =============================================================================
 
 	Custom Extensions
@@ -525,22 +518,49 @@ jQuery.noConflict();
 
 	$.fn.vwScroller = function( options ) {
 		var default_options = {
-			delay: 500, /* Milliseconds */
-			position: 0.7, /* Multiplier for document height */
-			visibleClass: '',
+			delay: 					500, /* Milliseconds */
+			position: 			0.7, /* Multiplier for document height */
+			visibleClass: 	'',
 			invisibleClass: '',
+			selector: 			null
 		}
-
-		var isVisible = false;
-		var $document = $(document);
-		var $window = $(window);
-
 		options = $.extend( default_options, options );
 
-		var observer = $.proxy( function () {
-			var isInViewPort = $document.scrollTop() > ( ( $document.height() - $window.height() ) * options.position );
+		var $sel = null;
+		if (options.selector != null) {
+			$sel = $(options.selector);
+		}
+		if (options.selector && !$sel[0]) {options.selector = null}
 
-			if ( ! isVisible && isInViewPort ) {
+		var getShowPosition = function getShowPosition () {
+			var position = null, wHeight = $window.height();
+			return (options.selector != null) ? (
+				$(options.selector).offset().top - wHeight
+			) : (
+				( $document.height() - wHeight ) * options.position
+			);
+		}
+
+		var isVisible = false,
+				$document = $(document),
+				$window = $(window),
+				showPosition = getShowPosition();
+
+		$window.on('resize', function () { showPosition = getShowPosition(); });
+
+		// setTimeout(function () {
+		$(document.body).on('onresize', function () {
+			showPosition = getShowPosition();
+		});
+		// }, 2000);
+
+		var observer = $.proxy( function () {
+
+			var isInViewPort = $document.scrollTop() > showPosition;
+	
+			// options.selector && console.log($document.scrollTop(), showPosition);
+
+			if ( !isVisible && isInViewPort ) {
 				onVisible();
 			} else if ( isVisible && ! isInViewPort ) {
 				onInvisible();
