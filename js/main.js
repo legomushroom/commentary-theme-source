@@ -44,6 +44,7 @@ jQuery.noConflict();
 					var timeout = null, it = this;
 					this.$w.on('resize', function () {
 						this.wWidth  = this.$w.outerWidth();
+						this.containerWidth = this.$post.outerWidth()
 						clearTimeout(timeout);
 						timeout = setTimeout(function () { it.getYs(); }, 100);
 					}.bind(this));
@@ -55,13 +56,14 @@ jQuery.noConflict();
 					setTimeout(function () {
 						this.$stickyContents.hcSticky({
 								top: 			  offsetTop,
-								bottomEnd: 	-232
+								bottomEnd: 	-232,
+								skipMarginsRecalc: true
 								// bottomEnd: 	0
 							});
 						this.$stickyWrapper = this.$stickyContents.parent();
 						this.isStickyInited = true;
 						this.stickyContentsHeight = this.$stickyContents.outerHeight();
-					}.bind(this), 200);
+					}.bind(this), 500);
 				},
 				destroySticky: function () {
 					this.$stickyContents.hcSticky('destroy');
@@ -133,7 +135,7 @@ jQuery.noConflict();
 					enquire.register("screen and (min-width:768px) and (max-width:1510px)", {
 					    match : function() {
 					    	it.$stickyContents.addClass('is-tablet-layout');
-					    	it.$stickyContents.css({ width: it.containerWidth+5 + 'px' });
+					    	it.$stickyContents.css({ width: it.containerWidth + 'px' });
 					    	it.initSticky();
 					    	// it.$stickyContents.hcSticky('reinit');
 					    },
