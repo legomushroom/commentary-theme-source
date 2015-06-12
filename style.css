@@ -129,7 +129,7 @@ img {
 }
 
 em {
-    color: #AAAAAA;
+    /* color: #AAAAAA; */
     text-transform: none;
     font-weight: normal;
     font-style: italic;
@@ -3433,9 +3433,9 @@ span.intense.dropcap {
 }
 
 
-.vw-post-navigation {
+/*.vw-post-navigation {
     margin-top: -61px;
-}
+}*/
 
 @media all and (max-width:1000px) {
     .vw-menu-main-wrapper {
@@ -3443,7 +3443,7 @@ span.intense.dropcap {
     }
     .vw-post-navigation {
         width:  100%;
-        margin-top: -39px;
+        /*margin-top: -39px;*/
     }
     .vw-post-comments-title {
         width:         100%;
@@ -7252,8 +7252,36 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
   .sticky-contents .vw-post-share-big-number {
     background: white;
     /*display:  none;*/
-    height: 100%;
+    /*height: 100%;*/
+    position: absolute;
+    bottom:   -50px;
+    right:    0;
+    margin-right: 0;
+    /*outline:  1px solid deeppink;*/
+    width:    39px;
+    height:   39px;
   }
+  .is-sticky-contents .vw-post-share-big-number,
+  .is-tablet-layout .vw-post-share-big-number,
+  .is-mobile-layout .vw-post-share-big-number {
+    display: none;
+  }
+  .sticky-contents .vw-post-share-big-number__inner {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  .sticky-contents .vw-unit {
+    font-size: 8px;
+    letter-spacing:  .5px;
+  }
+  .sticky-contents .vw-number {
+    font-size: 18px;
+  }
+
   .is-mobile-layout .vw-post-share-big-number {
     display:  block;
   }

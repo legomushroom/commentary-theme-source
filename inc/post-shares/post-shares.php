@@ -38,7 +38,7 @@ if ( ! function_exists( 'vwpsh_render_post_shares_dialog' ) ) {
 		?>
 		<div id="vw-post-shares-dialog" class="zoom-anim-dialog mfp-hide">
 			<span class="vw-post-shares-subtitle"><?php _e( 'SHARE', 'envirra' ); ?></span>
-			<h1 class="vw-header-font vw-post-shares-title"><?php the_title(); ?></h1>
+			<h2 class="vw-header-font vw-post-shares-title"><?php the_title(); ?></h2>
 			<div class="vw-post-shares-socials">
 				<a class="vw-post-shares-social vw-post-shares-social-facebook" href="<?php echo esc_url( $facebook_url ); ?>" data-post-id="<?php echo esc_attr( $post_id ); ?>" data-share-to="facebook" data-width="500" data-height="300"><i class="vw-icon icon-social-facebook"></i></a>
 				<a class="vw-post-shares-social vw-post-shares-social-twitter" href="<?php echo esc_url( $twitter_url ); ?>" data-post-id="<?php echo esc_attr( $post_id ); ?>" data-share-to="twitter" data-width="500" data-height="300"><i class="vw-icon icon-social-twitter"></i></a>

@@ -4,11 +4,11 @@
 		
 		<?php vw_the_category(); ?>
 
-		<h3 class="vw-post-box-title">
+		<h2 class="vw-post-box-title">
 			<a href="<?php the_permalink(); ?>" class="" <?php vw_itemprop('url'); ?>>
 				<?php the_title(); ?>
 			</a>
-		</h3>
+		</h2>
 
 		<?php if ( has_post_thumbnail() ) : ?>
 		<a class="vw-post-box-thumbnail" href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">

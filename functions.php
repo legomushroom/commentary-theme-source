@@ -111,6 +111,12 @@ function getShareButtons () {
 
 
 	return '<div class="vw-post-share-box">
+							<div class="vw-post-share-big-number">
+								<div class="vw-post-share-big-number__inner">
+									<div class="vw-number">' . vw_number_prefixes( vwpsh_get_total_shares() ) . '</div>
+									<div class="vw-unit">' . translate( 'Shares', 'envirra' ) . '</div>
+								</div>
+							</div>
               <a class="vw-post-share-box-button vw-post-shares-social vw-post-shares-social-facebook" href="' . esc_url( $facebook_url ) . '" data-post-id="' . esc_attr( $post_id ) . '" data-share-to="facebook" data-width="500" data-height="300" title="' . esc_attr__( 'Share to Facebook', 'envirra' ) . '">
                   <i class="vw-icon icon-social-facebook"></i>
 									<span class="vw-button-label"> Facebook </span>
@@ -130,12 +136,30 @@ function getShareButtons () {
           </div>';
 }
 
+
 add_filter('the_excerpt', 'do_my_shortcode_in_excerpt');
 if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
 	function do_my_shortcode_in_excerpt($excerpt) {
-	    return do_shortcode(wp_trim_words(get_the_content(), 55));
+		$content = do_shortcode(get_the_content());
+		$content = preg_replace('/<h[1|2|3|4|5|6].+?<\/h[1|2|3|4|5|6]>/im', '', $content);
+		$content = preg_replace('/Contents\s?/i', '', $content);
+		$args = array(
+		    //formatting
+		    'strong' => array(),
+		    'em'     => array(),
+		    'b'      => array(),
+		    'i'      => array(),
+
+		    //links
+		    'a'     => array(
+		        'href' => array()
+		    )
+		);
+	  return wp_kses(wp_trim_words($content, vw_get_theme_option('blog_excerpt_length')), $args);
 	}
 }
+
+
 
 function theme_slug_filter_the_content( $content ) {
 		$buttons = getShareButtons();

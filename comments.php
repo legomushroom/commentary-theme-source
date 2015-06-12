@@ -1,4 +1,6 @@
 
+<?php return ''; ?>
+
 <?php if ( comments_open() || get_comments_number() ) : ?>
 <div id="comments" class="vw-post-comments">
 	<?php
