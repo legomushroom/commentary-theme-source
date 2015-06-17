@@ -19,7 +19,8 @@
     ===========================*/
     window.Swiper = function (container, params) {
         if (!(this instanceof Swiper)) return new Swiper(container, params);
-
+        
+        
         var defaults = {
             direction: 'horizontal',
             touchEventsTarget: 'container',
@@ -225,7 +226,8 @@
             });
             return;
         }
-        
+
+
         // Save instance in container HTML Element and in data
         s.container[0].swiper = s;
         s.container.data('swiper', s);
@@ -470,6 +472,7 @@
         s.maxTranslate = function () {
             return (-s.snapGrid[s.snapGrid.length - 1]);
         };
+
         /*=========================
           Slider/slides sizes
           ===========================*/
@@ -1531,6 +1534,7 @@
                 s.updateClasses();
                 return false;
             }
+
             s.onTransitionStart(runCallbacks);
             var translateX = isH() ? translate : 0, translateY = isH() ? 0 : translate;
             if (speed === 0) {
@@ -1611,7 +1615,7 @@
           Translate/transition helpers
           ===========================*/
         s.setWrapperTransition = function (duration, byController) {
-            s.wrapper.transition(duration);
+            s.wrapper.transitionSwiperPlugin(duration);
             if (s.params.effect !== 'slide' && s.effects[s.params.effect]) {
                 s.effects[s.params.effect].setTransition(duration);
             }
@@ -1627,6 +1631,7 @@
             s.emit('onSetTransition', s, duration);
         };
         s.setWrapperTranslate = function (translate, updateActiveIndex, byController) {
+            // debugger
             var x = 0, y = 0, z = 0;
             if (isH()) {
                 x = s.rtl ? -translate : translate;
@@ -1909,7 +1914,7 @@
                     }
                 },
                 setTransition: function (duration) {
-                    s.slides.transition(duration);
+                    s.slides.transitionSwiperPlugin(duration);
                     if (s.params.virtualTranslate && duration !== 0) {
                         s.slides.eq(s.activeIndex).transitionEnd(function () {
                             var triggerEvents = ['webkitTransitionEnd', 'transitionend', 'oTransitionEnd', 'MSTransitionEnd', 'msTransitionEnd'];
@@ -2022,9 +2027,9 @@
                     s.wrapper.transform('translate3d(0px,0,' + zFactor + 'px) rotateX(' + (isH() ? 0 : wrapperRotate) + 'deg) rotateY(' + (isH() ? -wrapperRotate : 0) + 'deg)');
                 },
                 setTransition: function (duration) {
-                    s.slides.transition(duration).find('.swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left').transition(duration);
+                    s.slides.transitionSwiperPlugin(duration).find('.swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left').transitionSwiperPlugin(duration);
                     if (s.params.cube.shadow && !isH()) {
-                        s.container.find('.swiper-cube-shadow').transition(duration);
+                        s.container.find('.swiper-cube-shadow').transitionSwiperPlugin(duration);
                     }
                 }
             },
@@ -2084,7 +2089,7 @@
                     }
                 },
                 setTransition: function (duration) {
-                    s.slides.transition(duration).find('.swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left').transition(duration);
+                    s.slides.transitionSwiperPlugin(duration).find('.swiper-slide-shadow-top, .swiper-slide-shadow-right, .swiper-slide-shadow-bottom, .swiper-slide-shadow-left').transitionSwiperPlugin(duration);
                 }
             }
         };
@@ -2250,13 +2255,13 @@
                     sb.track[0].style.opacity = 1;
                     sb.timeout = setTimeout(function () {
                         sb.track[0].style.opacity = 0;
-                        sb.track.transition(400);
+                        sb.track.transitionSwiperPlugin(400);
                     }, 1000);
                 }
             },
             setTransition: function (duration) {
                 if (!s.params.scrollbar) return;
-                s.scrollbar.drag.transition(duration);
+                s.scrollbar.drag.transitionSwiperPlugin(duration);
             }
         };
 
@@ -2265,6 +2270,7 @@
           ===========================*/
         s.controller = {
             setTranslate: function (translate, byController) {
+
                 var controlled = s.params.control;
                 var multiplier, controlledTranslate;
                 if (s.isArray(controlled)) {
@@ -2544,6 +2550,7 @@
         }   
         s.parallax = {
             setTranslate: function () {
+
                 s.container.children('[data-swiper-parallax], [data-swiper-parallax-x], [data-swiper-parallax-y]').each(function(){
                     setParallaxTransform(this, s.progress);
                     
@@ -2562,7 +2569,7 @@
                     var el = $(this);
                     var parallaxDuration = parseInt(el.attr('data-swiper-parallax-duration'), 10) || duration;
                     if (duration === 0) parallaxDuration = 0;
-                    el.transition(parallaxDuration);
+                    el.transitionSwiperPlugin(parallaxDuration);
                 });
             }
         };
@@ -2921,8 +2928,8 @@
                 return this;
             };
         }
-        if (!('transition' in domLib.fn)) {
-            domLib.fn.transition = function (duration) {
+        if (!('transitionSwiperPlugin' in domLib.fn)) {
+            domLib.fn.transitionSwiperPlugin = function (duration) {
                 if (typeof duration !== 'string') {
                     duration = duration + 'ms';
                 }

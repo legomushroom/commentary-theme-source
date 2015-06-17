@@ -22,12 +22,13 @@ jQuery.noConflict();
 		(function (undefined) {
 			var main = {
 				init: function () {
-					this.vars();
+					if (this.vars() === false) {return};
 					this.$stickyContentsItems.length && this.addContents();
 					this.loop(); this.defineQueries();
 				},
 				vars: function () {
 					this.$post  				 = $('.vw-post-content');
+					if (!this.$post[0]) {return false};
 					this.$stickyContents = this.$post.find('#js-sticky-contents');
 					this.$stickyContentsItems = this.$post.find('#js-sticky-contents-with-items');
 					this.$itemsContainer = this.$post.find('#js-sticky-content-items');
@@ -706,6 +707,8 @@ jQuery.noConflict();
 	 * Swiper Slider
 	 * -------------------------------------------------------------------------- */
 	$.fn.vwSwiper = function( options ) {
+
+		// console.log()
 		if ( $.fn.swiper ) {
 			var default_options = {
 				direction: 'horizontal',
