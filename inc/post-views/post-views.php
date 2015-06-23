@@ -10,11 +10,34 @@ $timings = apply_filters( 'vw_post_views_timings', array( 'all'=>'', 'week'=>'YW
 
 if ( defined( 'WP_CACHE' ) && WP_CACHE ) {
 	require 'ajax-counter.php';
-
 } else {
 	add_action( 'wp_head', 'vw_count_post_views' );
-
+	add_action( 'wp_head', 'vwpsh_get_total_shares' );
 }
+
+// add_action('save_post', 'wv_save_post_hook', 10, 3);
+// function wv_save_post_hook($post_id) {
+// 	vw_count_post_views($post_id, true);
+// 	vwpsh_get_total_shares($post_id);
+// }
+
+// count forgery post views on every posts after settings update
+// since settings changes can include forgery related options
+// add_action( 'updated_option', 'updated_option_callback' );
+// function updated_option_callback( $option ) {
+// 	$args = array(
+// 		'post_type' => 'post',
+// 		'orderby'   => 'title',
+// 		'order'     => 'ASC',
+// 		'post_status' => 'any',
+// 		'posts_per_page' => -1,
+// 	);
+// 	$posts_array = get_posts( $args );
+// 	foreach ( $posts_array as $post ) {
+// 		vw_count_post_views($post->ID);
+// 		vwpsh_get_total_shares($post->ID);
+// 	}
+// }
 
 /* -----------------------------------------------------------------------------
  * If post views enabled
@@ -29,14 +52,18 @@ if ( ! function_exists( 'vw_post_views_enabled' ) ) {
  * Count Post Views
  * -------------------------------------------------------------------------- */
 if ( ! function_exists( 'vw_count_post_views' ) ) {
-	function vw_count_post_views( $post_id = '' ) {
+	function vw_count_post_views( $post_id = null, $ignoreAjax = false ) {
 
 		global $post, $timings;
 
+		// echo '<div id="it">' . 'update' . '</div>';
+
 		if ( ! vw_post_views_enabled() ) return;
 
-		if ( ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) && ! is_single() ) {
-			return;
+		if (!$ignoreAjax) {
+			if ( ! ( defined( 'DOING_AJAX' ) && DOING_AJAX ) && ! is_single() ) {
+				return;
+			}
 		}
 
 		if ( empty( $post_id ) ) {
@@ -71,24 +98,6 @@ if ( ! function_exists( 'vw_count_post_views' ) ) {
 			endif;
 			//// I update 2 times with 2 different meta names because i need to keep my own count too, in bonus of hacked/filtered count.
 		}
-	}
-}
-
-// count forgery post views on every posts after settings update
-// since settings changes can include forgery related options
-add_action( 'updated_option', 'updated_option_callback' );
-function updated_option_callback( $option ) {
-	$args = array(
-		'post_type' => 'post',
-		'orderby'   => 'title',
-		'order'     => 'ASC',
-		'post_status' => 'any',
-		'posts_per_page' => -1,
-	);
-	$posts_array = get_posts( $args );
-	foreach ( $posts_array as $post ) {
-		vw_count_post_views($post->ID);
-		vwpsh_get_total_shares($post->ID);
 	}
 }
 

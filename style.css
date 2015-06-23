@@ -130,7 +130,7 @@ img {
 
 em {
     /* color: #AAAAAA; */
-    text-transform: none;
+    /*text-transform: none;*/
     font-weight: normal;
     font-style: italic;
 }
@@ -1052,9 +1052,9 @@ body {
     margin-bottom: 10px;
     word-wrap: break-word;
 }
-.vw-page-title-section .vw-page-title-box-inner {
+/*.vw-page-title-section .vw-page-title-box-inner {
     padding-right: 34%;
-}
+}*/
 .vw-page-title-section .vw-featured-image-caption {
     margin-right: 90px;
 }
@@ -1303,10 +1303,10 @@ span.intense.dropcap {
 /* -----------------------------------------------------------------------------
  * $PAGE
  * -------------------------------------------------------------------------- */
-.vw-page-wrapper {
+/*.vw-page-wrapper {
     padding:        60px 0;
     padding-bottom: 0;
-}
+}*/
 
 .vw-sticky-sidebar {
     padding-bottom: 50px;
@@ -1333,9 +1333,9 @@ span.intense.dropcap {
         margin-bottom: 30px;
     }
 }
-.vw-page-content > article:first-child {
+/*.vw-page-content > article:first-child {
     margin-top: 15px;
-}
+}*/
 
 /* -------------------------------------
  * $SIDEBAR POSITION */
@@ -7121,7 +7121,7 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
     width:          100%;
     background:     white;
     margin-top:    -15px;
-    margin-left:    15px;
+    margin-left:    13px;
     border-bottom:  1px solid #aeaeae;
     min-height:     38px;
     /*margin-left:    15px;*/
