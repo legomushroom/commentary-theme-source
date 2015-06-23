@@ -45,6 +45,7 @@ if ( ! class_exists( 'Vw_widget_categories' ) ) {
 
 			if ( ! empty( $cat_ids ) ) {
 				$cats_args['include'] = implode( ',', (array)$cat_ids );
+				// $cats_args['include'] = esc_html( implode( ',', $cat_ids ) );
 			}
 
 			$categories = get_categories( apply_filters( 'vw_filter_widget_categories_args', $cats_args ) );
@@ -59,7 +60,7 @@ if ( ! class_exists( 'Vw_widget_categories' ) ) {
 			$instance = $old_instance;
 			$new_instance = wp_parse_args( (array) $new_instance, $this->default );
 			$instance['title'] = wp_kses_data( $new_instance['title'] );
-			$instance['cat_ids'] = strip_tags( $new_instance['title'] );
+			$instance['cat_ids'] = $new_instance['cat_ids'];
 
 			if ( function_exists( 'icl_register_string' ) ) {
 				icl_register_string( VW_THEME_NAME.' Widget', $this->id.'_title', $instance['title'] );

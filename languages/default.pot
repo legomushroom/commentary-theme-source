@@ -2,9 +2,9 @@
 # This file is distributed under the GPL.
 msgid ""
 msgstr ""
-"Project-Id-Version: ESPRESSO 1.1.0\n"
+"Project-Id-Version: ESPRESSO 1.1.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/style\n"
-"POT-Creation-Date: 2015-05-15 04:28:44+00:00\n"
+"POT-Creation-Date: 2015-06-16 04:09:25+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -457,6 +457,10 @@ msgstr ""
 msgid "%s Posts"
 msgstr ""
 
+#: widgets/widget-feedburner.php:22
+msgid "Subscribe to feedburner via email"
+msgstr ""
+
 #: widgets/widget-feedburner.php:44
 msgid "Subscribe to our email newsletter."
 msgstr ""
@@ -529,65 +533,65 @@ msgstr ""
 msgid "All Time"
 msgstr ""
 
-#: widgets/widget-social-counter.php:74
+#: widgets/widget-social-counter.php:75
 msgid "Follow our twitter"
 msgstr ""
 
-#: widgets/widget-social-counter.php:77 widgets/widget-social-counter.php:105
-#: widgets/widget-social-counter.php:161 widgets/widget-social-counter.php:175
-#: widgets/widget-social-counter.php:203
+#: widgets/widget-social-counter.php:78 widgets/widget-social-counter.php:106
+#: widgets/widget-social-counter.php:162 widgets/widget-social-counter.php:176
+#: widgets/widget-social-counter.php:204
 msgid "Followers"
 msgstr ""
 
-#: widgets/widget-social-counter.php:88
+#: widgets/widget-social-counter.php:89
 msgid "Like our facebook"
 msgstr ""
 
-#: widgets/widget-social-counter.php:91
+#: widgets/widget-social-counter.php:92
 msgid "Fans"
 msgstr ""
 
-#: widgets/widget-social-counter.php:102
+#: widgets/widget-social-counter.php:103
 msgid "Follow our instagram"
 msgstr ""
 
-#: widgets/widget-social-counter.php:116
+#: widgets/widget-social-counter.php:117
 msgid "Subscribe our youtube"
 msgstr ""
 
-#: widgets/widget-social-counter.php:119 widgets/widget-social-counter.php:147
+#: widgets/widget-social-counter.php:120 widgets/widget-social-counter.php:148
 msgid "Subscribers"
 msgstr ""
 
-#: widgets/widget-social-counter.php:130
+#: widgets/widget-social-counter.php:131
 msgid "+1 our page"
 msgstr ""
 
-#: widgets/widget-social-counter.php:133
+#: widgets/widget-social-counter.php:134
 msgid "People"
 msgstr ""
 
-#: widgets/widget-social-counter.php:144
+#: widgets/widget-social-counter.php:145
 msgid "Subscribe our page"
 msgstr ""
 
-#: widgets/widget-social-counter.php:158
+#: widgets/widget-social-counter.php:159
 msgid "Follow our Soundcloud"
 msgstr ""
 
-#: widgets/widget-social-counter.php:172
+#: widgets/widget-social-counter.php:173
 msgid "Follow our pinterest"
 msgstr ""
 
-#: widgets/widget-social-counter.php:186
+#: widgets/widget-social-counter.php:187
 msgid "Follow our vk"
 msgstr ""
 
-#: widgets/widget-social-counter.php:189
+#: widgets/widget-social-counter.php:190
 msgid "Members"
 msgstr ""
 
-#: widgets/widget-social-counter.php:200
+#: widgets/widget-social-counter.php:201
 msgid "Follow our Dribbble"
 msgstr ""
 

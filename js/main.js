@@ -665,6 +665,10 @@ jQuery.noConflict();
 			var $container = $this.closest( '.vwspc-section, .vw-post-shortcode' );
 			var container_id = $container.attr( 'id' );
 
+			if( ! container_id ) {
+				console.log( 'AJAX Pagination Error: No container' );
+			}
+
 			if ( $container.hasClass( 'vwspc-section' ) ) {
 				var placeholder = '#'+container_id+' .vwspc-section-content';
 				var $post_container = $container.find( '.vwspc-section-content .vw-post-loop' );
@@ -697,7 +701,7 @@ jQuery.noConflict();
 				}
 
 				if( status == 'error' ) {
-					console.log( 'Error: '+xhr.status+': '+xhr.statusText );
+					console.log( 'AJAX Pagination Error: '+xhr.status+': '+xhr.statusText );
 				}
 			} );
 		} );
