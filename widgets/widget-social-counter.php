@@ -1,6 +1,7 @@
 <?php
 
 if ( ! defined( 'VW_CONST_SOCIAL_COUNTER_CACHE_EXPIRE' ) ) define( 'VW_CONST_SOCIAL_COUNTER_CACHE_EXPIRE', 14400 ); // 60*60*4 = 4 Hrs cache
+if ( ! defined( 'VW_CONST_SOCIAL_COUNTER_GOOGLE_API_KEY' ) ) define( 'VW_CONST_SOCIAL_COUNTER_GOOGLE_API_KEY', 'AIzaSyCNyDK8sPUuf9bTcG1TdFFLAVUfA1IDm38' );
 
 add_action( 'widgets_init', 'vw_widgets_init_social_counter' );
 if ( ! function_exists( 'vw_widgets_init_social_counter' ) ) {
@@ -524,27 +525,31 @@ if ( ! function_exists( 'vw_get_instagram_count' ) ) {
 }
 
 if ( ! function_exists( 'vw_get_youtube_count' ) ) {
-	function vw_get_youtube_count( $username ) {
+	function vw_get_youtube_count( $channel_id ) {
 		$youtube = get_transient('vw_youtube_count');
 		if ($youtube !== false) return $youtube;
 
-		$youtube['page_url'] = "http://www.youtube.com/user/".$username;
+		$youtube['page_url'] = sprintf( 'https://www.youtube.com/channel/%1$s/', $channel_id );
+		$api_url = sprintf( 'https://www.googleapis.com/youtube/v3/channels?part=statistics&id=%1$s&key=%2$s', $channel_id, VW_CONST_SOCIAL_COUNTER_GOOGLE_API_KEY );
+		$alt_api_url = sprintf( 'https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername=%1$s&key=%2$s', $channel_id, VW_CONST_SOCIAL_COUNTER_GOOGLE_API_KEY );
 
-		try {
-			@$xmlData = @vw_get_subscriber_counter('http://gdata.youtube.com/feeds/api/users/' . strtolower($username));
-			@$xmlData = str_replace('yt:', 'yt', $xmlData);
-			@$xml = new SimpleXMLElement($xmlData);
-			@$youtube['subscriber_count'] = ( string ) $xml->ytstatistics['subscriberCount'];
-			@$youtube['page_url'] = ( string ) $xml->link[0]['href'];
-		} catch (Exception $e) {
-			$saved_youtube = get_option( 'vw_social_counter_youtube', array() );
-			if ( ! empty( $saved_youtube['subscriber_count'] ) ) {
-				// Restore previous counter
-				$youtube['subscriber_count'] = $saved_youtube['subscriber_count'];
-				$youtube['page_url'] = $saved_youtube['page_url'];
+		$data = vw_get_subscriber_counter($api_url); 
+
+		if ( ! is_wp_error( $data ) ) {
+			$json = json_decode( $data );
+
+			if ( isset( $json->items[0]->statistics->subscriberCount ) ) {
+				$youtube['subscriber_count'] = $json->items[0]->statistics->subscriberCount;
 			} else {
-				$youtube['subscriber_count'] = '0';
-				$youtube['page_url'] = "http://www.youtube.com";
+
+				/* Try again with alternative url for getting statistics from user id */
+				$data = vw_get_subscriber_counter( $alt_api_url );
+				$json = json_decode( $data );
+				if ( isset( $json->items[0]->statistics->subscriberCount ) ) {
+					$youtube['subscriber_count'] = $json->items[0]->statistics->subscriberCount;
+				} else {
+					$youtube['subscriber_count'] = 0;
+				}
 			}
 		}
 
@@ -563,7 +568,7 @@ if ( ! function_exists( 'vw_get_googleplus_count' ) ) {
 			$username = '+'.$username;
 		}
 		
-		$api_url = 'https://www.googleapis.com/plus/v1/people/'.$username.'?key=AIzaSyCfbKKE_GQqyuxXT38eVCRtlKgmMrwZz4o';
+		$api_url = sprintf( 'https://www.googleapis.com/plus/v1/people/%1$s?key=%2$s', $username, VW_CONST_SOCIAL_COUNTER_GOOGLE_API_KEY );
 		$googleplus['page_url'] = 'https://plus.google.com/'.$username;
 		$googleplus['people_count'] = null;
 		

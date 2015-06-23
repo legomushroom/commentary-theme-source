@@ -60,7 +60,7 @@ if ( ! function_exists( 'vw_shortcode_author' ) ) {
 		}
 
 		if ( empty( $user ) ) {
-			$user = get_the_author();
+			$user = get_user_by( 'id', get_the_author_meta( 'ID' ) );
 
 			if ( empty( $user ) ) { return; }
 		}
@@ -455,6 +455,8 @@ if ( ! function_exists( 'vw_shortcode_mark' ) ) {
  * -------------------------------------------------------------------------- */
 if ( ! function_exists( 'vw_shortcode_posts' ) ) {
 	function vw_shortcode_posts( $atts, $content = null ) {
+		global $vw_posts_shortcode_id;
+		
 		$defaults = array(
 			'title' => '',// title
 			'cat' => '',// category ID
@@ -484,6 +486,11 @@ if ( ! function_exists( 'vw_shortcode_posts' ) ) {
 		// Option: offset
 		if ( intval( $offset ) > 0 ) {
 			$query_args['offset'] = intval( $offset );
+
+			if ( vw_get_paged() > 1 ) {
+				// Wordpress is not support Offset on Pagination. This is a hack.
+				$query_args['offset'] += ( vw_get_paged() - 1 ) * $count;
+			}
 		}
 
 		// Option: cat_name
@@ -574,7 +581,7 @@ if ( ! function_exists( 'vw_shortcode_posts' ) ) {
 
 		ob_start();
 		?>
-		<div class="vw-post-shortcode">
+		<div id="vw_post_shortcode_id_<?php echo esc_attr( ++$vw_posts_shortcode_id ); ?>" class="vw-post-shortcode">
 			<?php if ( ! empty ( $title ) ) : ?>
 			<h2 class="vw-post-shortcode-title"><?php echo $title; ?></h2>
 			<?php endif; ?>

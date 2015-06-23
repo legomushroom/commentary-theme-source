@@ -4,7 +4,7 @@ Theme URI: http://envirra.com/themes/espresso
 Author: envirra
 Author URI: http://themeforest.net/user/envirra?ref=envirra
 Description: Magazine WordPress Theme
-Version: 1.1.0
+Version: 1.2.0
 License: GPL
 License URI: http://www.gnu.org/licenses/gpl.html‎
 Tags: black, white, one-column, two-columns, three-columns, right-sidebar, fluid-layout, custom-colors, custom-menu, featured-images, post-formats, theme-options, translation-ready, photoblogging
@@ -307,14 +307,6 @@ a img.aligncenter {
     margin-bottom: 15px;
 }
 
-.sticky {
-    /* empty */
-}
-
-.gallery-caption {
-    /* empty */
-}
-
 .bypostauthor {
     background-color: transparent;
 }
@@ -454,7 +446,6 @@ button,
     body.vw-site-layout-boxed .vw-site-wrapper {
         margin: 30px auto;
     }
-
     body.vw-site-layout-boxed .vw-site-wrapper,
     body.vw-site-layout-boxed .container {
         max-width: 750px;
@@ -493,7 +484,6 @@ button,
     .vw-site-header.vw-site-header-style-left-logo .vw-header-ads-wrapper {
         padding-left: 15px;
     }
-
     .vw-site-header.vw-site-header-style-left-logo .vw-header-ads-leader-board,
     .vw-site-header.vw-site-header-style-left-logo .vw-header-ads-banner {
         float: right;
@@ -504,7 +494,6 @@ button,
         display: block;
         text-align: center;
     }
-
     .vw-site-header.vw-site-header-style-left-logo .vw-mobile-nav-button-wrapper {
         display: table-cell;
         vertical-align: middle;
@@ -536,8 +525,6 @@ button,
         position: relative;
         padding: 0 40px;
     }
-
-
     .vw-site-header.vw-site-header-style-centered-logo .vw-mobile-nav-button-wrapper {
         position: absolute;
         top: 50%;
@@ -573,6 +560,9 @@ button,
 .vw-site-footer-sidebars .vw-post-style-small-left-thumbnail + .vw-post-style-small-left-thumbnail,
 .vw-site-footer-sidebars .widget_vw_widget_categories .vw-widget-category-list li + li {
     border-top-color: rgba(128, 128, 128, 0.3);
+}
+.vw-site-footer-sidebars .vw-post-loop-mix-3 .vw-post-style-medium {
+    border-bottom-color: rgba(128, 128, 128, 0.3);
 }
 
 /* -----------------------------------------------------------------------------
@@ -643,10 +633,6 @@ button,
     font-size: 11px;
 }
 
-.vw-bottom-bar-inner {
-    /* empty */
-}
-
 .vw-bottom-bar-left {
     float: left;
 }
@@ -697,7 +683,6 @@ button,
     .vw-logo-2x {
         display: inline;
     }
-
     .vw-logo-2x + .vw-logo {
         display: none;
     }
@@ -728,17 +713,7 @@ button,
 /* -----------------------------------------------------------------------------
  * $TITLES
  * -------------------------------------------------------------------------- */
-.vwspc-section-title,
-.vw-about-author-title,
-.vw-related-posts-title,
-.vw-post-comments-title,
-.widget-title,
-.vw-widget-author-title,
-.vw-infobox-title,
-.vw-pricing-title,
-.vw-title-shortcode,
-.vw-post-shortcode-title,
-.vw-page-content .vw-page-title-box {
+.vwspc-section-title {
     position: relative;
     margin-top: 0;
     margin-bottom: 25px;
@@ -908,7 +883,6 @@ button,
     .vw-page-title-section .vw-page-title {
         font-size: 40px;
     }
-
     .vw-page-title-section .vw-page-title-box-inner {
         padding-right: 10%;
     }
@@ -917,11 +891,9 @@ button,
     .vw-page-title-section .vw-page-title {
         font-size: 24px;
     }
-
     .vw-page-title-section .vw-page-title-box-inner {
         padding-right: 0%;
     }
-
     .vw-page-title-section .vw-post-meta .vw-post-meta-icons {
         text-align: left;
         padding-left: 0;
@@ -1185,7 +1157,6 @@ button,
             left: 16.6666666667%;
         }
     }
-
     .vw-sidebar-position-mini-content-right .vw-page-sidebar-left {
         display: block;
         position: relative;
@@ -1256,13 +1227,11 @@ button,
             width: 50%;
         }
     }
-
     @media (min-width: 768px) {
         .vw-sidebar-position-left-content-mini .vw-page-sidebar-left {
             right: 50%;
         }
     }
-
     .vw-sidebar-position-left-content-mini .vw-page-sidebar-right {
         display: block;
         position: relative;
@@ -1318,7 +1287,6 @@ button,
             width: 50%;
         }
     }
-
     .vw-sidebar-position-content-mini-right .vw-page-sidebar-left {
         display: block;
         position: relative;
@@ -1332,7 +1300,6 @@ button,
             width: 16.6666666667%;
         }
     }
-
     .vw-sidebar-position-content-mini-right .vw-page-sidebar-right {
         position: relative;
         min-height: 1px;
@@ -1758,12 +1725,10 @@ button,
         display: block;
         text-align: center;
     }
-
     .vw-about-author .vw-about-author-info {
         padding-left: 0;
         text-align: center;
     }
-
     .vw-about-author .vw-author-bio {
         padding: 0;
     }
@@ -2212,7 +2177,6 @@ button,
         display: block;
         width: auto;
     }
-
     .vw-post-style-medium-6 .vw-post-box-thumbnail-wrapper + .vw-post-box-inner {
         padding-left: 0;
     }
@@ -2329,6 +2293,9 @@ button,
     padding-top: 30px;
     border-top: 1px solid #EEEEEE;
 }
+.vw-post-style-large .vw-post-box-excerpt {
+    margin-bottom: 15px;
+}
 
 /* -------------------------------------
  * POST BOX ELEMENTS */
@@ -2391,10 +2358,6 @@ button,
 
 /* -------------------------------------
  * POST STYLE : SLIDER SMALL */
-.vw-post-loop-slider {
-    /* empty */
-}
-
 .vw-post-loop-slide-list .vw-post-box + .vw-post-box {
     margin-top: 20px;
 }
@@ -2542,23 +2505,13 @@ button,
     min-width: 100%;
     min-height: 100%;
 }
-@media (max-width: 1199px) {
-    .vw-post-style-slide-large .wp-post-image {
-        margin-left: -130px;
-    }
-}
-@media (max-width: 991px) {
-    .vw-post-style-slide-large .wp-post-image {
-        margin-left: -200px;
-    }
-}
 @media (max-width: 767px) {
     .vw-post-style-slide-large .wp-post-image {
         margin-left: -300px;
     }
 }
 .vw-post-style-slide-large .vw-post-box-thumbnail {
-    height: 100%;
+    min-height: 100%;
     position: relative;
 }
 .vw-post-style-slide-large .vw-post-box-thumbnail:after {
@@ -3212,10 +3165,6 @@ button,
 }
 
 /* Yoast Breadcrumb */
-.vw-breadcrumb-yoast {
-    /* empty */
-}
-
 /* -----------------------------------------------------------------------------
  * $BREAKING NEWS
  * -------------------------------------------------------------------------- */
@@ -3232,10 +3181,6 @@ button,
     height: 20px;
     background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.02) 50%, rgba(0, 0, 0, 0) 80%);
     background:         linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.02) 50%, rgba(0, 0, 0, 0) 80%);
-}
-
-.vw-breaking-news {
-    /* empty */
 }
 
 /* -----------------------------------------------------------------------------
@@ -3598,10 +3543,6 @@ button,
     text-align: right;
 }
 
-#wp-calendar tfoot #prev {
-    /* empty */
-}
-
 /* -----------------------------------------------------------------------------
  * $WIDGET: TAG CLOUD
  * -------------------------------------------------------------------------- */
@@ -3650,7 +3591,6 @@ button,
     font-style: italic;
     font-size: 0.85em;
     line-height: 1.6em;
-    margin-top: -10px;
 }
 
 .vw-author-socials {
@@ -3687,7 +3627,7 @@ button,
 .widget_vw_widget_author_list li {
     display: inline-block;
     float: left;
-    margin-right: 10px;
+    margin-right: 9px;
     margin-bottom: 10px;
 }
 .widget_vw_widget_author_list a {
@@ -4251,31 +4191,24 @@ body.search .vw-page-content > .widget_search {
     .vw-one-half {
         width: 50%;
     }
-
     .vw-one-third {
         width: 33.333333333%;
     }
-
     .vw-two-third {
         width: 66.666666666%;
     }
-
     .vw-one-fourth {
         width: 25%;
     }
-
     .vw-three-fourth {
         width: 75%;
     }
-
     .vw-one-fifth {
         width: 20%;
     }
-
     .vw-two-fifth {
         width: 40%;
     }
-
     .vw-three-fifth {
         width: 60%;
     }
@@ -4404,7 +4337,6 @@ mark.vw-mark-style-dark {
         max-width: 40%;
         float: left;
     }
-
     .vw-quote-align-right {
         float: right;
         margin-left: 30px;
@@ -4648,6 +4580,9 @@ mark.vw-mark-style-dark {
  * PAGE SECTION: POST SLIDER */
 .vw-menu-main-wrapper {
     position: relative;
+}
+
+@media (min-width: 768px) {
 }
 
 /* -------------------------------------
@@ -5130,17 +5065,14 @@ img.mfp-img {
         -webkit-transform: scale(0.75);
                 transform: scale(0.75);
     }
-
     .mfp-arrow-left {
         -webkit-transform-origin: 0;
                 transform-origin: 0;
     }
-
     .mfp-arrow-right {
         -webkit-transform-origin: 100%;
                 transform-origin: 100%;
     }
-
     .mfp-container {
         padding-left: 6px;
         padding-right: 6px;
@@ -5743,18 +5675,15 @@ img.mfp-img {
         display: block;
         width: auto;
     }
-
     .vw-review-total-score {
         line-height: normal;
     }
-
     .vw-review-pros-cons,
     .vw-review-pros,
     .vw-review-cons {
         display: block;
         width: auto;
     }
-
     .vw-review-pros,
     .vw-review-cons {
         padding-left: 0;
@@ -6038,6 +5967,9 @@ html.mm-right.mm-opening .vw-sticky-wrapper.is-sticky .vw-sticky {
     -webkit-transition-duration: 0.5s;
        -moz-transition-duration: 0.5s;
             transition-duration: 0.5s;
+}
+.mm-opened .vw-more-articles {
+    display: none;
 }
 .vw-more-articles.vw-more-articles-visible {
     right: 0px;
