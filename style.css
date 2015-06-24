@@ -746,7 +746,17 @@ button,
 /* -----------------------------------------------------------------------------
  * $TITLES
  * -------------------------------------------------------------------------- */
-.vwspc-section-title {
+ .vw-about-author-title,
+ .vw-related-posts-title,
+ .vw-post-comments-title,
+ .widget-title,
+ .vwspc-section-title,
+ .vw-widget-author-title,
+ .vw-infobox-title,
+ .vw-pricing-title,
+ .vw-title-shortcode,
+ .vw-post-shortcode-title,
+ .vw-page-content .vw-page-title-box {
     position: relative;
     margin-top: 0;
     margin-bottom: 25px;
@@ -1077,7 +1087,8 @@ body {
 .vw-page-description {
     font-weight: 300;
     font-style: italic;
-    color: #999999;
+    /*color: #999999;*/
+    color: white;
     text-transform: none;
 }
 
@@ -1275,10 +1286,14 @@ span.intense.dropcap {
 /* -----------------------------------------------------------------------------
  * $PAGE
  * -------------------------------------------------------------------------- */
-/*.vw-page-wrapper {
+.vw-page-wrapper {
     padding:        60px 0;
     padding-bottom: 0;
-}*/
+}
+
+div.vw-page-wrapper.is-no-padding {
+    padding: 0;
+}
 
 .vw-sticky-sidebar {
     padding-bottom: 50px;
@@ -4157,7 +4172,7 @@ span.intense.dropcap {
     font-weight: 300;
     line-height: 1.4em;
     color: #FFFFFF;
-    opacity: 0.7;
+    /*opacity: 0.7;*/
 }
 
 .vw-custom-banner-button {

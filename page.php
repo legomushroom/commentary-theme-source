@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div class="vw-page-wrapper clearfix <?php vw_the_sidebar_position_class(); ?>">
+<div class="vw-page-wrapper is-no-padding clearfix <?php vw_the_sidebar_position_class(); ?>">
 	<div class="container">
 		<div class="row">
 
