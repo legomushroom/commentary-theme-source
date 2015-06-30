@@ -4,7 +4,7 @@ Theme URI: http://envirra.com/themes/espresso
 Author: envirra
 Author URI: http://themeforest.net/user/envirra?ref=envirra
 Description: Magazine WordPress Theme
-Version: 1.2.0
+Version: 1.2.2
 License: GPL
 License URI: http://www.gnu.org/licenses/gpl.html‎
 Tags: black, white, one-column, two-columns, three-columns, right-sidebar, fluid-layout, custom-colors, custom-menu, featured-images, post-formats, theme-options, translation-ready, photoblogging
@@ -713,7 +713,17 @@ button,
 /* -----------------------------------------------------------------------------
  * $TITLES
  * -------------------------------------------------------------------------- */
-.vwspc-section-title {
+.vw-about-author-title,
+.vw-related-posts-title,
+.vw-post-comments-title,
+.widget-title,
+.vwspc-section-title,
+.vw-widget-author-title,
+.vw-infobox-title,
+.vw-pricing-title,
+.vw-title-shortcode,
+.vw-post-shortcode-title,
+.vw-page-content .vw-page-title-box {
     position: relative;
     margin-top: 0;
     margin-bottom: 25px;

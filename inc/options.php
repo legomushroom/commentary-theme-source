@@ -29,7 +29,7 @@ $args = array(
 	// This is where your data is stored in the database and also becomes your global variable name.
 	'display_name'         => $theme->get( 'Name' ),
 	// Name that appears at the top of your panel
-	'display_version'      => $theme->get( 'Version' ),
+	'display_version'      => $theme->get( 'Version' ), 
 	// Version that appears at the top of your panel
 	'menu_type'            => 'menu',
 	//Specify if the admin menu should appear or not. Options: menu or submenu (Under appearance only)

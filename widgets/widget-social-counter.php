@@ -2,6 +2,8 @@
 
 if ( ! defined( 'VW_CONST_SOCIAL_COUNTER_CACHE_EXPIRE' ) ) define( 'VW_CONST_SOCIAL_COUNTER_CACHE_EXPIRE', 14400 ); // 60*60*4 = 4 Hrs cache
 if ( ! defined( 'VW_CONST_SOCIAL_COUNTER_GOOGLE_API_KEY' ) ) define( 'VW_CONST_SOCIAL_COUNTER_GOOGLE_API_KEY', 'AIzaSyCNyDK8sPUuf9bTcG1TdFFLAVUfA1IDm38' );
+if ( ! defined( 'VW_CONST_SOCIAL_COUNTER_FACEBOOK_APP_ID' ) ) define( 'VW_CONST_SOCIAL_COUNTER_FACEBOOK_APP_ID', '463044130538358' );
+if ( ! defined( 'VW_CONST_SOCIAL_COUNTER_FACEBOOK_APP_SECRET' ) ) define( 'VW_CONST_SOCIAL_COUNTER_FACEBOOK_APP_SECRET', 'f2baf676b95716d7022df64829f22070' );
 
 add_action( 'widgets_init', 'vw_widgets_init_social_counter' );
 if ( ! function_exists( 'vw_widgets_init_social_counter' ) ) {
@@ -74,7 +76,7 @@ if ( ! class_exists( 'Vw_widget_social_counter' ) ) {
 					<div class="vw-social-counter vw-social-counter-twitter">
 						<a class="vw-social-counter-icon" href="<?php echo esc_url( $twitter_count['page_url'] ); ?>" title="<?php esc_attr_e( 'Follow our twitter', 'envirra' ) ?>" target="_blank"><i class="icon-social-twitter"></i></a>
 						<div class="vw-social-counter-counter">
-							<div class="vw-social-counter-count"><?php echo vw_number_prefixes( $twitter_count['followers_count'] ); ?></div>
+							<div class="vw-social-counter-count"><?php echo vw_number_prefixes( $twitter_count['count'] ); ?></div>
 							<div class="vw-social-counter-unit"><?php _e( 'Followers', 'envirra' ) ?></div>
 						</div>
 						<div class="clearfix"></div>
@@ -88,7 +90,7 @@ if ( ! class_exists( 'Vw_widget_social_counter' ) ) {
 					<div class="vw-social-counter vw-social-counter-facebook">
 						<a class="vw-social-counter-icon" href="<?php echo esc_url( $facebook_count['page_url'] ); ?>" title="<?php esc_attr_e( 'Like our facebook', 'envirra' ) ?>" target="_blank"><i class="icon-social-facebook"></i></a>
 						<div class="vw-social-counter-counter">
-							<div class="vw-social-counter-count"><?php echo vw_number_prefixes( $facebook_count['fans_count'] ); ?></div>
+							<div class="vw-social-counter-count"><?php echo vw_number_prefixes( $facebook_count['count'] ); ?></div>
 							<div class="vw-social-counter-unit"><?php _e( 'Fans', 'envirra' ) ?></div>
 						</div>
 						<div class="clearfix"></div>
@@ -116,7 +118,7 @@ if ( ! class_exists( 'Vw_widget_social_counter' ) ) {
 					<div class="vw-social-counter vw-social-counter-youtube">
 						<a class="vw-social-counter-icon" href="<?php echo esc_url( $youtube_count['page_url'] ); ?>" title="<?php esc_attr_e( 'Subscribe our youtube', 'envirra' ) ?>" target="_blank"><i class="icon-social-youtube"></i></a>
 						<div class="vw-social-counter-counter">
-							<div class="vw-social-counter-count"><?php echo vw_number_prefixes( $youtube_count['subscriber_count'] ); ?></div>
+							<div class="vw-social-counter-count"><?php echo vw_number_prefixes( $youtube_count['count'] ); ?></div>
 							<div class="vw-social-counter-unit"><?php _e( 'Subscribers', 'envirra' ) ?></div>
 						</div>
 						<div class="clearfix"></div>
@@ -130,7 +132,7 @@ if ( ! class_exists( 'Vw_widget_social_counter' ) ) {
 					<div class="vw-social-counter vw-social-counter-googleplus">
 						<a class="vw-social-counter-icon" href="<?php echo esc_url( $googleplus_count['page_url'] ); ?>" title="<?php esc_attr_e( '+1 our page', 'envirra' ) ?>" target="_blank"><i class="icon-social-gplus"></i></a>
 						<div class="vw-social-counter-counter">
-							<div class="vw-social-counter-count"><?php echo vw_number_prefixes( $googleplus_count['people_count'] ); ?></div>
+							<div class="vw-social-counter-count"><?php echo vw_number_prefixes( $googleplus_count['count'] ); ?></div>
 							<div class="vw-social-counter-unit"><?php _e( 'People', 'envirra' ) ?></div>
 						</div>
 						<div class="clearfix"></div>
@@ -234,16 +236,16 @@ if ( ! class_exists( 'Vw_widget_social_counter' ) ) {
 			$instance['dribbble'] = strip_tags( $new_instance['dribbble'] );
 			$instance['is_saved'] = true;
 
-			delete_transient( 'vw_twitter_count' );
-			delete_transient( 'vw_facebook_count' );
-			delete_transient( 'vw_instagram_count' );
-			delete_transient( 'vw_youtube_count' );
-			delete_transient( 'vw_googleplus_count' );
-			delete_transient( 'vw_vimeo_count' );
-			delete_transient( 'vw_soundcloud_count' );
-			delete_transient( 'vw_pinterest_count' );
-			delete_transient( 'vw_vk_count' );
-			delete_transient( 'vw_dribbble_count' );
+			delete_transient( 'vw_social_counter_twitter' );
+			delete_transient( 'vw_social_counter_facebook' );
+			delete_transient( 'vw_social_counter_instagram' );
+			delete_transient( 'vw_social_counter_youtube' );
+			delete_transient( 'vw_social_counter_googleplus' );
+			delete_transient( 'vw_social_counter_vimeo' );
+			delete_transient( 'vw_social_counter_soundcloud' );
+			delete_transient( 'vw_social_counter_pinterest' );
+			delete_transient( 'vw_social_counter_vk' );
+			delete_transient( 'vw_social_counter_dribbble' );
 
 			if ( function_exists( 'icl_register_string' ) ) {
 				icl_register_string( VW_THEME_NAME.' Widget', $this->id.'_title', $instance['title'] );
@@ -368,27 +370,60 @@ if ( ! class_exists( 'Vw_widget_social_counter' ) ) {
  * Get Counter Functions
  * -------------------------------------------------------------------------- */
 
+if ( ! function_exists( 'vw_save_social_counter' ) ) {
+	function vw_save_social_counter( $key, $counter ) {
+		if ( is_null( $counter['count'] ) ){
+			// When getting counter failed.
+			$saved_counter = get_option( $key, array() );
+
+			if ( ! empty( $saved_counter['count'] ) && $saved_counter['page_url'] == $counter['page_url'] ) {
+				// Restore previous counter
+				$counter['count'] = $saved_counter['count'];
+			} else {
+				$counter['count'] = 0;
+			}
+
+		} else {
+			// Save the counter when getting counter successfully.
+			update_option( $key, $counter );
+		}
+
+		set_transient( $key, $counter, VW_CONST_SOCIAL_COUNTER_CACHE_EXPIRE );
+
+		return $counter;
+	}
+}
+
 if ( ! function_exists( 'vw_get_twitter_count' ) ) {
 	function vw_get_twitter_count( $twitter_id, $consumer_key, $consumer_secret ) {
-		$twitter = get_transient('vw_twitter_count');
-		if ($twitter !== false) return $twitter;
+		$counter_key = 'vw_social_counter_twitter';
 
-		// some variables
-		$token = get_option('vw_twitter_token');
+		/**
+		 * Check for cached version
+		 */
+		$twitter = get_transient( $counter_key );
+		if ( $twitter !== false ) return $twitter;
+
+		/**
+		 * Getting counter
+		 */
+		$twitter = array();
 		$twitter['page_url'] = "http://www.twitter.com/$twitter_id";
-		$twitter['followers_count'] = null;
+		$twitter['count'] = null;
 
-		if($twitter_id && $consumer_key && $consumer_secret) {
-			if(!$token) {
+		if( $twitter_id && $consumer_key && $consumer_secret ) {
+			$token = get_option( 'vw_twitter_token' );
+			if( ! $token ) {
 				// preparing credentials
 				$credentials = $consumer_key . ':' . $consumer_secret;
-				$toSend = base64_encode($credentials);
+				$toSend = base64_encode( $credentials );
 
 				// http post arguments
 				$args = array(
 					'method' => 'POST',
 					'httpversion' => '1.1',
 					'blocking' => true,
+					'sslverify' => false,
 					'headers' => array(
 						'Authorization' => 'Basic ' . $toSend,
 						'Content-Type' => 'application/x-www-form-urlencoded;charset=UTF-8'
@@ -396,181 +431,222 @@ if ( ! function_exists( 'vw_get_twitter_count' ) ) {
 					'body' => array( 'grant_type' => 'client_credentials' )
 				);
 
-				add_filter('https_ssl_verify', '__return_false');
 				$response = wp_remote_post('https://api.twitter.com/oauth2/token', $args);
 
-				$keys = json_decode(wp_remote_retrieve_body($response));
+				$keys = json_decode( wp_remote_retrieve_body( $response ) );
 
-				if($keys) {
+				if( $keys ) {
 					// saving token to wp_options table
-					update_option('vw_twitter_token', $keys->access_token);
+					update_option( 'vw_twitter_token', $keys->access_token );
 					$token = $keys->access_token;
 				}
 			}
+
 			// we have bearer token wether we obtained it from API or from options
 			$args = array(
 				'httpversion' => '1.1',
 				'blocking' => true,
+				'sslverify' => false,
 				'headers' => array(
 					'Authorization' => "Bearer $token"
 				)
 			);
-
-			add_filter( 'https_ssl_verify', '__return_false' );
+		
 			$api_url = "https://api.twitter.com/1.1/users/show.json?screen_name=$twitter_id";
 			$response = wp_remote_get( $api_url, $args );
 
 			if ( ! is_wp_error( $response ) ) {
 				$twitter_reply = json_decode( wp_remote_retrieve_body( $response ) );
 				if ( isset( $twitter_reply->followers_count ) ) {
-					$twitter['followers_count'] = $twitter_reply->followers_count;
+					$twitter['count'] = $twitter_reply->followers_count;
 				}
-			}
-		}
-
-		if ( is_null( $twitter['followers_count'] ) ){
-			$saved_twitter = get_option( 'vw_social_counter_twitter', array() );
-
-			if ( ! empty( $saved_twitter['followers_count'] ) && $saved_twitter['page_url'] == $twitter['page_url'] ) {
-				// Restore previous counter
-				$twitter['followers_count'] = $saved_twitter['followers_count'];
 			} else {
-				$twitter['followers_count'] = 0;
+				// Delete token for getting a new token on the next request
+				delete_option( 'vw_twitter_token' );
 			}
 		}
 
-		update_option( 'vw_social_counter_twitter', $twitter );
-		set_transient( 'vw_twitter_count', $twitter, VW_CONST_SOCIAL_COUNTER_CACHE_EXPIRE );
-		return $twitter;
+		/**
+		 * Save counter
+		 */
+		return vw_save_social_counter( $counter_key, $twitter );
 	}
 }
 
 if ( ! function_exists( 'vw_get_facebook_count' ) ) {
 	function vw_get_facebook_count( $page_id ) {
-		$facebook = get_transient('vw_facebook_count');
-		if ($facebook !== false) return $facebook;
+		$counter_key = 'vw_social_counter_facebook';
 
-		$facebook['page_id'] = $page_id;
+		/**
+		 * Check for cached version
+		 */
+		$facebook = get_transient( $counter_key );
+		if ( $facebook !== false ) return $facebook;
 
-		try {
-			$url = "http://graph.facebook.com/".$page_id;
-			$raw = vw_get_subscriber_counter( $url );
-			$reply = json_decode( $raw );
+		/**
+		 * Getting counter
+		 */
+		$facebook = array();
+		$facebook['page_url'] = "https://www.facebook.com/".$page_id;
+		$facebook['count'] = null;
 
-			if ( isset( $reply->likes ) && ! empty( $reply->likes ) ) {
-				$facebook['fans_count'] = $reply->likes;
-				$facebook['page_url'] = $reply->link;
+		if( $page_id ) {
+			$token = get_option( 'vw_facebook_token' );
+			if( ! $token ) {
+				// we have bearer token wether we obtained it from API or from options
+				$args = array(
+					'httpversion' => '1.1',
+					'blocking' => true,
+					// 'sslverify' => false,
+					'headers' => array(),
+				);
 
-				update_option( 'vw_social_counter_facebook', $facebook );
-				set_transient( 'vw_facebook_count', $facebook, VW_CONST_SOCIAL_COUNTER_CACHE_EXPIRE );
-				
-			} else {
-				update_option( 'vw_social_counter_facebook_raw', $raw );
-				throw new Exception( "Facebook response error" );
+				$response = wp_remote_get( 'https://graph.facebook.com/oauth/access_token?client_id='.VW_CONST_SOCIAL_COUNTER_FACEBOOK_APP_ID.'&client_secret='.VW_CONST_SOCIAL_COUNTER_FACEBOOK_APP_SECRET.'&grant_type=client_credentials', $args );
+
+				$body = wp_remote_retrieve_body( $response );
+
+				if( strpos( $body, 'access_token=' ) !== false ) {
+					// saving token to wp_options table
+					$key = str_replace( 'access_token=', '', $body );
+					update_option( 'vw_facebook_token', $key );
+					$token = $key;
+				} else {
+					// Delete token for getting a new token on the next request
+					delete_option( 'vw_facebook_token' );
+				}
 			}
 
-		} catch (Exception $e) {
-			$saved_facebook = get_option( 'vw_social_counter_facebook', array() );
-			if ( ! empty( $saved_facebook['fans_count'] ) && $saved_facebook['page_id'] == $facebook['page_id'] ) {
-				// Restore previous counter
-				$facebook['fans_count'] = $saved_facebook['fans_count'];
-				$facebook['page_url'] = $saved_facebook['page_url'];
-			} else {
-				$facebook['fans_count'] = '0';
-				$facebook['page_url'] = 'http://www.facebook.com';
-			}
+			// we have bearer token wether we obtained it from API or from options
+			$args = array(
+				'httpversion' => '1.1',
+				'blocking' => true,
+				// 'sslverify' => false,
+				'headers' => array(),
+			);
 
-			// Delay 60 sec to solve the facebook connection error
-			set_transient( 'vw_facebook_count', $facebook, 60 );
+			add_filter( 'https_ssl_verify', '__return_false' );
+			$api_url = 'https://graph.facebook.com/v2.3/'.$page_id.'?access_token='.$token;
+			$response = wp_remote_get( $api_url, $args );
+
+			if ( ! is_wp_error( $response ) ) {
+				$facebook_reply = json_decode( wp_remote_retrieve_body( $response ) );
+				if ( isset( $facebook_reply->likes ) ) {
+					$facebook['count'] = $facebook_reply->likes;
+				}
+			} else {
+				// Delete token for getting a new token on the next request
+				delete_option( 'vw_facebook_token' );
+			}
 		}
 
-		return $facebook;
+		/**
+		 * Save counter
+		 */
+		return vw_save_social_counter( $counter_key, $facebook );
 	}
 }
 
 if ( ! function_exists( 'vw_get_instagram_count' ) ) {
 	function vw_get_instagram_count( $username ) {
-		$instagram = get_transient( 'vw_instagram_count' );
-		if ($instagram !== false) return $instagram;
-		
+		$counter_key = 'vw_social_counter_instagram';
+
+		/**
+		 * Check for cached version
+		 */
+		$instagram = get_transient( $counter_key );
+		if ( $instagram !== false ) return $instagram;
+
+		/**
+		 * Getting counter
+		 */
 		$api_url = 'http://instagram.com/'.$username.'/';
+		$instagram = array();
 		$instagram['page_url'] = $api_url;
-		$instagram['count'] = 0;
+		$instagram['count'] = null;
 		
-		$data = vw_get_subscriber_counter( $api_url ); 
+		$raw_page_content = vw_get_subscriber_counter( $api_url ); 
 
-		if ( ! is_wp_error( $data ) ) {
-			if ( preg_match( '|"followed_by":([0-9]+)|', $data, $match ) ) {
+		if ( ! is_wp_error( $raw_page_content ) ) {
+			if ( preg_match( '|"followed_by":{"count":([0-9]+)|', $raw_page_content, $match ) ) {
 				$instagram['count'] = $match[1];
-			} else {
-				$instagram['count'] = null;
 			}
 		}
 
-		if ( is_null( $instagram['count'] ) ){
-			$saved_instagram = get_option( 'vw_social_counter_instagram', array() );
-
-			if ( ! empty( $saved_instagram['count'] ) && $saved_instagram['page_url'] == $instagram['page_url'] ) {
-				// Restore previous counter
-				$instagram['count'] = $saved_instagram['count'];
-			} else {
-				$instagram['count'] = 0;
-			}
-		}
-
-		update_option( 'vw_social_counter_instagram', $instagram );
-		set_transient( 'vw_instagram_count', $instagram, VW_CONST_SOCIAL_COUNTER_CACHE_EXPIRE );
-		return $instagram;
+		/**
+		 * Save counter
+		 */
+		return vw_save_social_counter( $counter_key, $instagram );
 	}
 }
 
 if ( ! function_exists( 'vw_get_youtube_count' ) ) {
 	function vw_get_youtube_count( $channel_id ) {
-		$youtube = get_transient('vw_youtube_count');
-		if ($youtube !== false) return $youtube;
+		$counter_key = 'vw_social_counter_youtube';
 
+		/**
+		 * Check for cached version
+		 */
+		$youtube = get_transient( $counter_key );
+		if ( $youtube !== false ) return $youtube;
+
+		/**
+		 * Getting counter
+		 */
+		$youtube = array();
 		$youtube['page_url'] = sprintf( 'https://www.youtube.com/channel/%1$s/', $channel_id );
+		$youtube['count'] = null;
 		$api_url = sprintf( 'https://www.googleapis.com/youtube/v3/channels?part=statistics&id=%1$s&key=%2$s', $channel_id, VW_CONST_SOCIAL_COUNTER_GOOGLE_API_KEY );
 		$alt_api_url = sprintf( 'https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername=%1$s&key=%2$s', $channel_id, VW_CONST_SOCIAL_COUNTER_GOOGLE_API_KEY );
 
-		$data = vw_get_subscriber_counter($api_url); 
+		$data = vw_get_subscriber_counter($api_url);
 
 		if ( ! is_wp_error( $data ) ) {
 			$json = json_decode( $data );
 
 			if ( isset( $json->items[0]->statistics->subscriberCount ) ) {
-				$youtube['subscriber_count'] = $json->items[0]->statistics->subscriberCount;
+				$youtube['count'] = $json->items[0]->statistics->subscriberCount;
 			} else {
 
 				/* Try again with alternative url for getting statistics from user id */
+				$youtube['page_url'] = sprintf( 'https://www.youtube.com/user/%1$s/', $channel_id );
 				$data = vw_get_subscriber_counter( $alt_api_url );
 				$json = json_decode( $data );
 				if ( isset( $json->items[0]->statistics->subscriberCount ) ) {
-					$youtube['subscriber_count'] = $json->items[0]->statistics->subscriberCount;
-				} else {
-					$youtube['subscriber_count'] = 0;
+					$youtube['count'] = $json->items[0]->statistics->subscriberCount;
 				}
 			}
 		}
 
-		update_option( 'vw_social_counter_youtube', $youtube );
-		set_transient( 'vw_youtube_count', $youtube, VW_CONST_SOCIAL_COUNTER_CACHE_EXPIRE );
-		return($youtube); 
+		/**
+		 * Save counter
+		 */
+		return vw_save_social_counter( $counter_key, $youtube );
 	}
 }
 
 if ( ! function_exists( 'vw_get_googleplus_count' ) ) {
 	function vw_get_googleplus_count( $username ) {
-		$googleplus = get_transient('vw_googleplus_count');
-		if ($googleplus !== false) return $googleplus;
+		$counter_key = 'vw_social_counter_googleplus';
+
+		/**
+		 * Check for cached version
+		 */
+		$googleplus = get_transient( $counter_key );
+		if ( $googleplus !== false ) return $googleplus;
+
+		/**
+		 * Getting counter
+		 */
+		$googleplus = array();
+		$googleplus['page_url'] = 'https://plus.google.com/'.$username;
+		$googleplus['count'] = null;
+		
 
 		if ( preg_match( '/[^0-9]/', $username ) && strpos( $username, '+' ) !== 0 ) {
+			// Reformat username
 			$username = '+'.$username;
 		}
-		
 		$api_url = sprintf( 'https://www.googleapis.com/plus/v1/people/%1$s?key=%2$s', $username, VW_CONST_SOCIAL_COUNTER_GOOGLE_API_KEY );
-		$googleplus['page_url'] = 'https://plus.google.com/'.$username;
-		$googleplus['people_count'] = null;
 		
 		$data = vw_get_subscriber_counter($api_url); 
 
@@ -582,37 +658,40 @@ if ( ! function_exists( 'vw_get_googleplus_count' ) ) {
 			}
 
 			if ( isset( $json->plusOneCount ) ) {
-				$googleplus['people_count'] = $json->plusOneCount;
+				$googleplus['count'] = $json->plusOneCount;
+
 			} elseif ( isset( $json->circledByCount ) ) {
-				$googleplus['people_count'] = $json->circledByCount;
+				$googleplus['count'] = $json->circledByCount;
+
 			}
 		}
 
-		if ( is_null( $googleplus['people_count'] ) ){
-			$saved_googleplus = get_option( 'vw_social_counter_googleplus', array() );
+		/**
+		 * Save counter
+		 */
+		vw_save_social_counter( $counter_key, $googleplus );
 
-			if ( ! empty( $saved_googleplus['people_count'] ) && $saved_googleplus['page_url'] == $googleplus['page_url'] ) {
-				// Restore previous counter
-				$googleplus['people_count'] = $saved_googleplus['people_count'];
-			} else {
-				$googleplus['people_count'] = 0;
-			}
-		}
-
-		update_option( 'vw_social_counter_googleplus', $googleplus );
-		set_transient( 'vw_googleplus_count', $googleplus, VW_CONST_SOCIAL_COUNTER_CACHE_EXPIRE );
 		return $googleplus;
 	}
 }
 
 if ( ! function_exists( 'vw_get_vimeo_count' ) ) {
 	function vw_get_vimeo_count( $channel_name ) {
-		$vimeo = get_transient( 'vw_vimeo_count' );
-		if ($vimeo !== false) return $vimeo;
-		
+		$counter_key = 'vw_social_counter_vimeo';
+
+		/**
+		 * Check for cached version
+		 */
+		$vimeo = get_transient( $counter_key );
+		if ( $vimeo !== false ) return $vimeo;
+
+		/**
+		 * Getting counter
+		 */
+		$vimeo = array();
+		$vimeo['page_url'] = 'https://vimeo.com/channels/'.$channel_name;
+		$vimeo['count'] = null;
 		$api_url = 'http://vimeo.com/api/v2/channel/'.$channel_name.'/info.json';
-		$vimeo['page_url'] = '#';
-		$vimeo['count'] = 0;
 		
 		$data = vw_get_subscriber_counter( $api_url ); 
 
@@ -628,31 +707,29 @@ if ( ! function_exists( 'vw_get_vimeo_count' ) ) {
 			}
 		}
 
-		if ( is_null( $vimeo['count'] ) ){
-			$saved_vimeo = get_option( 'vw_social_counter_vimeo', array() );
-
-			if ( ! empty( $saved_vimeo['count'] ) && $saved_vimeo['page_url'] == $vimeo['page_url'] ) {
-				// Restore previous counter
-				$vimeo['count'] = $saved_vimeo['count'];
-			} else {
-				$vimeo['count'] = 0;
-			}
-		}
-
-		update_option( 'vw_social_counter_vimeo', $vimeo );
-		set_transient( 'vw_vimeo_count', $vimeo, VW_CONST_SOCIAL_COUNTER_CACHE_EXPIRE );
-		return $vimeo;
+		/**
+		 * Save counter
+		 */
+		return vw_save_social_counter( $counter_key, $vimeo );
 	}
 }
 
 if ( ! function_exists( 'vw_get_soundcloud_count' ) ) {
 	function vw_get_soundcloud_count( $user, $client_id='e15ea601b7aeb07705020236871018e9' ) {
-		$soundcloud = get_transient( 'vw_soundcloud_count' );
-		if ($soundcloud !== false) return $soundcloud;
-		
+		$counter_key = 'vw_social_counter_soundcloud';
+
+		/**
+		 * Check for cached version
+		 */
+		$soundcloud = get_transient( $counter_key );
+		if ( $soundcloud !== false ) return $soundcloud;
+
+		/**
+		 * Getting counter
+		 */
+		$soundcloud['page_url'] = 'https://soundcloud.com/'.$user;
+		$soundcloud['count'] = null;
 		$api_url = 'http://api.soundcloud.com/users/' . $user . '.json?client_id=' . $client_id;
-		$soundcloud['page_url'] = '#';
-		$soundcloud['count'] = 0;
 		
 		$data = vw_get_subscriber_counter( $api_url ); 
 
@@ -668,32 +745,30 @@ if ( ! function_exists( 'vw_get_soundcloud_count' ) ) {
 			}
 		}
 
-		if ( is_null( $soundcloud['count'] ) ){
-			$saved_soundcloud = get_option( 'vw_social_counter_soundcloud', array() );
-
-			if ( ! empty( $saved_soundcloud['count'] ) && $saved_soundcloud['page_url'] == $soundcloud['page_url'] ) {
-				// Restore previous counter
-				$soundcloud['count'] = $saved_soundcloud['count'];
-			} else {
-				$soundcloud['count'] = 0;
-			}
-		}
-
-		update_option( 'vw_social_counter_soundcloud', $soundcloud );
-		set_transient( 'vw_soundcloud_count', $soundcloud, VW_CONST_SOCIAL_COUNTER_CACHE_EXPIRE );
-		return $soundcloud;
+		/**
+		 * Save counter
+		 */
+		return vw_save_social_counter( $counter_key, $soundcloud );
 	}
 }
 
 if ( ! function_exists( 'vw_get_pinterest_count' ) ) {
 	function vw_get_pinterest_count( $username ) {
-		$pinterest = get_transient( 'vw_pinterest_count' );
-		if ($pinterest !== false) return $pinterest;
-		
+		$counter_key = 'vw_social_counter_pinterest';
+
+		/**
+		 * Check for cached version
+		 */
+		$pinterest = get_transient( $counter_key );
+		if ( $pinterest !== false ) return $pinterest;
+
+		/**
+		 * Getting counter
+		 */
 		$api_url = 'https://www.pinterest.com/'.$username.'/';
 		$pinterest['page_url'] = $api_url;
-		$pinterest['count'] = 0;
-		
+		$pinterest['count'] = null;
+		add_filter( 'https_ssl_verify', '__return_false' );
 		$data = vw_get_subscriber_counter( $api_url ); 
 		if ( ! is_wp_error( $data ) ) {
 			$doc = new DOMDocument();
@@ -701,8 +776,6 @@ if ( ! function_exists( 'vw_get_pinterest_count' ) ) {
 			$metas = $doc->getElementsByTagName( 'meta' );
 			for ( $i = 0; $i < $metas->length; $i++ ){
 				$meta = $metas->item( $i );
-				var_dump($meta);
-				var_dump('============');
 				if( $meta->getAttribute('name') == 'pinterestapp:followers' ){
 					$pinterest['count'] = $meta->getAttribute( 'content' );
 					break;
@@ -710,31 +783,29 @@ if ( ! function_exists( 'vw_get_pinterest_count' ) ) {
 			}
 		}
 
-		if ( is_null( $pinterest['count'] ) ){
-			$saved_pinterest = get_option( 'vw_social_counter_pinterest', array() );
-
-			if ( ! empty( $saved_pinterest['count'] ) && $saved_pinterest['page_url'] == $pinterest['page_url'] ) {
-				// Restore previous counter
-				$pinterest['count'] = $saved_pinterest['count'];
-			} else {
-				$pinterest['count'] = 0;
-			}
-		}
-
-		update_option( 'vw_social_counter_pinterest', $pinterest );
-		set_transient( 'vw_pinterest_count', $pinterest, VW_CONST_SOCIAL_COUNTER_CACHE_EXPIRE );
-		return $pinterest;
+		/**
+		 * Save counter
+		 */
+		return vw_save_social_counter( $counter_key, $pinterest );
 	}
 }
 
 if ( ! function_exists( 'vw_get_vk_count' ) ) {
 	function vw_get_vk_count( $group_id ) {
-		$vk = get_transient( 'vw_vk_count' );
-		if ($vk !== false) return $vk;
-		
-		$api_url = 'http://api.vk.com/method/groups.getById?gid='.$group_id.'&fields=members_count';
+		$counter_key = 'vw_social_counter_vk';
+
+		/**
+		 * Check for cached version
+		 */
+		$pinterest = get_transient( $counter_key );
+		if ( $pinterest !== false ) return $pinterest;
+
+		/**
+		 * Getting counter
+		 */
 		$vk['page_url'] = 'http://vk.com/'.$group_id;
-		$vk['count'] = 0;
+		$vk['count'] = null;
+		$api_url = 'http://api.vk.com/method/groups.getById?gid='.$group_id.'&fields=members_count';
 		
 		$data = vw_get_subscriber_counter( $api_url ); 
 
@@ -746,31 +817,29 @@ if ( ! function_exists( 'vw_get_vk_count' ) ) {
 			}
 		}
 
-		if ( is_null( $vk['count'] ) ){
-			$saved_vk = get_option( 'vw_social_counter_vk', array() );
-
-			if ( ! empty( $saved_vk['count'] ) && $saved_vk['page_url'] == $vk['page_url'] ) {
-				// Restore previous counter
-				$vk['count'] = $saved_vk['count'];
-			} else {
-				$vk['count'] = 0;
-			}
-		}
-
-		update_option( 'vw_social_counter_vk', $vk );
-		set_transient( 'vw_vk_count', $vk, VW_CONST_SOCIAL_COUNTER_CACHE_EXPIRE );
-		return $vk;
+		/**
+		 * Save counter
+		 */
+		return vw_save_social_counter( $counter_key, $vk );
 	}
 }
 
 if ( ! function_exists( 'vw_get_dribbble_count' ) ) {
 	function vw_get_dribbble_count( $username ) {
-		$dribbble = get_transient( 'vw_dribbble_count' );
-		if ($dribbble !== false) return $dribbble;
-		
-		$api_url = 'http://api.dribbble.com/'.$username;
+		$counter_key = 'vw_social_counter_dribbble';
+
+		/**
+		 * Check for cached version
+		 */
+		$pinterest = get_transient( $counter_key );
+		if ( $pinterest !== false ) return $pinterest;
+
+		/**
+		 * Getting counter
+		 */
 		$dribbble['page_url'] = 'https://dribbble.com/'.$username;
-		$dribbble['count'] = 0;
+		$dribbble['count'] = null;
+		$api_url = 'http://api.dribbble.com/'.$username;
 		
 		$data = vw_get_subscriber_counter( $api_url ); 
 
@@ -786,20 +855,10 @@ if ( ! function_exists( 'vw_get_dribbble_count' ) ) {
 			}
 		}
 
-		if ( is_null( $dribbble['count'] ) ){
-			$saved_dribbble = get_option( 'vw_social_counter_dribbble', array() );
-
-			if ( ! empty( $saved_dribbble['count'] ) && $saved_dribbble['page_url'] == $dribbble['page_url'] ) {
-				// Restore previous counter
-				$dribbble['count'] = $saved_dribbble['count'];
-			} else {
-				$dribbble['count'] = 0;
-			}
-		}
-
-		update_option( 'vw_social_counter_dribbble', $dribbble );
-		set_transient( 'vw_dribbble_count', $dribbble, VW_CONST_SOCIAL_COUNTER_CACHE_EXPIRE );
-		return $dribbble;
+		/**
+		 * Save counter
+		 */
+		return vw_save_social_counter( $counter_key, $dribbble );
 	}
 }
 
