@@ -24,14 +24,10 @@
 		</div>
 
 		<?php if ( has_post_thumbnail() ) : ?>
-		<a class="vw-post-box-thumbnail vw-post-box-thumbnail__crop" href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
-			<span class="vw-post-box-thumbnail__inner">
-				<span class="vw-post-box-thumbnail__shift">
-					<?php the_post_thumbnail( VW_CONST_THUMBNAIL_SIZE_POST_MEDIUM ); ?>
-					<?php vw_the_post_format_icon(); ?>
-					<?php vw_the_review_summary_bar(); ?>
-				</span>
-			</span>
+		<a class="vw-post-box-thumbnail" href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
+			<?php the_post_thumbnail( VW_CONST_THUMBNAIL_SIZE_POST_MEDIUM ); ?>
+			<?php vw_the_post_format_icon(); ?>
+			<?php vw_the_review_summary_bar(); ?>
 		</a>
 		<?php endif; ?>
 		

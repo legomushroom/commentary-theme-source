@@ -37,6 +37,7 @@ if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_POST_SLIDER_LARGE' ) ) define( 'VW_CONS
 if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_POST_SLIDER_LARGE_CAROUSEL' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_POST_SLIDER_LARGE_CAROUSEL', 'vw_one_third_thumbnail' );
 if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_PAGE_TILE_BACKGROUND' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_PAGE_TILE_BACKGROUND', 'vw_full_width_thumbnail_no_crop' );
 if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_INSTANT_SEARCH' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_INSTANT_SEARCH', 'vw_small_thumbnail' );
+if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_INSTANT_SEARCH_2x' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_INSTANT_SEARCH_2x', 'vw_small_thumbnail_2x' );
 if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_EMBEDED_GALLERY_SLIDER' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_EMBEDED_GALLERY_SLIDER', 'vw_full_width_thumbnail' );
 /*new*/if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_POST_LARGE' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_POST_LARGE', 'vw_full_width_thumbnail_no_crop' );
 /*new*/if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_POST_MEDIUM' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_POST_MEDIUM', 'vw_one_third_thumbnail' );
@@ -157,6 +158,23 @@ if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
 		);
 	  return wp_kses(wp_trim_words($content, vw_get_theme_option('blog_excerpt_length')), $args);
 	}
+}
+
+add_filter( 'post_thumbnail_html', 'wv_my_post_thumbnail_fallback', 20, 5 );
+function wv_my_post_thumbnail_fallback( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
+
+	switch($size) {
+		case 'vw_small_thumbnail':
+			$className = 'vw-thumbnail--small';
+			break;
+		case 'vw_one_third_thumbnail':
+			$className = 'vw-thumbnail--one-third';
+			break;
+		default:
+			$className = '';
+	}
+
+  return '<span class="vw-thumbnail ' . $className . '" data-size="' . $size . '"><span class="wv-thumbnail__img">' . $html . '</span></span>';
 }
 
 
@@ -490,7 +508,7 @@ if ( ! function_exists( 'vw_get_archive_blog_layout' ) ) {
 			if ( $category_blog_layout != 'site-default' ) $blog_layout = $category_blog_layout;
 
 		} elseif ( is_search() ) {
-			$blog_layout = 'large';
+			$blog_layout = 'search';
 		}
 
 		return $blog_layout;

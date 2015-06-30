@@ -807,7 +807,7 @@ if ( ! function_exists( 'vw_shortcode_title' ) ) {
 		
 		extract( shortcode_atts( $defaults, $atts) );
 
-		return "<h5 class='vw-title-shortcode'><span>" . $content . "</span></h5>";
+		return "<h4 class='vw-title-shortcode'><span>" . $content . "</span></h4>";
 	}
 }
 

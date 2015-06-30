@@ -1,7 +1,8 @@
 <div class="vw-post-box vw-post-style-slide vw-post-style-slide-large-carousel <?php vw_the_post_format_class(); ?>" <?php vw_itemtype('Article'); ?>>
 
 	<?php if ( has_post_thumbnail() ) : ?>
-		<a class="vw-post-box-thumbnail vw-post-box-thumbnail__crop vw-post-box-thumbnail__crop--large-slider" href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
+		<a class="vw-post-box-thumbnail" href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
+			<!-- 
 			<span class="vw-post-box-thumbnail__inner">
 				<?php
 					$large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), VW_CONST_THUMBNAIL_SIZE_POST_SLIDER_LARGE_CAROUSEL );
@@ -11,6 +12,8 @@
 				?>
 				<img style="<?= $style ?>"  width="<?= $width ?>" height="<?= $height ?>" src="<?= $large_image_url[0] ?>" class="attachment-vw_one_third_thumbnail wp-post-image" alt="<?= the_title_attribute( 'echo=0' ) ?>" itemprop="image">
 			</span>
+   		-->
+ 			<?php the_post_thumbnail( VW_CONST_THUMBNAIL_SIZE_POST_SLIDER_LARGE_CAROUSEL ); ?>
 		</a>
 	<?php endif; ?>
 
