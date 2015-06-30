@@ -225,12 +225,12 @@ if ( ! function_exists( 'vw_before_after_post_content' ) ) {
 		
 		$before = vw_get_theme_option( 'before_post_content' );
 		if ( ! empty( $before ) ) {
-			$content = '<div class="vw-before-post-content">'. wp_kses_data( $before ) . '</div>' . $content;
+			$content = '<div class="vw-before-post-content">'. $before . '</div>' . $content;
 		}
 
 		$after = vw_get_theme_option( 'after_post_content' );
 		if ( ! empty( $after ) ) {
-			$content = $content . '<div class="vw-after-post-content">'. wp_kses_data( $after ) . '</div>';
+			$content = $content . '<div class="vw-after-post-content">'. $after . '</div>';
 		}
 
 		return $content;

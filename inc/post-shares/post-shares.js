@@ -40,7 +40,8 @@ if ( jQuery ) {
 
 				var windowFeatures = "status=no,height=" + height + ",width=" + width + ",resizable=yes,left=" + leftPosition + ",top=" + topPosition + ",screenX=" + leftPosition + ",screenY=" + topPosition + ",toolbar=no,menubar=no,scrollbars=no,location=no,directories=no";
 				window.open( url,'sharer', windowFeatures );
-
+				
+				e.preventDefault();
 			} );
 
 		} );

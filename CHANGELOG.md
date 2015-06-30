@@ -1,3 +1,34 @@
+### V1.2.2 - June 26th, 2015
+* IMPROVED: Instagram counter for social counter widget
+* IMPROVED: Facebook counter for social widget
+* IMPROVED: Demo content importer
+* FIXED: Share box for posts
+* FIXED: Invalid behavior of post shares link on homepage
+* FIXED: Before/After post content option
+
+```
+M themes\espresso\functions.php
+M themes\espresso\inc\demo-importer\demo-importer.php
+M themes\espresso\inc\options.php
+M themes\espresso\inc\post-shares\post-shares.js
+M themes\espresso\inc\post-shares\post-shares.php
+M themes\espresso\inc\setup-theme.php
+M themes\espresso\style-rtl.css
+M themes\espresso\style.css
+M themes\espresso\widgets\widget-social-counter.php
+```
+
+### V1.2.1 - June 18th, 2015
+* IMPROVED: Link to user page for YouTube social counter
+* FIXED: Title style
+
+```
+M themes\espresso\functions.php
+M themes\espresso\style-rtl.css
+M themes\espresso\style.css
+M themes\espresso\widgets\widget-social-counter.php
+```
+
 ### V1.2.0 - June 16th, 2015
 * IMPROVED: Responsiveness of Featured post slider
 * IMPROVED: Post block layout
