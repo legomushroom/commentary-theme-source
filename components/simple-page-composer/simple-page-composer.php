@@ -10,7 +10,7 @@ add_action( 'current_screen', 'vwspc_init' );
 if ( ! function_exists( 'vwspc_init' ) ) {
 	function vwspc_init() {
 		global $current_screen;
-		if( 'page' != $current_screen->post_type ) return;
+		if ( ! in_array( $current_screen->post_type, apply_filters( 'vwspc_post_types', array( 'page' ) ) ) ) return;
 
 		// Enqueue scripts only on page edit
 		add_action( 'admin_enqueue_scripts', 'vwspc_init_scripts' );
@@ -47,7 +47,7 @@ if ( ! function_exists( 'vwspc_render_editor' ) ) {
 		global $post;
 
 		$current_screen = get_current_screen();
-		if ( $current_screen->post_type != 'page' ) return;
+		if ( ! in_array( $current_screen->post_type, apply_filters( 'vwspc_post_types', array( 'page' ) ) ) ) return;
 
 		if ( isset( $post->ID ) && VWSPC_PAGE_TEMPLATE_SLUG == get_post_meta( $post->ID,'_wp_page_template',TRUE ) ) : ?>
 			<style>#postdivrich{ display:none; }</style>
@@ -166,7 +166,7 @@ if ( ! function_exists( 'vwspc_render_editor' ) ) {
 				<?php endforeach; ?>
 				</select>
 			</script>
-			
+
 			<script id="vwspc-template-field-html" type="text/template">
 				<?php
 				ob_start();
@@ -196,7 +196,7 @@ if ( ! function_exists( 'vwspc_save_page' ) ) {
 	function vwspc_save_page() {
 		global $post;
 
-		if ( 'page' != get_post_type( $post ) || ! isset( $_POST['vwspc_is_enabled'] ) ) return;
+		if ( ! in_array( get_post_type( $post ), apply_filters( 'vwspc_post_types', array( 'page' ) ) ) || ! isset( $_POST['vwspc_is_enabled'] ) ) return;
 
 		$counter = 1;
 		if ( isset( $_POST['vwspc_section_order'] ) && ! empty( $_POST['vwspc_section_order'] ) ) {
@@ -221,7 +221,7 @@ if ( ! function_exists( 'vwspc_save_page' ) ) {
 					update_post_meta( $post->ID, $field_prefix.'_'.$field, $field_value );
 				}
 
-				$counter++;			
+				$counter++;
 			}
 		}
 
@@ -263,7 +263,7 @@ if ( ! function_exists( 'the_simple_page_composer' ) ) {
 
 		echo $args['before'];
 
-		for ( $counter=1; $counter < 50; $counter++ ) { 
+		for ( $counter=1; $counter < 50; $counter++ ) {
 			$field_prefix = 'vwspc_section_'.$counter;
 			$section_type = get_post_meta( $page_id, $field_prefix, true );
 
