@@ -49,7 +49,7 @@ if ( ! function_exists( 'vwspc_render_editor' ) ) {
 		$current_screen = get_current_screen();
 		if ( ! in_array( $current_screen->post_type, apply_filters( 'vwspc_post_types', array( 'page' ) ) ) ) return;
 
-		if ( isset( $post->ID ) && VWSPC_PAGE_TEMPLATE_SLUG == get_post_meta( $post->ID,'_wp_page_template',TRUE ) ) : ?>
+		if ( isset( $post->ID ) && ( 'page' != $current_screen->post_type || VWSPC_PAGE_TEMPLATE_SLUG == get_post_meta( $post->ID,'_wp_page_template',TRUE ) ) ) : ?>
 			<style>#postdivrich{ display:none; }</style>
 		<?php else : ?>
 			<style>#vwspc-container{ display:none; }</style>
