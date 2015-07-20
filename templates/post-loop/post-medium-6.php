@@ -12,11 +12,11 @@
 	<div class="vw-post-box-inner">
 
 		<?php vw_the_category(); ?>
-		<h2 class="vw-post-box-title">
+		<h3 class="vw-post-box-title">
 			<a href="<?php the_permalink(); ?>" class="" <?php vw_itemprop('url'); ?>>
 				<?php the_title(); ?>
 			</a>
-		</h2>
+		</h3>
 
 		<div class="vw-post-meta">
 			
@@ -26,11 +26,10 @@
 
 			<?php vw_the_post_date(); ?>
 
-			<!-- 
 			<span class="vw-post-meta-separator">/</span>
-			<?php vw_the_comment_link(); ?>
- 			-->
 
+			<?php vw_the_comment_link(); ?>
+			
 		</div>
 
 		<div class="vw-post-box-excerpt"><?php vw_the_excerpt( VW_CONST_EXCERPT_LENGTH_MEDIUM_6 ); ?></div>

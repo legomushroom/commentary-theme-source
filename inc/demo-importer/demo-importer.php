@@ -40,24 +40,22 @@ if ( ! function_exists( 'vwdemo_setup_menu' ) ) {
 		$locations = get_theme_mod('nav_menu_locations');
 		$all_menu = get_terms('nav_menu');
 
-		$top_menu = get_term_by( 'slug', $top_menu_slug, 'nav_menu' );
-		if ( isset( $top_menu->term_id ) ) {
-			$locations['vw_menu_top'] = $top_menu->term_id;
-		}
+		foreach ( $all_menu as $menu_item ) {
+			if ( $top_menu_slug == $menu_item->slug ) {
+				$locations['vw_menu_top'] = $menu_item->term_id;
+			}
 
-		$main_menu = get_term_by( 'slug', $main_menu_slug, 'nav_menu' );
-		if ( isset( $main_menu->term_id ) ) {
-			$locations['vw_menu_main'] = $main_menu->term_id;
-		}
+			if ( $main_menu_slug == $menu_item->slug ) {
+				$locations['vw_menu_main'] = $menu_item->term_id;
+			}
 
-		$mobile_menu = get_term_by( 'slug', $mobile_menu_slug, 'nav_menu' );
-		if ( isset( $mobile_menu->term_id ) ) {
-			$locations['vw_menu_mobile'] = $mobile_menu->term_id;
-		}
+			if ( $mobile_menu_slug == $menu_item->slug ) {
+				$locations['vw_menu_mobile'] = $menu_item->term_id;
+			}
 
-		$bottom_menu = get_term_by( 'slug', $bottom_menu_slug, 'nav_menu' );
-		if ( isset( $bottom_menu->term_id ) ) {
-			$locations['vw_menu_bottom'] = $bottom_menu->term_id;
+			if ( $bottom_menu_slug == $menu_item->slug ) {
+				$locations['vw_menu_bottom'] = $menu_item->term_id;
+			}
 		}
 
 		set_theme_mod( 'nav_menu_locations', $locations );

@@ -211,9 +211,11 @@ body.buddypress .vw-page-title .bp-title-button {
         text-align: right;
         margin-bottom: 15px;
     }
+
     .bp_group #buddypress div#item-header ul {
         padding-right: 0;
     }
+
     .bp_group #buddypress div#item-header ul li {
         float: right;
     }

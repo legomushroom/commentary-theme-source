@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div class="vw-page-wrapper is-no-padding clearfix <?php vw_the_sidebar_position_class(); ?>">
+<div class="vw-page-wrapper clearfix <?php vw_the_sidebar_position_class(); ?>">
 	<div class="container">
 		<div class="row">
 
@@ -37,7 +37,7 @@
 
 					<?php endwhile; ?>
 
-					<?php // if ( ! vw_get_theme_option( 'page_force_disable_comments' ) && ( comments_open() || get_comments_number() ) ) comments_template(); ?>
+					<?php if ( ! vw_get_theme_option( 'page_force_disable_comments' ) && ( comments_open() || get_comments_number() ) ) comments_template(); ?>
 
 				<?php endif; ?>
 

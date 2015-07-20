@@ -57,9 +57,9 @@ if ( ! class_exists( 'Vw_widget_author_list' ) ) {
 			echo '<ul class="clearfix">';
 			foreach ( $authors as $author ) : ?>
 				<li>
-					<!-- <a href="<?php echo esc_url( get_author_posts_url( $author->ID ) ); ?>" title="<?php echo esc_attr( get_the_author_meta( 'display_name', $author->ID ) ); ?>" rel="bookmark"> -->
-					<?php vw_the_author_avatar( $author, VW_CONST_AVATAR_SIZE_MEDIUM, 'author-list__autor' ); ?>
-					<!-- </a> -->
+					<a href="<?php echo esc_url( get_author_posts_url( $author->ID ) ); ?>" title="<?php echo esc_attr( get_the_author_meta( 'display_name', $author->ID ) ); ?>" rel="bookmark">
+						<?php vw_the_author_avatar( $author, VW_CONST_AVATAR_SIZE_MEDIUM ); ?>
+					</a>
 				</li>
 			<?php endforeach;
 			echo '</ul>';

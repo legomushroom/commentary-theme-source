@@ -10,11 +10,13 @@ if ( is_single() ) {
 
 if ( ! function_exists( 'vwpsh_enqueue_scripts' ) ) {
 	function vwpsh_enqueue_scripts() {
-		wp_enqueue_script( 'vwjs-post-shares', VW_CONST_POST_SHARES_URL.'/post-shares.js', array( 'jquery' ), VW_THEME_VERSION, VW_CONST_ENQUEUE_SCRIPTS_ON_FOOTER );
-		wp_localize_script( 'vwjs-post-shares', 'vw_post_shares', array(
-			'ajaxurl' => admin_url( 'admin-ajax.php' ),
-			'is_caching_enabled' => vw_is_caching_enabled(),
-		) );
+		if ( is_single() ) {
+			wp_enqueue_script( 'vwjs-post-shares', VW_CONST_POST_SHARES_URL.'/post-shares.js', array( 'jquery' ), VW_THEME_VERSION, VW_CONST_ENQUEUE_SCRIPTS_ON_FOOTER );
+			wp_localize_script( 'vwjs-post-shares', 'vw_post_shares', array(
+				'ajaxurl' => admin_url( 'admin-ajax.php' ),
+				'is_caching_enabled' => vw_is_caching_enabled(),
+			) );
+		}
 	}
 }
 
@@ -36,7 +38,7 @@ if ( ! function_exists( 'vwpsh_render_post_shares_dialog' ) ) {
 		?>
 		<div id="vw-post-shares-dialog" class="zoom-anim-dialog mfp-hide">
 			<span class="vw-post-shares-subtitle"><?php _e( 'SHARE', 'envirra' ); ?></span>
-			<h2 class="vw-header-font vw-post-shares-title"><?php the_title(); ?></h2>
+			<h1 class="vw-header-font vw-post-shares-title"><?php the_title(); ?></h1>
 			<div class="vw-post-shares-socials">
 				<a class="vw-post-shares-social vw-post-shares-social-facebook" href="<?php echo esc_url( $facebook_url ); ?>" data-post-id="<?php echo esc_attr( $post_id ); ?>" data-share-to="facebook" data-width="500" data-height="300"><i class="vw-icon icon-social-facebook"></i></a>
 				<a class="vw-post-shares-social vw-post-shares-social-twitter" href="<?php echo esc_url( $twitter_url ); ?>" data-post-id="<?php echo esc_attr( $post_id ); ?>" data-share-to="twitter" data-width="500" data-height="300"><i class="vw-icon icon-social-twitter"></i></a>
@@ -101,11 +103,8 @@ if ( ! function_exists( 'vwpsh_get_total_shares' ) ) {
 		if ( empty( $post_id ) ) {
 			$post_id = get_the_id();
 		}
-		$shares  = intval(get_post_meta( $post_id, VW_CONST_POST_SHARES_META_KEY, true ));
-		$forgery = intval(get_post_meta($post_id,'vw_post_shares_forgery_explicit',true));
-		$totalShares = $shares+$forgery;
-		update_post_meta( $post_id, 'vw_post_total_shares_forgery', $totalShares );
-		return $totalShares;
+
+		return intval( get_post_meta( $post_id, VW_CONST_POST_SHARES_META_KEY, true ) );
 	}
 }
 

@@ -6,8 +6,6 @@
 				
 				<div class="vw-menu-main-inner">
 
-					<a href="#" class="vw-header-logo"></a>
-
 					<?php
 					if ( has_nav_menu('vw_menu_main' ) ) {
 
@@ -33,12 +31,9 @@
 
 					}
 					?>
-					
-					<a class="vw-instant-search-buton main-menu-link">
-						<i class="vw-icon icon-entypo-search"></i>
-					</a>
-
+						
 				</div>
+
 			</div>
 		</div>
 	</div>

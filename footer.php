@@ -7,7 +7,6 @@
 		<!-- WP Footer -->
 		<?php wp_footer(); ?>
 		<!-- End WP Footer -->
-    <script src="<?= get_bloginfo("template_url"); ?>/bower_components/tap/dist/tap.min.js"></script>
 
 	</body>
 

@@ -11,11 +11,11 @@
 
 	<div class="vw-post-box-inner">
 
-		<h2 class="vw-post-box-title">
+		<h3 class="vw-post-box-title">
 			<a href="<?php the_permalink(); ?>" class="" <?php vw_itemprop('url'); ?>>
 				<?php the_title(); ?>
 			</a>
-		</h2>
+		</h3>
 
 		<div class="vw-post-meta">
 			
@@ -24,10 +24,11 @@
 			<span class="vw-post-meta-separator">/</span>
 
 			<?php vw_the_post_date(); ?>
-			<!-- 
+
 			<span class="vw-post-meta-separator">/</span>
+
 			<?php vw_the_comment_link(); ?>
- 			-->			
+			
 		</div>
 		
 	</div>

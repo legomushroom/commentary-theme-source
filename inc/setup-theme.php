@@ -31,9 +31,7 @@ if ( ! function_exists( 'vw_after_theme_setup' ) ) {
 		add_image_size( 'vw_one_half_thumbnail', 555, 278, true );
 		add_image_size( 'vw_one_third_thumbnail', 360, 240, true );
 		add_image_size( 'vw_two_third_thumbnail', 750, 375, true );
-		// add_image_size( 'vw_two_third_thumbnail', 85, 60, true );
 		add_image_size( 'vw_two_third_thumbnail_no_crop', 750, 0, false );
-		add_image_size( 'vw_small_thumbnail_2x', 170, 120, true );
 		add_image_size( 'vw_small_thumbnail', 85, 60, true );
 		add_image_size( 'vw_full_width_thumbnail', 1263, 560, true );
 
@@ -227,12 +225,12 @@ if ( ! function_exists( 'vw_before_after_post_content' ) ) {
 		
 		$before = vw_get_theme_option( 'before_post_content' );
 		if ( ! empty( $before ) ) {
-			$content = '<div class="vw-before-post-content">'. $before . '</div>' . $content;
+			$content = '<div class="vw-before-post-content">'. wp_kses_data( $before ) . '</div>' . $content;
 		}
 
 		$after = vw_get_theme_option( 'after_post_content' );
 		if ( ! empty( $after ) ) {
-			$content = $content . '<div class="vw-after-post-content">'. $after . '</div>';
+			$content = $content . '<div class="vw-after-post-content">'. wp_kses_data( $after ) . '</div>';
 		}
 
 		return $content;

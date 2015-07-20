@@ -38,7 +38,7 @@ if ( ! function_exists( 'vw_render_custom_css' ) ) {
 		#wp-calendar thead,
 		.vw-accordion .ui-state-hover span,
 		.vw-breadcrumb a:hover,
-		/* h1 em, h2 em, h3 em, h4 em, h5 em, h6 em, */
+		h1 em, h2 em, h3 em, h4 em, h5 em, h6 em,
 		.vw-post-share-big-number .vw-number
 		{
 			color: <?php echo $vw_espresso['accent_color'] ?>;
@@ -106,23 +106,10 @@ if ( ! function_exists( 'vw_render_custom_css' ) ) {
 		.woocommerce a.button, .woocommerce button.button, .woocommerce input.button, .woocommerce #respond input#submit,
 		.vw-header-font-family,
 		.vw-pricing-price,
-		.vw-quote, /*blockquote,*/
+		.vw-quote, blockquote,
 		.vw-copyright,
 		.vw-mega-menu-type-links-4-cols .menu-item-depth-1 > .menu-link {
 			font-family: <?php echo $vw_espresso['typography_header']['font-family'] ?>;
-		}
-
-		.mm-button {
-			font-family: <?php echo $vw_espresso['typography_header']['font-family'] ?> !important;
-		}
-
-		.mm-button:hover {
-			background: <?php echo $vw_espresso['accent_color'] ?> !important;
-		}
-
-		
-		#site-top blockquote[id*=testimonial] .quotes {
-			color: <?php echo $vw_espresso['accent_color'] ?> !important;
 		}
 
 		/* Body font */

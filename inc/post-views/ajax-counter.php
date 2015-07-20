@@ -38,6 +38,7 @@ if ( ! function_exists( 'vw_ajax_count_post_views' ) ) {
 				vw_the_post_views( $post_id );
 			}
 		}
+
 		exit();
 	}
 }

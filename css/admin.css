@@ -226,15 +226,18 @@
         display: block;
         width: auto;
     }
+
     .vw-review-total-score {
         line-height: normal;
     }
+
     .vw-review-pros-cons,
     .vw-review-pros,
     .vw-review-cons {
         display: block;
         width: auto;
     }
+
     .vw-review-pros,
     .vw-review-cons {
         padding-left: 0;
@@ -376,6 +379,10 @@
 /* -----------------------------------------------------------------------------
  * Shortcode Editor: Icon Field
  * -------------------------------------------------------------------------- */
+.vwsce-field-icon {
+    /* empty */
+}
+
 .vwsce-available-icons {
     height: 275px;
     overflow-y: scroll;
@@ -571,13 +578,13 @@ body.modal-open,
         padding-top: 30px;
         padding-bottom: 30px;
     }
+
     .vwsce-modal-content {
         -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
                 box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
     }
 }
 
-.vwsce-modal.fade.in + .modal-backdrop,
 .modal-backdrop {
     z-index: 2000;
 }

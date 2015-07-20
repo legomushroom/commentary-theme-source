@@ -11,6 +11,7 @@
 					<?php do_action( 'vw_action_before_single_post' ); ?>
 
 					<?php while ( have_posts() ) : the_post(); ?>
+					
 						<article <?php post_class( 'vw-main-post' ); ?>>
 
 							<?php vw_the_breadcrumb(); ?>
@@ -28,17 +29,15 @@
 							
 							<?php vw_the_post_share_box() ?>
 
-							<div class="vw-post-content clearfix">
-								<?php if ( vw_get_paged() == 1 ) : ?>
+							<?php if ( vw_get_paged() == 1 ) : ?>
 
-									<?php if ( ! has_post_format() ) vw_the_featured_image(); ?>
+								<?php if ( ! has_post_format() ) vw_the_featured_image(); ?>
 
-									<?php vw_the_embeded_media(); ?>
-									
-								<?php endif; ?>
+								<?php vw_the_embeded_media(); ?>
 								
-								<?php the_content(); ?>
-							</div>
+							<?php endif; ?>
+
+							<div class="vw-post-content clearfix"><?php the_content(); ?></div>
 
 							<?php vw_the_link_pages(); ?>
 

@@ -69,7 +69,6 @@
   $.fn.backstretch.defaults = {
       centeredX: true   // Should we center the image on the X axis?
     , centeredY: true   // Should we center the image on the Y axis?
-    , positionY: 50     // Should we center the image on the Y axis?
     , duration: 5000    // Amount of time in between slides (if slideshow)
     , fade: 0           // Speed of fade transition between slides
   };
@@ -188,9 +187,9 @@
 
             // Make adjustments based on image ratio
             if (bgHeight >= rootHeight) {
-                bgOffset = ((bgHeight - rootHeight)/100)*this.options.positionY;
+                bgOffset = (bgHeight - rootHeight) / 2;
                 if(this.options.centeredY) {
-                  bgCSS.top =  -bgOffset + 'px';
+                  bgCSS.top = '-' + bgOffset + 'px';
                 }
             } else {
                 bgHeight = rootHeight;

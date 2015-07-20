@@ -63,7 +63,7 @@ if ( ! function_exists( 'vw_custom_tiled_gallery' ) ) {
 		$itemtag = tag_escape($itemtag);
 		$captiontag = tag_escape($captiontag);
 		$float = is_rtl() ? 'right' : 'left';
-		$gallery_layout = vw_get_theme_option( 'blog_custom_tiled_gallery_layout', '213' );
+		$gallery_layout = vw_get_theme_option( 'blog_custom_gallery_layout', '213' );
 		
 		$output = "<div id='".esc_attr( 'gallery-'.$instance )."' class='vw-custom-tiled-gallery ".esc_attr( 'galleryid-'.$id )." clearfix' data-gallery-layout='".esc_attr( $gallery_layout )."'>";
 		

@@ -6,11 +6,11 @@
 		<?php vw_the_review_summary_bar(); ?>
 
 		<?php vw_the_category(); ?>
-		<h2 class="vw-post-box-title">
+		<h3 class="vw-post-box-title">
 			<a href="<?php the_permalink(); ?>" class="" <?php vw_itemprop('url'); ?>>
 				<?php the_title(); ?>
 			</a>
-		</h2>
+		</h3>
 
 		<a href="<?php the_permalink(); ?>" class="vw-box-link" <?php vw_itemprop('url'); ?>>
 			<?php the_title(); ?>

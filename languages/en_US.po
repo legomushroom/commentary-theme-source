@@ -606,10 +606,6 @@ msgid "Big Featured Image"
 msgstr ""
 
 #. Template Name of the plugin/theme
-msgid "Big Featured Image No Header"
-msgstr ""
-
-#. Template Name of the plugin/theme
 msgid "VW Simple Page Composer"
 msgstr ""
 

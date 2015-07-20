@@ -12,9 +12,7 @@ $review_cons = wp_kses_data( get_post_meta( get_the_id(), 'vw_review_cons', true
 	<h3 class="vw-review-box-title"><span><?php _e( "Editor's Rating", 'envirra' ); ?></span></h3>
 
 	<div class="vw-review-box-summary">
-		<!-- esc_html -->
-		<?php $review_summary = wp_kses_data(get_post_meta( get_the_id(), 'vw_review_summary', true ) ); ?>
-		
+		<?php $review_summary = esc_html( get_post_meta( get_the_id(), 'vw_review_summary', true ) ); ?>
 		<?php $total_score = get_post_meta( get_the_id(), 'vw_review_average_score', true ); ?>
 
 		<?php if ( 'percentage' == $score_style ) : ?>

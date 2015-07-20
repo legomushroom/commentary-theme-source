@@ -31,7 +31,7 @@ if ( ! class_exists( 'Vw_widget_popular_post' ) ) {
 			global $timings;
 			$key_for_week = sprintf( 'vw_post_views_%s-%s', 'week', date( $timings['week'] ) );
 			$key_for_month = sprintf( 'vw_post_views_%s-%s', 'month', date( $timings['month'] ) );
-			$key_for_all_time = 'vw_post_total_forgery';
+			$key_for_all_time = 'vw_post_views_all';
 
 			$query_args = array(
 				'post_type' => 'post',

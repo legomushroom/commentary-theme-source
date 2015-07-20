@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="row">
 
-			<div class="vw-page-content" role="main" id="main">
+			<div class="vw-page-content" role="main">
 				
 				<?php if ( is_search() ) : ?>
 
