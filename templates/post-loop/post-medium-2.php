@@ -4,11 +4,11 @@
 		
 		<?php vw_the_category(); ?>
 
-		<h3 class="vw-post-box-title">
+		<h2 class="vw-post-box-title">
 			<a href="<?php the_permalink(); ?>" class="" <?php vw_itemprop('url'); ?>>
 				<?php the_title(); ?>
 			</a>
-		</h3>
+		</h2>
 
 		<div class="vw-post-meta">
 
@@ -17,11 +17,10 @@
 			<span class="vw-post-meta-separator">/</span>
 
 			<?php vw_the_post_date(); ?>
-
+			<!-- 
 			<span class="vw-post-meta-separator">/</span>
-
 			<?php vw_the_comment_link(); ?>
-			
+			 -->
 		</div>
 
 		<?php if ( has_post_thumbnail() ) : ?>

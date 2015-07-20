@@ -125,6 +125,7 @@
 				offResolutions: null,
 				onStart: $.noop,
 				onStop: $.noop,
+				skipMarginsRecalc: false,
 				on: true,
 				fn: null // used only by the plugin
 			}, options || {}, {
@@ -562,7 +563,9 @@
 							? $wrapper.width()
 							: $wrapper.width() - parseInt($this.css('padding-left')) - parseInt($this.css('padding-right'));
 						// subtract margins
-						this_w = this_w - parseInt($this.css('margin-left')) - parseInt($this.css('margin-right'));
+						if (!options.skipMarginsRecalc) {
+							this_w = this_w - parseInt($this.css('margin-left')) - parseInt($this.css('margin-right'));
+						}
 						// set new width
 						$this.css('width', this_w);
 					}
@@ -574,7 +577,6 @@
 					scroll: onScroll,
 					resize: onResize
 				}});
-
 
 				// check for off resolutions
 				var checkResolutions = function(){

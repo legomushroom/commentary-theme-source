@@ -2,7 +2,7 @@
 /* -----------------------------------------------------------------------------
  * Constants
  * -------------------------------------------------------------------------- */
-if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.0.5' );
+if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.2.2' );
 if ( ! defined( 'VW_THEME_NAME' ) ) define( 'VW_THEME_NAME', 'ESPRESSO' );
 if ( ! defined( 'MINUTES_IN_SECONDS' ) ) define( 'MINUTES_IN_SECONDS', 60 );
 
@@ -35,14 +35,15 @@ if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_POST_SLIDER_MEDIUM' ) ) define( 'VW_CON
 if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_POST_SLIDER_MEDIUM_2' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_POST_SLIDER_MEDIUM_2', 'vw_one_half_thumbnail' );
 if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_POST_SLIDER_LARGE' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_POST_SLIDER_LARGE', 'vw_full_width_thumbnail' );
 if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_POST_SLIDER_LARGE_CAROUSEL' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_POST_SLIDER_LARGE_CAROUSEL', 'vw_one_third_thumbnail' );
-if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_PAGE_TILE_BACKGROUND' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_PAGE_TILE_BACKGROUND', 'vw_full_width_thumbnail' );
+if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_PAGE_TILE_BACKGROUND' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_PAGE_TILE_BACKGROUND', 'vw_full_width_thumbnail_no_crop' );
 if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_INSTANT_SEARCH' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_INSTANT_SEARCH', 'vw_small_thumbnail' );
+if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_INSTANT_SEARCH_2x' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_INSTANT_SEARCH_2x', 'vw_small_thumbnail_2x' );
 if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_EMBEDED_GALLERY_SLIDER' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_EMBEDED_GALLERY_SLIDER', 'vw_full_width_thumbnail' );
-/*new*/if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_POST_LARGE' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_POST_LARGE', 'vw_two_third_thumbnail' );
+/*new*/if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_POST_LARGE' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_POST_LARGE', 'vw_full_width_thumbnail_no_crop' );
 /*new*/if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_POST_MEDIUM' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_POST_MEDIUM', 'vw_one_third_thumbnail' );
 
 if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_CATEGORY' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_CATEGORY', 'vw_category_thumbnail' );
-if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_SINGLE_POST_CLASSIC' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_SINGLE_POST_CLASSIC', 'vw_two_third_thumbnail_no_crop' );
+if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_SINGLE_POST_CLASSIC' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_SINGLE_POST_CLASSIC', 'vw_full_width_thumbnail_no_crop' );
 if ( ! defined( 'VW_CONST_THUMBNAIL_SIZE_CUSTOM_TILED_GALLERY' ) ) define( 'VW_CONST_THUMBNAIL_SIZE_CUSTOM_TILED_GALLERY', 'vw_two_third_thumbnail' );
 
 // Excerpt length
@@ -93,6 +94,112 @@ require_once get_template_directory().'/inc/custom-tiled-gallery.php';
 require_once get_template_directory().'/inc/custom-font.php';
 require_once get_template_directory().'/inc/custom-css.php';
 // require_once get_template_directory().'/inc/quick-translation.php';
+
+function getShareButtons () {
+	$post_id = get_the_id();
+	$post_url = urlencode( get_permalink() );
+	$post_title = urlencode( get_the_title() );
+	$thumbnail_url = '';
+	if ( has_post_thumbnail() ) {
+	    $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_id() ), 'full' );
+	    $thumbnail_url = $thumbnail[0];
+	}
+
+	$facebook_url = sprintf( 'http://www.facebook.com/sharer.php?u=%s', $post_url );
+	$twitter_url = sprintf( 'http://twitter.com/home?status=%s', $post_title.'%20-%20'.$post_url );
+	$pinterest_url = sprintf( 'http://pinterest.com/pin/create/button/?url=%s&media=%s&description=%s', $post_url, $thumbnail_url, $post_title );
+	$gplus_url = sprintf( 'http://plus.google.com/share?url=%s', $post_url );
+
+	return '<div class="vw-post-share-box">
+							<div class="vw-post-share-big-number">
+								<div class="vw-post-share-big-number__inner">
+									<div class="vw-number">' . vw_number_prefixes( vwpsh_get_total_shares() ) . '</div>
+									<div class="vw-unit">' . translate( 'Shares', 'envirra' ) . '</div>
+								</div>
+							</div>
+              <a class="vw-post-share-box-button vw-post-shares-social vw-post-shares-social-facebook" href="' . esc_url( $facebook_url ) . '" data-post-id="' . esc_attr( $post_id ) . '" data-share-to="facebook" data-width="500" data-height="300" title="' . esc_attr__( 'Share to Facebook', 'envirra' ) . '">
+                  <i class="vw-icon icon-social-facebook"></i>
+									<span class="vw-button-label"> Facebook </span>
+              </a>
+              <a class="vw-post-share-box-button vw-post-shares-social vw-post-shares-social-twitter" href="' . esc_url( $twitter_url ) . '" data-post-id="' . esc_attr( $post_id ) . '" data-share-to="twitter" data-width="500" data-height="300" title="' . esc_attr__( 'Share to Twitter', 'envirra' ) . '">
+                  <i class="vw-icon icon-social-twitter"></i>
+									<span class="vw-button-label"> Twitter </span>
+              </a>
+              <a class="vw-post-share-box-button vw-post-shares-social vw-post-shares-social-gplus" href="' . esc_url( $gplus_url ). '" data-post-id="' . esc_attr( $post_id ) . '" data-share-to="gplus" data-width="500" data-height="475" title="' . esc_attr__( 'Share to Google+', 'envirra' ) . '">
+                  <i class="vw-icon icon-social-gplus"></i>
+									<span class="vw-button-label"> Google+ </span>
+              </a>
+              <a href="mailto:%20?subject=An%20article%20I%20thought%20you\'d%20find%20interesting&body=Here%20it%20is,%20on%20Commentary%20Magazine:%20'. $post_url .'" target="_top" class="vw-post-share-box-button vw-post-shares-social-email">
+                  <i class="vw-icon icon-social-email"></i>
+									<span class="vw-button-label"> Email </span>
+              </a>
+          </div>';
+}
+
+
+add_filter('the_excerpt', 'do_my_shortcode_in_excerpt');
+if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
+	function do_my_shortcode_in_excerpt($excerpt) {
+		$content = do_shortcode(get_the_content());
+		$content = str_replace(array("\r","\n"),"", $content);
+		$content = preg_replace('/<h[1|2|3|4|5|6].+?<\/h[1|2|3|4|5|6]>/sim', '', $content);
+		$content = preg_replace('/Contents\s?/i', '', $content);
+		$args = array(
+		    //formatting
+		    'strong' => array(),
+		    'em'     => array(),
+		    'b'      => array(),
+		    'i'      => array(),
+
+		    //links
+		    'a'     => array(
+		        'href' => array()
+		    )
+		);
+	  return wp_kses(wp_trim_words($content, vw_get_theme_option('blog_excerpt_length')), $args);
+	}
+}
+
+add_filter( 'post_thumbnail_html', 'wv_my_post_thumbnail_fallback', 20, 5 );
+function wv_my_post_thumbnail_fallback( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
+
+	switch($size) {
+		case 'vw_small_thumbnail':
+			$className = 'vw-thumbnail--small';
+			break;
+		case 'vw_one_third_thumbnail':
+			$className = 'vw-thumbnail--one-third';
+			break;
+		default:
+			$className = '';
+	}
+
+  return '<span class="vw-thumbnail ' . $className . '" data-size="' . $size . '"><span class="wv-thumbnail__img">' . $html . '</span></span>';
+}
+
+
+
+function theme_slug_filter_the_content( $content ) {
+		$buttons = getShareButtons();
+    $custom_content = "<div id=\"js-sticky-contents\" class='intense sticky-contents clearfix'><div class=\"sticky-contents__header\" id=\"js-sticky-contents-header\">Contents</div><div class=\"sticky-contents__items clearfix\"><div class=\"sticky-contents__arrow sticky-contents__arrow--left\"></div><div class=\"sticky-contents__arrow sticky-contents__arrow--right\"></div><div class=\"sticky-contents__items-inner\" id=\"js-sticky-content-items\"></div></div>" . $buttons . "</div>";
+    $custom_content .= $content;
+    return $custom_content;
+}
+add_filter( 'the_content', 'theme_slug_filter_the_content' );
+
+// Allow SVG files upload
+function cc_mime_types($mimes) {
+  $mimes['svg'] = 'image/svg+xml';
+  return $mimes;
+}
+add_filter('upload_mimes', 'cc_mime_types');
+
+function gawd_allowed_tags() {
+	global $allowedtags;
+	$allowedtags['br'] = array('style'=>array());
+	$allowedtags['p']  = array('style'=>array());
+}
+add_action('init', 'gawd_allowed_tags', 10);
 
 /**
  * Third-party plugins support
@@ -401,7 +508,7 @@ if ( ! function_exists( 'vw_get_archive_blog_layout' ) ) {
 			if ( $category_blog_layout != 'site-default' ) $blog_layout = $category_blog_layout;
 
 		} elseif ( is_search() ) {
-			$blog_layout = 'large';
+			$blog_layout = 'search';
 		}
 
 		return $blog_layout;
@@ -663,7 +770,6 @@ if ( ! function_exists( 'vw_get_template_part' ) ) {
 		}
 	}
 }
-
 /* -----------------------------------------------------------------------------
  * Start with
  * -------------------------------------------------------------------------- */

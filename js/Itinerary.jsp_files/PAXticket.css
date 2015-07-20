@@ -1,0 +1,149 @@
+body {
+	background-color: #FFFFFF;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+.tbox_text {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	color: #003366;
+}
+table {font-size:inherit;font:100%;}
+.TableHeader {  font-family: Verdana, Arial, Helvetica, sans-serif;
+   	font-size: 10px; 
+	font-weight: bold; 
+	color: #003366;
+	background-color: "#C3D5E1";}
+	
+.TableFont2  {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	color: #003366;
+	background-color="#E5ECF1";}
+.TableFont1  {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	color: #003366;
+	background-color="#F7FCFF";
+}
+.form_small_text_header {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	font-weight: bold;
+	color: #000000;
+}
+
+.form_small_text {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: normal;
+	color: #003366;
+}
+.form_small_text_bold {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: bold;
+	color: #003366;
+}
+.title_text {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	color: #E6F3FF;
+}
+.seat_text {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	font-weight: bold;
+	color: #003366;
+}
+.tbox_text_bold {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #003366;
+}
+.tbox {
+	border: 1.5px solid #5883AE;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #003366;
+	background-color: #FFFFFF;
+}
+.Attention {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #FF0000;
+	text-decoration: underline;
+	background-color: #FFFFFF;
+}
+.warning {
+	border: 1.5px solid #5883AE;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #003366;
+	background-color: #FFFFFF;
+}
+.InputText {
+	border: 1.5px solid #5883AE;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #003366;
+	background-color: #FFFFFF;
+}
+.noPrint { display: none; } 
+
+.InputTextMandatory {
+	border: 2px solid #5883AE;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #003366;
+	background-color: #FFFFFF;
+}
+.SeatNumber {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal; font-weight: bold; color: #FFFFFF}
+.Selected1 { cursor: hand; border: 2px #FF0000 solid}
+.Selected { cursor: hand; border: 1px #FF0000 solid}
+.Selectable{cursor: hand}
+.SeatPlan {  background-color: #E5E5E5; border: #000000; border-style: groove; border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px}
+TR.H	{BACKGROUND-COLOR:#FF0000}
+.Nonselectable {  cursor: not-allowed}
+.InputTextdisplayBig {  font-family: Verdana, Arial, Helvetica, sans-serif;
+text-align:center; font-size: 14px; font-weight: bold; border: 1px; color: #FF0000; background-color: transparent }
+
+.Ticket {  background-color: #E5E5E5; width: 650px; border: #000000; border-style: groove; border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px}
+.TicketNumber { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-weight: bold; color: #000000}
+.TicketSalesPrompt { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-style: italic; font-weight: normal; color: #666666; background-color: #E5E5E5}
+.TicketSalesAmount { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal; font-weight: normal; color: #666666 }
+.ScreenName {  font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 14px; font-style: normal; font-weight: normal; color: #CC3300}
+.TicketPrint {  background-color: #E5E5E5; width: 500px; border: #000000; border-style: groove; border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px}
+.parentTicketNo { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-weight: bold; color: #000000}
+.TicketInvoiceLink { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8px; font-style: normal; font-weight: normal; color: #333333 ; background-color: #DDDDFF}
+.TicketPrintTax {  background-color: #E5E5E5; width: 150px; border: #000000; border-style: groove; border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px}
+.TicketSalesPromptCharter { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-style: italic; font-weight: normal; color: #666666;}
+.TicketRefundAmountCharter { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 24px; font-style: italic; font-weight: bold; color: #666666 ;}
+.TicketItiniraryHeader { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-style: normal; font-weight: bold; color: #000000; background-color: #CCCCCC}
+.FormText {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	color: #003366;
+}
+
+a { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #003366; text-decoration: none}
+
+a:active { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #FF0000; text-decoration: none}
+
+a:hover { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #003366; text-decoration: underline} 
+
+a:link { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #1992CB; text-decoration: none} 
+
+.noPrint { display: none; } 
+.Button { display: none; } 
+.newPage { page-break-before: always }

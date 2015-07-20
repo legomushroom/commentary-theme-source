@@ -29,7 +29,7 @@ $args = array(
 	// This is where your data is stored in the database and also becomes your global variable name.
 	'display_name'         => $theme->get( 'Name' ),
 	// Name that appears at the top of your panel
-	'display_version'      => $theme->get( 'Version' ),
+	'display_version'      => $theme->get( 'Version' ), 
 	// Version that appears at the top of your panel
 	'menu_type'            => 'menu',
 	//Specify if the admin menu should appear or not. Options: menu or submenu (Under appearance only)
@@ -481,7 +481,6 @@ Redux::setSection( $vw_opt_name, array(
 			'subtitle'=> 'Turn on this option to show the post views.',
 			'default' => 1,
 		),
-
 		array(
 			'id'		=> 'post_views_forgery',
 			'type'		=> 'text',
@@ -491,6 +490,24 @@ Redux::setSection( $vw_opt_name, array(
 			'validate'	=> 'numeric',
 			'default'	=> '0',
 		),
+		array(
+			'id'		=> 'post_views_forgery_random_start',
+			'type'		=> 'text',
+			'title'		=> 'Post Views Forgery Random -- Start', 
+			'subtitle'	=> 'Enter the start number of the random to add',
+			'desc'	=> 'i.e. 0 will start form 0',
+			'validate'	=> 'numeric',
+			'default'	=> '0',
+		),
+		array(
+			'id'		=> 'post_views_forgery_random_end',
+			'type'		=> 'text',
+			'title'		=> 'Post Views Forgery Random -- End', 
+			'subtitle'	=> 'Enter the end number of the random to add',
+			'desc'	=> 'i.e. 10 will end at 10',
+			'validate'	=> 'numeric',
+			'default'	=> '10',
+		)
 	),
 ) );
 
@@ -852,11 +869,25 @@ Redux::setSection( $vw_opt_name, array(
 			'title' => '.TTF/.OTF Font File',
 		),
 		array(
+			'id'=>'custom_font1_bold_ttf',
+			'type' => 'media',
+			'preview'=> false,
+			'mode'=> 'font',
+			'title' => '.TTF/.OTF Font File -- Bold',
+		),
+		array(
 			'id'=>'custom_font1_woff',
 			'type' => 'media',
 			'preview'=> false,
 			'mode'=> 'font',
 			'title' => '.WOFF Font File',
+		),
+		array(
+			'id'=>'custom_font1_bold_woff',
+			'type' => 'media',
+			'preview'=> false,
+			'mode'=> 'font',
+			'title' => '.WOFF Font File -- Bold',
 		),
 		array(
 			'id'=>'custom_font1_svg',
@@ -866,11 +897,25 @@ Redux::setSection( $vw_opt_name, array(
 			'title' => '.SVG Font File',
 		),
 		array(
+			'id'=>'custom_font1_bold_svg',
+			'type' => 'media',
+			'preview'=> false,
+			'mode'=> 'font',
+			'title' => '.SVG Font File -- Bold',
+		),
+		array(
 			'id'=>'custom_font1_eot',
 			'type' => 'media',
 			'preview'=> false,
 			'mode'=> 'font',
 			'title' => '.EOT Font File',
+		),
+		array(
+			'id'=>'custom_font1_bold_eot',
+			'type' => 'media',
+			'preview'=> false,
+			'mode'=> 'font',
+			'title' => '.EOT Font File -- Bold',
 		),
 	),
 ) );
@@ -888,12 +933,26 @@ Redux::setSection( $vw_opt_name, array(
 			'mode'=> 'font',
 			'title' => '.TTF/.OTF Font File',
 		),
+	  array(
+			'id'=>'custom_font2_bold_ttf',
+			'type' => 'media',
+			'preview'=> false,
+			'mode'=> 'font',
+			'title' => '.TTF/.OTF Font File -- Bold',
+		),
 		array(
 			'id'=>'custom_font2_woff',
 			'type' => 'media',
 			'preview'=> false,
 			'mode'=> 'font',
 			'title' => '.WOFF Font File',
+		),
+		array(
+			'id'=>'custom_font2_bold_woff',
+			'type' => 'media',
+			'preview'=> false,
+			'mode'=> 'font',
+			'title' => '.WOFF Font File -- Bold',
 		),
 		array(
 			'id'=>'custom_font2_svg',
@@ -903,11 +962,25 @@ Redux::setSection( $vw_opt_name, array(
 			'title' => '.SVG Font File',
 		),
 		array(
+			'id'=>'custom_font2_bold_svg',
+			'type' => 'media',
+			'preview'=> false,
+			'mode'=> 'font',
+			'title' => '.SVG Font File -- Bold',
+		),
+		array(
 			'id'=>'custom_font2_eot',
 			'type' => 'media',
 			'preview'=> false,
 			'mode'=> 'font',
 			'title' => '.EOT Font File',
+		),
+		array(
+			'id'=>'custom_font2_bold_eot',
+			'type' => 'media',
+			'preview'=> false,
+			'mode'=> 'font',
+			'title' => '.EOT Font File -- Bold',
 		),
 	),
 ) );
@@ -1375,7 +1448,7 @@ Redux::setSection( $vw_opt_name, array(
 			'title' => 'Background',
 			'mode' => 'background',
 			'transparent'=> false,
-			'output' => array( '.vw-menu-main-inner' ),
+			'output' => array( '.vw-menu-main-wrapper:after' ),
 			'default' => '#3e3e3e',
 		),
 		array(
@@ -1734,6 +1807,7 @@ Redux::setSection( $vw_opt_name, array(
 	),
 ) );
 
+do_action( 'vw_action_init_theme_options', $vw_opt_name );
 
 /* -----------------------------------------------------------------------------
  * Actions
@@ -1747,3 +1821,5 @@ if ( ! function_exists( 'vw_options_saved' ) ) {
 		}
 	}
 }
+
+?>

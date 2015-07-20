@@ -18,13 +18,17 @@ add_action( 'wp_footer', 'vw_enqueue_scripts_backstretch', 99 );
 if ( ! function_exists( 'vw_enqueue_scripts_backstretch' ) ) {
 	function vw_enqueue_scripts_backstretch() {
 		// if ( function_exists( 'is_product' ) && is_product() ) return;
-		if ( is_page() && ! is_page_template( 'page_big_featured_image.php' )
-		 || ( function_exists( 'is_shop' ) && vw_is_shop() && get_page_template_slug( vw_get_shop_page_id() ) != 'page_big_featured_image.php' ) ) {
+		
+		$isntFeaturedPage = !is_page_template( 'page_big_featured_image.php' ) && !is_page_template( 'page_big_featured_image_no_header.php' );
+		// $isntFeaturedSlug = !is_page_template( 'page_big_featured_image.php' ) && !is_page_template( 'page_big_featured_image_no_header.php' );
+		if ( is_page() && $isntFeaturedPage
+		 || ( function_exists( 'is_shop' ) && vw_is_shop() && (get_page_template_slug( vw_get_shop_page_id() ) != 'page_big_featured_image.php') && (get_page_template_slug( vw_get_shop_page_id() ) != 'page_big_featured_image_no_header.php') ) ) {
 			return;
 		}
 
 		if ( have_posts() ) { the_post();
 			global $post;
+
 
 			$image_urls = array();
 			$image_captions = array();
@@ -90,12 +94,17 @@ if ( ! function_exists( 'vw_enqueue_scripts_backstretch' ) ) {
 					"use strict";
 					if ( jQuery.backstretch ) {
 						var $target = jQuery( '.vw-page-title-section' );
+
 						$target.backstretch(
 							['<?php echo implode( "','", $image_urls ) ?>'], {
 								fade: <?php echo VW_CONST_BACKSTRETCH_OPT_FADE; ?>,
-								centeredY: <?php echo VW_CONST_BACKSTRETCH_OPT_CENTEREDY; ?>,
-								centeredX: <?php echo VW_CONST_BACKSTRETCH_OPT_CENTEREDX; ?>,
-								duration: <?php echo VW_CONST_BACKSTRETCH_OPT_DURATION; ?>,
+								centeredY: 	<?php echo VW_CONST_BACKSTRETCH_OPT_CENTEREDY; ?>,
+								centeredX: 	<?php echo VW_CONST_BACKSTRETCH_OPT_CENTEREDX; ?>,
+								positionY: 	<?php
+									$positionY = get_post_meta( get_the_ID(), 'vw_post_vertical_position', true );
+									if ($positionY === '') { $positionY = 50; }
+									echo $positionY; ?>,
+								duration: 	<?php echo VW_CONST_BACKSTRETCH_OPT_DURATION; ?>,
 							}
 						).removeClass( 'vw-has-no-background' ).addClass( 'vw-backstretch vw-has-background' );
 

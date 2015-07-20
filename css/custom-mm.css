@@ -1,0 +1,37 @@
+
+div.mm-formField {
+    color: inherit;
+}
+
+.mm-formField input {
+    border-color: #A6A6A6;
+    width: 168px;   
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.mm-formField select {
+    background-color: white;
+    border-radius: 0;
+    width: 168px;
+    -webkit-appearance: none;
+    border-color: #A6A6A6;
+    position: relative;
+    background: white url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjBweCIgaGVpZ2h0PSIxNHB4IiB2aWV3Qm94PSIwIDAgMjAgMTQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM6c2tldGNoPSJodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2gvbnMiPiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxnIGlkPSJSZWN0YW5nbGUtMS0rLVJlY3RhbmdsZS0xLUNvcHkiIHNrZXRjaDp0eXBlPSJNU0xheWVyR3JvdXAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLCAwLjUwMDAwMCkiIGZpbGw9IiNBNkE2QTYiPiAgICAgICAgICAgIDxwYXRoIGQ9Ik01LDAuNTgwNTgyNjE4IEw5LjQxOTQxNzM4LDUgTDAuNTgwNTgyNjE4LDUgTDUsMC41ODA1ODI2MTggWiIgaWQ9IlJlY3RhbmdsZS0xIj48L3BhdGg+ICAgICAgICAgICAgPHBhdGggZD0iTTUuMDEyMjA3MDMsMTIuMjE0ODI3NSBMMC41OTI3ODk2NDksNy43OTU0MTAxNiBMOS40MzE2MjQ0MSw3Ljc5NTQxMDE2IEw1LjAxMjIwNzAzLDEyLjIxNDgyNzUgWiIgaWQ9IlJlY3RhbmdsZS0xLUNvcHkiPjwvcGF0aD4gICAgICAgIDwvZz4gICAgPC9nPjwvc3ZnPg==);
+    background-position: right center;
+    background-repeat: no-repeat;
+    padding-right: 30px;
+}
+
+div.mm-forgot-password p.mm-success,
+div.mm-forgot-password p.mm-error {
+    padding: 5px 10px;
+}
+div.mm-forgot-password p.mm-success {
+    background: #999;
+}
+div.mm-forgot-password p.mm-error {
+    background: #000;
+    border: 0;
+}

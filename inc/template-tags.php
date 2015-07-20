@@ -496,14 +496,14 @@ if ( ! function_exists( 'vw_the_author' ) ) {
  * The Author Avatar
  * -------------------------------------------------------------------------- */
 if ( ! function_exists( 'vw_the_author_avatar' ) ) {
-	function vw_the_author_avatar( $author = null, $size = VW_CONST_AVATAR_SIZE_LARGE ) {
+	function vw_the_author_avatar( $author = null, $size = VW_CONST_AVATAR_SIZE_LARGE, $className = '' ) {
 		if ( ! $author ) {
 			$author = vw_get_current_author();
 		}
 
 		$author_avatar = vw_get_avatar( get_the_author_meta( 'user_email', $author->ID ), $size, '', get_the_author_meta( 'display_name', $author->ID ) );
 
-		echo '<a class="vw-author-avatar" href="' . get_author_posts_url( $author->ID ).'" title="' . sprintf( esc_attr__('Posts by %s', 'envirra'), get_the_author_meta( 'display_name', $author->ID ) ) . '">';
+		echo '<a class="vw-author-avatar ' . $className . '" href="' . get_author_posts_url( $author->ID ).'" title="' . sprintf( esc_attr__('Posts by %s', 'envirra'), get_the_author_meta( 'display_name', $author->ID ) ) . '">';
 		echo $author_avatar;
 		echo '</a>';
 	}
@@ -570,7 +570,13 @@ if ( ! function_exists( 'vw_the_subtitle' ) ) {
  * -------------------------------------------------------------------------- */
 if ( ! function_exists( 'vw_the_post_date' ) ) {
 	function vw_the_post_date() {
-		?><i class="vw-icon icon-entypo-clock"></i> <a href="<?php the_permalink(); ?>" class="vw-post-date updated" title="<?php printf( esc_attr__('Permalink to %s', 'envirra'), the_title_attribute('echo=0') ); ?>" rel="bookmark"><time <?php vw_itemprop('datePublished'); ?> datetime="<?php echo get_the_time('c'); ?>"><?php echo get_the_time( get_option('date_format') ); ?></time></a><?php
+		?>
+		<i class="vw-icon icon-entypo-clock"></i>
+		<a href="<?php the_permalink(); ?>" class="vw-post-date updated" title="<?php printf( esc_attr__('Permalink to %s', 'envirra'), the_title_attribute('echo=0') ); ?>" rel="bookmark">
+			<time <?php vw_itemprop('datePublished'); ?> datetime="<?php echo get_the_time('c'); ?>">
+				<?php echo get_the_time( get_option('date_format') ); ?></time>
+		</a>
+		<?php
 	}
 }
 
@@ -666,6 +672,7 @@ if ( ! function_exists( 'vw_the_post_slider' ) ) {
 		$default = array(
 			'template' => 'large',
 			'cat' => null,
+			'post__in' => null,
 			'posts_order' => 'latest_posts', // latest_posts, latest_featured, latest_reviews, most_review_scores
 			'number_of_post' => 5,
 			'before' => '',
@@ -685,6 +692,10 @@ if ( ! function_exists( 'vw_the_post_slider' ) ) {
 
 		if ( $args['cat'] ) {
 			$query_args['cat'] = $args['cat'];
+		}
+
+		if ( $args['post__in'] ) {
+			$query_args['post__in'] = $args['post__in'];
 		}
 
 		if ( $args['posts_order'] == 'latest_posts' ) {

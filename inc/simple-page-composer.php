@@ -33,6 +33,12 @@ if ( ! function_exists( 'vw_init_spc_sections' ) ) {
 						'field' => 'number',
 						'default' => 0,
 					),
+					'ids' => array(
+						'title' => 'Posts\' ids',
+						'description' => 'Enter the ids to include',
+						'field' => 'text',
+						'default' => '',
+					),
 					'category' => array(
 						'title' => 'Category',
 						'description' => 'Choose a post category to be shown up',
@@ -96,6 +102,7 @@ if ( ! function_exists( 'vw_init_spc_sections' ) ) {
 				),
 			),
 
+
 			'post_box_sidebar' => array(
 				'title' =>'Post Box with Sidebar',
 				'options' => array(
@@ -116,6 +123,12 @@ if ( ! function_exists( 'vw_init_spc_sections' ) ) {
 						'description' => 'Enter the number of the first posts to be skipped',
 						'field' => 'number',
 						'default' => 0,
+					),
+					'ids' => array(
+						'title' => 'Posts\' ids',
+						'description' => 'Enter the ids to include',
+						'field' => 'text',
+						'default' => '',
 					),
 					'category' => array(
 						'title' => 'Category',
@@ -197,6 +210,12 @@ if ( ! function_exists( 'vw_init_spc_sections' ) ) {
 						'description' => 'Enter the number',
 						'field' => 'number',
 						'default' => 3,
+					),
+					'ids' => array(
+						'title' => 'Posts\' ids',
+						'description' => 'Enter the ids to include',
+						'field' => 'text',
+						'default' => '',
 					),
 					'category' => array(
 						'title' => 'Category',
@@ -295,13 +314,22 @@ if ( ! function_exists( 'vw_render_spc_section_post_slider' ) ) {
 
 		printf( $before_section, 'post-slider-section', esc_attr( vwspc_next_section_id() ) );
 
-		// echo '<div class="container"><div class="row"><div class="col-md-12">';
+		$ids = get_post_meta( $page_id, $field_prefix.'_ids', true );
+		$split = explode(',', $ids);
+		$isIDs = ! (((count($split)) === 1) && ($split[0] === ''));
+		
 		$slider_args = array(
-			'cat' => $category,
 			'posts_order' => $posts_order,
 			'number_of_post' => $number_of_slide,
 			'template' => 'large',
 		);
+
+		// If the ids field is not fulfilled
+		if ( ! $isIDs ) {
+			$slider_args['cat'] = $category;
+		} else {
+			$slider_args['post__in'] = $split;
+		}
 
 		vw_the_post_slider( $slider_args );
 		// echo '</div></div></div>';
@@ -352,12 +380,25 @@ if ( ! function_exists( 'vw_render_spc_section_post_box' ) ) {
 			}
 		}
 
-		if ( ! empty( $category ) ) {
-			$query_args['cat'] = $category;
+		$ids = get_post_meta( $page_id, $field_prefix.'_ids', true );
+		$split = explode(',', $ids);
+		$isIDs = ! (((count($split)) === 1) && ($split[0] === ''));
+		
+		// If the ids field is not fulfilled
+		if ( ! $isIDs ) {
+			if ( ! empty( $category ) ) {
+				$query_args['cat'] = $category;
 
-			if ( ! empty( $title ) ) {
-				$title_class .= ' '.vw_get_the_category_class( $category );
+				if ( ! empty( $title ) ) {
+					$title_class .= ' '.vw_get_the_category_class( $category );
+				}
 			}
+
+			if ( ! empty( $exclude_categories ) ) {
+				$query_args['category__not_in'] = explode( ',', $exclude_categories );
+			}
+		} else {
+			$query_args['post__in'] = $split;
 		}
 
 		if ( ! empty( $exclude_categories ) ) {
@@ -507,16 +548,25 @@ if ( ! function_exists( 'vw_render_spc_section_post_box_sidebar' ) ) {
 			}
 		}
 
-		if ( ! empty( $category ) ) {
-			$query_args['cat'] = $category;
-			
-			if ( ! empty( $title ) ) {
-				$title_class .= ' '.vw_get_the_category_class( $category );
+		$ids = get_post_meta( $page_id, $field_prefix.'_ids', true );
+		$split = explode(',', $ids);
+		$isIDs = ! (((count($split)) === 1) && ($split[0] === ''));
+		
+		// If the ids field is not fulfilled
+		if ( ! $isIDs ) {
+			if ( ! empty( $category ) ) {
+				$query_args['cat'] = $category;
+				
+				if ( ! empty( $title ) ) {
+					$title_class .= ' '.vw_get_the_category_class( $category );
+				}
 			}
-		}
 
-		if ( ! empty( $exclude_categories ) ) {
-			$query_args['category__not_in'] = explode( ',', $exclude_categories );
+			if ( ! empty( $exclude_categories ) ) {
+				$query_args['category__not_in'] = explode( ',', $exclude_categories );
+			}
+		} else {
+			$query_args['post__in'] = $split;
 		}
 
 		if ( $posts_order == 'latest_posts' ) {
@@ -574,7 +624,8 @@ if ( ! function_exists( 'vw_render_spc_section_post_box_sidebar' ) ) {
 
 		} elseif ( $posts_order == 'most_viewed' ) {
 			$query_args['orderby'] = 'meta_value_num';
-			$query_args['meta_key'] = 'vw_post_views_all';
+			// $query_args['meta_key'] = 'vw_post_views_all';
+			$query_args['meta_key'] = 'vw_post_total_forgery';
 
 		}
 

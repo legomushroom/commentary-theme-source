@@ -14,15 +14,15 @@
 
 					<?php while ( have_posts() ) : the_post(); ?>
 						<article <?php post_class( 'vw-main-post clearfix' ); ?>>
-
 							<?php vw_the_post_share_box() ?>
 
 							<span class="author vcard hidden"><span class="fn"><?php echo esc_attr( get_the_author() ); ?></span></span>
 							<span class="updated hidden"><?php echo esc_attr( get_the_date( 'Y-m-d' ) ); ?></span>
-						
-							<?php if ( ! has_post_format( 'gallery' ) ) vw_the_embeded_media(); ?>
 
-							<div class="vw-post-content clearfix"><?php the_content(); ?></div>
+							<div class="vw-post-content clearfix">
+								<?php if ( ! has_post_format( 'gallery' ) ) vw_the_embeded_media(); ?>
+								<?php the_content(); ?>
+							</div>
 
 							<?php wp_link_pages( array(
 								'before'      => '<div class="vw-page-links"><span class="vw-page-links-title">' . __( 'Pages:', 'envirra' ) . '</span>',

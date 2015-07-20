@@ -1,6 +1,7 @@
 <!-- Top Menu -->
 <nav class="vw-menu-top-wrapper">
 <?php
+
 if ( has_nav_menu('vw_menu_top' ) ) {
 	wp_nav_menu( apply_filters( 'vw_filter_menu_top_args', array(
 		'theme_location' => 'vw_menu_top',

@@ -3,21 +3,23 @@
 add_filter( 'user_contactmethods', 'vw_user_social_links' );
 if ( ! function_exists( 'vw_user_social_links' ) ) {
 	function vw_user_social_links( $contact_methods ) {
-		$contact_methods['public_email'] = 'Public Email';
-		$contact_methods['twitter'] = 'Twitter';
-		$contact_methods['facebook'] = 'Facebook';
-		$contact_methods['google_plus'] = 'Google+';
-		$contact_methods['pinterest'] = 'Pinterest';
-		$contact_methods['tumblr'] = 'Tumblr';
-		$contact_methods['instagram'] = 'Instagram';
-		$contact_methods['500px'] = '500px';
-		$contact_methods['dribbble'] = 'Dribbble';
-		$contact_methods['flickr'] = 'Flickr';
-		$contact_methods['linkedin'] = 'LinkedIn';
-		$contact_methods['skype'] = 'Skype';
-		$contact_methods['soundcloud'] = 'SoundCloud';
-		$contact_methods['youtube'] = 'YouTube';
-		$contact_methods['vimeo'] = 'Vimeo';
+		$contact_methods['public_email'] 	= 'Public Email';
+		$contact_methods['twitter'] 			= 'Twitter';
+		$contact_methods['facebook'] 			= 'Facebook';
+		$contact_methods['google_plus'] 	= 'Google+';
+		$contact_methods['pinterest'] 		= 'Pinterest';
+		$contact_methods['tumblr'] 				= 'Tumblr';
+		$contact_methods['instagram'] 		= 'Instagram';
+		$contact_methods['500px'] 				= '500px';
+		$contact_methods['dribbble'] 			= 'Dribbble';
+		$contact_methods['flickr'] 				= 'Flickr';
+		$contact_methods['linkedin'] 			= 'LinkedIn';
+		$contact_methods['skype'] 				= 'Skype';
+		$contact_methods['soundcloud'] 		= 'SoundCloud';
+		$contact_methods['youtube'] 			= 'YouTube';
+		$contact_methods['vimeo'] 				= 'Vimeo';
+		$contact_methods['wikipedia'] 		= 'Wikipedia';
+		$contact_methods['amazon'] 				= 'Amazon';
 
 		return $contact_methods;
 	}
@@ -40,6 +42,8 @@ if ( ! function_exists( 'vw_the_user_social_links' ) ) {
 		vw_render_user_social_link( $author, 'youtube',		'icon-social-youtube',		__( 'Youtube', 'envirra' ) );
 		vw_render_user_social_link( $author, 'vimeo',		'icon-social-vimeo',		__( 'Vimeo', 'envirra' ) );
 		vw_render_user_social_link( $author, 'public_email',	'icon-social-email',		__( 'Email', 'envirra' ) );
+		vw_render_user_social_link( $author, 'wikipedia',	    'icon-social-wikipedia',		__( 'Wikipedia', 'envirra' ) );
+		vw_render_user_social_link( $author, 'amazon',	      'icon-social-amazon',		__( 'Amazon', 'envirra' ) );
 	}
 }
 if ( ! function_exists( 'vw_render_user_social_link' ) ) {

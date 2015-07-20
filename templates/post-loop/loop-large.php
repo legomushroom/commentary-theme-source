@@ -1,4 +1,4 @@
-<div class="vw-post-loop vw-post-loop-large">	
+<div class="vw-post-loop vw-post-loop-large is-it">	
 	<div class="row">
 		<div class="col-sm-12">
 			

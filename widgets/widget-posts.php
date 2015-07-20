@@ -122,7 +122,7 @@ if ( ! class_exists( 'Vw_widget_posts' ) ) {
 
 			} elseif ( $order == 'most_viewed' ) {
 				$query_args['orderby'] = 'meta_value_num';
-				$query_args['meta_key'] = 'vw_post_views_all';
+				$query_args['meta_key'] = 'vw_post_total_forgery';
 
 			}
 

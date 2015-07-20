@@ -19,7 +19,7 @@ if ( ! class_exists( 'Vw_widget_feedburner' ) ) {
 			parent::__construct(
 				'vw_widget_feedburner', // Base ID
 				VW_THEME_NAME.': FeedBurner', // Name
-				array( 'description' => 'Subscribe to feedburner via email' ) // Args
+				array( 'description' => __( 'Subscribe to feedburner via email', 'envirra' ) ) // Args
 			);
 		}
 
@@ -42,7 +42,7 @@ if ( ! class_exists( 'Vw_widget_feedburner' ) ) {
 			?>
 			<div class="vw-widget-feedburner-container">
 				<h3 class="vw-widget-feedburner-text"><?php _e( 'Subscribe to our email newsletter.', 'envirra' ); ?></h3>
-				<form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=<?php echo esc_js( $feedburner_id ); ?>', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
+				<form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('https://feedburner.google.com/fb/a/mailverify?uri=<?php echo esc_js( $feedburner_id ); ?>', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
 					<input class="vw-widget-feedburner-email" type="text" name="email" value="<?php esc_attr_e( 'Enter your e-mail address' , 'envirra' ) ; ?>" onfocus="if (this.value == '<?php echo esc_js( __( 'Enter your e-mail address' , 'envirra' ) ); ?>') {this.value = '';}" onblur="if (this.value == '') {this.value = '<?php echo esc_js( __( 'Enter your e-mail address' , 'envirra' ) ); ?>';}">
 					<input type="hidden" value="<?php echo esc_attr( $feedburner_id ); ?>" name="uri">
 					<input type="hidden" name="loc" value="en_US">
