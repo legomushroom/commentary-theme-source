@@ -427,7 +427,7 @@ if ( ! function_exists( 'vw_shortcode_logo' ) ) {
 		?>
 		<div class="vw-logo-shortcode">
 			<?php if ( ! empty( $logo_2x[ 'url' ] ) ): ?><img class="vw-logo-2x" src="<?php echo esc_url( $logo_2x[ 'url' ] ); ?>" width="<?php echo esc_attr( $logo[ 'width' ] ) ?>" height="<?php echo esc_attr( $logo[ 'height' ] ) ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"><?php endif; ?>
-			<img class="vw-logo" src="<?php echo esc_url( $logo[ 'url' ] ); ?>" width="<?php echo esc_attr( $logo[ 'width' ] ) ?>" height="<?php echo esc_attr( $logo[ 'height' ] ) ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+			<img class="vw-logo" src="<?php echo esc_url( $logo[ 'url' ] ); ?>" width="<?php echo esc_attr( $logo[ 'width' ] || 'auto' ) ?>" height="<?php echo esc_attr( $logo[ 'height' ] || 'auto' ) ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
 		</div>
 		<?php
 

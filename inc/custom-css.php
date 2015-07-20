@@ -112,6 +112,19 @@ if ( ! function_exists( 'vw_render_custom_css' ) ) {
 			font-family: <?php echo $vw_espresso['typography_header']['font-family'] ?>;
 		}
 
+		.mm-button {
+			font-family: <?php echo $vw_espresso['typography_header']['font-family'] ?> !important;
+		}
+
+		.mm-button:hover {
+			background: <?php echo $vw_espresso['accent_color'] ?> !important;
+		}
+
+		
+		#site-top blockquote[id*=testimonial] .quotes {
+			color: <?php echo $vw_espresso['accent_color'] ?> !important;
+		}
+
 		/* Body font */
 		.vw-breaking-news-link {
 			font-family: <?php echo $vw_espresso['typography_body']['font-family'] ?>;

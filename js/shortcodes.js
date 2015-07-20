@@ -23,6 +23,7 @@
 				options.active = false;
 			}
 
+			// debugger
 			$this.accordion( options );
 		} );
 

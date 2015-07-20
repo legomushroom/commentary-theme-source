@@ -18,8 +18,11 @@ add_action( 'wp_footer', 'vw_enqueue_scripts_backstretch', 99 );
 if ( ! function_exists( 'vw_enqueue_scripts_backstretch' ) ) {
 	function vw_enqueue_scripts_backstretch() {
 		// if ( function_exists( 'is_product' ) && is_product() ) return;
-		if ( is_page() && ! is_page_template( 'page_big_featured_image.php' )
-		 || ( function_exists( 'is_shop' ) && vw_is_shop() && get_page_template_slug( vw_get_shop_page_id() ) != 'page_big_featured_image.php' ) ) {
+		
+		$isntFeaturedPage = !is_page_template( 'page_big_featured_image.php' ) && !is_page_template( 'page_big_featured_image_no_header.php' );
+		// $isntFeaturedSlug = !is_page_template( 'page_big_featured_image.php' ) && !is_page_template( 'page_big_featured_image_no_header.php' );
+		if ( is_page() && $isntFeaturedPage
+		 || ( function_exists( 'is_shop' ) && vw_is_shop() && (get_page_template_slug( vw_get_shop_page_id() ) != 'page_big_featured_image.php') && (get_page_template_slug( vw_get_shop_page_id() ) != 'page_big_featured_image_no_header.php') ) ) {
 			return;
 		}
 

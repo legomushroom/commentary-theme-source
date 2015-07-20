@@ -7,7 +7,7 @@
 		<!-- WP Header -->
 		<?php wp_head(); ?>
 		<!-- End WP Header -->
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
 		
 	</head>
 	<body id="site-top" <?php body_class(); ?>>

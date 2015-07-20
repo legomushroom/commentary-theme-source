@@ -76,8 +76,8 @@ Domain Path: /languages/
 body {
     line-height: 1.75em;
     margin: 0;
-    -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
+    /*-webkit-backface-visibility: hidden;
+            backface-visibility: hidden;*/
 }
 
 /*blockquote {
@@ -133,6 +133,7 @@ em {
     /*text-transform: none;*/
     font-weight: normal;
     font-style: italic;
+    padding-right: .14em;
 }
 
 p {
@@ -746,7 +747,6 @@ button,
 /* -----------------------------------------------------------------------------
  * $TITLES
  * -------------------------------------------------------------------------- */
-<<<<<<< HEAD
  .vw-about-author-title,
  .vw-related-posts-title,
  .vw-post-comments-title,
@@ -1088,9 +1088,12 @@ body {
 .vw-page-description {
     font-weight: 300;
     font-style: italic;
-    /*color: #999999;*/
-    color: white;
+    color: #999999;
     text-transform: none;
+}
+
+.vw-page-title-section-inner .vw-page-description {
+    color: white;
 }
 
 .vw-label {
@@ -1315,7 +1318,7 @@ div.vw-page-wrapper.is-no-padding {
 }
 
 .vw-sticky-sidebar {
-    padding-bottom: 50px;
+    padding-bottom: 10px;
 }
 
 .vw-page-title-section.vw-has-background + .vw-page-wrapper {
@@ -2121,10 +2124,10 @@ div.vw-page-wrapper.is-no-padding {
 }
 
 .vw-post-box .vw-post-box-thumbnail {
-    -webkit-transform: translateZ(0);
+    /*-webkit-transform: translateZ(0);
     -ms-transform: translateZ(0);
     -o-transform: translateZ(0);
-    transform: translateZ(0);
+    transform: translateZ(0);*/
 }
 
 .no-touch .vw-post-box:hover .vw-post-box-thumbnail .wp-post-image {
@@ -3425,9 +3428,9 @@ div.vw-page-wrapper.is-no-padding {
 }*/
 
 @media all and (max-width:1000px) {
-    .vw-menu-main-wrapper {
+    /*.vw-menu-main-wrapper {
         display:  none;
-    }
+    }*/
     .vw-post-navigation {
         width:  100%;
         /*margin-top: -39px;*/
@@ -3597,8 +3600,9 @@ div.vw-page-wrapper.is-no-padding {
     right: 0;
     z-index: 1;
     height: 20px;
-    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.02) 50%, rgba(0, 0, 0, 0) 80%);
-    background:         linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.02) 50%, rgba(0, 0, 0, 0) 80%);
+    /*test*/
+    /*background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.02) 50%, rgba(0, 0, 0, 0) 80%);*/
+    /*background:         linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.02) 50%, rgba(0, 0, 0, 0) 80%);*/
 }
 
 /* -----------------------------------------------------------------------------
@@ -6340,6 +6344,14 @@ html.mm-right.mm-opening .vw-sticky-wrapper.is-sticky .vw-sticky {
     margin: 0;
 }
 
+.is-no-image .vw-instant-search-result-thumbnail {
+    display: none;
+}
+
+.is-no-image .vw-instant-search-result-content {
+    margin-left: 0;
+}
+
 .vw-instant-search-result-content {
     margin-left: 80px;
 }
@@ -7077,10 +7089,10 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
     -o-transition-delay: 0s, .3s;
     transition-delay: 0s, .3s;
     
-    -webkit-transform: translateX(-100%);
-    -ms-transform: translateX(-100%);
-    -o-transform: translateX(-100%);
-    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%) translateZ(0);
+    -ms-transform: translateX(-100%) translateZ(0);
+    -o-transform: translateX(-100%) translateZ(0);
+    transform: translateX(-100%) translateZ(0);
   }
   /*.sticky-contents .vw-post-share-box {
     margin-right: 60px;
@@ -7123,6 +7135,10 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
     transition: all .3s ease-out;
   }
 
+  .is-mobile-layout.is-no-contents {
+    height: 41px;
+  }
+
   .is-mobile-layout.headroom--unpinned {
     -webkit-transform: translateY(100%);
     -ms-transform: translateY(100%);
@@ -7138,6 +7154,10 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
     transition-delay: 0s, 0s;
     /*visibility:   visible;*/
   }
+
+  /*.sticky-contents__items {}*/
+
+
   .sticky-contents .vw-button-label {
     display: none;
   }
@@ -7163,7 +7183,7 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
   }
   .is-tablet-layout .sticky-contents__items {
     /*float: left;*/
-    padding-right:    180px;
+    /*padding-right:    180px;*/
     padding-bottom:   12px;
     padding-top:      0px;
     background-color: inherit;
@@ -7180,8 +7200,27 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
     font-size:  16px;
     color:      #ED1C24;
   }
+  .is-tablet-layout .sticky-contents__items {
+    height: 38px;
+    position: relative;
+    overflow: hidden;
+    margin-right: 170px;
+  }
+  .is-tablet-layout .sticky-contents__items-inner {
+    position: absolute;
+    white-space: nowrap;
+    -webkit-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+  }
   .is-tablet-layout .sticky-contents__item {
-    float:            left;
+    /*float:            left;*/
+    display:          inline-block;
+    /*white-space:      nowrap;*/
     margin-left:      15px;
     padding-bottom:   20px;
     border-bottom:    0;
@@ -7281,6 +7320,41 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
     padding-top:  6px;
   }
 
+.sticky-contents__arrow {
+    position: absolute;
+    z-index: 1;
+    width:  15px;
+    height: 100%;
+    display: none;
+    /*outline: 1px solid deeppink;*/
+    /*background-color: deeppink;*/
+    }
+    .is-mobile-layout .sticky-contents__arrow,
+    .is-tablet-layout .sticky-contents__arrow {
+        display: block;
+    }
+    .sticky-contents__arrow--left {
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&amp;1+0,0+100;White+to+Transparent */
+        background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
+        background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
+    }
+    .sticky-contents__arrow--right {
+        right:  0;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&amp;0+0,1+100 */
+        background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* IE10+ */
+        background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+    }
+
 .vw-menu-main-inner {
   text-align:     center;
 }
@@ -7320,12 +7394,175 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
     transform: translateY(-50%);
 }
 
+@media all and (max-width: 1000px) {
+    .vw-thumbnail--one-third {
+        width: 100%;
+    }
+    .swiper-container .vw-thumbnail--one-third {
+        width: 360px;
+    }
+}
+
+@media all and (max-width: 360px) {
+    .swiper-container .vw-thumbnail--one-third {
+        width: 320px;
+        height: 213px;
+    }
+}
+
+/*.custom-content-ad {
+    display: none;
+    visibility: hidden;
+}*/
+
 .vw-post-loop-slider-small {
     width: 360px;
+}
+
+.vw-max-height-240 {
+    max-height: 240px;
 }
 
 .vw-height-240 {
     height: 240px;
 }
 
+.twentytwenty-wrapper {
+    position: relative;
+    z-index: 0;
+}
 
+/* SHORTCODES */
+/* div - specifity hack */
+div.intense .testimonial_boxed_container blockquote {
+    width: 99.9%;
+}
+div.intense .testimonial_boxed_container {
+    font-family: inherit;
+} 
+div.intense .testimonial_boxed_container h2 {
+    color: black;
+}
+div.intense .testimonial_boxed_container .leftq,
+div.intense .testimonial_boxed_container .rightq {
+    /*left: 11px;
+    top: -14px;*/
+    display: none;
+}
+/*div.intense .testimonial_boxed_container .rightq {
+    right:   11px;
+    bottom: -9px;
+}
+@media all and (max-width: 768px) {
+    div.intense .testimonial_boxed_container blockquote span {
+        position: static;
+    }
+    div.intense .testimonial_boxed_container blockquote {
+        padding-right: 24px;
+    }
+    div.intense .testimonial_boxed_container blockquote:first-letter {
+        padding-left: 28px;
+    }
+}*/
+
+div.intense,
+div.intense > * {
+    font-family: inherit;
+}
+
+
+@media all and (max-width: 391px) {
+    .mm-expMonthList {
+        float: left;
+        clear: left;
+    }
+    .mm-expYearList {
+        float: left;
+        left: -1px;
+    }
+}
+
+
+.mm-login td {
+    padding-top: 15px;
+}
+
+
+
+
+
+
+/* MM CUSTOM CODE */
+.mm-button {
+    text-transform: uppercase !important;
+    background: #3E3E3E !important;
+    color: #FFFFFF !important;
+    border: 0px solid !important;
+    letter-spacing: 2px !important;
+    font-size: 10px !important;
+    font-weight: bold !important;
+    line-height: 28px !important;
+    margin-bottom: 5px !important;
+    margin-right: 4px !important;
+    padding: 6px 18px !important;
+    -webkit-transition: all 0.2s ease-out !important;
+    -moz-transition: all 0.2s ease-out !important;
+    transition: all 0.2s ease-out !important;
+    height: 40px;
+    box-sizing: border-box !important;
+    border-radius: 0 !important;
+    /*-webkit-appearance: button !important;*/
+    cursor: pointer !important;
+    margin: 0 !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+
+div.mm-formField {
+    color: inherit;
+}
+
+.mm-formField input {
+    border-color: #A6A6A6;
+    width: 168px;   
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.mm-formField select {
+    background: white;
+    border-radius: 0;
+    width: 168px;
+    -webkit-appearance: none;
+    border-color: #A6A6A6;
+    position: relative;
+    background: white url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjBweCIgaGVpZ2h0PSIxNHB4IiB2aWV3Qm94PSIwIDAgMjAgMTQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM6c2tldGNoPSJodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2gvbnMiPiAgICA8ZyBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxnIGlkPSJSZWN0YW5nbGUtMS0rLVJlY3RhbmdsZS0xLUNvcHkiIHNrZXRjaDp0eXBlPSJNU0xheWVyR3JvdXAiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLCAwLjUwMDAwMCkiIGZpbGw9IiNBNkE2QTYiPiAgICAgICAgICAgIDxwYXRoIGQ9Ik01LDAuNTgwNTgyNjE4IEw5LjQxOTQxNzM4LDUgTDAuNTgwNTgyNjE4LDUgTDUsMC41ODA1ODI2MTggWiIgaWQ9IlJlY3RhbmdsZS0xIj48L3BhdGg+ICAgICAgICAgICAgPHBhdGggZD0iTTUuMDEyMjA3MDMsMTIuMjE0ODI3NSBMMC41OTI3ODk2NDksNy43OTU0MTAxNiBMOS40MzE2MjQ0MSw3Ljc5NTQxMDE2IEw1LjAxMjIwNzAzLDEyLjIxNDgyNzUgWiIgaWQ9IlJlY3RhbmdsZS0xLUNvcHkiPjwvcGF0aD4gICAgICAgIDwvZz4gICAgPC9nPjwvc3ZnPg==);
+    background-position: right center;
+    background-repeat: no-repeat;
+    padding-right: 25px;
+}
+
+div.mm-forgot-password .mm-button {
+    position: relative;
+    top: -2px;
+    left: -5px;
+}
+
+div.mm-forgot-password p.mm-success,
+div.mm-forgot-password p.mm-error {
+    padding: 5px 10px;
+}
+div.mm-forgot-password p.mm-success {
+    background: #999;
+}
+div.mm-forgot-password p.mm-error {
+    background: #000;
+    border: 0;
+}
+.mm-selectList.mm-expMonthList {
+    width: 96px;
+}
+.mm-selectList.mm-expYearList {
+    width: 69px;
+}

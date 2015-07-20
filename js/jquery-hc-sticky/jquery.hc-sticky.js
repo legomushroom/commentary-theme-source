@@ -578,7 +578,6 @@
 					resize: onResize
 				}});
 
-
 				// check for off resolutions
 				var checkResolutions = function(){
 					if (options.offResolutions) {

@@ -110,7 +110,6 @@ function getShareButtons () {
 	$pinterest_url = sprintf( 'http://pinterest.com/pin/create/button/?url=%s&media=%s&description=%s', $post_url, $thumbnail_url, $post_title );
 	$gplus_url = sprintf( 'http://plus.google.com/share?url=%s', $post_url );
 
-
 	return '<div class="vw-post-share-box">
 							<div class="vw-post-share-big-number">
 								<div class="vw-post-share-big-number__inner">
@@ -130,7 +129,7 @@ function getShareButtons () {
                   <i class="vw-icon icon-social-gplus"></i>
 									<span class="vw-button-label"> Google+ </span>
               </a>
-              <a href="mailto:?subject=An%20article%20I%20thought%20you\'d%20find%20interesting&body=Here%20it%20is,%20on%20Commentary%20Magazine:%20'. $post_url .'" target="_blank" class="vw-post-share-box-button vw-post-shares-social vw-post-shares-social-email">
+              <a href="mailto:%20?subject=An%20article%20I%20thought%20you\'d%20find%20interesting&body=Here%20it%20is,%20on%20Commentary%20Magazine:%20'. $post_url .'" target="_top" class="vw-post-share-box-button vw-post-shares-social-email">
                   <i class="vw-icon icon-social-email"></i>
 									<span class="vw-button-label"> Email </span>
               </a>
@@ -142,7 +141,8 @@ add_filter('the_excerpt', 'do_my_shortcode_in_excerpt');
 if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
 	function do_my_shortcode_in_excerpt($excerpt) {
 		$content = do_shortcode(get_the_content());
-		$content = preg_replace('/<h[1|2|3|4|5|6].+?<\/h[1|2|3|4|5|6]>/im', '', $content);
+		$content = str_replace(array("\r","\n"),"", $content);
+		$content = preg_replace('/<h[1|2|3|4|5|6].+?<\/h[1|2|3|4|5|6]>/sim', '', $content);
 		$content = preg_replace('/Contents\s?/i', '', $content);
 		$args = array(
 		    //formatting
@@ -181,7 +181,7 @@ function wv_my_post_thumbnail_fallback( $html, $post_id, $post_thumbnail_id, $si
 
 function theme_slug_filter_the_content( $content ) {
 		$buttons = getShareButtons();
-    $custom_content = "<div id=\"js-sticky-contents\" class='intense sticky-contents clearfix'><div class=\"sticky-contents__header\" id=\"js-sticky-contents-header\">Contents</div><div class=\"sticky-contents__items clearfix\" id=\"js-sticky-content-items\"></div>" . $buttons . "</div>";
+    $custom_content = "<div id=\"js-sticky-contents\" class='intense sticky-contents clearfix'><div class=\"sticky-contents__header\" id=\"js-sticky-contents-header\">Contents</div><div class=\"sticky-contents__items clearfix\"><div class=\"sticky-contents__arrow sticky-contents__arrow--left\"></div><div class=\"sticky-contents__arrow sticky-contents__arrow--right\"></div><div class=\"sticky-contents__items-inner\" id=\"js-sticky-content-items\"></div></div>" . $buttons . "</div>";
     $custom_content .= $content;
     return $custom_content;
 }

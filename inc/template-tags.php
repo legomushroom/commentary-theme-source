@@ -672,6 +672,7 @@ if ( ! function_exists( 'vw_the_post_slider' ) ) {
 		$default = array(
 			'template' => 'large',
 			'cat' => null,
+			'post__in' => null,
 			'posts_order' => 'latest_posts', // latest_posts, latest_featured, latest_reviews, most_review_scores
 			'number_of_post' => 5,
 			'before' => '',
@@ -691,6 +692,10 @@ if ( ! function_exists( 'vw_the_post_slider' ) ) {
 
 		if ( $args['cat'] ) {
 			$query_args['cat'] = $args['cat'];
+		}
+
+		if ( $args['post__in'] ) {
+			$query_args['post__in'] = $args['post__in'];
 		}
 
 		if ( $args['posts_order'] == 'latest_posts' ) {

@@ -31,6 +31,7 @@ if ( ! function_exists( 'vw_after_theme_setup' ) ) {
 		add_image_size( 'vw_one_half_thumbnail', 555, 278, true );
 		add_image_size( 'vw_one_third_thumbnail', 360, 240, true );
 		add_image_size( 'vw_two_third_thumbnail', 750, 375, true );
+		// add_image_size( 'vw_two_third_thumbnail', 85, 60, true );
 		add_image_size( 'vw_two_third_thumbnail_no_crop', 750, 0, false );
 		add_image_size( 'vw_small_thumbnail_2x', 170, 120, true );
 		add_image_size( 'vw_small_thumbnail', 85, 60, true );

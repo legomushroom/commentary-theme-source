@@ -19,6 +19,23 @@ jQuery.noConflict();
 	$( document ).ready( function () {
 		// ### CUSTOM JS HERE ###
 		
+		// // Ads
+		// (function (undefined) {
+		// 	var $ads = $('.custom-content-ad');
+		// 	console.log($ads);
+
+		// 	$ads.each(function (i) {
+		// 		var $it = $(this);
+		// 		(function ($el) {
+		// 			setTimeout(function () {
+		// 				$el.css({ 'visibility': 'visible' });
+		// 			}, 2000);
+		// 		})($it);
+		// 	});
+
+		// })();
+
+		// Sticky Header 
 		(function (undefined) {
 			var main = {
 				init: function () {
@@ -31,28 +48,40 @@ jQuery.noConflict();
 					if (!this.$post[0]) {return false};
 					this.$stickyContents = this.$post.find('#js-sticky-contents');
 					this.$stickyContentsItems = this.$post.find('#js-sticky-contents-with-items');
+
+					this.$visibleMenu 	 = this.$stickyContents.find('.sticky-contents__items');
 					this.$itemsContainer = this.$post.find('#js-sticky-content-items');
 					this.$items 				 = this.$post.find('.intense.heading');
 					this.items 					 = [];
-					this.isConentents 	 = false;
+					// this.isConentents 	 = false;
 					this.$w  						 = $(window);
 					this.containerWidth  = this.$post.outerWidth()
 					this.$adminBar 			 = $('#wpadminbar');
 					this.isAdminBar 		 = !!this.$adminBar.length;
 					this.adminBarHeight  = this.$adminBar.outerHeight();
 					this.wWidth 				 = this.$w.outerWidth();
+					this.loop 					 = this.loop.bind(this);
 
-					var timeout = null, it = this;
+					this.desktopQuery = (this.$items.length > 0) ? 1510 : 1220;
+					this.mobileQuery  = (this.$items.length > 0) ? 767 : this.desktopQuery;
+
+					this.isTabletQuery = this.$items.length > 0;
+
+					this.isTabletQuery || this.$stickyContents.addClass('is-no-contents');
+
+					var timeout = null;
 					this.$w.on('resize', function () {
 						this.wWidth  = this.$w.outerWidth();
 						this.containerWidth = this.$post.outerWidth()
 						clearTimeout(timeout);
-						timeout = setTimeout(function () { it.getYs(); }, 100);
+						timeout = setTimeout((function () {
+							this.getYs(); this.getMenuWidth();
+						}).bind(this), 100);
 					}.bind(this));
 				},
 				initSticky: function () {
 					this.isStickyInited && this.destroySticky();
-					var offsetTop = ((this.$w.outerWidth() < 1001) ? 15 : 68);
+					var offsetTop = ((this.$w.outerWidth() < 768) ? 15 : 68);
 					offsetTop += (this.isAdminBar) ? this.adminBarHeight : 0;
 					setTimeout(function () {
 						this.$stickyContents.hcSticky({
@@ -64,11 +93,16 @@ jQuery.noConflict();
 						this.$stickyWrapper = this.$stickyContents.parent();
 						this.isStickyInited = true;
 						this.stickyContentsHeight = this.$stickyContents.outerHeight();
+						this.getMenuWidth();
 					}.bind(this), 500);
 				},
 				destroySticky: function () {
 					this.$stickyContents.hcSticky('destroy');
 					this.$stickyContents.attr('style', '');
+				},
+				getMenuWidth: function () {
+					this.visibleMenuWidth = this.$visibleMenu.outerWidth();
+					this.innerMenuWidth   = this.$itemsContainer.outerWidth();
 				},
 				addContents: function () {
 					this.isConentents = true;
@@ -78,15 +112,30 @@ jQuery.noConflict();
 						$div.text($item.text()); this.$itemsContainer.append($div);
 						this.addDimention($item, $div);
 					}.bind(this));
+					
+					this.$menuItems = this.$itemsContainer.find('.sticky-contents__item');
+					this.getMenuItemsPositions();
 
 					var it = this;
 					this.$stickyContents.on('click', '.sticky-contents__item', function () {
 						var offset = 100;
 						offset += (it.isAdminBar) ? it.adminBarHeight : 0;
 						offset -= ((it.$w.outerWidth() < 1001) ? 0 : 0);
-						offset += ((it.$w.outerWidth() > 1510) ? 0 : it.stickyContentsHeight);
+						offset += ((it.$w.outerWidth() > this.desktopQuery) ? 0 : it.stickyContentsHeight);
 						$('html, body').animate({'scrollTop': $(this).data().y - offset + 25});
 					});
+				},
+				getMenuItemsPositions: function () {
+					// this.menuItemsPositions = [];
+					setTimeout((function () {
+						this.$menuItems.each(function (i, item) {
+							var $item = $(item);
+							var data = {
+								left: $item.offset().left, width: $item.outerWidth(), i: i
+							};
+							$item.data('position', data);
+						}).bind(this);
+					}).bind(this), 500);
 				},
 				getYs: function () {
 					this.stickyContentsHeight = this.$stickyContents.outerHeight();
@@ -97,6 +146,10 @@ jQuery.noConflict();
 				},
 				addDimention: function ($el, $div) {
 					var y = $el.offset().top;
+					if (this.wWidth >= this.desktopQuery) {
+						y += .7*this.$w.height();
+					}
+
 					this.items.push({
 						el: 	$el,
 						$item: $div,	
@@ -111,18 +164,34 @@ jQuery.noConflict();
 							this.currentActiveItem = this.items[i];
 						}
 					};
-					if (this.currentActiveItem) {
+					if (this.currentActiveItem && this.currentActiveItem !== this.previousActiveItem) {
 						if (this.previousActiveItem && this.previousActiveItem !== this.currentActiveItem) {
 							this.previousActiveItem.$item.removeClass('is-active');
 						}
+
+						var pos = this.currentActiveItem.$item.data('position');
+						var rightPoint  = pos.left + pos.width;
+						var centerPoint = pos.left + (pos.width/2);
+						var menuCenter  = this.visibleMenuWidth/2;
+						var dX = 0;
+
+						if (rightPoint > menuCenter) {
+							dX = (menuCenter - centerPoint) + 30;
+						}
+
+						var shift = (this.state === 'desktop') ? 0 : 15
+						dX = Math.max(dX, this.visibleMenuWidth-this.innerMenuWidth-shift);
+						this.$itemsContainer.css({ 'transform': 'translateX(' + dX + 'px) translateZ(0)' });
+						
 						this.currentActiveItem.$item.addClass('is-active');
 						this.previousActiveItem = this.currentActiveItem;
 					}
 				},
 				defineQueries: function () {
 					var it = this;
-					enquire.register("screen and (min-width:1510px)", {
+					enquire.register("screen and (min-width:" + this.desktopQuery + "px)", {
 					    match : function() {
+					    	it.state = 'desktop';
 					    	it.$stickyContents.removeClass('is-tablet-layout');
 					    	it.$stickyContents.removeClass('is-mobile-layout');
 					    	it.$stickyContents.css({ width: '170px' });
@@ -133,29 +202,31 @@ jQuery.noConflict();
 					    },
 					});
 
-					enquire.register("screen and (min-width:768px) and (max-width:1510px)", {
-					    match : function() {
-					    	it.$stickyContents.addClass('is-tablet-layout');
-					    	it.$stickyContents.css({ width: it.containerWidth + 'px' });
-					    	it.initSticky();
-					    	// it.$stickyContents.hcSticky('reinit');
-					    },
-					    unmatch : function() {
-					    	it.$stickyContents.removeClass('is-tablet-layout');
-					    },
-					});
+					if (this.isTabletQuery) {
+						enquire.register("screen and (min-width:768px) and (max-width:" + this.desktopQuery + "px)", {
+						    match : function() {
+						    	it.state = 'tablet';
+						    	it.$stickyContents.addClass('is-tablet-layout');
+						    	it.$stickyContents.css({ width: it.containerWidth + 'px' });
+						    	it.initSticky();
+						    	// it.$stickyContents.hcSticky('reinit');
+						    },
+						    unmatch : function() {
+						    	it.$stickyContents.removeClass('is-tablet-layout');
+						    },
+						});
+						enquire.register("screen and (min-width:768px) and (max-width:1000px)", {
+						  match : function() { it.initSticky(); }
+						});
+						enquire.register("screen and (min-width:1000px) and (max-width:" + this.desktopQuery + "px)", {
+						    match : function() { it.initSticky(); }
+						});
+					}
 
-					enquire.register("screen and (min-width:768px) and (max-width:1000px)", {
-					  match : function() { it.initSticky(); }
-					});
-
-					enquire.register("screen and (min-width:1000px) and (max-width:1510px)", {
-					    match : function() { it.initSticky(); }
-					});
-
-					enquire.register("screen and (max-width:767px)", {
+					enquire.register("screen and (max-width:" + this.mobileQuery + "px)", {
 					    match : function() {
 					    	it.isStickyInited && it.destroySticky();
+					    	it.state = 'mobile';
 					    	it.$stickyContents.addClass('is-mobile-layout');
 					    	// it.$stickyContents.removeClass('is-sticky-contents');
 					    	it.$stickyContents.css({ width: '100%' });
@@ -173,7 +244,8 @@ jQuery.noConflict();
 				},
 
 				loop: function () {
-					this.checkItems(); requestAnimationFrame(this.loop.bind(this));
+					// return;
+					this.checkItems(); requestAnimationFrame(this.loop);
 				}
 			}
 		main.init()
