@@ -585,7 +585,7 @@ button,
  * -------------------------------------------------------------------------- */
 .vw-site-footer-sidebars {
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 8px;
 }
 .vw-site-footer-sidebars .vw-post-loop-text-no-thumbnail .vw-post-box + .vw-post-box,
 .vw-site-footer-sidebars .vw-post-style-small-left-thumbnail + .vw-post-style-small-left-thumbnail,
@@ -594,6 +594,10 @@ button,
 }
 .vw-site-footer-sidebars .vw-post-loop-mix-3 .vw-post-style-medium {
     border-bottom-color: rgba(128, 128, 128, 0.3);
+}
+
+.vw-site-footer-sidebars .vw-sticky-sidebar {
+    padding-bottom: 0;
 }
 
 /* -----------------------------------------------------------------------------
@@ -1309,7 +1313,7 @@ span.intense.dropcap {
  * $PAGE
  * -------------------------------------------------------------------------- */
 .vw-page-wrapper {
-    padding:        60px 0;
+    padding:        20px 0;
     padding-bottom: 0;
 }
 
@@ -2242,7 +2246,8 @@ div.vw-page-wrapper.is-no-padding {
     position: absolute;
     top: 4px;
     left: 10px;
-    font-family: 'Times New Roman', serif;
+    /*font-family: 'Times New Roman', serif;*/
+    padding-right: 10px;
     font-size: 40px;
     font-style: italic;
     font-weight: bold;
@@ -2845,14 +2850,14 @@ div.vw-page-wrapper.is-no-padding {
 }
 
 .vw-enable-kenburns .vw-post-loop-slider-large .vw-post-box-inner {
-    -webkit-backface-visibility: visible;
-            backface-visibility: visible;
-    z-index: 10;
-    -webkit-transform-style: preserve-3d;
-       -moz-transform-style: preserve-3d;
-        -ms-transform-style: preserve-3d;
-         -o-transform-style: preserve-3d;
-            transform-style: preserve-3d;
+    /*-webkit-backface-visibility: visible;*/
+            /*backface-visibility: visible;*/
+    /*z-index: 10;*/
+    /*-webkit-transform-style: preserve-3d;*/
+       /*-moz-transform-style: preserve-3d;*/
+        /*-ms-transform-style: preserve-3d;*/
+         /*-o-transform-style: preserve-3d;*/
+            /*transform-style: preserve-3d;*/
 }
 .vw-enable-kenburns .vw-post-loop-slider-large .wp-post-image {
     -webkit-backface-visibility: visible;
@@ -2906,13 +2911,13 @@ div.vw-page-wrapper.is-no-padding {
        -moz-animation-play-state: running;
             animation-play-state: running;
 }
-.vw-enable-kenburns .vw-post-loop-slider-large .vw-kenburn-active .vw-post-box-inner {
+/*.vw-enable-kenburns .vw-post-loop-slider-large .vw-kenburn-active .vw-post-box-inner {
     -webkit-transform: translate3d(0, 0, 0);
        -moz-transform: translate3d(0, 0, 0);
         -ms-transform: translate3d(0, 0, 0);
          -o-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0);
-}
+}*/
 .vw-enable-kenburns .vw-post-loop-slider-large .swiper-slide .wp-post-image,
 .vw-enable-kenburns .vw-post-loop-slider-large .swiper-slide.vw-kenburn-origin-1 .wp-post-image {
     -webkit-transform-origin: top left;
@@ -3087,6 +3092,10 @@ div.vw-page-wrapper.is-no-padding {
     margin-bottom: 30px;
     padding-bottom: 15px;
     border-bottom: 1px solid #EFEFEF;
+}
+.vw-post-share-box.is-no-border {
+    border: 0;
+    padding-bottom: 6px;
 }
 .vw-post-share-box .vw-post-share-box-button {
     display: inline-block;
@@ -4050,12 +4059,12 @@ div.vw-page-wrapper.is-no-padding {
 
 .author-list__autor {
     display:            block;
-    width:              25%;
+    width:              100%;
     /*background:         deeppink;*/
-    padding-bottom:     25%;
+    padding-bottom:     100%;
     position:           relative;
     float:              left;
-    outline:            2px solid white;
+    outline:            2px solid white !important;
 }
 
 .author-list__autor img {
@@ -4069,7 +4078,8 @@ div.vw-page-wrapper.is-no-padding {
 .widget_vw_widget_author_list li {
     display: inline-block;
     float: left;
-    margin-right:  7px;
+    width: 25%;
+    /*margin-right:  7px;*/
     /*margin-right: 9px;*/
     margin-bottom: 10px;
 }
@@ -4079,9 +4089,9 @@ div.vw-page-wrapper.is-no-padding {
 .widget_vw_widget_author_list a {
     display: inline-block;
 }
-.widget_vw_widget_author_list .avatar {
+/*.widget_vw_widget_author_list .avatar {
     max-width: 80px;
-}
+}*/
 
 .twentytwenty-container {
     max-width: 100%;
@@ -7089,10 +7099,10 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
     -o-transition-delay: 0s, .3s;
     transition-delay: 0s, .3s;
     
-    -webkit-transform: translateX(-100%) translateZ(0);
-    -ms-transform: translateX(-100%) translateZ(0);
-    -o-transform: translateX(-100%) translateZ(0);
-    transform: translateX(-100%) translateZ(0);
+    -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%);
   }
   /*.sticky-contents .vw-post-share-box {
     margin-right: 60px;
@@ -7123,16 +7133,26 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
     bottom:   0;
     left:     0;
     z-index:  1000;
-    opacity:  1;
-    width:    100%;
     min-height: 38px;
-    -webkit-transform: translateY(0);
-    -ms-transform: translateY(0);
-    -o-transform: translateY(0);
-    transform: translateY(0);
+    top:        auto !important;
+    width:    100% !important;
+    opacity:  0;
+    -webkit-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    -o-transform: translateY(100%);
+    transform: translateY(100%);
     -webkit-transition: all .3s ease-out;
     -o-transition: all .3s ease-out;
     transition: all .3s ease-out;
+  }
+
+  .sticky-contents.is-mobile-layout.is-show {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+       -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+         -o-transform: translateY(0);
+            transform: translateY(0);
   }
 
   .is-mobile-layout.is-no-contents {
@@ -7376,7 +7396,7 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
     }
     .vw-thumbnail--one-third {
         width: 360px;
-        height: 240px;
+        max-height: 240px;
         /*display: block;*/
     }
 
@@ -7565,4 +7585,17 @@ div.mm-forgot-password p.mm-error {
 }
 .mm-selectList.mm-expYearList {
     width: 69px;
+}
+
+html {
+    max-height: 100%;
+}
+
+#wpadminbar {
+    overflow: hidden;
+}
+
+
+.vw-post-loop-mix-3 .vw-post-style-medium:last-of-type {
+    border-bottom: 0;
 }

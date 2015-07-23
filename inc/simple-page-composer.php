@@ -488,7 +488,7 @@ if ( ! function_exists( 'vw_render_spc_section_post_box' ) ) {
 		?>
 		<div class="container vwspc-section-content">
 			<?php if ( ! empty ( $title ) ) : ?>
-			<h2 class="vwspc-section-title"><?php printf( '<span class="%2$s">%1$s</span>', do_shortcode( esc_html( $title ) ), esc_attr( $title_class ) ); ?></h2>
+			<h2 class="vwspc-section-title"><?php printf( '<span class="%2$s">%1$s</span>', do_shortcode( wp_kses( $title ) ), esc_attr( $title_class ) ); ?></h2>
 			<?php endif; ?>
 
 			<?php
@@ -648,7 +648,7 @@ if ( ! function_exists( 'vw_render_spc_section_post_box_sidebar' ) ) {
 			<div class="row">
 				<div class="col-md-8 vwspc-section-content">
 					<?php if ( ! empty ( $title ) ) : ?>
-					<h2 class="vwspc-section-title"><?php printf( '<span class="%2$s">%1$s</span>', do_shortcode( esc_html( $title ) ), esc_attr( $title_class ) ); ?></h2>
+					<h2 class="vwspc-section-title"><?php printf( '<span class="%2$s">%1$s</span>', do_shortcode( wp_kses( $title ) ), esc_attr( $title_class ) ); ?></h2>
 					<?php endif; ?>
 
 					<?php

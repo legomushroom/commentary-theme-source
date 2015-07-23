@@ -18,23 +18,6 @@ jQuery.noConflict();
 
 	$( document ).ready( function () {
 		// ### CUSTOM JS HERE ###
-		
-		// // Ads
-		// (function (undefined) {
-		// 	var $ads = $('.custom-content-ad');
-		// 	console.log($ads);
-
-		// 	$ads.each(function (i) {
-		// 		var $it = $(this);
-		// 		(function ($el) {
-		// 			setTimeout(function () {
-		// 				$el.css({ 'visibility': 'visible' });
-		// 			}, 2000);
-		// 		})($it);
-		// 	});
-
-		// })();
-
 		// Sticky Header 
 		(function (undefined) {
 			var main = {
@@ -59,19 +42,25 @@ jQuery.noConflict();
 					this.$adminBar 			 = $('#wpadminbar');
 					this.isAdminBar 		 = !!this.$adminBar.length;
 					this.adminBarHeight  = this.$adminBar.outerHeight();
+					this.wHeight 				 = this.$w.outerHeight();
 					this.wWidth 				 = this.$w.outerWidth();
 					this.loop 					 = this.loop.bind(this);
 
-					this.desktopQuery = (this.$items.length > 0) ? 1510 : 1220;
+					this.desktopQuery = (this.$items.length > 0) ? 1220 : 1510;
 					this.mobileQuery  = (this.$items.length > 0) ? 767 : this.desktopQuery;
-
+					
 					this.isTabletQuery = this.$items.length > 0;
-
 					this.isTabletQuery || this.$stickyContents.addClass('is-no-contents');
+
+					setTimeout((function () {
+						this.getActiveArea();
+					}.bind(this)), 200);
 
 					var timeout = null;
 					this.$w.on('resize', function () {
+						this.wHeight = this.$w.outerHeight();
 						this.wWidth  = this.$w.outerWidth();
+						this.getActiveArea();
 						this.containerWidth = this.$post.outerWidth()
 						clearTimeout(timeout);
 						timeout = setTimeout((function () {
@@ -79,8 +68,13 @@ jQuery.noConflict();
 						}).bind(this), 100);
 					}.bind(this));
 				},
+				getActiveArea: function () {
+					this.postActiveAreaTop = this.$post.offset().top - 150;
+					this.postActiveArea = this.postActiveAreaTop + this.$post.outerHeight() - this.wHeight;
+				},
 				initSticky: function () {
 					this.isStickyInited && this.destroySticky();
+					this.isStickyInited && this.$stickyContents.css({ left: '0' });
 					var offsetTop = ((this.$w.outerWidth() < 768) ? 15 : 68);
 					offsetTop += (this.isAdminBar) ? this.adminBarHeight : 0;
 					setTimeout(function () {
@@ -159,6 +153,14 @@ jQuery.noConflict();
 				},
 				checkItems: function () {
 					var scrollY = window.pageYOffset || document.scrollTop || document.body.scrollTop;
+
+					if (this.state === 'mobile') {
+						var isShow = !(scrollY < this.postActiveAreaTop || scrollY > this.postActiveArea);
+						(this.isMobileShow !== isShow) && this.$stickyContents.toggleClass('is-show', isShow);
+						this.isMobileShow = isShow;
+						return;
+					}
+
 					for (var i = 0; i < this.items.length; i++) {
 						if (scrollY + this.stickyContentsHeight + 50 > this.items[i].y) {
 							this.currentActiveItem = this.items[i];
@@ -219,7 +221,7 @@ jQuery.noConflict();
 						  match : function() { it.initSticky(); }
 						});
 						enquire.register("screen and (min-width:1000px) and (max-width:" + this.desktopQuery + "px)", {
-						    match : function() { it.initSticky(); }
+						  match : function() { it.initSticky(); }
 						});
 					}
 
@@ -229,9 +231,9 @@ jQuery.noConflict();
 					    	it.state = 'mobile';
 					    	it.$stickyContents.addClass('is-mobile-layout');
 					    	// it.$stickyContents.removeClass('is-sticky-contents');
-					    	it.$stickyContents.css({ width: '100%' });
-					    	it.$stickyContents.css({ top: 'auto' });
-					    	it.headroom = new Headroom(it.$stickyContents[0]).init();
+					    	// it.headroom = new Headroom(it.$stickyContents[0]).init();
+					    	// it.$stickyContents.css({ width: '100%' });
+					    	// it.$stickyContents.css({ top: 'auto' });
 					    },
 					    unmatch : function() {
 					    	it.$stickyContents.removeClass('is-mobile-layout');
@@ -521,7 +523,7 @@ jQuery.noConflict();
 				vw_sticky_sidebar.hcSticky( {
 					stickTo: '.container',
 					wrapperClassName: 'vw-sticky-sidebar-wrapper',
-					offResolutions: [-992],
+					offResolutions: [-768],
 					top: offset,
 				} );
 

@@ -126,7 +126,7 @@ if ( ! function_exists( 'vw_render_custom_css' ) ) {
 		}
 
 		/* Body font */
-		.vw-breaking-news-link {
+		.vw-breaking-news-link, .vw-post-loop-text-no-thumbnail .vw-post-box-title:before {
 			font-family: <?php echo $vw_espresso['typography_body']['font-family'] ?>;
 		}
 

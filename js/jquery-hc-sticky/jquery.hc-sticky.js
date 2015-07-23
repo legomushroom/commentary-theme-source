@@ -341,6 +341,9 @@
 							top: args.top || 0,
 							left: args.left || $wrapper.offset().left
 						}).addClass(options.className);
+						// console.log(args.left);
+						// console.log($wrapper.offset().left);
+						// console.log($wrapper[0])
 
 						// start event
 						options.onStart.apply($this[0]);

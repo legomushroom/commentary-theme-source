@@ -95,7 +95,7 @@ require_once get_template_directory().'/inc/custom-font.php';
 require_once get_template_directory().'/inc/custom-css.php';
 // require_once get_template_directory().'/inc/quick-translation.php';
 
-function getShareButtons () {
+function getShareButtons ($className='') {
 	$post_id = get_the_id();
 	$post_url = urlencode( get_permalink() );
 	$post_title = urlencode( get_the_title() );
@@ -110,7 +110,7 @@ function getShareButtons () {
 	$pinterest_url = sprintf( 'http://pinterest.com/pin/create/button/?url=%s&media=%s&description=%s', $post_url, $thumbnail_url, $post_title );
 	$gplus_url = sprintf( 'http://plus.google.com/share?url=%s', $post_url );
 
-	return '<div class="vw-post-share-box">
+	return '<div class="vw-post-share-box ' . ($className) . '">
 							<div class="vw-post-share-big-number">
 								<div class="vw-post-share-big-number__inner">
 									<div class="vw-number">' . vw_number_prefixes( vwpsh_get_total_shares() ) . '</div>
@@ -179,13 +179,13 @@ function wv_my_post_thumbnail_fallback( $html, $post_id, $post_thumbnail_id, $si
 
 
 
+add_filter( 'the_content', 'theme_slug_filter_the_content' );
 function theme_slug_filter_the_content( $content ) {
 		$buttons = getShareButtons();
     $custom_content = "<div id=\"js-sticky-contents\" class='intense sticky-contents clearfix'><div class=\"sticky-contents__header\" id=\"js-sticky-contents-header\">Contents</div><div class=\"sticky-contents__items clearfix\"><div class=\"sticky-contents__arrow sticky-contents__arrow--left\"></div><div class=\"sticky-contents__arrow sticky-contents__arrow--right\"></div><div class=\"sticky-contents__items-inner\" id=\"js-sticky-content-items\"></div></div>" . $buttons . "</div>";
     $custom_content .= $content;
     return $custom_content;
 }
-add_filter( 'the_content', 'theme_slug_filter_the_content' );
 
 // Allow SVG files upload
 function cc_mime_types($mimes) {
@@ -776,4 +776,14 @@ if ( ! function_exists( 'vw_get_template_part' ) ) {
 function vw_is_starts_with( $haystack, $needle ) {
 	//Thanks for such fastest method http://stackoverflow.com/questions/834303/startswith-and-endswith-functions-in-php
     return substr($haystack, 0, strlen($needle)) === $needle;
+}
+
+/* -----------------------------------------------------------------------------
+ * Remove admin bar for non-admin users.
+ * -------------------------------------------------------------------------- */
+add_action('after_setup_theme', 'remove_admin_bar');
+function remove_admin_bar() {
+	if (!current_user_can('administrator') && !is_admin()) {
+	  show_admin_bar(false);
+	}
 }
