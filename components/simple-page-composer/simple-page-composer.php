@@ -10,7 +10,7 @@ add_action( 'current_screen', 'vwspc_init' );
 if ( ! function_exists( 'vwspc_init' ) ) {
 	function vwspc_init() {
 		global $current_screen;
-		if( 'page' != $current_screen->post_type ) return;
+		if( ! vwspc_is_supported_post_type( $current_screen->post_type ) ) return;
 
 		// Enqueue scripts only on page edit
 		add_action( 'admin_enqueue_scripts', 'vwspc_init_scripts' );
@@ -47,9 +47,9 @@ if ( ! function_exists( 'vwspc_render_editor' ) ) {
 		global $post;
 
 		$current_screen = get_current_screen();
-		if ( $current_screen->post_type != 'page' ) return;
+		if ( ! vwspc_is_supported_post_type( $current_screen->post_type ) ) return;
 
-		if ( isset( $post->ID ) && VWSPC_PAGE_TEMPLATE_SLUG == get_post_meta( $post->ID,'_wp_page_template',TRUE ) ) : ?>
+		if ( isset( $post->ID ) && ( 'page' != $current_screen->post_type || VWSPC_PAGE_TEMPLATE_SLUG == get_post_meta( $post->ID,'_wp_page_template',TRUE ) ) ) : ?>
 			<style>#postdivrich{ display:none; }</style>
 		<?php else : ?>
 			<style>#vwspc-container{ display:none; }</style>
@@ -160,8 +160,8 @@ if ( ! function_exists( 'vwspc_render_editor' ) ) {
 				<select>
 					<option value="0"><?php echo __( 'None', 'envirra' ); ?></option>
 				<?php foreach ( $GLOBALS['wp_registered_sidebars'] as $sidebar ) : ?>
-					<option value="<?php echo esc_attr( $sidebar['id'] ); ?>">
-						<?php echo esc_html( $sidebar['name'] ); ?>
+					<option value="<?php echo esc_attr( ucwords( $sidebar['id'] ) ); ?>">
+						<?php echo ucwords( $sidebar['name'] ); ?>
 					</option>
 				<?php endforeach; ?>
 				</select>
@@ -196,7 +196,7 @@ if ( ! function_exists( 'vwspc_save_page' ) ) {
 	function vwspc_save_page() {
 		global $post;
 
-		if ( 'page' != get_post_type( $post ) || ! isset( $_POST['vwspc_is_enabled'] ) ) return;
+		if ( ! vwspc_is_supported_post_type( get_post_type( $post ) ) || ! isset( $_POST['vwspc_is_enabled'] ) ) return;
 
 		$counter = 1;
 		if ( isset( $_POST['vwspc_section_order'] ) && ! empty( $_POST['vwspc_section_order'] ) ) {
@@ -216,7 +216,7 @@ if ( ! function_exists( 'vwspc_save_page' ) ) {
 
 					$field_value = $_POST[ 'vwspc_sections' ][ $id ][ $field ];
 					if ( is_array( $field_value ) ) {
-						$field_value = implode( ',', $field_value );
+						$field_value = implode( ',', array_filter( $field_value ) );
 					}
 					update_post_meta( $post->ID, $field_prefix.'_'.$field, $field_value );
 				}
@@ -290,7 +290,7 @@ if ( ! function_exists( 'vwspc_get_paged' ) ) {
 		if ( get_query_var('paged') ) $paged = get_query_var('paged');
 		if ( get_query_var('page') ) $paged = get_query_var('page');
 
-		return intval( $paged );
+		return $paged;
 	}
 }
 
@@ -299,6 +299,13 @@ if ( ! function_exists( 'vwspc_get_next_id' ) ) {
 		global $vwspc_section_id;
 		if ( empty( $vwspc_section_id ) ) $vwspc_section_id = 0;
 
-		return intval( ++$vwspc_section_id );
+		return ++$vwspc_section_id;
+	}
+}
+
+if ( ! function_exists( 'vwspc_is_supported_post_type' ) ) {
+	function vwspc_is_supported_post_type( $post_type ) {
+		$supported_post_type = apply_filters( 'vwspc_filter_supported_post_types', array( 'page' ) );
+		return in_array( $post_type, $supported_post_type );
 	}
 }
