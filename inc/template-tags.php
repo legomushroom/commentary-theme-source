@@ -448,6 +448,9 @@ if ( ! function_exists( 'vw_the_embeded_audio' ) ) {
 if ( ! function_exists( 'vw_the_post_footer_sections' ) ) {
 	function vw_the_post_footer_sections() {
 		$sections = vw_get_theme_option( 'post_footer_sections' );
+
+		$sections = apply_filters( 'vw_filter_post_footer_sections', $sections );
+
 		if ( empty( $sections ) || empty( $sections['enabled'] ) ) return;
 
 		foreach ( $sections['enabled'] as $slug => $label ) {
