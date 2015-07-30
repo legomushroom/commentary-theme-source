@@ -455,7 +455,7 @@ if ( ! function_exists( 'vw_get_post_layout' ) ) {
 			$post_layout = vw_get_theme_option( 'post_default_layout' );
 		}
 
-		return $post_layout;
+		return apply_filters( 'vw_filter_post_layout', $post_layout, $post );
 	}
 }
 
