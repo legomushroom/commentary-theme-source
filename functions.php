@@ -56,7 +56,7 @@ if ( function_exists( 'vw_load_theme_options_panel' ) ) {
 	vw_load_theme_options_panel();
 } else if ( ! class_exists( 'ReduxFramework' ) ) {
 	require_once get_template_directory().'/inc/default-theme-options.php';
-	
+
 	if ( is_admin() ) {
 		require_once get_template_directory().'/inc/theme-options-mockup.php';
 	}
@@ -136,15 +136,7 @@ function getShareButtons ($className='') {
           </div>';
 }
 
-
-add_filter('the_excerpt', 'do_my_shortcode_in_excerpt');
-if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
-	function do_my_shortcode_in_excerpt($excerpt) {
-		$content = do_shortcode(get_the_content());
-		$content = str_replace(array("\r","\n"),"", $content);
-		$content = preg_replace('/<h[1|2|3|4|5|6].+?<\/h[1|2|3|4|5|6]>/sim', '', $content);
-		$content = preg_replace('/Contents\s?/i', '', $content);
-		$args = array(
+$GLOBALS['ALLOWED_HTML'] = array(
 		    //formatting
 		    'strong' => array(),
 		    'em'     => array(),
@@ -156,7 +148,26 @@ if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
 		        'href' => array()
 		    )
 		);
-	  return wp_kses(wp_trim_words($content, vw_get_theme_option('blog_excerpt_length')), $args);
+add_filter('the_excerpt', 'do_my_shortcode_in_excerpt');
+if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
+	function do_my_shortcode_in_excerpt($excerpt) {
+		$content = do_shortcode(get_the_content());
+		$content = str_replace(array("\r","\n"),"", $content);
+		$content = preg_replace('/<h[1|2|3|4|5|6].+?<\/h[1|2|3|4|5|6]>/sim', '', $content);
+		$content = preg_replace('/Contents\s?/i', '', $content);
+		// $args = array(
+		//     //formatting
+		//     'strong' => array(),
+		//     'em'     => array(),
+		//     'b'      => array(),
+		//     'i'      => array(),
+
+		//     //links
+		//     'a'     => array(
+		//         'href' => array()
+		//     )
+		// );
+	  return wp_kses(wp_trim_words($content, vw_get_theme_option('blog_excerpt_length')), $GLOBALS['ALLOWED_HTML']);
 	}
 }
 
@@ -230,7 +241,7 @@ if ( is_admin() ) {
 
 	// Meta-box
 	require_once get_template_directory().'/inc/meta-boxes.php';
-	
+
 	// Demo importer
 	require_once get_template_directory().'/inc/demo-importer/demo-importer.php';
 
@@ -295,7 +306,7 @@ if ( ! function_exists( 'vw_get_sidebar_position' ) ) {
 		} elseif ( is_single() || is_page() ) {
 			global $post;
 			$post_sidebar_position = get_post_meta( $post->ID, 'vw_sidebar_position', true );
-			
+
 			if ( $post_sidebar_position != 'default' && ! empty( $post_sidebar_position ) ) {
 				$sidebar_position = $post_sidebar_position;
 			}
@@ -372,8 +383,8 @@ if ( ! function_exists( 'vw_get_related_posts' ) ) {
 		}
 
 		$args = array(
-			'post__not_in' => array($post_ID),  
-			'posts_per_page'=> $count, 
+			'post__not_in' => array($post_ID),
+			'posts_per_page'=> $count,
 			'ignore_sticky_posts'=> 1,
 			// 'meta_key' => '_thumbnail_id', //Only posts that have featured image
 		);
@@ -383,20 +394,31 @@ if ( ! function_exists( 'vw_get_related_posts' ) ) {
 		if ( $tags ) {
 			// Find the related posts by tag
 			foreach( $tags as $tag ) {
-				$args['tag__in'][] = $tag;	
+				$args['tag__in'][] = $tag;
 			}
 		} else {
 			// Find the related posts by category when no tag.
 			$cats = wp_get_post_categories( $post_ID, array('fields' => 'ids') );
 
-			if ( ! $cats ) return;
-
-			foreach( $cats as $cat_ID ) {
-				$args['category__in'][] = $cat_ID;	
+			if ( $cats ) {
+				foreach ( $cats as $cat_ID ) {
+					$args['category__in'][] = $cat_ID;
+				}
 			}
 		}
 
-		return new WP_Query( apply_filters( 'vw_filter_related_post_query_args', $args ) );
+		// If no tags / categories, don't run WP_Query by default
+		if ( empty( $args['tag__in'] ) && empty( $args['category__in'] ) ) {
+			$query_args = apply_filters( 'vw_filter_related_post_query_args', array(), $args );
+		} else {
+			$query_args = apply_filters( 'vw_filter_related_post_query_args', $args, $args );
+		}
+
+		if ( empty( $query_args ) ) {
+			return false;
+		}
+
+		return new WP_Query( $query_args );
 	}
 }
 
@@ -467,7 +489,7 @@ if ( ! function_exists( 'vw_render_comments' ) ) {
 		$GLOBALS['comment'] = $comment; ?>
 
 		<li <?php comment_class(); ?> id="li-comment-<?php echo esc_attr( get_comment_ID() ); ?>">
-			<div id="comment-<?php echo esc_attr( get_comment_ID() ); ?>" class="comment-body clearfix"> 
+			<div id="comment-<?php echo esc_attr( get_comment_ID() ); ?>" class="comment-body clearfix">
 
 				<?php echo get_avatar($comment, $size = '100'); ?>
 
@@ -478,7 +500,7 @@ if ( ! function_exists( 'vw_render_comments' ) ) {
 						<div class="date">
 							<?php printf(__('%1$s at %2$s', 'envirra'), get_comment_date(),  get_comment_time() ) ?><?php edit_comment_link( __( '(Edit)', 'envirra'),'  ','' ) ?>
 							<?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
-						</div>  
+						</div>
 					</div>
 
 					<div class="text"><?php comment_text(); ?></div>
@@ -542,14 +564,14 @@ if ( ! function_exists( 'vw_is_caching_enabled' ) ) {
 if ( ! function_exists( 'vw_get_archive_date' ) ) {
 	function vw_get_archive_date() {
 		if ( is_year() ) {
-			return get_the_date( _x( 'Y', 'yearly archives date format', 'envirra' ) );	
+			return get_the_date( _x( 'Y', 'yearly archives date format', 'envirra' ) );
 
 		} elseif ( is_month() ) {
 			return get_the_date( _x( 'F Y', 'monthly archives date format', 'envirra' ) );
 
 		} else {
 			return get_the_date();
-			
+
 		}
 	}
 }
@@ -577,7 +599,7 @@ if ( ! function_exists( 'vw_build_template_path' ) ) {
 		if ( ! empty( $format ) ) {
 			$new_name .= '-'.$format;
 		}
-		
+
 		return sprintf( $slug.'.php', $new_name );
 	}
 }
