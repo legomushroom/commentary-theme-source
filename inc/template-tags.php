@@ -462,7 +462,7 @@ if ( ! function_exists( 'vw_the_post_footer_sections' ) ) {
 
 			} elseif ( 'related-posts' == $slug ) {
 				$the_query = vw_get_related_posts( vw_get_theme_option( 'related_post_count' ) );
-				if ( $the_query->have_posts() ) {
+				if ( $the_query && $the_query->have_posts() ) {
 					$GLOBALS['wp_query'] = $the_query;
 					get_template_part( 'templates/related-posts' );
 					wp_reset_query();
