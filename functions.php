@@ -136,15 +136,7 @@ function getShareButtons ($className='') {
           </div>';
 }
 
-
-add_filter('the_excerpt', 'do_my_shortcode_in_excerpt');
-if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
-	function do_my_shortcode_in_excerpt($excerpt) {
-		$content = do_shortcode(get_the_content());
-		$content = str_replace(array("\r","\n"),"", $content);
-		$content = preg_replace('/<h[1|2|3|4|5|6].+?<\/h[1|2|3|4|5|6]>/sim', '', $content);
-		$content = preg_replace('/Contents\s?/i', '', $content);
-		$args = array(
+$GLOBALS['ALLOWED_HTML'] = array(
 		    //formatting
 		    'strong' => array(),
 		    'em'     => array(),
@@ -156,7 +148,26 @@ if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
 		        'href' => array()
 		    )
 		);
-	  return wp_kses(wp_trim_words($content, vw_get_theme_option('blog_excerpt_length')), $args);
+add_filter('the_excerpt', 'do_my_shortcode_in_excerpt');
+if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
+	function do_my_shortcode_in_excerpt($excerpt) {
+		$content = do_shortcode(get_the_content());
+		$content = str_replace(array("\r","\n"),"", $content);
+		$content = preg_replace('/<h[1|2|3|4|5|6].+?<\/h[1|2|3|4|5|6]>/sim', '', $content);
+		$content = preg_replace('/Contents\s?/i', '', $content);
+		// $args = array(
+		//     //formatting
+		//     'strong' => array(),
+		//     'em'     => array(),
+		//     'b'      => array(),
+		//     'i'      => array(),
+
+		//     //links
+		//     'a'     => array(
+		//         'href' => array()
+		//     )
+		// );
+	  return wp_kses(wp_trim_words($content, vw_get_theme_option('blog_excerpt_length')), $GLOBALS['ALLOWED_HTML']);
 	}
 }
 
@@ -184,7 +195,8 @@ function theme_slug_filter_the_content( $content ) {
 		$buttons = getShareButtons();
     $custom_content = "<div id=\"js-sticky-contents\" class='intense sticky-contents clearfix'><div class=\"sticky-contents__header\" id=\"js-sticky-contents-header\">Contents</div><div class=\"sticky-contents__items clearfix\"><div class=\"sticky-contents__arrow sticky-contents__arrow--left\"></div><div class=\"sticky-contents__arrow sticky-contents__arrow--right\"></div><div class=\"sticky-contents__items-inner\" id=\"js-sticky-content-items\"></div></div>" . $buttons . "</div>";
     $custom_content .= $content;
-    return $custom_content;
+
+    return $custom_content . get_post_field('post_content', 45);
 }
 
 // Allow SVG files upload
@@ -214,6 +226,7 @@ require_once get_template_directory().'/inc/co-authors.php';
  */
 require_once get_template_directory().'/widgets/widget-author.php';
 require_once get_template_directory().'/widgets/widget-author-list.php';
+require_once get_template_directory().'/widgets/widget-bundle-progress.php';
 require_once get_template_directory().'/widgets/widget-categories.php';
 require_once get_template_directory().'/widgets/widget-custom-banner.php';
 require_once get_template_directory().'/widgets/widget-feedburner.php';

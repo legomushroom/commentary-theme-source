@@ -5,7 +5,6 @@ $post_layout = vw_get_post_layout();
 
 if ( 'full-width' == $post_layout ) {
 	get_template_part( 'single_full_width' );
-
 } elseif ( 'classic-no-featured-image' == $post_layout ) {
 	get_template_part( 'single_classic_no_featured_image' );
 

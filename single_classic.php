@@ -26,7 +26,7 @@
 							
 							<?php vw_the_post_meta_large() ?>
 							
-							<?php vw_the_post_share_box() ?>
+							<?php // vw_the_post_share_box(); ?>
 
 							<div class="vw-post-content clearfix">
 								<?php if ( vw_get_paged() == 1 ) : ?>
@@ -44,9 +44,13 @@
 
 							<?php the_tags( '<div class="vw-tag-links"><span class="vw-tag-links-title">'.__( 'Tags:', 'envirra' ).'</span>', '', '</div>' ); ?>
 
+							<?php echo getShareButtons('is-under-post'); ?>
+
 						</article><!-- #post-## -->
 
 					<?php endwhile; ?>
+
+					<?php include 'bundle-progress.php' ?>
 
 					<?php do_action( 'vw_action_after_single_post' ); ?>
 
@@ -55,6 +59,7 @@
 				<?php endif; ?>
 
 			</div>
+
 
 			<?php get_sidebar(); ?>
 		

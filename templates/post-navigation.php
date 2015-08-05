@@ -1,4 +1,3 @@
-<?php echo getShareButtons('is-no-border'); ?>
 <div class="vw-post-navigation clearfix">
 	<?php $prev_post = get_previous_post(); ?>
 	<?php if ( ! empty( $prev_post ) ) : ?>

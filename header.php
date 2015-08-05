@@ -30,3 +30,4 @@
 			<?php if ( vw_is_enable_breaking_news() ) get_template_part( '/templates/breaking-news-bar' ); ?>
 
 			<?php do_action( 'vw_action_site_header' ); ?>
+			

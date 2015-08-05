@@ -14,7 +14,7 @@
 
 					<?php while ( have_posts() ) : the_post(); ?>
 						<article <?php post_class( 'vw-main-post clearfix' ); ?>>
-							<?php vw_the_post_share_box() ?>
+							<?php // vw_the_post_share_box(); ?>
 
 							<span class="author vcard hidden"><span class="fn"><?php echo esc_attr( get_the_author() ); ?></span></span>
 							<span class="updated hidden"><?php echo esc_attr( get_the_date( 'Y-m-d' ) ); ?></span>
@@ -33,9 +33,13 @@
 
 							<?php the_tags( '<div class="vw-tag-links"><span class="vw-tag-links-title">'.__( 'Tags:', 'envirra' ).'</span>', '', '</div>' ); ?>
 
+							<?php echo getShareButtons('is-under-post'); ?>
+
 						</article><!-- #post-## -->
 
 					<?php endwhile; ?>
+
+					<?php include 'bundle-progress.php' ?>
 
 					<?php do_action( 'vw_action_after_single_post' ); ?>
 

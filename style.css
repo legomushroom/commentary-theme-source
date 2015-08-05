@@ -2128,10 +2128,10 @@ div.vw-page-wrapper.is-no-padding {
 }
 
 .vw-post-box .vw-post-box-thumbnail {
-    /*-webkit-transform: translateZ(0);
+    -webkit-transform: translateZ(0);
     -ms-transform: translateZ(0);
     -o-transform: translateZ(0);
-    transform: translateZ(0);*/
+    transform: translateZ(0);
 }
 
 .no-touch .vw-post-box:hover .vw-post-box-thumbnail .wp-post-image {
@@ -3093,9 +3093,11 @@ div.vw-page-wrapper.is-no-padding {
     padding-bottom: 15px;
     border-bottom: 1px solid #EFEFEF;
 }
-.vw-post-share-box.is-no-border {
+.vw-post-share-box.is-under-post {
     border: 0;
     padding-bottom: 6px;
+    margin-top: 17px;
+    margin-bottom: 14px;
 }
 .vw-post-share-box .vw-post-share-box-button {
     display: inline-block;
@@ -3436,10 +3438,14 @@ div.vw-page-wrapper.is-no-padding {
     margin-top: -61px;
 }*/
 
-@media all and (max-width:1000px) {
-    /*.vw-menu-main-wrapper {
+
+@media all and (max-width: 768px) {
+    .vw-menu-main-wrapper {
         display:  none;
-    }*/
+    }
+}
+
+@media all and (max-width:1000px) {
     .vw-post-navigation {
         width:  100%;
         /*margin-top: -39px;*/
@@ -3496,13 +3502,16 @@ div.vw-page-wrapper.is-no-padding {
 
 
 .is-sticky .vw-menu-location-main {
-  -webkit-transform: translateX(50px);
+    /* ugh oh:  transform makes menu act as position: relative,
+                so we have to use margin */
+    margin-left: 106px;
+  /*-webkit-transform: translateX(50px);
   -ms-transform: translateX(50px);
   -o-transform: translateX(50px);
-  transform: translateX(50px);
+  transform: translateX(50px);*/
 }
 
-.vw-menu-main-wrapper .vw-menu-location-main,
+/*.vw-menu-main-wrapper .vw-menu-location-main,*/
 .vw-menu-main-wrapper .vw-header-logo {
     -webkit-transition: all .3s ease-out;
     -o-transition: all .3s ease-out;
@@ -7085,8 +7094,8 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
 .sticky-contents {
     opacity:      0;
     position:     absolute;
-    z-index:      -1;  
-    left:        -13px;
+    z-index:      -1; 
+    left:        -15px;
     top:          0;
     margin-top:  -5px;
     width:        170px;
@@ -7599,3 +7608,276 @@ html {
 .vw-post-loop-mix-3 .vw-post-style-medium:last-of-type {
     border-bottom: 0;
 }
+
+
+.widget_vw_widget_bundle_progress .widget-title {
+    margin-bottom: 0;
+}
+
+.vw-bundle-progress {
+    margin:  0;
+    padding: 0;
+    }
+
+    .vw-bundle-progress__number {
+        position: absolute;
+        left: 1.875rem;
+        top: .5rem;
+        font-size: inherit;
+        z-index: 1;
+    }
+
+    .vw-bundle-progress__item {
+        /*height:      65px;*/
+        color:       black;
+        list-style:  none;
+        position: relative;
+        /*padding-left: 20px;*/
+        /*opacity: .5;*/
+        padding: 10px 20px;
+        padding-left: 40px;
+        /*box-shadow: 0 .0625rem 0 rgba(0,0,0,.5);*/
+        border-bottom: 1px solid rgba(0,0,0,.5);
+    }
+    .vw-bundle-progress__item:last-of-type {
+        border-bottom: none;
+    }
+    .vw-bundle-progress__item:first-of-type .vw-bundle-progress__progressbar {
+        top: 0;
+    }
+    .vw-bundle-progress__item.is-check {
+        opacity: 1;
+    }
+        .vw-bundle-progress__item.is-check:before,
+        .bundle-progress-mobile__panel:before {
+            content: '';
+            position: absolute;
+            top: 0px;
+            bottom: 0;
+            left: 0;
+            /*background: #555;*/
+            width: .5rem;
+            /*height: 100%;*/
+            z-index: 2;
+        }
+        
+    /*.vw-bundle-progress__item + .vw-bundle-progress__item {
+        border: 1px solid #999;
+    }*/
+
+    .vw-bundle-progress__item a,
+    .vw-bundle-progress__item a:hover,
+    .vw-bundle-progress__item a:focus {
+        color: inherit;
+    }
+
+    .vw-bundle-progress__title {
+        line-height: 1.25;
+    }
+
+    .vw-bundle-progress__title,
+    .vw-bundle-progress__author {
+        margin: 0;
+        position: relative;
+        z-index: 1;
+    }
+
+    .vw-bundle-progress__author {
+        opacity: .5;
+    }
+
+    .vw-bundle-progress__item.is-check .vw-bundle-progress__progressbar {
+        opacity: 1;
+    }
+
+    .vw-bundle-progress__item.is-read .vw-bundle-progress__progressbar {
+        opacity: 1;
+        -webkit-transform: scaleX(1) !important;
+           -moz-transform: scaleX(1) !important;
+            -ms-transform: scaleX(1) !important;
+             -o-transform: scaleX(1) !important;
+                transform: scaleX(1) !important;
+    }
+
+    .vw-bundle-progress__progressbar {
+        position: absolute;
+        top: 0; left: 0;
+        /*height: 100%;*/
+        bottom: 0;
+        width:  100%;
+        background: #f1f1f1;
+        opacity: 0;
+        z-index: 0;
+        -webkit-transition: all .15s linear;
+           -moz-transition: all .15s linear;
+            -ms-transition: all .15s linear;
+             -o-transition: all .15s linear;
+                transition: all .15s linear;
+        -webkit-transform: scaleX(0);
+           -moz-transform: scaleX(0);
+            -ms-transform: scaleX(0);
+             -o-transform: scaleX(0);
+                transform: scaleX(0);
+        -webkit-transform-origin: left center;
+           -moz-transform-origin: left center;
+            -ms-transform-origin: left center;
+             -o-transform-origin: left center;
+                transform-origin: left center;
+    }
+
+
+@media all and (max-width:768px) {
+    .vw-site-header {
+        position: relative;
+        z-index: 40;
+    }   
+}
+
+.bundle-progress-mobile {
+    /*height: 35px;*/
+    width: 100%;
+    position: fixed;
+    top:  113px;
+    left: 0;
+    z-index: 30;
+    -webkit-transition: -webkit-transform .25s ease-out;
+       -moz-transition: -moz-transform .25s ease-out;
+        -ms-transition: transform .25s ease-out;
+         -o-transition: transform .25s ease-out;
+            transition: transform .25s ease-out;
+    
+    -webkit-transform: translateY(-100%);
+       -moz-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+         -o-transform: translateY(-100%);
+            transform: translateY(-100%);
+    /*background: deeppink;*/
+    }
+    .bundle-progress-mobile.is-open {
+        -webkit-transform: translateY(0);
+           -moz-transform: translateY(0);
+            -ms-transform: translateY(0);
+             -o-transform: translateY(0);
+                transform: translateY(0);
+    }
+
+    .bundle-progress-mobile.is-open .bundle-progress-mobile__items {
+        opacity: 1;
+    }
+
+    .bundle-progress-mobile .vw-bundle-progress__item {
+        padding-left: 2rem;
+    }
+
+    .bundle-progress-mobile.is-open .bundle-progress-mobile__arrow {
+        -webkit-transform: rotate(0deg);
+           -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+             -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+    }
+
+    .bundle-progress-mobile .vw-bundle-progress__progressbar {
+        opacity:  1;
+        z-index: 0;
+    }
+
+.bundle-progress-mobile__current-item {
+    position: relative;
+    z-index: 1;
+    padding-top: .125rem;
+    }
+    .bundle-progress-mobile__current-item h4 {
+        line-height: 1.25;
+    }
+
+.bundle-progress-mobile__panel {
+    position: absolute;
+    top:      100%;
+    width:    100%;
+    padding:  10px 40px 10px 20px;
+    background: white;
+    border-top:    1px solid #999;
+    border-bottom: 1px solid #999;
+    margin-top: -1px;
+    }
+    .bundle-progress-mobile__panel h4 {
+        margin: 0;
+    }
+
+    .bundle-progress-mobile__panel .vw-bundle-progress__progressbar {
+        top: 0;
+    }
+
+.bundle-progress-mobile__arrow {
+    width: 40px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 3;
+    /*-webkit-transition: all .5s linear;
+       -moz-transition: all .5s linear;
+        -ms-transition: all .5s linear;
+         -o-transition: all .5s linear;
+            transition: all .5s linear;*/
+    -webkit-transform: rotate(180deg);
+       -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+         -o-transform: rotate(180deg);
+            transform: rotate(180deg);
+    }
+    .bundle-progress-mobile__arrow:before,
+    .bundle-progress-mobile__arrow:after {
+        content: '';
+        background: #444;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 1.2rem;
+        height: .3rem;
+        margin-left: -.5625rem;
+    }
+
+    .bundle-progress-mobile__arrow:before {
+        -webkit-transform-origin: right center;
+           -moz-transform-origin: right center;
+            -ms-transform-origin: right center;
+             -o-transform-origin: right center;
+                transform-origin: right center;
+        -webkit-transform: rotate(45deg) translateX(.1875rem);
+           -moz-transform: rotate(45deg) translateX(.1875rem);
+            -ms-transform: rotate(45deg) translateX(.1875rem);
+             -o-transform: rotate(45deg) translateX(.1875rem);
+                transform: rotate(45deg) translateX(.1875rem);
+    }
+
+    .bundle-progress-mobile__arrow:after {
+        -webkit-transform-origin: left center;
+           -moz-transform-origin: left center;
+            -ms-transform-origin: left center;
+             -o-transform-origin: left center;
+                transform-origin: left center;
+        -webkit-transform: rotate(-45deg) translateX(-.1875rem);
+           -moz-transform: rotate(-45deg) translateX(-.1875rem);
+            -ms-transform: rotate(-45deg) translateX(-.1875rem);
+             -o-transform: rotate(-45deg) translateX(-.1875rem);
+                transform: rotate(-45deg) translateX(-.1875rem);
+    }
+
+
+.bundle-progress-mobile__items {
+    margin: 0;
+    padding-left: 0; 
+    opacity: 0;
+}
+
+.bundle-progress-mobile__items-wrapper {
+    background: white;
+    max-height: 240px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    /*padding-top: 10px;*/
+}
+
+

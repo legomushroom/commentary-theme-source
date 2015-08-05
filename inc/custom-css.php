@@ -44,6 +44,12 @@ if ( ! function_exists( 'vw_render_custom_css' ) ) {
 			color: <?php echo $vw_espresso['accent_color'] ?>;
 		}
 
+		.vw-bundle-progress__item.is-check:before,
+		.bundle-progress-mobile__panel:before
+		{
+			background-color: <?php echo $vw_espresso['accent_color'] ?>;
+		}
+
 		.vw-site-social-profile-icon:hover,
 		.vw-breaking-news-label,
 		.vw-author-socials a:hover,
@@ -128,6 +134,14 @@ if ( ! function_exists( 'vw_render_custom_css' ) ) {
 		/* Body font */
 		.vw-breaking-news-link, .vw-post-loop-text-no-thumbnail .vw-post-box-title:before {
 			font-family: <?php echo $vw_espresso['typography_body']['font-family'] ?>;
+		}
+
+		.font-body {
+			font-family: <?php echo $vw_espresso['typography_body']['font-family'] ?>;
+		}
+
+		.font-header {
+			font-family: <?php echo $vw_espresso['typography_header']['font-family'] ?>;
 		}
 
 		.vw-page-title-section.vw-has-background .col-sm-12 {

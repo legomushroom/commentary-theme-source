@@ -488,7 +488,7 @@ if ( ! function_exists( 'vw_render_spc_section_post_box' ) ) {
 		?>
 		<div class="container vwspc-section-content">
 			<?php if ( ! empty ( $title ) ) : ?>
-			<h2 class="vwspc-section-title"><?php printf( '<span class="%2$s">%1$s</span>', do_shortcode( wp_kses( $title ) ), esc_attr( $title_class ) ); ?></h2>
+			<h2 class="vwspc-section-title"><?php printf( '<span class="%2$s">%1$s</span>', do_shortcode( wp_kses( $title, $GLOBALS['ALLOWED_HTML'] ) ), esc_attr( $title_class ) ); ?></h2>
 			<?php endif; ?>
 
 			<?php
@@ -648,7 +648,7 @@ if ( ! function_exists( 'vw_render_spc_section_post_box_sidebar' ) ) {
 			<div class="row">
 				<div class="col-md-8 vwspc-section-content">
 					<?php if ( ! empty ( $title ) ) : ?>
-					<h2 class="vwspc-section-title"><?php printf( '<span class="%2$s">%1$s</span>', do_shortcode( wp_kses( $title ) ), esc_attr( $title_class ) ); ?></h2>
+					<h2 class="vwspc-section-title"><?php printf( '<span class="%2$s">%1$s</span>', do_shortcode( wp_kses( $title, $GLOBALS['ALLOWED_HTML'] ) ), esc_attr( $title_class ) ); ?></h2>
 					<?php endif; ?>
 
 					<?php
@@ -727,7 +727,7 @@ if ( ! function_exists( 'vw_render_spc_section_custom_content' ) ) {
 	function vw_render_spc_section_custom_content( $args ) {
 		extract( $args );
 
-		$title = get_post_meta( $page_id, $field_prefix.'_title', true );
+		$title   = get_post_meta( $page_id, $field_prefix.'_title', true );
 		$sidebar = get_post_meta( $page_id, $field_prefix.'_sidebar', true );
 
 		printf( $before_section, 'custom-section', vwspc_next_section_id() );
@@ -740,10 +740,10 @@ if ( ! function_exists( 'vw_render_spc_section_custom_content' ) ) {
 		endif;
 
 		if ( ! empty( $title ) ) {
-			printf( '<h3 class="vwspc-section-title">%s</h3>', '<span>'.do_shortcode( esc_html( $title ) ).'</span>' );
+			printf( '<h3 class="vwspc-section-title">%s</h3>', '<span>'.do_shortcode( wp_kses( $title, $GLOBALS['ALLOWED_HTML'] ) ).'</span>' );
 		}
 
-		echo apply_filters( 'the_content', get_post_meta( $page_id, $field_prefix.'_content', true ) );
+		echo apply_filters( 'the_content', html_entity_decode(get_post_meta( $page_id, $field_prefix.'_content', true ) ) );
 		echo '</div>';
 
 		if ( '0' != $sidebar ) : ?>

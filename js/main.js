@@ -31,10 +31,10 @@ jQuery.noConflict();
 					if (!this.$post[0]) {return false};
 					this.$stickyContents = this.$post.find('#js-sticky-contents');
 					this.$stickyContentsItems = this.$post.find('#js-sticky-contents-with-items');
+					this.$items 				 = this.$post.find('.intense.heading');
 
 					this.$visibleMenu 	 = this.$stickyContents.find('.sticky-contents__items');
 					this.$itemsContainer = this.$post.find('#js-sticky-content-items');
-					this.$items 				 = this.$post.find('.intense.heading');
 					this.items 					 = [];
 					// this.isConentents 	 = false;
 					this.$w  						 = $(window);
@@ -46,10 +46,12 @@ jQuery.noConflict();
 					this.wWidth 				 = this.$w.outerWidth();
 					this.loop 					 = this.loop.bind(this);
 
-					this.desktopQuery = (this.$items.length > 0) ? 1220 : 1510;
-					this.mobileQuery  = (this.$items.length > 0) ? 767 : this.desktopQuery;
-					
-					this.isTabletQuery = this.$items.length > 0;
+
+					this.isMenuItems  = this.$items.length > 0;
+					this.desktopQuery = (this.isMenuItems) ? 1500 : 1220;
+					this.mobileQuery  = (this.isMenuItems) ? 767 : this.desktopQuery;
+
+					this.isTabletQuery = this.isMenuItems;
 					this.isTabletQuery || this.$stickyContents.addClass('is-no-contents');
 
 					setTimeout((function () {
@@ -69,18 +71,23 @@ jQuery.noConflict();
 					}.bind(this));
 				},
 				getActiveArea: function () {
-					this.postActiveAreaTop = this.$post.offset().top - 150;
-					this.postActiveArea = this.postActiveAreaTop + this.$post.outerHeight() - this.wHeight;
+					this.postActiveAreaTop = this.$post.offset().top - 120;
+					this.postActiveArea = this.postActiveAreaTop + this.$post.outerHeight() - this.wHeight + 180;
 				},
 				initSticky: function () {
 					this.isStickyInited && this.destroySticky();
-					this.isStickyInited && this.$stickyContents.css({ left: '0' });
+					if (this.isMenuItems) {
+						this.$items 				 = this.$post.find('.intense.heading');
+						this.isMenuItems  = this.$items.length > 0;
+					}
+					this.isStickyInited && !this.isMenuItems && this.$stickyContents.css({ left: '0' });
 					var offsetTop = ((this.$w.outerWidth() < 768) ? 15 : 68);
 					offsetTop += (this.isAdminBar) ? this.adminBarHeight : 0;
 					setTimeout(function () {
+						var offset = (this.isMenuItems && this.wWidth < this.desktopQuery) ? offsetTop + 50 : 0;
 						this.$stickyContents.hcSticky({
 								top: 			  offsetTop,
-								bottomEnd: 	-232,
+								bottomEnd: 	offset + (.5*$(window).height()),
 								skipMarginsRecalc: true
 								// bottomEnd: 	0
 							});
