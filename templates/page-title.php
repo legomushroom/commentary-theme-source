@@ -21,7 +21,11 @@ if ( is_single() && have_posts() ) { the_post(); }
 						
 						<div class="vw-page-title-box clearfix">
 
-							<?php if ( function_exists( 'is_shop' ) && vw_is_shop() ) :
+							<?php if ( apply_filters( 'vw_filter_is_custom_page_title', false ) ) : ?>
+							
+								<?php do_action( 'vw_action_custom_page_title' ); ?>
+
+							<?php elseif ( function_exists( 'is_shop' ) && vw_is_shop() ) :
 								$shop_page_id = vw_get_shop_page_id();
 								$shop_name = $shop_page_id ? get_the_title( $shop_page_id ) : __( 'Shop', 'envirra' );
 								$subtitle = get_post_meta( $shop_page_id, 'vw_page_subtitle', true );
@@ -83,7 +87,7 @@ if ( is_single() && have_posts() ) { the_post(); }
 									<?php vw_the_category(); ?>
 									<h1 class="vw-page-title"><?php the_title(); ?></h1>
 
-									<?php if ( ! vw_is_custom_post_type() ) : ?>
+									<?php if ( ! vw_is_custom_post_type() || apply_filters( 'vw_filter_is_custom_single_page_title', false ) ) : ?>
 										<?php vw_the_subtitle(); ?>
 										<?php vw_the_post_meta_large() ?>
 									<?php endif; ?>
