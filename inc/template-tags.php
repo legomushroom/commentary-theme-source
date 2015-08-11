@@ -485,11 +485,11 @@ if ( ! function_exists( 'vw_the_post_footer_sections' ) ) {
  * The Author
  * -------------------------------------------------------------------------- */
 if ( ! function_exists( 'vw_the_author' ) ) {
-	function vw_the_author() {
+	function vw_the_author($ID=null) {
 		?>
 		<span class="vw-post-author" <?php vw_itemprop('author'); vw_itemtype('Person'); ?>>
 			<i class="vw-icon icon-entypo-user"></i>
-			<a class="author-name" href="<?php echo get_author_posts_url(get_the_author_meta( 'ID' )); ?>" title="<?php _e('Posts by', 'envirra'); ?> <?php the_author(); ?>" rel="author" <?php vw_itemprop('name'); ?>><?php the_author(); ?></a>
+			<a class="author-name" href="<?php echo get_author_posts_url(($ID) ? $ID : get_the_author_meta( 'ID' )); ?>" title="<?php _e('Posts by', 'envirra'); ?> <?php echo the_author_meta( 'display_name', $ID ); ?>" rel="author" <?php vw_itemprop('name'); ?>><?php echo the_author_meta( 'display_name', $ID ); ?></a>
 		</span>
 		<?php
 	}

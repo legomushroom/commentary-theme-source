@@ -12,9 +12,11 @@ $title = get_the_title();
 
 $posts = get_option('wv_bundle_progress_posts');
 $ids   = explode(',', $posts);
-
+$ids = array_map('absint', $ids);
 array_unshift($ids, get_the_ID());
-$myposts = query_posts(array('post__in' => $ids, 'orderby' => 'post__in' ) );
+
+$myposts = get_posts( apply_filters( 'vw_filter_widget_bundle_progress_query', array('post__in' => $ids, 'orderby' => 'post__in', 'post_type' => array('post', 'article')) ) );
+
 return;
 
 ?>
@@ -45,6 +47,9 @@ return;
 
     <div class="bundle-progress-mobile__panel">
       <div class="vw-bundle-progress__progressbar" id="js-bundle-progress-mobile-panel-progressbar" ></div>
+      <div class="bundle-progress-mobile__title" id="js-bundle-progress-mobile-title">
+        <h4><?php echo get_option('wv_bundle_progress_title'); ?></h4>
+      </div>
       <div class="bundle-progress-mobile__current-item">
         <h4 id="js-bundle-progress-mobile-current"><?php echo $title; ?></h4>
       </div>

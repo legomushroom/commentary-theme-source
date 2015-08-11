@@ -31,7 +31,7 @@
 								'link_after'  => '</span>',
 							) ); ?>
 
-							<?php the_tags( '<div class="vw-tag-links"><span class="vw-tag-links-title">'.__( 'Tags:', 'envirra' ).'</span>', '', '</div>' ); ?>
+							<?php the_tags( '<div class="vw-tag-links"><span class="vw-tag-links-title">'.__( 'filed under:', 'envirra' ).'</span>', '', '</div>' ); ?>
 
 							<?php echo getShareButtons('is-under-post'); ?>
 
@@ -39,13 +39,13 @@
 
 					<?php endwhile; ?>
 
-					<?php include 'bundle-progress.php' ?>
-
 					<?php do_action( 'vw_action_after_single_post' ); ?>
 
 					<?php vw_the_post_footer_sections(); ?>
 
 				<?php endif; ?>
+
+				<?php include 'bundle-progress.php' ?>
 
 			</div>
 

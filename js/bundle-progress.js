@@ -39,8 +39,9 @@
     initEvents: function () {
       var it = this;
       $(document.body).on('click', '#js-bundle-progress-item', function (e) {
-        it.scrollTo($(this).data().index);
-        !e.metaKey && e.preventDefault();
+        if (!e.metaKey) {
+          e.preventDefault(); it.scrollTo($(this).data().index);
+        }
       });
     },
 

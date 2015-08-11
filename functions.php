@@ -117,6 +117,7 @@ function getShareButtons ($className='') {
 									<div class="vw-unit">' . translate( 'Shares', 'envirra' ) . '</div>
 								</div>
 							</div>
+
               <a class="vw-post-share-box-button vw-post-shares-social vw-post-shares-social-facebook" href="' . esc_url( $facebook_url ) . '" data-post-id="' . esc_attr( $post_id ) . '" data-share-to="facebook" data-width="500" data-height="300" title="' . esc_attr__( 'Share to Facebook', 'envirra' ) . '">
                   <i class="vw-icon icon-social-facebook"></i>
 									<span class="vw-button-label"> Facebook </span>
@@ -133,6 +134,11 @@ function getShareButtons ($className='') {
                   <i class="vw-icon icon-social-email"></i>
 									<span class="vw-button-label"> Email </span>
               </a>
+              <div class="vw-mobile-nav-button-wrapper sticky-contents__mobile-menu">
+								<span class="vw-mobile-nav-button">
+									<span class="vw-hamburger-icon"><span></span></span>
+								</span>
+							</div>
           </div>';
 }
 
@@ -177,15 +183,19 @@ function wv_my_post_thumbnail_fallback( $html, $post_id, $post_thumbnail_id, $si
 	switch($size) {
 		case 'vw_small_thumbnail':
 			$className = 'vw-thumbnail--small';
+			// $html = str_replace('<img width="1"', '<img width="85"', $html);
+			// $html = str_replace('<img height="1"', '<img width="65"', $html);
 			break;
 		case 'vw_one_third_thumbnail':
 			$className = 'vw-thumbnail--one-third';
+			// $html = str_replace('<img width="1"', '<img width="360"', $html);
+			// $html = str_replace('<img height="1"', '<img width="240"', $html);
 			break;
 		default:
 			$className = '';
 	}
 
-  return '<span class="vw-thumbnail ' . $className . '" data-size="' . $size . '"><span class="wv-thumbnail__img">' . $html . '</span></span>';
+  return $html;//'<span class="vw-thumbnail ' . $className . '" data-size="' . $size . '"><span class="wv-thumbnail__img">' . $html . '</span></span>';
 }
 
 
@@ -196,7 +206,7 @@ function theme_slug_filter_the_content( $content ) {
     $custom_content = "<div id=\"js-sticky-contents\" class='intense sticky-contents clearfix'><div class=\"sticky-contents__header\" id=\"js-sticky-contents-header\">Contents</div><div class=\"sticky-contents__items clearfix\"><div class=\"sticky-contents__arrow sticky-contents__arrow--left\"></div><div class=\"sticky-contents__arrow sticky-contents__arrow--right\"></div><div class=\"sticky-contents__items-inner\" id=\"js-sticky-content-items\"></div></div>" . $buttons . "</div>";
     $custom_content .= $content;
 
-    return $custom_content . get_post_field('post_content', 45);
+    return $custom_content;
 }
 
 // Allow SVG files upload

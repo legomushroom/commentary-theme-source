@@ -5286,7 +5286,7 @@ img.mfp-img {
  * $TIPSY
  * -------------------------------------------------------------------------- */
 .tipsy {
-    font-size: 10px;
+    font-size: 14px;
     position: absolute;
     padding: 5px;
     z-index: 100000;

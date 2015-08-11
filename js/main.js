@@ -20,14 +20,15 @@ jQuery.noConflict();
 		// ### CUSTOM JS HERE ###
 		// Sticky Header 
 		(function (undefined) {
-			var main = {
-				init: function () {
-					if (this.vars() === false) {return};
-					this.$stickyContentsItems.length && this.addContents();
-					this.loop(); this.defineQueries();
-				},
-				vars: function () {
-					this.$post  				 = $('.vw-post-content');
+
+			var Main = function ($post) {
+				if (this.vars($post) === false) {return};
+				this.$stickyContentsItems.length && this.addContents();
+				this.loop(); this.defineQueries();
+			}
+
+			Main.prototype.vars = function ($post) {
+					this.$post  				 = $post;
 					if (!this.$post[0]) {return false};
 					this.$stickyContents = this.$post.find('#js-sticky-contents');
 					this.$stickyContentsItems = this.$post.find('#js-sticky-contents-with-items');
@@ -41,11 +42,10 @@ jQuery.noConflict();
 					this.containerWidth  = this.$post.outerWidth()
 					this.$adminBar 			 = $('#wpadminbar');
 					this.isAdminBar 		 = !!this.$adminBar.length;
-					this.adminBarHeight  = this.$adminBar.outerHeight();
+					this.adminBarHeight  = this.$adminBar.outerHeight() || 0;
 					this.wHeight 				 = this.$w.outerHeight();
 					this.wWidth 				 = this.$w.outerWidth();
 					this.loop 					 = this.loop.bind(this);
-
 
 					this.isMenuItems  = this.$items.length > 0;
 					this.desktopQuery = (this.isMenuItems) ? 1500 : 1220;
@@ -69,19 +69,19 @@ jQuery.noConflict();
 							this.getYs(); this.getMenuWidth();
 						}).bind(this), 100);
 					}.bind(this));
-				},
-				getActiveArea: function () {
+				}
+			Main.prototype.getActiveArea = function () {
 					this.postActiveAreaTop = this.$post.offset().top - 120;
 					this.postActiveArea = this.postActiveAreaTop + this.$post.outerHeight() - this.wHeight + 180;
-				},
-				initSticky: function () {
+				}
+			Main.prototype.initSticky = function () {
 					this.isStickyInited && this.destroySticky();
 					if (this.isMenuItems) {
 						this.$items 				 = this.$post.find('.intense.heading');
 						this.isMenuItems  = this.$items.length > 0;
 					}
 					this.isStickyInited && !this.isMenuItems && this.$stickyContents.css({ left: '0' });
-					var offsetTop = ((this.$w.outerWidth() < 768) ? 15 : 68);
+					var offsetTop = ((this.$w.outerWidth() <= 768) ? 15 : 68);
 					offsetTop += (this.isAdminBar) ? this.adminBarHeight : 0;
 					setTimeout(function () {
 						var offset = (this.isMenuItems && this.wWidth < this.desktopQuery) ? offsetTop + 50 : 0;
@@ -97,17 +97,17 @@ jQuery.noConflict();
 						this.getMenuWidth();
 					}.bind(this), 500);
 				},
-				destroySticky: function () {
+			Main.prototype.destroySticky = function () {
 					this.$stickyContents.hcSticky('destroy');
 					this.$stickyContents.attr('style', '');
-				},
-				getMenuWidth: function () {
+				}
+			Main.prototype.getMenuWidth = function () {
 					this.visibleMenuWidth = this.$visibleMenu.outerWidth();
 					this.innerMenuWidth   = this.$itemsContainer.outerWidth();
-				},
-				addContents: function () {
+				}
+			Main.prototype.addContents = function () {
 					this.isConentents = true;
-					this.$stickyContents.addClass('is-sticky-contents');
+					this.$items.length && this.$stickyContents.addClass('is-sticky-contents');
 					this.$items.each(function (i, item) {
 						var $item = $(item), $div = $('<div class="sticky-contents__item"/>');
 						$div.text($item.text()); this.$itemsContainer.append($div);
@@ -126,7 +126,7 @@ jQuery.noConflict();
 						$('html, body').animate({'scrollTop': $(this).data().y - offset + 25});
 					});
 				},
-				getMenuItemsPositions: function () {
+			Main.prototype.getMenuItemsPositions = function () {
 					// this.menuItemsPositions = [];
 					setTimeout((function () {
 						this.$menuItems.each(function (i, item) {
@@ -137,15 +137,15 @@ jQuery.noConflict();
 							$item.data('position', data);
 						}).bind(this);
 					}).bind(this), 500);
-				},
-				getYs: function () {
+				}
+			Main.prototype.getYs = function () {
 					this.stickyContentsHeight = this.$stickyContents.outerHeight();
 					for (var i = 0; i < this.items.length; i++) {
 						this.items[i].y = this.items[i].el.offset().top;
 						this.items[i].$item.data({ el: this.items[i].$item, y: this.items[i].y });
 					};
-				},
-				addDimention: function ($el, $div) {
+				}
+			Main.prototype.addDimention = function ($el, $div) {
 					var y = $el.offset().top;
 					if (this.wWidth >= this.desktopQuery) {
 						y += .7*this.$w.height();
@@ -158,7 +158,7 @@ jQuery.noConflict();
 					});
 					$div.data({ el: $div, y: y });
 				},
-				checkItems: function () {
+			Main.prototype.checkItems = function () {
 					var scrollY = window.pageYOffset || document.scrollTop || document.body.scrollTop;
 
 					if (this.state === 'mobile') {
@@ -196,7 +196,7 @@ jQuery.noConflict();
 						this.previousActiveItem = this.currentActiveItem;
 					}
 				},
-				defineQueries: function () {
+			Main.prototype.defineQueries = function () {
 					var it = this;
 					enquire.register("screen and (min-width:" + this.desktopQuery + "px)", {
 					    match : function() {
@@ -250,14 +250,16 @@ jQuery.noConflict();
 					    },
 					});
 
-				},
+				}
 
-				loop: function () {
+			Main.prototype.loop = function () {
 					// return;
 					this.checkItems(); requestAnimationFrame(this.loop);
 				}
-			}
-		main.init()
+		
+			var $posts = $('.vw-main-post');
+			$posts.each(function (i, post) { new Main($(post)); });
+
 		})();
 		
 		// ### END of CUSTOM JS ###
@@ -530,7 +532,7 @@ jQuery.noConflict();
 				vw_sticky_sidebar.hcSticky( {
 					stickTo: '.container',
 					wrapperClassName: 'vw-sticky-sidebar-wrapper',
-					offResolutions: [-768],
+					offResolutions: [-769],
 					top: offset,
 				} );
 
@@ -793,7 +795,6 @@ jQuery.noConflict();
 	 * -------------------------------------------------------------------------- */
 	$.fn.vwSwiper = function( options ) {
 
-		// console.log()
 		if ( $.fn.swiper ) {
 			var default_options = {
 				direction: 'horizontal',

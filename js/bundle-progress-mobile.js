@@ -20,6 +20,7 @@
       this.$w             = $(window);
       this.$htmlBody      = $('html, body');
       this.wHeight        = this.$w.height();
+      this.showPanel      = this.$posts.eq(0).offset().top + 20;
 
       this.loop           = this.loop.bind(this);
 
@@ -57,8 +58,10 @@
         var hammertime = new Hammer(item);
         hammertime.on('tap', function (e) {
           if (e.target.getAttribute('id') === 'js-bundle-progress-author') { return }
-          !e.metaKey && e.preventDefault();
-          it.scrollTo($(item).data().index);
+          if (!e.metaKey) {
+            e.preventDefault();
+            it.scrollTo($(item).data().index);
+          }
         });
       });
     },
@@ -74,7 +77,13 @@
       if (scrollY === this.previousScrollY) { return; }
       this.previousScrollY = scrollY;
 
-      this.$main.css({ top: (113 - Math.min(scrollY, 113)) + 'px' });
+      if (scrollY > this.showPanel) {
+        !this.isPanelShow && this.$main.addClass('is-show');
+        this.isPanelShow = true;
+      } else {
+        this.isPanelShow && this.$main.removeClass('is-show');
+        this.isPanelShow = false;
+      }
 
       this.currentItem = this.getCurrentItem(scrollY);
 
@@ -98,16 +107,16 @@
       var delta = scrollY - (currentItem.start - this.wHeight/3);
       if (delta < 0) {
         if (currentItem.index === 0) {
-          currentItem.$progressbar.css({ 'transform': 'scaleX(' + 0 + ')' });
-          this.$panelProgressbar.css({ 'transform': 'scaleX(' + 0 + ')' });
-          currentItem.$progressbar.css({ 'transform': 'scaleX(' + 0 + ')' });
+          currentItem.$progressbar.css({ 'transform': 'scaleX(' + 0 + ') translateZ(0)' });
+          this.$panelProgressbar.css({ 'transform': 'scaleX(' + 0 + ') translateZ(0)' });
+          currentItem.$progressbar.css({ 'transform': 'scaleX(' + 0 + ') translateZ(0)' });
         }
         return;
       }
 
       var percent = Math.min(delta/currentItem.height, 1);
-      currentItem.$progressbar.css({ 'transform': 'scaleX(' + percent + ')' });
-      this.$panelProgressbar.css({ 'transform': 'scaleX(' + percent + ')' });
+      currentItem.$progressbar.css({ 'transform': 'scaleX(' + percent + ') translateZ(0)' });
+      this.$panelProgressbar.css({ 'transform': 'scaleX(' + percent + ') translateZ(0)' });
     },
 
     setRead: function (index) {
@@ -116,7 +125,7 @@
           this.dimentions[i].$menuItem.addClass('is-read');
         } else {
           this.dimentions[i].$menuItem.removeClass('is-read');
-          this.dimentions[i].$progressbar.css({ 'transform': 'scaleX(' + 0 + ')' });
+          this.dimentions[i].$progressbar.css({ 'transform': 'scaleX(' + 0 + ') translateZ(0)' });
         }
       };
     },
