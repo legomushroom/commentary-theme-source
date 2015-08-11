@@ -45,7 +45,7 @@ if ( ! function_exists( 'vw_shortcode_author' ) ) {
 			'title' => '',
 			'user' => '',
 		);
-		
+
 		$instance = shortcode_atts( $defaults, $atts );
 
 		$instance['user'] = strip_tags( $instance['user'] );
@@ -56,7 +56,7 @@ if ( ! function_exists( 'vw_shortcode_author' ) ) {
 
 		} else {
 			$user = get_user_by( 'login', $instance['user'] );
-			
+
 		}
 
 		if ( empty( $user ) ) {
@@ -98,14 +98,14 @@ if ( ! function_exists( 'vw_shortcode_accordion' ) ) {
 			'icon' => '',
 			'open' => 'false',
 		);
-		
+
 		extract( shortcode_atts( $defaults, $atts) );
 
 		$icon_html = '';
 		if ( ! empty( $icon ) ) {
 			$icon_html = "<i class='icon-".esc_attr( $icon )."'></i> ";
 		}
-	
+
 		$html = '<div class="vw-accordion" data-open="'.esc_attr( $open ).'">';
 		$html .= '<div class="vw-accordion-header"><span class="vw-accordion-header-text">'.$icon_html.$title.'</span></div>';
 		$html .= '<div class="vw-accordion-content">'.do_shortcode( $content ).'</div>';
@@ -129,7 +129,7 @@ if ( ! function_exists( 'vw_shortcode_button' ) ) {
 			'url' => '#',
 			'fullwidth' => '' // true, ''
 		);
-		
+
 		extract( shortcode_atts( $defaults, $atts) );
 
 		$icon_html = '';
@@ -170,7 +170,7 @@ if ( ! function_exists( 'vw_shortcode_column' ) ) {
 			'size' => '1/2', // 1/1, 1/2, 1/3, 2/3, 1/4, 3/4, 1/5, 2/5, 3/5
 			'class' => ''
 		);
-		
+
 		extract( shortcode_atts( $defaults, $atts ) );
 
 		$classes = array( 'vw-column-shortcode', $class );
@@ -219,7 +219,7 @@ if ( ! function_exists( 'vw_shortcode_dropcap' ) ) {
 		$defaults = array(
 			'style' => 'standard', // standard, circle, box
 		);
-		
+
 		extract( shortcode_atts( $defaults, $atts) );
 
 		return "<span class='vw-dropcap ".esc_attr( 'vw-dropcap-'.$style )."'>{$content}</span>";
@@ -234,7 +234,7 @@ if ( ! function_exists( 'vw_shortcode_emphasize' ) ) {
 		$defaults = array(
 			'color' => '',
 		);
-		
+
 		extract( shortcode_atts( $defaults, $atts) );
 
 		$style = '';
@@ -259,7 +259,7 @@ if ( ! function_exists( 'vw_shortcode_gap' ) ) {
 		$defaults = array(
 			'size' => '30',
 		);
-		
+
 		extract( shortcode_atts( $defaults, $atts) );
 
 		$style = '';
@@ -300,14 +300,14 @@ if ( ! function_exists( 'vw_shortcode_image' ) ) {
 			'link' => '',
 			'newwindow' => true,
 		);
-		
+
 		extract( shortcode_atts( $defaults, $atts) );
 
 		$attrs = array();
 
 		if ( empty( $src ) ) return;
 		$attrs[] = 'src="'.esc_url( $src ).'"';
-		
+
 
 		if ( ! empty( $alt ) ) {
 			$attrs[] = 'alt="'.esc_attr( $alt ).'"';
@@ -345,7 +345,7 @@ if ( ! function_exists( 'vw_shortcode_infobox' ) ) {
 		$defaults = array(
 			'title' => '',
 		);
-		
+
 		extract( shortcode_atts( $defaults, $atts) );
 
 		$title_html = '';
@@ -390,7 +390,7 @@ if ( ! function_exists( 'vw_shortcode_list_item' ) ) {
 		$defaults = array(
 			'icon' => '',
 		);
-		
+
 		extract( shortcode_atts( $defaults, $atts) );
 
 		$icon_html = '';
@@ -427,7 +427,7 @@ if ( ! function_exists( 'vw_shortcode_logo' ) ) {
 		?>
 		<div class="vw-logo-shortcode">
 			<?php if ( ! empty( $logo_2x[ 'url' ] ) ): ?><img class="vw-logo-2x" src="<?php echo esc_url( $logo_2x[ 'url' ] ); ?>" width="<?php echo esc_attr( $logo[ 'width' ] ) ?>" height="<?php echo esc_attr( $logo[ 'height' ] ) ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"><?php endif; ?>
-			<img class="vw-logo" src="<?php echo esc_url( $logo[ 'url' ] ); ?>" width="<?php echo esc_attr( $logo[ 'width' ] || 'auto' ) ?>" height="<?php echo esc_attr( $logo[ 'height' ] || 'auto' ) ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+			<img class="vw-logo" src="<?php echo esc_url( $logo[ 'url' ] ); ?>" width="<?php echo esc_attr( $logo[ 'width' ] ) ?>" height="<?php echo esc_attr( $logo[ 'height' ] ) ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
 		</div>
 		<?php
 
@@ -443,7 +443,7 @@ if ( ! function_exists( 'vw_shortcode_mark' ) ) {
 		$defaults = array(
 			'style' => 'yellow', // grey, dark, yellow
 		);
-		
+
 		extract( shortcode_atts( $defaults, $atts) );
 
 		return "<mark class='vw-mark-shortcode vw-mark-style-".esc_attr( $style )."'>".do_shortcode( $content )."</mark>";
@@ -456,7 +456,7 @@ if ( ! function_exists( 'vw_shortcode_mark' ) ) {
 if ( ! function_exists( 'vw_shortcode_posts' ) ) {
 	function vw_shortcode_posts( $atts, $content = null ) {
 		global $vw_posts_shortcode_id;
-		
+
 		$defaults = array(
 			'title' => '',// title
 			'cat' => '',// category ID
@@ -469,7 +469,7 @@ if ( ! function_exists( 'vw_shortcode_posts' ) ) {
 			'order' => 'latest', // latest, random, popular, viewed, latest_reviews
 			'pagination' => 'hide',
 		);
-		
+
 		extract( shortcode_atts( $defaults, $atts) );
 
 		global $post;
@@ -527,14 +527,14 @@ if ( ! function_exists( 'vw_shortcode_posts' ) ) {
 		// Option: order
 		if ( 'random' == $order ) {
 			$query_args['orderby'] = 'rand';
-			
+
 		} elseif ( 'featured' == $order ) {
 			$query_args['meta_query'][] = array(
 				'key' => 'vw_post_featured',
 				'value' => '1',
 				'compare' => '=',
 			);
-			
+
 		} elseif ( 'latest_gallery' == $order ) {
 			$query_args['tax_query'][] = array(
 				'taxonomy' => 'post_format',
@@ -565,8 +565,8 @@ if ( ! function_exists( 'vw_shortcode_posts' ) ) {
 
 		} elseif ( 'most_viewed' == $order ) {
 			$query_args['orderby'] = 'meta_value_num';
-			$query_args['meta_key'] = 'vw_post_total_forgery';
-			
+			$query_args['meta_key'] = 'vw_post_views_all';
+
 		} elseif ( 'most_review_score' == $order ) {
 			$query_args['orderby'] = 'meta_value_num';
 			$query_args['meta_key'] = 'vw_review_average_score';
@@ -575,7 +575,7 @@ if ( ! function_exists( 'vw_shortcode_posts' ) ) {
 			$query_args['orderby'] = 'post_date';
 		}
 
-		query_posts( $query_args );
+		query_posts( apply_filters( 'vw_filter_shortcode_posts_query', $query_args, $atts ) );
 
 		$template_file = sprintf( 'templates/post-loop/loop-%s.php', $layout );
 
@@ -642,7 +642,7 @@ if ( ! function_exists( 'vw_shortcode_pricing_item' ) ) {
 			'link' => '',
 			'featured' => '',
 		);
-		
+
 		extract( shortcode_atts( $defaults, $atts) );
 		$html = '';
 
@@ -656,7 +656,7 @@ if ( ! function_exists( 'vw_shortcode_pricing_item' ) ) {
 				<?php endif; ?>
 
 				<div class="vw-pricing-info">
-					
+
 					<div class="vw-pricing-price">
 						<?php if ( ! empty( $currency ) ) : ?>
 						<div class="vw-pricing-currency"><?php echo $currency; ?></div>
@@ -702,7 +702,7 @@ if ( ! function_exists( 'vw_shortcode_quote' ) ) {
 			'align' => 'left', // left, right, none
 			'cite' => ''
 		);
-		
+
 		extract( shortcode_atts( $defaults, $atts) );
 
 		$align = esc_attr( $align );
@@ -738,7 +738,7 @@ if ( ! function_exists( 'vw_shortcode_tabs' ) ) {
 			'style' => 'top-tab', // top-tab, left-tab
 			'align' => 'left', // Only style=sidebar / left, right
 		);
-		
+
 		extract( shortcode_atts( $defaults, $atts) );
 
 		$tabs_html = '';
@@ -770,7 +770,7 @@ if ( ! function_exists( 'vw_shortcode_tab_item' ) ) {
 			'title' => 'Tab',
 			'icon' => '',
 		);
-		
+
 		extract( shortcode_atts( $defaults, $atts) );
 
 		$icon_html = '';
@@ -804,10 +804,10 @@ if ( ! function_exists( 'vw_shortcode_tab_item' ) ) {
 if ( ! function_exists( 'vw_shortcode_title' ) ) {
 	function vw_shortcode_title( $atts, $content = null ) {
 		$defaults = array();
-		
+
 		extract( shortcode_atts( $defaults, $atts) );
 
-		return "<h4 class='vw-title-shortcode'><span>" . $content . "</span></h4>";
+		return "<h5 class='vw-title-shortcode'><span>" . $content . "</span></h5>";
 	}
 }
 
@@ -832,7 +832,7 @@ if ( ! function_exists( 'vw_flexmap_shortcode_attrs' ) ) {
 	function vw_flexmap_shortcode_attrs($attrs) {
 		if ( ! isset( $attrs['width'] ) )
 			$attrs['width'] = '100%';
-		
+
 		return $attrs;
 	}
 	add_filter('flexmap_shortcode_attrs', 'vw_flexmap_shortcode_attrs');
@@ -1125,43 +1125,43 @@ add_action( 'vwsce_editor_init', 'vw_shortcode_editor_init' );
 if ( ! function_exists( 'vwsce_theme_icon_iconic' ) ) {
 	function vwsce_theme_icon_iconic( $icons ) {
 		return array_merge( $icons, array(
-			'icon-iconic-hash', 'icon-iconic-plus', 'icon-iconic-minus', 'icon-iconic-at', 
-			'icon-iconic-pilcrow', 'icon-iconic-info', 'icon-iconic-left', 'icon-iconic-up', 
-			'icon-iconic-right', 'icon-iconic-down', 'icon-iconic-undo', 'icon-iconic-exchange', 
-			'icon-iconic-home', 'icon-iconic-split', 'icon-iconic-pause', 'icon-iconic-eject', 
-			'icon-iconic-to-end', 'icon-iconic-to-start', 'icon-iconic-stop', 'icon-iconic-play', 
-			'icon-iconic-sun-inv', 'icon-iconic-cloud', 'icon-iconic-umbrella', 'icon-iconic-star', 
-			'icon-iconic-sun', 'icon-iconic-moon', 'icon-iconic-heart-empty', 'icon-iconic-heart', 
-			'icon-iconic-cog', 'icon-iconic-flash', 'icon-iconic-key', 'icon-iconic-rain', 
-			'icon-iconic-mail', 'icon-iconic-pencil', 'icon-iconic-pencil-neg', 'icon-iconic-pencil-alt', 
-			'icon-iconic-ok', 'icon-iconic-ok-circle', 'icon-iconic-cancel', 'icon-iconic-cancel-circle', 
-			'icon-iconic-help', 'icon-iconic-quote-left-alt', 'icon-iconic-quote-right-alt', 'icon-iconic-quote-left', 
-			'icon-iconic-quote-right', 'icon-iconic-plus-circle', 'icon-iconic-minus-circle', 'icon-iconic-cw', 
-			'icon-iconic-arrow-curved', 'icon-iconic-resize-vertical', 'icon-iconic-resize-horizontal', 'icon-iconic-play-circle2', 
-			'icon-iconic-left-circle', 'icon-iconic-right-circle', 'icon-iconic-up-circle', 'icon-iconic-down-circle', 
-			'icon-iconic-lock-empty', 'icon-iconic-lock-open-empty', 'icon-iconic-eye', 'icon-iconic-tag', 
-			'icon-iconic-tag-empty', 'icon-iconic-download-cloud', 'icon-iconic-upload-cloud', 'icon-iconic-comment', 
-			'icon-iconic-comment-inv', 'icon-iconic-comment-alt', 'icon-iconic-comment-inv-alt', 'icon-iconic-comment-alt2', 
-			'icon-iconic-comment-inv-alt2', 'icon-iconic-chat', 'icon-iconic-chat-inv', 'icon-iconic-location', 
-			'icon-iconic-location-inv', 'icon-iconic-location-alt', 'icon-iconic-compass', 'icon-iconic-trash', 
-			'icon-iconic-trash-empty', 'icon-iconic-doc', 'icon-iconic-doc-inv', 'icon-iconic-doc-alt', 
-			'icon-iconic-doc-inv-alt', 'icon-iconic-article', 'icon-iconic-article-alt', 'icon-iconic-rss', 
-			'icon-iconic-rss-alt', 'icon-iconic-share', 'icon-iconic-calendar-inv', 'icon-iconic-resize-full', 
-			'icon-iconic-resize-full-alt', 'icon-iconic-resize-small', 'icon-iconic-resize-small-alt', 'icon-iconic-move', 
-			'icon-iconic-popup', 'icon-iconic-award-empty', 'icon-iconic-list', 'icon-iconic-list-nested', 
-			'icon-iconic-bat-empty', 'icon-iconic-bat-half', 'icon-iconic-bat-full', 'icon-iconic-bat-charge', 
-			'icon-iconic-equalizer', 'icon-iconic-cursor', 'icon-iconic-aperture', 'icon-iconic-aperture-alt', 
-			'icon-iconic-steering-wheel', 'icon-iconic-brush', 'icon-iconic-brush-alt', 'icon-iconic-eyedropper', 
-			'icon-iconic-layers', 'icon-iconic-layers-alt', 'icon-iconic-moon-inv', 'icon-iconic-chart-pie', 
-			'icon-iconic-chart-pie-alt', 'icon-iconic-dial', 'icon-iconic-picture', 'icon-iconic-mic', 
-			'icon-iconic-headphones', 'icon-iconic-video', 'icon-iconic-target', 'icon-iconic-award', 
-			'icon-iconic-user', 'icon-iconic-lamp', 'icon-iconic-cd', 'icon-iconic-folder', 
-			'icon-iconic-folder-empty', 'icon-iconic-calendar', 'icon-iconic-calendar-alt', 'icon-iconic-chart-bar', 
-			'icon-iconic-pin', 'icon-iconic-attach', 'icon-iconic-book-alt', 'icon-iconic-book', 
-			'icon-iconic-book-open', 'icon-iconic-upload', 'icon-iconic-download', 'icon-iconic-box', 
-			'icon-iconic-mobile', 'icon-iconic-signal', 'icon-iconic-camera', 'icon-iconic-loop-alt', 
-			'icon-iconic-loop', 'icon-iconic-volume-off', 'icon-iconic-volume-up', 'icon-iconic-search', 
-			'icon-iconic-key-inv', 'icon-iconic-lock', 'icon-iconic-lock-open', 'icon-iconic-link', 
+			'icon-iconic-hash', 'icon-iconic-plus', 'icon-iconic-minus', 'icon-iconic-at',
+			'icon-iconic-pilcrow', 'icon-iconic-info', 'icon-iconic-left', 'icon-iconic-up',
+			'icon-iconic-right', 'icon-iconic-down', 'icon-iconic-undo', 'icon-iconic-exchange',
+			'icon-iconic-home', 'icon-iconic-split', 'icon-iconic-pause', 'icon-iconic-eject',
+			'icon-iconic-to-end', 'icon-iconic-to-start', 'icon-iconic-stop', 'icon-iconic-play',
+			'icon-iconic-sun-inv', 'icon-iconic-cloud', 'icon-iconic-umbrella', 'icon-iconic-star',
+			'icon-iconic-sun', 'icon-iconic-moon', 'icon-iconic-heart-empty', 'icon-iconic-heart',
+			'icon-iconic-cog', 'icon-iconic-flash', 'icon-iconic-key', 'icon-iconic-rain',
+			'icon-iconic-mail', 'icon-iconic-pencil', 'icon-iconic-pencil-neg', 'icon-iconic-pencil-alt',
+			'icon-iconic-ok', 'icon-iconic-ok-circle', 'icon-iconic-cancel', 'icon-iconic-cancel-circle',
+			'icon-iconic-help', 'icon-iconic-quote-left-alt', 'icon-iconic-quote-right-alt', 'icon-iconic-quote-left',
+			'icon-iconic-quote-right', 'icon-iconic-plus-circle', 'icon-iconic-minus-circle', 'icon-iconic-cw',
+			'icon-iconic-arrow-curved', 'icon-iconic-resize-vertical', 'icon-iconic-resize-horizontal', 'icon-iconic-play-circle2',
+			'icon-iconic-left-circle', 'icon-iconic-right-circle', 'icon-iconic-up-circle', 'icon-iconic-down-circle',
+			'icon-iconic-lock-empty', 'icon-iconic-lock-open-empty', 'icon-iconic-eye', 'icon-iconic-tag',
+			'icon-iconic-tag-empty', 'icon-iconic-download-cloud', 'icon-iconic-upload-cloud', 'icon-iconic-comment',
+			'icon-iconic-comment-inv', 'icon-iconic-comment-alt', 'icon-iconic-comment-inv-alt', 'icon-iconic-comment-alt2',
+			'icon-iconic-comment-inv-alt2', 'icon-iconic-chat', 'icon-iconic-chat-inv', 'icon-iconic-location',
+			'icon-iconic-location-inv', 'icon-iconic-location-alt', 'icon-iconic-compass', 'icon-iconic-trash',
+			'icon-iconic-trash-empty', 'icon-iconic-doc', 'icon-iconic-doc-inv', 'icon-iconic-doc-alt',
+			'icon-iconic-doc-inv-alt', 'icon-iconic-article', 'icon-iconic-article-alt', 'icon-iconic-rss',
+			'icon-iconic-rss-alt', 'icon-iconic-share', 'icon-iconic-calendar-inv', 'icon-iconic-resize-full',
+			'icon-iconic-resize-full-alt', 'icon-iconic-resize-small', 'icon-iconic-resize-small-alt', 'icon-iconic-move',
+			'icon-iconic-popup', 'icon-iconic-award-empty', 'icon-iconic-list', 'icon-iconic-list-nested',
+			'icon-iconic-bat-empty', 'icon-iconic-bat-half', 'icon-iconic-bat-full', 'icon-iconic-bat-charge',
+			'icon-iconic-equalizer', 'icon-iconic-cursor', 'icon-iconic-aperture', 'icon-iconic-aperture-alt',
+			'icon-iconic-steering-wheel', 'icon-iconic-brush', 'icon-iconic-brush-alt', 'icon-iconic-eyedropper',
+			'icon-iconic-layers', 'icon-iconic-layers-alt', 'icon-iconic-moon-inv', 'icon-iconic-chart-pie',
+			'icon-iconic-chart-pie-alt', 'icon-iconic-dial', 'icon-iconic-picture', 'icon-iconic-mic',
+			'icon-iconic-headphones', 'icon-iconic-video', 'icon-iconic-target', 'icon-iconic-award',
+			'icon-iconic-user', 'icon-iconic-lamp', 'icon-iconic-cd', 'icon-iconic-folder',
+			'icon-iconic-folder-empty', 'icon-iconic-calendar', 'icon-iconic-calendar-alt', 'icon-iconic-chart-bar',
+			'icon-iconic-pin', 'icon-iconic-attach', 'icon-iconic-book-alt', 'icon-iconic-book',
+			'icon-iconic-book-open', 'icon-iconic-upload', 'icon-iconic-download', 'icon-iconic-box',
+			'icon-iconic-mobile', 'icon-iconic-signal', 'icon-iconic-camera', 'icon-iconic-loop-alt',
+			'icon-iconic-loop', 'icon-iconic-volume-off', 'icon-iconic-volume-up', 'icon-iconic-search',
+			'icon-iconic-key-inv', 'icon-iconic-lock', 'icon-iconic-lock-open', 'icon-iconic-link',
 			'icon-iconic-wrench', 'icon-iconic-clock', 'icon-iconic-block',
 		) );
 	}
