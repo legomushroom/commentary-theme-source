@@ -31,7 +31,7 @@ if ( ! class_exists( 'Vw_widget_popular_post' ) ) {
 			global $timings;
 			$key_for_week = sprintf( 'vw_post_views_%s-%s', 'week', date( $timings['week'] ) );
 			$key_for_month = sprintf( 'vw_post_views_%s-%s', 'month', date( $timings['month'] ) );
-			$key_for_all_time = 'vw_post_total_forgery';
+			$key_for_all_time = 'vw_post_views_all';
 
 			$query_args = array(
 				'post_type' => 'post',
@@ -64,7 +64,7 @@ if ( ! class_exists( 'Vw_widget_popular_post' ) ) {
 					<?php
 					$query_args['meta_key'] = $key_for_week;
 
-					query_posts( $query_args );
+					query_posts( apply_filters( 'vw_filter_widget_popular_post_tab_1_query', $query_args ) );
 
 					$template_file = 'templates/post-loop/loop-small-left-thumbnail-col-1.php';
 
@@ -77,7 +77,7 @@ if ( ! class_exists( 'Vw_widget_popular_post' ) ) {
 					<?php
 					$query_args['meta_key'] = $key_for_month;
 
-					query_posts( $query_args );
+					query_posts( apply_filters( 'vw_filter_widget_popular_post_tab_2_query', $query_args ) );
 
 					$template_file = 'templates/post-loop/loop-small-left-thumbnail-col-1.php';
 
@@ -90,7 +90,7 @@ if ( ! class_exists( 'Vw_widget_popular_post' ) ) {
 					<?php
 					$query_args['meta_key'] = $key_for_all_time;
 
-					query_posts( $query_args );
+					query_posts( apply_filters( 'vw_filter_widget_popular_post_tab_3_query', $query_args ) );
 
 					$template_file = 'templates/post-loop/loop-small-left-thumbnail-col-1.php';
 
