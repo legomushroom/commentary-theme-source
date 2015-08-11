@@ -48,7 +48,7 @@ if ( ! function_exists( 'vw_the_pagination' ) ) {
 		?>
 		<nav class="vw-page-navigation clearfix" role="navigation">
 			<span class="vw-page-navigation-title"><?php _e( 'Page : ', 'envirra' ); ?></span>
-			
+
 			<div class="vw-page-navigation-pagination">
 				<?php echo $links; ?>
 			</div><!-- .pagination -->
@@ -238,9 +238,11 @@ if ( ! function_exists( 'vw_get_product_category_option' ) ) {
  * -------------------------------------------------------------------------- */
 if ( ! function_exists( 'vw_the_category' ) ) {
 	function vw_the_category( $classes='' ) {
-		$categories = get_the_category();
+		$terms = get_the_category();
 
-		if( $categories ){
+		$terms = apply_filters( 'vw_filter_the_category', $terms );
+
+		if( $terms ){
 			echo '<div class="vw-post-categories"><div>';
 
 			if ( is_sticky() ) {
@@ -248,13 +250,13 @@ if ( ! function_exists( 'vw_the_category' ) ) {
 			}
 
 			$i = 1;
-			foreach( $categories as $category ) {
+			foreach( $terms as $term ) {
 				if ( $i++ > 1 || is_sticky() ) {
 					echo '<span class="vw-category-separator">/</span>';
 				}
 
-				$classes .= ' vw-category-link ' . vw_get_the_category_class( $category->term_id );
-				echo '<a class="'.esc_attr( $classes ).'" href="'.get_category_link( $category->term_id ).'" title="' . esc_attr( sprintf( __( "View all posts in %s", 'envirra' ), $category->name ) ) . '" rel="category">'.$category->cat_name.'</a>';
+				$classes .= ' vw-category-link ' . vw_get_the_category_class( $term->term_id );
+				echo '<a class="'.esc_attr( $classes ).'" href="'.esc_url( get_term_link( $term->term_id, $term->taxonomy ) ).'" title="' . esc_attr( sprintf( __( "View all posts in %s", 'envirra' ), $term->name ) ) . '" rel="category">'.$term->name.'</a>';
 			}
 			echo '</div></div>';
 		}
@@ -277,7 +279,7 @@ if ( ! function_exists( 'vw_get_featured_image_id' ) ) {
 
 if ( ! function_exists( 'vw_the_post_thumbnail' ) ) {
 	function vw_the_post_thumbnail( $size = VW_CONST_THUMBNAIL_SIZE_SINGLE_POST_CLASSIC, $attr = '' ) {
-		
+
 	}
 }
 
@@ -298,7 +300,7 @@ if ( ! function_exists( 'vw_the_copyright' ) ) {
 		if ( function_exists( 'icl_t' ) ) {
 			$copyright_text = icl_t( VW_THEME_NAME.' Copyright', strtolower(VW_THEME_NAME.'_copyright'), $copyright_text );
 		}
-		
+
 		echo '<div class="vw-copyright">';
 		echo do_shortcode( esc_html( $copyright_text ) );
 		echo '</div>';
@@ -373,7 +375,7 @@ if ( ! function_exists( 'vw_the_embeded_gallery' ) ) {
 							<div class="swiper-slide">
 								<a class="" href="<?php echo esc_url( $full_image_url[0] ); ?>" title="<?php the_title_attribute(); ?>" rel="bookmark" <?php vw_itemprop( 'image' ); vw_itemtype( 'ImageObject' ); ?>>
 									<?php echo wp_get_attachment_image( $attachment_ID, $thumbnail_size ); ?>
-									<?php 
+									<?php
 										$image_caption = get_post( $attachment_ID )->post_excerpt;
 										if ( ! empty( $image_caption ) ) {
 											printf( '<div class="vw-embeded-image-caption"><i class="vw-icon icon-iconic-camera"></i> %s</div>', $image_caption );
@@ -425,7 +427,7 @@ if ( ! function_exists( 'vw_the_embeded_audio' ) ) {
 		if ( has_post_format( 'audio' ) ) {
 			$audio_oembed_url = get_post_meta( get_the_ID(), 'vw_post_format_audio_oembed_url', true );
 			$audio_oembed_code = get_post_meta( get_the_ID(), 'vw_post_format_audio_oembed_code', true );
-			
+
 			if ( ! empty( $audio_oembed_url ) ) {
 				echo '<div class="vw-embeded-media vw-embeded-audio vw-embeded-audio-url">';
 				echo wp_oembed_get( $audio_oembed_url );
@@ -448,9 +450,7 @@ if ( ! function_exists( 'vw_the_embeded_audio' ) ) {
 if ( ! function_exists( 'vw_the_post_footer_sections' ) ) {
 	function vw_the_post_footer_sections() {
 		$sections = vw_get_theme_option( 'post_footer_sections' );
-
 		$sections = apply_filters( 'vw_filter_post_footer_sections', $sections );
-
 		if ( empty( $sections ) || empty( $sections['enabled'] ) ) return;
 
 		foreach ( $sections['enabled'] as $slug => $label ) {
@@ -499,14 +499,14 @@ if ( ! function_exists( 'vw_the_author' ) ) {
  * The Author Avatar
  * -------------------------------------------------------------------------- */
 if ( ! function_exists( 'vw_the_author_avatar' ) ) {
-	function vw_the_author_avatar( $author = null, $size = VW_CONST_AVATAR_SIZE_LARGE, $className = '' ) {
+	function vw_the_author_avatar( $author = null, $size = VW_CONST_AVATAR_SIZE_LARGE ) {
 		if ( ! $author ) {
 			$author = vw_get_current_author();
 		}
 
 		$author_avatar = vw_get_avatar( get_the_author_meta( 'user_email', $author->ID ), $size, '', get_the_author_meta( 'display_name', $author->ID ) );
 
-		echo '<a class="vw-author-avatar ' . $className . '" href="' . get_author_posts_url( $author->ID ).'" title="' . sprintf( esc_attr__('Posts by %s', 'envirra'), get_the_author_meta( 'display_name', $author->ID ) ) . '">';
+		echo '<a class="vw-author-avatar" href="' . get_author_posts_url( $author->ID ).'" title="' . sprintf( esc_attr__('Posts by %s', 'envirra'), get_the_author_meta( 'display_name', $author->ID ) ) . '">';
 		echo $author_avatar;
 		echo '</a>';
 	}
@@ -542,7 +542,7 @@ if ( ! function_exists( 'vw_custom_excerpt_length' ) ) {
 		if ( is_int( $vw_custom_excerpt_length ) ) {
 			return $vw_custom_excerpt_length;
 		}
-		
+
 		return intval( vw_get_theme_option( 'blog_excerpt_length' ) );
 	}
 }
@@ -573,13 +573,7 @@ if ( ! function_exists( 'vw_the_subtitle' ) ) {
  * -------------------------------------------------------------------------- */
 if ( ! function_exists( 'vw_the_post_date' ) ) {
 	function vw_the_post_date() {
-		?>
-		<i class="vw-icon icon-entypo-clock"></i>
-		<a href="<?php the_permalink(); ?>" class="vw-post-date updated" title="<?php printf( esc_attr__('Permalink to %s', 'envirra'), the_title_attribute('echo=0') ); ?>" rel="bookmark">
-			<time <?php vw_itemprop('datePublished'); ?> datetime="<?php echo get_the_time('c'); ?>">
-				<?php echo get_the_time( get_option('date_format') ); ?></time>
-		</a>
-		<?php
+		?><i class="vw-icon icon-entypo-clock"></i> <a href="<?php the_permalink(); ?>" class="vw-post-date updated" title="<?php printf( esc_attr__('Permalink to %s', 'envirra'), the_title_attribute('echo=0') ); ?>" rel="bookmark"><time <?php vw_itemprop('datePublished'); ?> datetime="<?php echo get_the_time('c'); ?>"><?php echo get_the_time( get_option('date_format') ); ?></time></a><?php
 	}
 }
 
@@ -588,7 +582,7 @@ if ( ! function_exists( 'vw_the_post_date' ) ) {
  * -------------------------------------------------------------------------- */
 if ( ! function_exists( 'vw_the_comment_link' ) ) {
 	function vw_the_comment_link() {
-		if ( comments_open() ) : 
+		if ( comments_open() ) :
 		?>
 		<a class="vw-post-meta-icon vw-post-comment-count" href="<?php comments_link(); ?>" title="<?php echo esc_attr__( 'Comments', 'envirra' ); ?>">
 			<i class="vw-icon icon-entypo-comment"></i>
@@ -612,7 +606,7 @@ if ( ! function_exists( 'vw_the_post_format_class' ) ) {
 		if ( vw_has_review() ) {
 			$classes .= ' vw-has-review';
 		}
-		
+
 		echo esc_attr( $classes );
 	}
 }
@@ -683,7 +677,7 @@ if ( ! function_exists( 'vw_the_post_slider' ) ) {
 		);
 
 		$args = wp_parse_args( $args, $default );
-	
+
 		$query_args = array(
 			'post_type' => 'post',
 			'orderby' => 'post_date',
@@ -739,13 +733,13 @@ if ( ! function_exists( 'vw_the_post_slider' ) ) {
 		// ==== Begin temp query =====================================
 		// $query_args['p'] = 1292;
 		// $query_args['post__in'] = array( 1292, 1304 );
-		
+
 
 		// ==== End temp query =====================================
 
 		query_posts( apply_filters( 'vw_filter_the_post_slider_query', $query_args ) );
 		global $wp_query;
-		
+
 		if ( have_posts() ) {
 			echo $args['before'];
 			// get_template_part( 'templates/post-slider', $args['template'] );
@@ -797,7 +791,7 @@ if ( ! function_exists( 'vw_the_link_pages' ) ) {
 				'link_after'  => '</span>',
 				'separator'   => '',
 			) );
-			
+
 		}
 	}
 }
