@@ -41,27 +41,23 @@ if ( ! class_exists( 'Vw_widget_bundle_progress' ) ) {
 			// 	$instance['role'] = $this->default['role'];
 			// }
 
-			$title_html = '';
-			if ( ! empty( $instance['title'] ) ) {
-				$title_html = apply_filters( 'widget_title', wp_kses_data( $instance['title'] ), $instance, $this->id_base);
-			}
-
-			$posts = $instance['posts'];
+			$post_ids = $this->get_bundle_post_ids( $instance );
+			$title_html = $this->get_bundle_title( $instance );
 
 			echo $before_widget;
-			if ( $instance['title'] ) echo $before_title . $title_html . $after_title;
+
+			if ( ! empty( $title_html ) ) echo $before_title . $title_html . $after_title;
 
 			$post_type = get_post_type();
 
-			update_option("wv_bundle_progress_posts_" . $post_type, $posts);
-			update_option("wv_bundle_progress_title_" . $post_type, $title_html);
-			$ids = explode(',', $posts);
-			$ids = array_map( 'absint', $ids );
-			  $ids = array_filter($ids);
-			  if ( empty( $ids ) ) { return; }
-			array_unshift($ids, get_the_ID());
+			update_option("wv_bundle_progress_posts_" . $post_type, implode( ',', $post_ids ) );
 
-			$myposts = get_posts( apply_filters( 'vw_filter_widget_bundle_progress_query', array('post__in' => $ids, 'orderby' => 'post__in', 'post_type' => array('post', 'cmm_article')) ) );
+			array_unshift($post_ids, get_the_ID());
+
+			update_option("wv_bundle_progress_title_" . $post_type, $title_html);
+
+
+			$myposts = get_posts( apply_filters( 'vw_filter_widget_bundle_progress_query', array('post__in' => $post_ids, 'orderby' => 'post__in', 'post_type' => array('post', 'cmm_article')) ) );
 
 			echo '<ul class="vw-bundle-progress">';
 				$i = 0;
@@ -95,7 +91,50 @@ if ( ! class_exists( 'Vw_widget_bundle_progress' ) ) {
 				icl_register_string( VW_THEME_NAME.' Widget', $this->id.'_title', $instance['title'] );
 			}
 
+			// Update posts in option
+			$post_ids = $this->get_bundle_post_ids( $instance );
+
+			$post_type = 'post';
+
+			if ( ! empty( $_POST['sidebar'] ) && 'article-sidebar' == $_POST['sidebar'] ) {
+				$post_type = 'cmm_article';
+			}
+
+			update_option("wv_bundle_progress_posts_" . $post_type, implode( ',', $post_ids ) );
+
+			// Update title in option
+			$title_html = $this->get_bundle_title( $instance );
+
+			update_option("wv_bundle_progress_title_" . $post_type, $title_html);
+
+
 			return $instance;
+		}
+
+		public function get_bundle_post_ids( $instance ) {
+
+			if ( empty( $instance['posts'] ) ) {
+				return array();
+			}
+
+			$ids = explode( ',', $instance['posts'] );
+			$ids = array_map( 'absint', $ids );
+			$ids = array_filter( $ids );
+
+			return $ids;
+
+		}
+
+		public function get_bundle_title( $instance ) {
+
+			$title_html = '';
+
+			if ( ! empty( $instance['title'] ) ) {
+				$title_html = apply_filters( 'widget_title', wp_kses_data( $instance['title'] ), $instance, $this->id_base);
+			}
+
+			return $title_html;
+
 		}
 
 		function form( $instance ) {
