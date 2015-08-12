@@ -51,10 +51,12 @@ if ( ! class_exists( 'Vw_widget_bundle_progress' ) ) {
 			if ( $instance['title'] ) echo $before_title . $title_html . $after_title;
 
 			update_option("wv_bundle_progress_posts", $posts);
+			update_option("wv_bundle_progress_title", $title_html);
 			$ids = explode(',', $posts);
+			$ids = array_map( 'absint', $ids );
 			array_unshift($ids, get_the_ID());
 
-			$myposts = query_posts(array('post__in' => $ids, 'orderby' => 'post__in' ) );
+			$myposts = get_posts( apply_filters( 'vw_filter_widget_bundle_progress_query', array('post__in' => $ids, 'orderby' => 'post__in', 'post_type' => array('post', 'cmm_article')) ) );
 
 			echo '<ul class="vw-bundle-progress">';
 				$i = 0;
@@ -64,7 +66,10 @@ if ( ! class_exists( 'Vw_widget_bundle_progress' ) ) {
 						echo '<div class="vw-bundle-progress__number font-header">' . ($i+1) . '</div>';
 						echo '<div id="js-bundle-progress-progressbar" class="vw-bundle-progress__progressbar"></div>';
 						echo '<h4 class="vw-bundle-progress__title"><a href="' . $post_link . '">'  . $post->post_title . '</a></h4>';
-						echo '<h5 class="vw-bundle-progress__author"><em> by <a href="' . get_author_posts_url(get_the_author_meta( 'ID' )) . '">' . get_the_author() . '</a></em></h5>';
+						echo '<div class="vw-post-meta vw-post-meta-large1">';
+							echo vw_the_author($post->post_author);
+						echo '</div>';
+						// echo '<h5 class="vw-bundle-progress__author"><em> by <a href="' . get_author_posts_url(get_the_author_meta( 'ID' )) . '">' . get_the_author() . '</a></em></h5>';
 					echo '</li>';
 					$i++;
 				endforeach;
