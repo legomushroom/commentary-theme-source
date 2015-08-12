@@ -62,13 +62,14 @@ if ( ! class_exists( 'Vw_widget_bundle_progress' ) ) {
 			echo '<ul class="vw-bundle-progress">';
 				$i = 0;
 				foreach( $myposts as $post ):
+					setup_postdata( $post );
 					$post_link = get_permalink($post->ID);
 					echo '<li id="js-bundle-progress-item" class="vw-bundle-progress__item" data-url="' . $post_link . '" data-index="' . $i . '" data-name="' . ($post->post_title) . '">';
 						echo '<div class="vw-bundle-progress__number font-header">' . ($i+1) . '</div>';
 						echo '<div id="js-bundle-progress-progressbar" class="vw-bundle-progress__progressbar"></div>';
 						echo '<h4 class="vw-bundle-progress__title"><a href="' . $post_link . '">'  . $post->post_title . '</a></h4>';
 						echo '<div class="vw-post-meta vw-post-meta-large1">';
-							echo vw_the_author($post->post_author);
+							vw_the_author();
 						echo '</div>';
 						// echo '<h5 class="vw-bundle-progress__author"><em> by <a href="' . get_author_posts_url(get_the_author_meta( 'ID' )) . '">' . get_the_author() . '</a></em></h5>';
 					echo '</li>';
