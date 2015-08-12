@@ -31,6 +31,7 @@ return;
       <?php
         $i = 0;
         foreach( $myposts as $post ):
+            setup_postdata( $post );
         $post_link = get_permalink($post->ID);
       ?>
           <li id="js-bundle-progress-item" class="vw-bundle-progress__item" data-url="<?php echo $post_link; ?>" data-index="<?php echo $i; ?>" data-name="<?php echo $post->post_title; ?>">
