@@ -62,7 +62,7 @@ if ( ! class_exists( 'Vw_widget_post_tabbed' ) ) {
 
 					}
 
-					query_posts( apply_filters( 'vw_filter_widget_post_tabbed_query', $query_args ) );
+					query_posts( apply_filters( 'vw_filter_widget_post_tabbed_query_1', $query_args ) );
 
 					$template_file = 'templates/post-loop/loop-small-left-thumbnail-col-1.php';
 
@@ -80,7 +80,7 @@ if ( ! class_exists( 'Vw_widget_post_tabbed' ) ) {
 						// 'meta_key' => '_thumbnail_id', // DEV: Only posts that have featured image
 					);
 
-					query_posts( apply_filters( 'vw_filter_widget_post_tabbed_query', $query_args ) );
+					query_posts( apply_filters( 'vw_filter_widget_post_tabbed_query_2', $query_args ) );
 
 					$template_file = 'templates/post-loop/loop-small-left-thumbnail-col-1.php';
 
