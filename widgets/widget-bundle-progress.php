@@ -9,6 +9,7 @@ if ( ! function_exists( 'vw_widgets_init_bundle_progress' ) ) {
 
 if ( ! class_exists( 'Vw_widget_bundle_progress' ) ) {
 	class Vw_widget_bundle_progress extends WP_Widget {
+
 		private $default = array(
 			'title' => '',
 			'posts' => ''
@@ -50,10 +51,14 @@ if ( ! class_exists( 'Vw_widget_bundle_progress' ) ) {
 			echo $before_widget;
 			if ( $instance['title'] ) echo $before_title . $title_html . $after_title;
 
-			update_option("wv_bundle_progress_posts", $posts);
-			update_option("wv_bundle_progress_title", $title_html);
+			$post_type = get_post_type();
+
+			update_option("wv_bundle_progress_posts_" . $post_type, $posts);
+			update_option("wv_bundle_progress_title_" . $post_type, $title_html);
 			$ids = explode(',', $posts);
 			$ids = array_map( 'absint', $ids );
+			  $ids = array_filter($ids);
+			  if ( empty( $ids ) ) { return; }
 			array_unshift($ids, get_the_ID());
 
 			$myposts = get_posts( apply_filters( 'vw_filter_widget_bundle_progress_query', array('post__in' => $ids, 'orderby' => 'post__in', 'post_type' => array('post', 'cmm_article')) ) );
