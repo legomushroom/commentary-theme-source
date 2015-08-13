@@ -504,11 +504,6 @@ button,
     padding: 45px 0;
 }
 
-.vw-header-ads-wrapper {
-    background: #ACACAC;
-    margin-bottom: 1px;
-}
-
 /*.vw-header-ads-leader-board {
     float: left;
 }*/
@@ -1175,6 +1170,10 @@ body {
 .widget-title .vw-super-title {
     top: -9px;
     font-size: 10px;
+}
+
+.vw-bundle-progress__title {
+    text-transform: none;
 }
 
 .widget-title + .vw-fixed-tab,
@@ -2546,6 +2545,8 @@ div.vw-tag-links a {
 
 .vw-post-loop-medium-1-col-2 .vw-block-grid-item:nth-child(n+3):after,
 .vw-post-loop-medium-1-col-3 .vw-block-grid-item:nth-child(n+4):after,
+.vw-post-loop-medium-1-col-4 .vw-block-grid-item:nth-child(n+5):after,
+
 .vw-post-loop-medium-2-col-2 .vw-block-grid-item:nth-child(n+3):after,
 .vw-post-loop-medium-2-col-3 .vw-block-grid-item:nth-child(n+4):after,
 .vw-post-loop-medium-3-col-2 .vw-block-grid-item:nth-child(n+3):after,
@@ -3495,7 +3496,7 @@ div.vw-tag-links a {
 }*/
 
 
-@media all and (max-width: 768px) {
+@media all and (max-width: 767px) {
     .vw-menu-main-wrapper {
         display:  none;
     }
@@ -3540,8 +3541,6 @@ div.vw-tag-links a {
     display:            block;
     position:           absolute;
     opacity:            0;
-    /*border-bottom:      4px solid #333;
-    border-top:         4px solid #333;*/
     -webkit-transform: translateX(-150px);
     -ms-transform: translateX(-150px);
     -o-transform: translateX(-150px);
@@ -3556,15 +3555,19 @@ div.vw-tag-links a {
     opacity:  1;
 }
 
+@media all and (max-width: 1000px) {
+    .vw-header-logo,
+    .vw-instant-search-buton {
+        display: none;
+    }
+}
 
-.is-sticky .vw-menu-location-main {
-    /* ugh oh:  transform makes menu act as position: relative,
-                so we have to use margin */
-    margin-left: 106px;
-  /*-webkit-transform: translateX(50px);
-  -ms-transform: translateX(50px);
-  -o-transform: translateX(50px);
-  transform: translateX(50px);*/
+@media all and (min-width: 1001px) {
+    .is-sticky .vw-menu-location-main {
+        /* ugh oh:  transform makes menu act as position: relative,
+                    so we have to use margin */
+        margin-left: 106px;
+    }
 }
 
 /*.vw-menu-main-wrapper .vw-menu-location-main,*/
@@ -7218,6 +7221,7 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
     -webkit-transition: all .3s ease-out;
     -o-transition: all .3s ease-out;
     transition: all .3s ease-out;
+    display: none;
   }
 
   .sticky-contents.is-mobile-layout.is-show {
@@ -7715,6 +7719,14 @@ html {
 }
 
 
+.widget_vw_widget_bundle_progress {
+    -webkit-transform: translateZ(0);
+       -moz-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+         -o-transform: translateZ(0);
+            transform: translateZ(0);
+}
+
 .widget_vw_widget_bundle_progress .widget-title {
     margin-bottom: 0;
 }
@@ -7821,11 +7833,11 @@ html {
         background: #f1f1f1;
         opacity: 0;
         z-index: 0;
-        -webkit-transition: all .15s linear;
+        /*-webkit-transition: all .15s linear;
            -moz-transition: all .15s linear;
             -ms-transition: all .15s linear;
              -o-transition: all .15s linear;
-                transition: all .15s linear;
+                transition: all .15s linear;*/
         -webkit-transform: scaleX(0) translateZ(0);
            -moz-transform: scaleX(0) translateZ(0);
             -ms-transform: scaleX(0) translateZ(0);
@@ -7846,6 +7858,7 @@ html {
     left: 0;
     z-index: 30;
     opacity: 0;
+    display: none;
     
     -webkit-transition: -webkit-transform .25s ease-out, opacity .25s ease-out;
        -moz-transition: -moz-transform .25s ease-out, opacity .25s ease-out;
@@ -7853,29 +7866,29 @@ html {
          -o-transition: transform .25s ease-out, opacity .25s ease-out;
             transition: transform .25s ease-out, opacity .25s ease-out;
     
-    -webkit-transform: translateY(-100%);
-       -moz-transform: translateY(-100%);
-        -ms-transform: translateY(-100%);
-         -o-transform: translateY(-100%);
-            transform: translateY(-100%);
+    -webkit-transform: translateY(-100%) translateZ(0);
+       -moz-transform: translateY(-100%) translateZ(0);
+        -ms-transform: translateY(-100%) translateZ(0);
+         -o-transform: translateY(-100%) translateZ(0);
+            transform: translateY(-100%) translateZ(0);
     /*background: deeppink;*/
     }
     .bundle-progress-mobile.is-open {
-        -webkit-transform: translateY(0);
-           -moz-transform: translateY(0);
-            -ms-transform: translateY(0);
-             -o-transform: translateY(0);
-                transform: translateY(0);
+        -webkit-transform: translateY(0) translateZ(0);
+           -moz-transform: translateY(0) translateZ(0);
+            -ms-transform: translateY(0) translateZ(0);
+             -o-transform: translateY(0) translateZ(0);
+                transform: translateY(0) translateZ(0);
     }
 
-    .bundle-progress-mobile__current-item,
+    /*.bundle-progress-mobile__current-item,
     .bundle-progress-mobile__title {
         -webkit-transition: all .25s ease-out;
            -moz-transition: all .25s ease-out;
             -ms-transition: all .25s ease-out;
              -o-transition: all .25s ease-out;
                 transition: all .25s ease-out;
-    }
+    }*/
 
     .bundle-progress-mobile.is-open .bundle-progress-mobile__current-item {
         display: none;
@@ -8028,4 +8041,27 @@ html {
 }
 .vw-backstretch {
     overflow: hidden;
+}
+
+/*
+.vw-post-style-medium--issues {
+    width: 240px;
+}
+
+.vw-post-style-medium--issues .vw-post-box-thumbnail {
+    width: 240px;
+    height: 360px;
+}
+*/
+
+@media all and (max-width: 787px) {
+    .container--header-ads {
+        padding: 0;
+    }   
+}
+
+.vw-header-ads-wrapper {
+    background: #ACACAC;
+    margin-bottom: 1px;
+    margin-top: 0;
 }

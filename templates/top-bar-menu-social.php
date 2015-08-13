@@ -1,10 +1,9 @@
 <!-- Top Bar -->
+
+<div class="container container--header-ads"> <?php get_template_part( 'templates/header-ads' ); ?> </div>
+
 <div class="vw-top-bar">
-
 	<div class="container">
-		
-		<?php get_template_part( 'templates/header-ads' ); ?>
-
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="vw-top-bar-inner">

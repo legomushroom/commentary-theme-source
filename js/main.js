@@ -46,6 +46,8 @@ jQuery.noConflict();
 					this.wHeight 				 = this.$w.outerHeight();
 					this.wWidth 				 = this.$w.outerWidth();
 					this.loop 					 = this.loop.bind(this);
+					this.$menu 					 = $('#vw-menu-main');
+					this.menuHeight  		 = this.$menu.outerHeight();
 
 					this.isMenuItems  = this.$items.length > 0;
 					this.desktopQuery = (this.isMenuItems) ? 1500 : 1220;
@@ -81,7 +83,7 @@ jQuery.noConflict();
 						this.isMenuItems  = this.$items.length > 0;
 					}
 					this.isStickyInited && !this.isMenuItems && this.$stickyContents.css({ left: '0' });
-					var offsetTop = ((this.$w.outerWidth() <= 768) ? 15 : 68);
+					var offsetTop = ((this.$w.outerWidth() < 768) ? 15 : (this.menuHeight+15));
 					offsetTop += (this.isAdminBar) ? this.adminBarHeight : 0;
 					setTimeout(function () {
 						var offset = (this.isMenuItems && this.wWidth < this.desktopQuery) ? offsetTop + 50 : 0;
@@ -201,8 +203,8 @@ jQuery.noConflict();
 					enquire.register("screen and (min-width:" + this.desktopQuery + "px)", {
 					    match : function() {
 					    	it.state = 'desktop';
-					    	it.$stickyContents.removeClass('is-tablet-layout');
 					    	it.$stickyContents.removeClass('is-mobile-layout');
+				    		it.$stickyContents.removeClass('is-tablet-layout');
 					    	it.$stickyContents.css({ width: '170px' });
 					    	it.initSticky();
 					    },
@@ -237,7 +239,9 @@ jQuery.noConflict();
 					    	it.isStickyInited && it.destroySticky();
 					    	it.state = 'mobile';
 					    	it.$stickyContents.addClass('is-mobile-layout');
-					    	// it.$stickyContents.removeClass('is-sticky-contents');
+					    	setTimeout(function() {
+					    		it.$stickyContents.css({ display: 'block' });
+					    	}, 300);
 					    	// it.headroom = new Headroom(it.$stickyContents[0]).init();
 					    	// it.$stickyContents.css({ width: '100%' });
 					    	// it.$stickyContents.css({ top: 'auto' });
@@ -257,8 +261,10 @@ jQuery.noConflict();
 					this.checkItems(); requestAnimationFrame(this.loop);
 				}
 		
-			var $posts = $('.vw-main-post');
-			$posts.each(function (i, post) { new Main($(post)); });
+			setTimeout(function () {
+				var $posts = $('.vw-main-post');
+				$posts.each(function (i, post) { new Main($(post)); });
+			}, 1000);
 
 		})();
 		
@@ -532,7 +538,7 @@ jQuery.noConflict();
 				vw_sticky_sidebar.hcSticky( {
 					stickTo: '.container',
 					wrapperClassName: 'vw-sticky-sidebar-wrapper',
-					offResolutions: [-769],
+					offResolutions: [-768],
 					top: offset,
 				} );
 

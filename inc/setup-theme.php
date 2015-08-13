@@ -37,6 +37,9 @@ if ( ! function_exists( 'vw_after_theme_setup' ) ) {
 		add_image_size( 'vw_small_thumbnail', 85, 60, true );
 		add_image_size( 'vw_full_width_thumbnail', 1263, 560, true );
 
+		add_image_size( 'vw_issue_thumbnail', 589, 800, true );
+
+
 		/**
 		 * Register menu
 		 */
