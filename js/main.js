@@ -534,7 +534,7 @@ jQuery.noConflict();
 
 			var vw_sticky_sidebar = $(".vwspc-section-sidebar .vw-sticky-sidebar, .vw-page-wrapper .vw-sticky-sidebar");
 
-			if ( vw_sticky_sidebar ) {
+			if ( vw_sticky_sidebar && $('.vw-main-post').length ) {
 				vw_sticky_sidebar.hcSticky( {
 					stickTo: '.container',
 					wrapperClassName: 'vw-sticky-sidebar-wrapper',

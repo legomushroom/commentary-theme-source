@@ -610,17 +610,17 @@ button,
  * $TOP BAR
  * -------------------------------------------------------------------------- */
 .vw-top-bar {
-    display: none;
+    /*display: none;*/
     padding: 0;
     font-size: 11px;
     position: relative;
     z-index: 1001;
 }
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {
     .vw-top-bar {
         display: block;
     }
-}
+}*/
 
 .vw-top-bar .main-menu-link,
 .vw-top-bar .vw-site-social-profile-icon,
