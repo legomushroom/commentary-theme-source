@@ -15,6 +15,7 @@
   ?>
 
   <!-- MOBILE HEADER : START -->
+  
    <div class="bundle-progress-mobile" id="js-bundle-progress-mobile">
 
     <div class="bundle-progress-mobile__items-wrapper">

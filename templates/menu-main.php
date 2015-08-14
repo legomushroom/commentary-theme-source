@@ -34,7 +34,7 @@
 					}
 					?>
 					
-					<a class="vw-instant-search-buton main-menu-link">
+					<a class="vw-instant-search-button main-menu-link">
 						<i class="vw-icon icon-entypo-search"></i>
 					</a>
 

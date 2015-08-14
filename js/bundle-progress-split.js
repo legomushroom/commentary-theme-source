@@ -14,6 +14,7 @@
       this.$htmlBody      = $('html, body');
       this.wHeight        = this.$w.height();
       this.loop           = this.loop.bind(this);
+      this.gaSent         = {}
 
       this.getDimentions();
     },
@@ -63,14 +64,21 @@
         this.currentItem.$menuItem.addClass('is-check');
         this.setRead(this.currentItem.index);
 
-        window.history && window.history.replaceState({}, '', this.currentItem.url);
-
-        document.title = this.currentItem.name + ' | commentary';
+        this.setBrowserCurrent();
 
         this.previousItem = this.currentItem;
       }
 
       this.setProgress(this.currentItem, scrollY);
+    },
+
+    setBrowserCurrent: function () {
+      window.history && window.history.replaceState({}, '', this.currentItem.url);
+      document.title = this.currentItem.name + ' | commentary';
+      if (!this.gaSent[this.currentItem.url]) {
+        ga('send', 'pageview', this.currentItem.url);
+        this.gaSent[this.currentItem.url] = true;
+      }
     },
 
     setProgress: function (currentItem, scrollY) {
@@ -194,8 +202,7 @@
       this.currentItem.$menuItem.addClass('is-check');
       this.setRead(this.currentItem.index);
 
-      window.history && window.history.replaceState({}, '', this.currentItem.url);
-      document.title = this.currentItem.name + ' | commentary';
+      this.setBrowserCurrent();
 
       this.$current.text(this.currentItem.name);
 

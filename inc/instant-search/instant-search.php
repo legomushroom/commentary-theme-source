@@ -82,7 +82,7 @@ if ( ! function_exists( 'vw_instant_search_add_icon' ) ) {
 	function vw_instant_search_add_icon( $content ) {
 		ob_start();
 		?>
-			<a class="vw-instant-search-buton main-menu-link"><i class="vw-icon icon-entypo-search"></i></a>
+			<a class="vw-instant-search-button main-menu-link"><i class="vw-icon icon-entypo-search"></i></a>
 		<?php
 
 		return $content.ob_get_clean();

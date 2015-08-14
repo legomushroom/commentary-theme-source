@@ -580,23 +580,23 @@ button,
 }
 .vw-top-bar .main-menu-link,
 .vw-top-bar .vw-site-social-profile-icon,
-.vw-top-bar .vw-instant-search-buton {
+.vw-top-bar vw-instant-search-button {
     color: #888888;
 }
-.vw-top-bar .vw-instant-search-buton {
+.vw-top-bar vw-instant-search-button {
     display: inline-block;
 }
-.vw-top-bar .vw-instant-search-buton,
-.vw-top-bar .vw-instant-search-buton .vw-icon {
+.vw-top-bar vw-instant-search-button,
+.vw-top-bar vw-instant-search-button .vw-icon {
     display: inline-block;
     padding: 2px 4px;
 }
-.vw-top-bar .vw-instant-search-buton .vw-icon,
+.vw-top-bar vw-instant-search-button .vw-icon,
 .vw-top-bar .vw-site-social-profile-icon {
     padding: 6px 4px;
     font-size: 12px;
 }
-.vw-top-bar .vw-instant-search-buton .vw-icon:hover,
+.vw-top-bar vw-instant-search-button .vw-icon:hover,
 .vw-top-bar .vw-site-social-profile-icon:hover {
     color: #FFFFFF !important;
 }
@@ -5842,10 +5842,10 @@ html.mm-right.mm-opening .vw-sticky-wrapper.is-sticky .vw-sticky {
 /* -----------------------------------------------------------------------------
  * $INSTANT SEARCH
  * -------------------------------------------------------------------------- */
-.vw-instant-search-buton {
+vw-instant-search-button {
     cursor: pointer;
 }
-.vw-instant-search-buton i:before {
+vw-instant-search-button i:before {
     font-size: 16px;
 }
 

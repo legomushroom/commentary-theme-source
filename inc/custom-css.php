@@ -83,7 +83,7 @@ if ( ! function_exists( 'vw_render_custom_css' ) ) {
 		.vw-review-summary-bar .vw-review-score-bar,
 		.vw-review-box-summary .vw-review-total-score,
 		.vw-author-socials .vw-icon-social,
-		.vw-instant-search-buton:hover,
+		.vw-instant-search-button:hover,
 		.vw-scroll-to-top
 		{
 			background-color: <?php echo $vw_espresso['accent_color'] ?>;
