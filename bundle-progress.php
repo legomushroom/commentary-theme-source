@@ -1,21 +1,25 @@
 <?php
-
-  if ( !is_active_widget( false, false, 'vw_widget_bundle_progress', true ) ) { return; }
+$widget_sidebar = is_active_widget( false, false, 'vw_widget_bundle_progress', true );
+  if ( !$widget_sidebar ) { return; }
 
   $ID = get_the_ID();
   $title = get_the_title();
+  $post_type = get_post_type();
 
-  $ids = get_option('wv_bundle_progress_posts');
-  $ids = explode(',', $ids);
+  $ids = get_option('wv_bundle_progress_posts_' . $post_type );
+  $ids   = explode(',', $ids);
   $ids = array_map('absint', $ids);
+  $ids = array_filter($ids);
+  if ( empty( $ids ) ) { return; }
+
   array_unshift($ids, get_the_ID());
-  
-  $myposts = get_posts( apply_filters( 'vw_filter_widget_bundle_progress_query', array('post__in' => $ids, 'orderby' => 'post__in', 'post_type' => array('post', 'cmm_article')) ) );
+
+  $myposts = get_posts(apply_filters( 'vw_filter_bundle_progress_query', array('post__in' => $ids, 'orderby' => 'post__in', 'post_type' => array( 'post', 'cmm_article' ) ) ) );
 
   ?>
 
   <!-- MOBILE HEADER : START -->
-  
+
    <div class="bundle-progress-mobile" id="js-bundle-progress-mobile">
 
     <div class="bundle-progress-mobile__items-wrapper">
@@ -24,7 +28,8 @@
       <?php
         $i = 0;
         foreach( $myposts as $post ):
-        $post_link = get_permalink($post->ID);
+            setup_postdata( $post );
+            $post_link = get_permalink($post->ID);
       ?>
           <li id="js-bundle-progress-item" class="vw-bundle-progress__item" data-url="<?php echo $post_link; ?>" data-index="<?php echo $i; ?>" data-name="<?php echo $post->post_title; ?>">
             <div id="js-bundle-progress-progressbar" class="vw-bundle-progress__progressbar"></div>
@@ -34,14 +39,14 @@
               <?php echo vw_the_author(); ?>
             </div>
           </li>
-          
+
       <?php
         $i++;
         endforeach;
       ?>
 
       <!-- <li class="bundle-progress-mobile__item"></li> -->
-        
+
       </ul>
     </div>
 
@@ -55,14 +60,12 @@
       </div>
       <div class="bundle-progress-mobile__arrow" id="js-bundle-progress-mobile-open"></div>
     </div>
-     
+
    </div>
 
    <!-- MOBILE HEADER : END-->
 
 <?php
-
-if ( !is_active_widget( false, false, 'vw_widget_bundle_progress', true ) ) { return; }
 
 foreach( $myposts as $post ):
   if ($ID === $post->ID) { continue; }
@@ -73,16 +76,16 @@ foreach( $myposts as $post ):
     <?php vw_the_breadcrumb(); ?>
 
     <?php vw_the_category(); ?>
-    
+
     <h1 class="entry-title"><?php the_title(); ?></h1>
-    
+
     <?php vw_the_subtitle(); ?>
 
     <span class="author vcard hidden"><span class="fn"><?php echo esc_attr( get_the_author() ); ?></span></span>
     <span class="updated hidden"><?php echo esc_attr( get_the_date( 'Y-m-d' ) ); ?></span>
-    
+
     <?php vw_the_post_meta_large() ?>
-    
+
     <?php // vw_the_post_share_box(); ?>
 
     <div class="vw-post-content clearfix">
@@ -91,9 +94,9 @@ foreach( $myposts as $post ):
         <?php if ( ! has_post_format() ) vw_the_featured_image(); ?>
 
         <?php vw_the_embeded_media(); ?>
-        
+
       <?php endif; ?>
-      
+
       <?php
         $content = $post->post_content;
         $content = apply_filters('the_content', $content);
@@ -115,4 +118,3 @@ foreach( $myposts as $post ):
   <?php vw_the_post_footer_sections(); ?>
 
 <?php endforeach; wp_reset_postdata(); ?>
-
