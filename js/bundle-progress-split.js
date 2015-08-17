@@ -11,6 +11,7 @@
       this.$progressbars  = $(this.mainSelector + ' #js-bundle-progress-progressbar');
       this.$posts         = $('.vw-main-post');
       this.$w             = $(window);
+      this.$doc           = $(document);
       this.$htmlBody      = $('html, body');
       this.wHeight        = this.$w.height();
       this.loop           = this.loop.bind(this);
@@ -76,8 +77,14 @@
       window.history && window.history.replaceState({}, '', this.currentItem.url);
       document.title = this.currentItem.name + ' | commentary';
       if (!this.gaSent[this.currentItem.url]) {
+
+        if (this.currentItem.index) {
+          this.$doc.trigger('bp-page-view', [ this.currentItem.$item ]);
+        }
+
         ga('send', 'pageview', this.currentItem.url);
         this.gaSent[this.currentItem.url] = true;
+
       }
     },
 
