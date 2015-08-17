@@ -69,7 +69,6 @@
 
         this.previousItem = this.currentItem;
       }
-
       this.setProgress(this.currentItem, scrollY);
     },
 
