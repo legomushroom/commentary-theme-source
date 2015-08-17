@@ -46,7 +46,8 @@ if ( ! function_exists( 'vw_render_custom_css' ) ) {
 
 		.vw-bundle-progress__item.is-check:before,
 		.bundle-progress-mobile__panel:before,
-		.sticky-contents__mobile-menu
+		.sticky-contents__mobile-menu,
+		.vw-button-
 		{
 			background-color: <?php echo $vw_espresso['accent_color'] ?>;
 		}

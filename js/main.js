@@ -520,7 +520,7 @@ jQuery.noConflict();
 
 		// -----------------------------------------------------------------------------
 		// Sticky Sidebar
-		// 
+		//
 		if ( $.fn.hcSticky ) {
 			var offset = 15;
 
@@ -534,7 +534,7 @@ jQuery.noConflict();
 
 			var vw_sticky_sidebar = $(".vwspc-section-sidebar .vw-sticky-sidebar, .vw-page-wrapper .vw-sticky-sidebar");
 
-			if ( vw_sticky_sidebar && ($('.vw-main-post').length || $(window).width() > 1000 ) ) {
+			if ( vw_sticky_sidebar && ($('.vw-main-post').length /* || $(window).width() > 1000 */ ) ) {
 				vw_sticky_sidebar.hcSticky( {
 					stickTo: '.container',
 					wrapperClassName: 'vw-sticky-sidebar-wrapper',

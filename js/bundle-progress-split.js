@@ -1,8 +1,33 @@
 ;(function ($, undefined) {
 
+  "use strict";
+  if (!Date.now) Date.now = function() {
+      return (new Date).getTime()
+  };
+  (function() {
+      var n = ["webkit", "moz"];
+      for (var e = 0; e < n.length && !window.requestAnimationFrame; ++e) {
+          var i = n[e];
+          window.requestAnimationFrame = window[i + "RequestAnimationFrame"];
+          window.cancelAnimationFrame = window[i + "CancelAnimationFrame"] || window[i + "CancelRequestAnimationFrame"]
+      }
+      if (/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent) || !window.requestAnimationFrame || !window.cancelAnimationFrame) {
+          var a = 0;
+          window.requestAnimationFrame = function(n) {
+              var e = Date.now();
+              var i = Math.max(a + 16, e);
+              return setTimeout(function() {
+                  n(a = i)
+              }, i - e)
+          };
+          window.cancelAnimationFrame = clearTimeout
+      }
+  })();
+
   var main = {
     init: function () {
-      this.vars(); this.initEvents(); this.loop();
+      if (this.vars()) { return };
+      this.initEvents(); this.loop();
     },
     vars: function () {
       this.mainSelector   =  '[id^=vw_widget_bundle_progress]';
@@ -15,9 +40,9 @@
       this.$htmlBody      = $('html, body');
       this.wHeight        = this.$w.height();
       this.loop           = this.loop.bind(this);
-      this.gaSent         = {}
+      this.gaSent         = {};
 
-      this.getDimentions();
+      if (this.$posts.length) { this.getDimentions(); } else { return true; }
     },
     getDimentions: function () {
       this.dimentions = [];
@@ -83,8 +108,11 @@
 
         ga('send', 'pageview', this.currentItem.url);
         this.gaSent[this.currentItem.url] = true;
-
       }
+
+      setTimeout(function () {
+        this.getDimentions();
+      }.bind(this), 300)
     },
 
     setProgress: function (currentItem, scrollY) {
@@ -143,13 +171,15 @@
     this.$progressbars  = $(this.mainSelector + ' #js-bundle-progress-progressbar');
     this.$posts         = $('.vw-main-post');
     this.$w             = $(window);
+    this.$doc           = $(document);
     this.$htmlBody      = $('html, body');
     this.wHeight        = this.$w.height();
     this.showPanel      = this.$posts.eq(0).offset().top + 20;
+    this.gaSent         = {};
 
     this.loop           = this.loop.bind(this);
 
-    this.getDimentions();
+    if (this.$posts.length) {this.getDimentions();} else { return true; }
   }
 
   mainMobile.initEvents = function () {
@@ -171,6 +201,11 @@
         }
       });
     });
+
+    this.$w.on('resize', function () {
+      it.getDimentions();
+    });
+
   }
   mainMobile.setProgress = function (currentItem, scrollY) {
     var delta = scrollY - (currentItem.start - this.wHeight/3);
