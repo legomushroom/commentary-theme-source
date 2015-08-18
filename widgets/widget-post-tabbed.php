@@ -39,35 +39,30 @@ if ( ! class_exists( 'Vw_widget_post_tabbed' ) ) {
 
 			<div class="vw-fixed-tab vw-fixed-tab-3-cols clearfix">
 				<ul>
-					<li><a href="#" class="vw-fixed-tab-title is-active"><i class="vw-icon icon-entypo-star"></i></a></li>
+					<li><a href="#" class="vw-fixed-tab-title is-active"><i class="vw-icon icon-entypo-share"></i></a></li>
+					<li><a href="#" class="vw-fixed-tab-title"><i class="vw-icon icon-entypo-eye"></i></a></li>
 					<li><a href="#" class="vw-fixed-tab-title"><i class="vw-icon icon-entypo-clock"></i></a></li>
-					<li><a href="#" class="vw-fixed-tab-title"><i class="vw-icon icon-entypo-comment"></i></a></li>
 				</ul>
 
 				<div class="vw-fixed-tab-content vw-fixed-tab-id-1 is-active">
 					<?php
+					// $comments = get_comments( array(
+					// 	'status' => 'approve',
+					// 	'number' => $count,
+					// ) );
 					$query_args = array(
-						'post_type' => 'post',
-						'ignore_sticky_posts' => true,
-						'posts_per_page' => $count,
-					);
-
-					if ( 'liked' == $order ) {
-						$query_args['orderby'] = 'meta_value_num';
-						$query_args['meta_key'] = 'vw_post_likes';
-
-					} else { // ( 'viewed' == $order )
-						$query_args['orderby'] = 'meta_value_num';
-						$query_args['meta_key'] = 'vw_post_views_all';
-
-					}
-
+            'post_type' => 'post',
+            'ignore_sticky_posts' => true,
+            'posts_per_page' => $count,
+          );
+          $query_args['orderby'] = 'meta_value_num';
+          $query_args['meta_key'] = 'vw_post_total_shares_forgery';
+					
 					query_posts( apply_filters( 'vw_filter_widget_post_tabbed_query_1', $query_args ) );
 
 					$template_file = 'templates/post-loop/loop-small-left-thumbnail-col-1.php';
 
 					include( locate_template( $template_file, false, false ) );
-					wp_reset_query();
 					?>
 				</div>
 
@@ -77,8 +72,14 @@ if ( ! class_exists( 'Vw_widget_post_tabbed' ) ) {
 						'post_type' => 'post',
 						'ignore_sticky_posts' => true,
 						'posts_per_page' => $count,
-						// 'meta_key' => '_thumbnail_id', // DEV: Only posts that have featured image
 					);
+
+					$query_args['orderby'] = 'meta_value_num';
+					if ( 'liked' == $order ) {
+						$query_args['meta_key'] = 'vw_post_likes';
+					} else { // ( 'viewed' == $order )
+						$query_args['meta_key'] = 'vw_post_total_forgery';
+					}
 
 					query_posts( apply_filters( 'vw_filter_widget_post_tabbed_query_2', $query_args ) );
 
@@ -91,18 +92,22 @@ if ( ! class_exists( 'Vw_widget_post_tabbed' ) ) {
 
 				<div class="vw-fixed-tab-content vw-fixed-tab-id-3">
 					<?php
-					$comments = get_comments( array(
-						'status' => 'approve',
-						'number' => $count,
-					) );
+					$query_args = array(
+						'post_type' => 'post',
+						'ignore_sticky_posts' => true,
+						'posts_per_page' => $count,
+						// 'meta_key' => '_thumbnail_id', // DEV: Only posts that have featured image
+					);
 
-					$template_file = sprintf( 'templates/post-loop/loop-small-comments.php' );
+					query_posts( apply_filters( 'vw_filter_widget_post_tabbed_query_3', $query_args ) );
+
+					$template_file = 'templates/post-loop/loop-small-left-thumbnail-col-1.php';
 
 					include( locate_template( $template_file, false, false ) );
+					wp_reset_query();
 					?>
 				</div>
 
-			</div>
 			<?php
 
 			echo $after_widget;
