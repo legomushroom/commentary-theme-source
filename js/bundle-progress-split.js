@@ -50,14 +50,15 @@
         var $item = $(item);
         var pos = $item.offset();
         var $menuItem = this.$menuItems.eq(i);
+        var data = $menuItem.data();
         this.dimentions.push({
           start:        pos.top,
           height:       $item.outerHeight(),
           $item:        $item,
           $menuItem:    $menuItem,
           $progressbar: this.$progressbars.eq(i),
-          url:          $menuItem.data().url,
-          name:         $menuItem.data().name,
+          url:          data.url,
+          name:         data.name,
           index:        i
         });
       }.bind(this));
@@ -101,18 +102,14 @@
       window.history && window.history.replaceState({}, '', this.currentItem.url);
       document.title = this.currentItem.name + ' | commentary';
       if (!this.gaSent[this.currentItem.url]) {
-
-        if (this.currentItem.index) {
-          this.$doc.trigger('bp-page-view', [ this.currentItem.$item ]);
-        }
-
+        this.$doc.trigger('bp-page-view', [ this.currentItem.$item, this.currentItem.index === 0 ]);
         ga('send', 'pageview', this.currentItem.url);
         this.gaSent[this.currentItem.url] = true;
       }
-
-      setTimeout(function () {
-        this.getDimentions();
-      }.bind(this), 300)
+      var it = this;
+      $.pandalocker && $.pandalocker.hooks.add( 'opanda-locked', function( $components, api ){
+        it.getDimentions();
+      });
     },
 
     setProgress: function (currentItem, scrollY) {

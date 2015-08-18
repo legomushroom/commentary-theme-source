@@ -123,7 +123,9 @@ if ( ! class_exists( 'Vw_widget_post_tabbed' ) ) {
 			$count = intval( $instance['count'] );
 			?>
 
+
 			<!-- order -->
+			
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id('order') ); ?>">Post Order:</label>
 				<select class="widefat" id="<?php echo esc_attr( $this->get_field_id('order') ); ?>" name="<?php echo esc_attr( $this->get_field_name('order') ); ?>">
