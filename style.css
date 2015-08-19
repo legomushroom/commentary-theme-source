@@ -1270,12 +1270,12 @@ body {
 }
 
 span.intense.dropcap {
-  font-size: 102px;
+  font-size: 119px;
   line-height: 93px;
   position: relative;
   margin-right:  0;
   padding-right: 5px;
-  top: 1px;
+  top: 9px;
 }
 
 /* -------------------------------------
@@ -2209,7 +2209,7 @@ div.vw-tag-links a {
 .vw-post-box .wp-post-image {
     margin: 0;
     width: 100%;
-    max-height: 100%;
+    /*max-height: 100%;*/
     -webkit-transition: all 0.2s ease-out;
        -moz-transition: all 0.2s ease-out;
             transition: all 0.2s ease-out;
@@ -2519,7 +2519,7 @@ div.vw-tag-links a {
 .vw-post-style-medium-5 .vw-post-box-title {
     bottom: 0px;
     padding-top: 30px;
-    font-size: 16px;
+    font-size: 19px;
     color: #FFFFFF;
     background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
     background:         linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
@@ -3549,7 +3549,22 @@ div.vw-tag-links a {
 }
 */
 
-.vw-header-logo {
+.vw-menu-main-inner .vw-scroll-to-top {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+}
+
+.vw-scroll-to-top--menu .vw-icon {
+    margin-top: 6px;
+}
+
+.is-sticky .vw-scroll-to-top--menu {
+    opacity:  1;
+}
+
+/*.vw-header-logo {
     height:             100%;
     width:              140px;
     background:         url('images/commentary-logo.svg') no-repeat center center;
@@ -3561,37 +3576,37 @@ div.vw-tag-links a {
     -ms-transform: translateX(-150px);
     -o-transform: translateX(-150px);
     transform: translateX(-150px);
-}
+}*/
 
-.is-sticky .vw-header-logo {
+/*.is-sticky .vw-header-logo {
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
     -o-transform: translateX(0);
     transform: translateX(0);
     opacity:  1;
-}
+}*/
 
-@media all and (max-width: 1024px) {
+/*@media all and (max-width: 1024px) {
     .vw-header-logo,
     .vw-instant-search-button {
         display: none;
     }
-}
+}*/
 
 @media all and (min-width: 1025px) {
     .is-sticky .vw-menu-location-main {
         /* ugh oh:  transform makes menu act as position: relative,
                     so we have to use margin */
-        margin-left: 106px;
+        margin-left: 33px;
     }
 }
 
 /*.vw-menu-main-wrapper .vw-menu-location-main,*/
-.vw-menu-main-wrapper .vw-header-logo {
+/*.vw-menu-main-wrapper .vw-header-logo {
     -webkit-transition: all .3s ease-out;
     -o-transition: all .3s ease-out;
     transition: all .3s ease-out;
-}
+}*/
 
 .vw-menu-main-wrapper .vw-instant-search-button {
     position:       absolute;
@@ -7501,7 +7516,7 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
     }
 
 .vw-menu-main-inner {
-  text-align:     center;
+  /*text-align:     center;*/
 }
 
 .vw-menu {
@@ -8085,10 +8100,20 @@ html {
 
 .vw-grey-section {
     background: #F1F1F1;
+    font-size:  0;
+    line-height: 0;
 }
 
 @media all and (max-width: 767px) {
     .vw-header-ads-wrapper {
         background: transparent;
     }   
+}
+
+
+.vw-login-link {
+    cursor: pointer;
+    height: 100%;
+    font-size: 16px;
+    letter-sapcing: 2px;
 }

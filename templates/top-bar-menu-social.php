@@ -13,9 +13,20 @@
 					</div>
 					
 					<div class="vw-top-bar-right">
-						<?php vw_the_site_social_profiles(); ?>
 
+						<?php vw_the_site_social_profiles(); ?>
+						
 						<?php echo apply_filters( 'vw_filter_top_bar_right_additional_items', '' ); ?>
+
+						<a href="/login" class="vw-login-link">
+							Log in
+						</a>
+						
+						<!-- <a href="/login" class="vw-logout-link">
+							Log out
+						</a> -->
+
+
 					</div>
 
 				</div>
@@ -24,4 +35,4 @@
 	</div>
 
 </div>
-<!-- End Top Bar -->
+<!-- End Top Bar

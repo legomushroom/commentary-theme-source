@@ -6,7 +6,9 @@
 				
 				<div class="vw-menu-main-inner">
 
-					<a href="#" class="vw-header-logo"></a>
+					<span class="vw-scroll-to-top vw-scroll-to-top--menu"><i class="vw-icon icon-entypo-up-open"></i></span>
+
+					<!-- <a href="#" class="vw-header-logo"></a> -->
 
 					<?php
 					if ( has_nav_menu('vw_menu_main' ) ) {
