@@ -39,6 +39,7 @@
       this.$doc           = $(document);
       this.$htmlBody      = $('html, body');
       this.wHeight        = this.$w.height();
+      this.viewOffset     = this.wHeight/3;
       this.loop           = this.loop.bind(this);
       this.gaSent         = {};
 
@@ -51,9 +52,10 @@
         var pos = $item.offset();
         var $menuItem = this.$menuItems.eq(i);
         var data = $menuItem.data();
+        var heightOffset = (i === this.$posts.length-1) ? this.viewOffset : 0;
         this.dimentions.push({
           start:        pos.top,
-          height:       $item.outerHeight(),
+          height:       $item.outerHeight() - heightOffset,
           $item:        $item,
           $menuItem:    $menuItem,
           $progressbar: this.$progressbars.eq(i),
@@ -71,11 +73,14 @@
           e.preventDefault(); it.scrollTo($(this).data().index);
         }
       });
+      this.$w.on('resize', function () {
+        it.getDimentions();
+      });
     },
 
     scrollTo: function (i) {
       var item = this.dimentions[i];
-      this.$htmlBody.animate({ scrollTop: item.start - this.wHeight/3 + 10 });
+      this.$htmlBody.animate({ scrollTop: item.start - this.viewOffset + 10 });
     },
 
     checkWidgetDisplay: function () {
@@ -105,15 +110,26 @@
         this.$doc.trigger('bp-page-view', [ this.currentItem.$item, this.currentItem.index === 0 ]);
         ga('send', 'pageview', this.currentItem.url);
         this.gaSent[this.currentItem.url] = true;
+
+        var notifyLockers = function() {
+          this.tryPandaHook();
+          this.$doc.trigger('bp-page-view', [ this.currentItem.$item, this.currentItem.index === 0 ]);
+        }.bind(this);
+        
+        if ( window.bizpanda && window.bizpanda.inited ) { notifyLockers(); } 
+        else { this.$doc.bind('bp-init', notifyLockers ); }
+
       }
-      var it = this;
-      $.pandalocker && $.pandalocker.hooks.add( 'opanda-locked', function( $components, api ){
-        it.getDimentions();
-      });
+    },
+
+    tryPandaHook: function () {
+      if (this.isPandaHook) { return }
+      $.pandalocker && $.pandalocker.hooks.add( 'opanda-locked', this.getDimentions.bind(this));
+      this.isPandaHook = true;
     },
 
     setProgress: function (currentItem, scrollY) {
-      var delta = scrollY - (currentItem.start - this.wHeight/3);
+      var delta = scrollY - (currentItem.start - this.viewOffset);
       if (delta < 0) {
         if (currentItem.index === 0) {
           currentItem.$progressbar.css({ 'transform': 'scaleX(' + 0 + ')' });
@@ -139,7 +155,7 @@
     getCurrentItem: function (scrollY) {
       var item = this.dimentions[0];
       for (var i = 0; i < this.dimentions.length; i++) {
-        if (scrollY > this.dimentions[i].start - this.wHeight/3) {
+        if (scrollY > this.dimentions[i].start - this.viewOffset) {
           item = this.dimentions[i];
         } else {
           break;
@@ -171,6 +187,7 @@
     this.$doc           = $(document);
     this.$htmlBody      = $('html, body');
     this.wHeight        = this.$w.height();
+    this.viewOffset     = this.wHeight/3;
     this.showPanel      = this.$posts.eq(0).offset().top + 20;
     this.gaSent         = {};
 
@@ -205,7 +222,7 @@
 
   }
   mainMobile.setProgress = function (currentItem, scrollY) {
-    var delta = scrollY - (currentItem.start - this.wHeight/3);
+    var delta = scrollY - (currentItem.start - this.viewOffset);
     if (delta < 0) {
       if (currentItem.index === 0) {
         currentItem.$progressbar.css({ 'transform': 'scaleX(' + 0 + ')' });

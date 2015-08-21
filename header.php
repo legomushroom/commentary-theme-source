@@ -27,7 +27,5 @@
 
 			<?php get_template_part( '/templates/site-header', vw_get_theme_option( 'site_header_layout' ) ); ?>
 
-			<?php if ( vw_is_enable_breaking_news() ) get_template_part( '/templates/breaking-news-bar' ); ?>
-
 			<?php do_action( 'vw_action_site_header' ); ?>
 			

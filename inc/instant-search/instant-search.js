@@ -115,7 +115,6 @@
 	$.fn.instant_search = function( arg1 ) {
 		return this.each(function() {
 			var instant_search = $.extend( {}, INSTANT_SEARCH );
-
 			instant_search.init( this, arg1 );
 		});
 	};

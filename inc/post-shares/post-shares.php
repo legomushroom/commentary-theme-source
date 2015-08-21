@@ -33,6 +33,9 @@ if ( ! function_exists( 'vwpsh_render_post_shares_dialog' ) ) {
 		$twitter_url = sprintf( 'https://twitter.com/intent/tweet?status=%s', $post_title.'%20-%20'.$post_url );
 		$pinterest_url = sprintf( 'http://pinterest.com/pin/create/button/?url=%s&media=%s&description=%s', $post_url, $thumbnail_url, $post_title );
 		$gplus_url = sprintf( 'http://plus.google.com/share?url=%s', $post_url );
+
+		$post_url = urlencode( get_permalink() );
+
 		?>
 		<div id="vw-post-shares-dialog" class="zoom-anim-dialog mfp-hide">
 			<span class="vw-post-shares-subtitle"><?php _e( 'SHARE', 'envirra' ); ?></span>
@@ -40,7 +43,8 @@ if ( ! function_exists( 'vwpsh_render_post_shares_dialog' ) ) {
 			<div class="vw-post-shares-socials">
 				<a class="vw-post-shares-social vw-post-shares-social-facebook" href="<?php echo esc_url( $facebook_url ); ?>" data-post-id="<?php echo esc_attr( $post_id ); ?>" data-share-to="facebook" data-width="500" data-height="300"><i class="vw-icon icon-social-facebook"></i></a>
 				<a class="vw-post-shares-social vw-post-shares-social-twitter" href="<?php echo esc_url( $twitter_url ); ?>" data-post-id="<?php echo esc_attr( $post_id ); ?>" data-share-to="twitter" data-width="500" data-height="300"><i class="vw-icon icon-social-twitter"></i></a>
-				<a class="vw-post-shares-social vw-post-shares-social-pinterest" href="<?php echo esc_url( $pinterest_url ); ?>" data-post-id="<?php echo esc_attr( $post_id ); ?>" data-share-to="pinterest" data-width="750" data-height="300"><i class="vw-icon icon-social-pinterest"></i></a>
+			  <a class="vw-post-shares-social vw-post-shares-social-pinterest" title="<?php esc_attr_e( 'Share by Email', 'envirra' ) ?>" href="mailto:%20?subject=An article I thought you'd find interesting&body=Here it is, on Commentary Magazine: <?php echo $post_url; ?>" target="_top"><i class="vw-icon icon-social-email"></i></a>
+				<!-- <a class="vw-post-shares-social vw-post-shares-social-pinterest" href="<?php echo esc_url( $pinterest_url ); ?>" data-post-id="<?php echo esc_attr( $post_id ); ?>" data-share-to="pinterest" data-width="750" data-height="300"><i class="vw-icon icon-social-pinterest"></i></a> -->
 				<a class="vw-post-shares-social vw-post-shares-social-gplus" href="<?php echo esc_url( $gplus_url ); ?>" data-post-id="<?php echo esc_attr( $post_id ); ?>" data-share-to="gplus" data-width="500" data-height="475"><i class="vw-icon icon-social-gplus"></i></a>
 			</div>
 		</div>

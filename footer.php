@@ -1,5 +1,7 @@
 
-			<?php get_template_part( '/templates/site-footer' ); ?>
+    <?php if ( vw_is_enable_breaking_news() ) get_template_part( '/templates/breaking-news-bar' ); ?>
+
+		<?php get_template_part( '/templates/site-footer' ); ?>
 
 		</div>
 		<!-- End Site Wrapper -->

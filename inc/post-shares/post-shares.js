@@ -32,6 +32,8 @@ if ( jQuery ) {
 				var url = $this.attr( 'href' );
 				var width = $this.data( 'width' );
 				var height = $this.data( 'height' );
+
+				if (!width || !height) { return };
 				var leftPosition, topPosition;
 				//Allow for borders.
 				leftPosition = (window.screen.width / 2) - ((width / 2) + 10);

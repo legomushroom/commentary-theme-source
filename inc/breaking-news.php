@@ -2,17 +2,13 @@
 
 if ( ! function_exists( 'vw_is_enable_breaking_news' ) ) {
 	function vw_is_enable_breaking_news() {
-		if ( vw_get_theme_option( 'enable_breaking_news' ) ) {
-			if ( is_front_page() ) {
-				$is_enable_breaking_news = vw_get_theme_option( 'show_breaking_news_on_front_page' );
-			} else {
-				$is_enable_breaking_news = !get_post_meta( get_the_ID(), 'vw_post_breaking_less', true );
-			}
-
-		} else {
-			$is_enable_breaking_news = false;
+		$is_enable_breaking_news = false;
+		if ( is_front_page() ) {
+			$is_enable_breaking_news = vw_get_theme_option( 'show_breaking_news_on_front_page' );
+		} else if (is_single() && vw_get_theme_option( 'enable_breaking_news' )) {
+			$is_enable_breaking_news = !get_post_meta( get_the_ID(), 'vw_post_breaking_less', true );
 		}
-
+		
 		return apply_filters( 'vw_filter_is_enable_breaking_news', $is_enable_breaking_news );
 	}
 }

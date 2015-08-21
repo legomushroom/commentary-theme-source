@@ -6,10 +6,6 @@
 				
 				<div class="vw-menu-main-inner">
 
-					<span class="vw-scroll-to-top vw-scroll-to-top--menu"><i class="vw-icon icon-entypo-up-open"></i></span>
-
-					<!-- <a href="#" class="vw-header-logo"></a> -->
-
 					<?php
 					if ( has_nav_menu('vw_menu_main' ) ) {
 
@@ -35,14 +31,24 @@
 
 					}
 					?>
-					
-					<a class="vw-instant-search-button main-menu-link">
-						<i class="vw-icon icon-entypo-search"></i>
-					</a>
+
+					<div class="vw-main-menu-right">
+
+						<span class="vw-main-menu-right__login-link">
+							<?php add_modal_login_link($login_text = 'Log In', $logout_text = 'Log Out'); ?>
+						</span>
+
+						<a class="vw-instant-search-button vw-main-menu-right__search">
+							<i class="vw-icon icon-entypo-search"></i>
+						</a>
+
+						<span class="vw-scroll-to-top vw-main-menu-right__scroll-top"><i class="vw-icon icon-entypo-up-open"></i></span>
+
+					</div>
 
 				</div>
 			</div>
 		</div>
 	</div>
 </nav>
-<!-- End Main Menu -->
+<!-- End Main Menu

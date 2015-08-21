@@ -433,7 +433,7 @@ jQuery.noConflict();
 		// Instant search
 		// 
 		if ( $.fn.instant_search ) {
-			$( 'vw-instant-search-button' ).instant_search();
+			$( '.vw-instant-search-button' ).instant_search();
 		}
 
 		// -----------------------------------------------------------------------------
