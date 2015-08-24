@@ -53,7 +53,7 @@ jQuery.noConflict();
 					this.desktopQuery = (this.isMenuItems) ? 1500 : 1220;
 					this.mobileQuery  = (this.isMenuItems) ? 767 : this.desktopQuery;
 
-					this.isTabletQuery = this.isMenuItems;
+					this.isTabletQuery = !!this.isMenuItems;
 					this.isTabletQuery || this.$stickyContents.addClass('is-no-contents');
 
 					setTimeout((function () {
@@ -67,9 +67,9 @@ jQuery.noConflict();
 						this.getActiveArea();
 						this.containerWidth = this.$post.outerWidth()
 						clearTimeout(timeout);
-						timeout = setTimeout((function () {
-							this.getYs(); this.getMenuWidth();
-						}).bind(this), 100);
+						// timeout = setTimeout((function () {
+						// 	this.getYs(); this.getMenuWidth();
+						// }).bind(this), 100);
 					}.bind(this));
 				}
 			Main.prototype.getActiveArea = function () {
@@ -85,8 +85,14 @@ jQuery.noConflict();
 					this.isStickyInited && !this.isMenuItems && this.$stickyContents.css({ left: '0' });
 					var offsetTop = ((this.$w.outerWidth() < 768) ? 15 : (this.menuHeight+15));
 					offsetTop += (this.isAdminBar) ? this.adminBarHeight : 0;
+					var it = this;
 					setTimeout(function () {
 						var offset = (this.isMenuItems && this.wWidth < this.desktopQuery) ? offsetTop + 50 : 0;
+
+						this.$stickyContents.css({
+							top: 'auto', bottom: 'auto',
+							position: 'absolute'
+						});
 						this.$stickyContents.hcSticky({
 								top: 			  offsetTop,
 								bottomEnd: 	offset + (.5*$(window).height()),
@@ -190,9 +196,9 @@ jQuery.noConflict();
 							dX = (menuCenter - centerPoint) + 30;
 						}
 
-						var shift = (this.state === 'desktop') ? 0 : 15
-						dX = Math.max(dX, this.visibleMenuWidth-this.innerMenuWidth-shift);
-						this.$itemsContainer.css({ 'transform': 'translateX(' + dX + 'px) translateZ(0)' });
+						// var shift = (this.state === 'desktop') ? 0 : 15
+						// dX = Math.max(dX, this.visibleMenuWidth-this.innerMenuWidth-shift);
+						// this.$itemsContainer.css({ 'transform': 'translateX(' + dX + 'px) translateZ(0)' });
 						
 						this.currentActiveItem.$item.addClass('is-active');
 						this.previousActiveItem = this.currentActiveItem;
@@ -205,6 +211,7 @@ jQuery.noConflict();
 					    	it.state = 'desktop';
 					    	it.$stickyContents.removeClass('is-mobile-layout');
 				    		it.$stickyContents.removeClass('is-tablet-layout');
+				    		it.$items.length && it.$stickyContents.addClass('is-sticky-contents');
 					    	it.$stickyContents.css({ width: '170px' });
 					    	it.initSticky();
 					    },
@@ -217,13 +224,14 @@ jQuery.noConflict();
 						enquire.register("screen and (min-width:768px) and (max-width:" + this.desktopQuery + "px)", {
 						    match : function() {
 						    	it.state = 'tablet';
-						    	it.$stickyContents.addClass('is-tablet-layout');
+						    	it.$stickyContents.addClass('is-no-contents');
+						    	it.$stickyContents.removeClass('is-sticky-contents');
 						    	it.$stickyContents.css({ width: it.containerWidth + 'px' });
 						    	it.initSticky();
 						    	// it.$stickyContents.hcSticky('reinit');
 						    },
 						    unmatch : function() {
-						    	it.$stickyContents.removeClass('is-tablet-layout');
+						    	it.$stickyContents.removeClass('is-no-contents');
 						    },
 						});
 						enquire.register("screen and (min-width:768px) and (max-width:1000px)", {

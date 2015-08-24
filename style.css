@@ -1356,7 +1356,7 @@ span.intense.dropcap {
  * -------------------------------------------------------------------------- */
 .vw-page-wrapper {
     padding:        20px 0;
-    padding-bottom: 0;
+    padding-bottom: 40px;
 }
 
 div.vw-page-wrapper.is-no-padding {
@@ -2194,10 +2194,10 @@ div.vw-tag-links a {
 }
 
 .vw-post-box .vw-post-box-thumbnail {
-    -webkit-transform: translateZ(0);
+    /*-webkit-transform: translateZ(0);
     -ms-transform: translateZ(0);
     -o-transform: translateZ(0);
-    transform: translateZ(0);
+    transform: translateZ(0);*/
 }
 
 .no-touch .vw-post-box:hover .vw-post-box-thumbnail .wp-post-image {
@@ -2529,7 +2529,7 @@ div.vw-tag-links a {
 .vw-post-style-medium-5 .vw-post-box-title {
     bottom: 0px;
     padding-top: 30px;
-    font-size: 19px;
+    font-size: 25px;
     color: #FFFFFF;
     background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
     background:         linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
@@ -7240,23 +7240,23 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
   .sticky-contents.is-mobile-layout .vw-post-share-box {
     margin-right: 0;
   }*/
-  .sticky-contents.is-tablet-layout {
+  /*.sticky-contents.is-tablet-layout {
     width:          100%;
     background:     white;
     margin-top:    -15px;
     margin-left:    13px;
     border-bottom:  1px solid #aeaeae;
     min-height:     38px;
-    /*margin-left:    15px;*/
-    /*opacity:        1;
-    z-index:        1000;*/
+    //margin-left:    15px;
+    //opacity:        1;
+    //z-index:        1000;
 
-    /*box-shadow:    0 4px 0 rgba(0,0,0,.2);*/
+    //box-shadow:    0 4px 0 rgba(0,0,0,.2);
     -webkit-transform: translateX(0);
     -ms-transform: translateX(0);
     -o-transform: translateX(0);
     transform: translateX(0); 
-  }
+  }*/
   .sticky-contents.is-mobile-layout {
     position: fixed;
     bottom:   0;
@@ -7274,6 +7274,10 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
     -o-transition: all .3s ease-out;
     transition: all .3s ease-out;
     display: none;
+  }
+
+  .sticky-contents.is-no-contents .sticky-contents__items {
+      display: none;
   }
 
   .sticky-contents.is-mobile-layout.is-show {
@@ -7327,17 +7331,18 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
   .is-sticky-contents .sticky-contents__header {
     display:  block;
   }
-  .is-tablet-layout .sticky-contents__header,
+  /*.is-tablet-layout .sticky-contents__header,*/
   .is-mobile-layout .sticky-contents__header{
     display:  none;
   }
-  .is-tablet-layout .sticky-contents__items {
-    /*float: left;*/
-    /*padding-right:    180px;*/
+
+  /*.is-tablet-layout .sticky-contents__items {
+    //float: left;
+    //padding-right:    180px;
     padding-bottom:   12px;
     padding-top:      0px;
     background-color: inherit;
-  }
+  }*/
   .is-mobile-layout .sticky-contents__items {
     display:          none;
   }
@@ -7349,7 +7354,7 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
   .sticky-contents__item.is-active {
     color:      #ED1C24;
   }
-  .is-tablet-layout .sticky-contents__items {
+  /*.is-tablet-layout .sticky-contents__items {
     height: 38px;
     position: relative;
     overflow: hidden;
@@ -7367,9 +7372,9 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
     transform: translateZ(0);
   }
   .is-tablet-layout .sticky-contents__item {
-    /*float:            left;*/
+    //float:            left;
     display:          inline-block;
-    /*white-space:      nowrap;*/
+    //white-space:      nowrap;
     margin-left:      15px;
     padding-top:      5px;
     padding-bottom:   20px;
@@ -7378,12 +7383,12 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
   }
   .is-table-layout .sticky-contents__item:first-of-type {
     margin-left: 0;
-  }
+  }*/
 
   .sticky-contents .vw-post-share-box {
     border-bottom: 0;
   }
-  .is-tablet-layout .vw-post-share-box  {
+  /*.is-tablet-layout .vw-post-share-box  {
     position: absolute;
     right: 0;
     top: 50%;
@@ -7391,22 +7396,23 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
-  }
+  }*/
   .sticky-contents .vw-post-share-box-button {
-    padding:    4px 7px;
+    padding:    4px 0;
     text-align: center;
     float:      right;
     clear:      right;
     margin:     0;
     margin-top: 10px;
-    width:          39px;
+    width:       39px;
+    height:       39px;
     display:    block;
   }
   .sticky-contents .vw-post-share-box-button:first-of-type {
     margin-top: 0;
   }
   .is-sticky-contents .vw-post-share-box-button,
-  .is-tablet-layout .vw-post-share-box-button,
+  /*.is-tablet-layout .vw-post-share-box-button,*/
   .is-mobile-layout .vw-post-share-box-button {
     margin: 0;
   }
@@ -7424,7 +7430,7 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
     height:   39px;
   }
   .is-sticky-contents .vw-post-share-big-number,
-  .is-tablet-layout .vw-post-share-big-number,
+  /*.is-tablet-layout .vw-post-share-big-number,*/
   .is-mobile-layout .vw-post-share-big-number {
     display: none;
   }
@@ -7451,15 +7457,15 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
   .is-sticky-contents .vw-post-share-box {
     margin-top: 10px;
   }
-  .is-tablet-layout .vw-post-share-box {
+  /*.is-tablet-layout .vw-post-share-box {
     margin-bottom:  0;
     margin-top:     0;
     padding-bottom: 0;
     float:          right;
-  }
+  }*/
 
-  .is-sticky-contents .vw-post-share-box-button,
-  .is-tablet-layout .vw-post-share-box-button{
+  /*.is-tablet-layout .vw-post-share-box-button,*/
+  .is-sticky-contents .vw-post-share-box-button {
     clear:        none;
     float:        none;
     display:      inline-block;
@@ -7510,8 +7516,8 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
     /*outline: 1px solid deeppink;*/
     /*background-color: deeppink;*/
     }
-    .is-mobile-layout .sticky-contents__arrow,
-    .is-tablet-layout .sticky-contents__arrow {
+    /*.is-tablet-layout .sticky-contents__arrow,*/
+    .is-mobile-layout .sticky-contents__arrow {
         display: block;
     }
     .sticky-contents__arrow--left {
@@ -8188,5 +8194,12 @@ div#modal-login .submit .button {
 }
 
 
-
+div.ch-info-style4 p {
+    font-size: 16px;
+    margin: 0;
+    text-align: center;
+}
+div.ch-info-style4 a {
+    font-size: 12px;
+}
 
