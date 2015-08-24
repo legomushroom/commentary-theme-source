@@ -43,7 +43,6 @@ $widget_sidebar = is_active_widget( false, false, 'vw_widget_bundle_progress', t
       <?php
         $i++;
         endforeach;
-        wp_reset_postdata();
       ?>
 
       <!-- <li class="bundle-progress-mobile__item"></li> -->
