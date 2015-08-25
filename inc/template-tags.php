@@ -485,10 +485,12 @@ if ( ! function_exists( 'vw_the_post_footer_sections' ) ) {
  * The Author
  * -------------------------------------------------------------------------- */
 if ( ! function_exists( 'vw_the_author' ) ) {
-	function vw_the_author($ID=null) {
+	function vw_the_author($ID=null, $isIcon = true) {
 		?>
 		<span class="vw-post-author" <?php vw_itemprop('author'); vw_itemtype('Person'); ?>>
-			<i class="vw-icon icon-entypo-user"></i>
+			<?php if ($isIcon) : ?>
+				<i class="vw-icon icon-entypo-user"></i>
+			<?php endif; ?>
 			<a class="author-name" href="<?php echo get_author_posts_url(($ID) ? $ID : get_the_author_meta( 'ID' )); ?>" title="<?php _e('Posts by', 'envirra'); ?> <?php echo the_author_meta( 'display_name', $ID ); ?>" rel="author" <?php vw_itemprop('name'); ?>><?php echo the_author_meta( 'display_name', $ID ); ?></a>
 		</span>
 		<?php
@@ -572,8 +574,14 @@ if ( ! function_exists( 'vw_the_subtitle' ) ) {
  * The Post Date
  * -------------------------------------------------------------------------- */
 if ( ! function_exists( 'vw_the_post_date' ) ) {
-	function vw_the_post_date() {
-		?><i class="vw-icon icon-entypo-clock"></i> <a href="<?php the_permalink(); ?>" class="vw-post-date updated" title="<?php printf( esc_attr__('Permalink to %s', 'envirra'), the_title_attribute('echo=0') ); ?>" rel="bookmark"><time <?php vw_itemprop('datePublished'); ?> datetime="<?php echo get_the_time('c'); ?>"><?php echo get_the_time( get_option('date_format') ); ?></time></a><?php
+	function vw_the_post_date($isIcon = true) {
+		?>
+
+		<?php if ($isIcon) : ?>
+			<i class="vw-icon icon-entypo-clock"></i>
+		<?php endif;?>
+
+		<a href="<?php the_permalink(); ?>" class="vw-post-date updated" title="<?php printf( esc_attr__('Permalink to %s', 'envirra'), the_title_attribute('echo=0') ); ?>" rel="bookmark"><time <?php vw_itemprop('datePublished'); ?> datetime="<?php echo get_the_time('c'); ?>"><?php echo get_the_time( get_option('date_format') ); ?></time></a><?php
 	}
 }
 

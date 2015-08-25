@@ -30,10 +30,9 @@
       this.initEvents(); this.loop();
     },
     vars: function () {
-      this.mainSelector   =  '[id^=vw_widget_bundle_progress]';
+      this.mainSelector   =  '#js-bundle-progress';
       this.$widget        = $(this.mainSelector);
-      this.$menuItems     = $(this.mainSelector + ' #js-bundle-progress-item');
-      this.$progressbars  = $(this.mainSelector + ' #js-bundle-progress-progressbar');
+      this.$menuItems     = this.$widget.find('.js-bundle-progress-item');
       this.$posts         = $('.vw-main-post');
       this.$w             = $(window);
       this.$doc           = $(document);
@@ -58,7 +57,7 @@
           height:       $item.outerHeight() - heightOffset,
           $item:        $item,
           $menuItem:    $menuItem,
-          $progressbar: this.$progressbars.eq(i),
+          $progressbar: $menuItem.find('.js-bundle-progress-progressbar'),
           url:          data.url,
           name:         data.name,
           index:        i
@@ -91,6 +90,7 @@
 
       this.currentItem = this.getCurrentItem(scrollY);
 
+
       if (this.currentItem !== this.previousItem) {
         (this.previousItem) && this.previousItem.$menuItem.removeClass('is-check');
         this.currentItem.$menuItem.addClass('is-check');
@@ -107,7 +107,8 @@
       window.history && window.history.replaceState({}, '', this.currentItem.url);
       document.title = this.currentItem.name + ' | commentary';
       if (!this.gaSent[this.currentItem.url]) {
-        this.$doc.trigger('bp-page-view', [ this.currentItem.$item, this.currentItem.index === 0 ]);
+        // this.$doc.trigger('bp-page-view', [ this.currentItem.$item, this.currentItem.index === 0 ]);
+        
         ga('send', 'pageview', this.currentItem.url);
         this.gaSent[this.currentItem.url] = true;
 
@@ -177,11 +178,9 @@
     this.$current = $('#js-bundle-progress-mobile-current');
     this.$panelProgressbar = $('#js-bundle-progress-mobile-panel-progressbar');
     
-    this.mainSelector   =  '#js-bundle-progress-mobile';
-    this.$widget        = $(this.mainSelector);
-    this.$menuItems     = $(this.mainSelector + ' #js-bundle-progress-item');
+    this.$widget        = $('#js-bundle-progress-mobile');
+    this.$menuItems     = this.$widget.find('.js-bundle-progress-item');
 
-    this.$progressbars  = $(this.mainSelector + ' #js-bundle-progress-progressbar');
     this.$posts         = $('.vw-main-post');
     this.$w             = $(window);
     this.$doc           = $(document);

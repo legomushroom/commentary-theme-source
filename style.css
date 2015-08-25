@@ -7290,7 +7290,7 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
   }
 
   .is-mobile-layout.is-no-contents {
-    height: 41px;
+    height: 39px;
   }
 
   .is-mobile-layout.headroom--unpinned {
@@ -7500,7 +7500,7 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
 .sticky-contents__mobile-menu {
     display: none;
     background: white;
-    height: 41px;
+    height: 39px;
     }
     .sticky-contents__mobile-menu .vw-hamburger-icon {
         margin: 0 auto;
@@ -7954,6 +7954,10 @@ html {
         display: none;
     }
 
+    .is-open .bundle-progress-mobile__panel .vw-bundle-progress__progressbar {
+        display: none;
+    }
+
     .bundle-progress-mobile__title {
         display: none;
         position: relative;
@@ -8201,5 +8205,9 @@ div.ch-info-style4 p {
 }
 div.ch-info-style4 a {
     font-size: 12px;
+}
+
+[class*="vw-block-grid-"] {
+    margin-bottom: 0;
 }
 

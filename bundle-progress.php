@@ -31,8 +31,8 @@ $widget_sidebar = is_active_widget( false, false, 'vw_widget_bundle_progress', t
             setup_postdata( $post );
             $post_link = get_permalink($post->ID);
       ?>
-          <li id="js-bundle-progress-item" class="vw-bundle-progress__item" data-url="<?php echo $post_link; ?>" data-index="<?php echo $i; ?>" data-name="<?php echo $post->post_title; ?>">
-            <div id="js-bundle-progress-progressbar" class="vw-bundle-progress__progressbar"></div>
+          <li class="js-bundle-progress-item vw-bundle-progress__item" data-url="<?php echo $post_link; ?>" data-index="<?php echo $i; ?>" data-name="<?php echo $post->post_title; ?>">
+            <div class="js-bundle-progress-progressbar vw-bundle-progress__progressbar "></div>
             <h4 class="vw-bundle-progress__title"><a href="<?php echo $post_link; ?>"><?php echo $post->post_title; ?></a></h4>
             <!-- <h5 class="vw-bundle-progress__author"><em> by <a id="js-bundle-progress-author" href="<?php echo get_author_posts_url(get_the_author_meta( 'ID' )) ?>"><?php echo get_the_author() ?></a></em></h5> -->
             <div class="vw-post-meta vw-post-meta-large1">

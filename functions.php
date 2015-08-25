@@ -2,7 +2,7 @@
 /* -----------------------------------------------------------------------------
  * Constants
  * -------------------------------------------------------------------------- */
-if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.2.2' );
+if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.2.15' );
 if ( ! defined( 'VW_THEME_NAME' ) ) define( 'VW_THEME_NAME', 'ESPRESSO' );
 if ( ! defined( 'MINUTES_IN_SECONDS' ) ) define( 'MINUTES_IN_SECONDS', 60 );
 
@@ -65,7 +65,7 @@ if ( function_exists( 'vw_load_theme_options_panel' ) ) {
 
 require_once get_template_directory().'/components/custom-sidebar-generator.php';
 require_once get_template_directory().'/components/sticky-sidebar/sticky-sidebar.php';
-require_once get_template_directory().'/components/scroll-to-top.php';
+// require_once get_template_directory().'/components/scroll-to-top.php';
 require_once get_template_directory().'/components/more-articles.php';
 
 require_once get_template_directory().'/inc/schema.org.php';

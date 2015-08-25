@@ -19,11 +19,11 @@
 
 		<div class="vw-post-meta">
 			
-			<?php vw_the_author(); ?>
+			<?php vw_the_author(null, false); ?>
 
 			<span class="vw-post-meta-separator">/</span>
 
-			<?php vw_the_post_date(); ?>
+			<?php vw_the_post_date(null, false); ?>
 
 			<!-- 
 			<span class="vw-post-meta-separator">/</span>
