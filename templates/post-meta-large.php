@@ -6,7 +6,7 @@
 
 			<?php if ( ! vw_has_coauthors() ) : ?>
 
-				<i class="vw-icon icon-entypo-user"></i>
+				<!-- <i class="vw-icon icon-entypo-user"></i> -->
 				<a class="author-name" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>" title="<?php printf( __( 'View all posts by %s', 'envirra' ), get_the_author() ); ?>" rel="author" <?php vw_itemprop('name'); ?>><?php the_author(); ?></a>
 
 			<?php else : ?>

@@ -3400,49 +3400,68 @@ div.vw-tag-links a {
     width: 100%;
 }
 
-.vw-mega-menu-type-links-4-cols {
+
+
+
+.vw-mega-menu-type-links-4-cols,
+.vw-mega-menu-type-links-8-cols {
     position: static;
 }
-.vw-mega-menu-type-links-4-cols > .sub-menu-wrapper {
+.vw-mega-menu-type-links-4-cols > .sub-menu-wrapper,
+.vw-mega-menu-type-links-8-cols > .sub-menu-wrapper  {
     left: 0;
     right: 0;
     overflow: hidden;
 }
-.vw-mega-menu-type-links-4-cols .sub-menu.menu-depth-1 {
+.vw-mega-menu-type-links-4-cols .sub-menu.menu-depth-1,
+.vw-mega-menu-type-links-8-cols .sub-menu.menu-depth-1 {
     width: auto;
     padding-left: 10px;
     padding-right: 10px;
     display: block;
 }
 .vw-mega-menu-type-links-4-cols .sub-menu.menu-depth-1:before,
-.vw-mega-menu-type-links-4-cols .sub-menu.menu-depth-1:after {
+.vw-mega-menu-type-links-4-cols .sub-menu.menu-depth-1:after,
+.vw-mega-menu-type-links-8-cols .sub-menu.menu-depth-1:before,
+.vw-mega-menu-type-links-8-cols .sub-menu.menu-depth-1:after {
     content: " ";
     display: table;
 }
-.vw-mega-menu-type-links-4-cols .sub-menu.menu-depth-1:after {
+.vw-mega-menu-type-links-4-cols .sub-menu.menu-depth-1:after,
+.vw-mega-menu-type-links-8-cols .sub-menu.menu-depth-1:after {
     clear: both;
 }
-.vw-mega-menu-type-links-4-cols .sub-menu.menu-depth-1 > li {
+.vw-mega-menu-type-links-4-cols .sub-menu.menu-depth-1 > li,
+.vw-mega-menu-type-links-8-cols .sub-menu.menu-depth-1 > li {
     width: 25%;
     padding: 10px;
     display: block;
     float: left;
     vertical-align: top;
 }
-.vw-mega-menu-type-links-4-cols .sub-menu.menu-depth-1 .sub-menu-wrapper {
+
+.vw-mega-menu-type-links-8-cols .sub-menu.menu-depth-1 > li {
+    width: 12.5%;
+}
+
+.vw-mega-menu-type-links-4-cols .sub-menu.menu-depth-1 .sub-menu-wrapper,
+.vw-mega-menu-type-links-8-cols .sub-menu.menu-depth-1 .sub-menu-wrapper {
     box-shadow: none;
     display: block !important;
     position: static;
     opacity: 1 !important;
 }
-.vw-mega-menu-type-links-4-cols .sub-menu.menu-depth-2 {
+.vw-mega-menu-type-links-4-cols .sub-menu.menu-depth-2,
+.vw-mega-menu-type-links-8-cols .sub-menu.menu-depth-1 .sub-menu-wrapper {
     display: block;
     width: auto;
 }
-.vw-mega-menu-type-links-4-cols .menu-item-depth-1:hover {
+.vw-mega-menu-type-links-4-cols .menu-item-depth-1:hover,
+.vw-mega-menu-type-links-8-cols .menu-item-depth-1:hover {
     background: transparent;
 }
-.vw-mega-menu-type-links-4-cols .menu-item-depth-1 > .menu-link {
+.vw-mega-menu-type-links-4-cols .menu-item-depth-1 > .menu-link,
+.vw-mega-menu-type-links-8-cols .menu-item-depth-1 > .menu-link {
     font-size: 14px;
     font-weight: bold;
     text-align: center;
@@ -3452,12 +3471,18 @@ div.vw-tag-links a {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-.vw-mega-menu-type-links-4-cols .menu-item-depth-1 > .menu-link:after {
+.vw-mega-menu-type-links-4-cols .menu-item-depth-1 > .menu-link:after,
+.vw-mega-menu-type-links-8-cols .menu-item-depth-1 > .menu-link:after {
     display: none;
 }
-.vw-mega-menu-type-links-4-cols .sub-menu-item.menu-item-has-children > .sub-menu-link:after {
+.vw-mega-menu-type-links-4-cols .sub-menu-item.menu-item-has-children > .sub-menu-link:after,
+.vw-mega-menu-type-links-8-cols .sub-menu-item.menu-item-has-children > .sub-menu-link:after {
     display: none;
 }
+
+
+
+
 
 /* -------------------------------------
  * $TOP/BOTTOM MENU */
@@ -8211,3 +8236,7 @@ div.ch-info-style4 a {
     margin-bottom: 0;
 }
 
+.backstretch img {
+    max-width: initial;
+    max-width: auto;
+}

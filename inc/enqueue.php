@@ -34,7 +34,7 @@ if ( ! function_exists( 'vw_register_scripts' ) ) {
 			// jQuery
 			wp_enqueue_script( 'jquery' );
 			
-			if ( is_active_widget( false, false, 'vw_widget_bundle_progress', true ) && is_single() ) {
+			if ( is_active_widget( false, false, 'vw_widget_bundle_progress', true ) && is_single()) {
 				wp_enqueue_script( 'hammerjs', get_template_directory_uri().'/js/hammer.min.js', array(), VW_THEME_VERSION, VW_CONST_ENQUEUE_SCRIPTS_ON_FOOTER );
 				wp_enqueue_script( 'bundle-progress-split', get_template_directory_uri().'/js/bundle-progress-split.js', array( 'jquery', 'hammerjs' ), VW_THEME_VERSION, VW_CONST_ENQUEUE_SCRIPTS_ON_FOOTER );
 			}

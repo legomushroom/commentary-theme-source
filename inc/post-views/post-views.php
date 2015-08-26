@@ -56,8 +56,6 @@ if ( ! function_exists( 'vw_count_post_views' ) ) {
 
 		global $post, $timings;
 
-		// echo '<div id="it">' . 'update' . '</div>';
-
 		if ( ! vw_post_views_enabled() ) return;
 
 		if (!$ignoreAjax) {
@@ -186,8 +184,8 @@ if ( ! function_exists( 'vw_get_the_post_views' ) ) {
 
 		$count = vw_get_post_views( $post_id );
 		$output = '<span class="vw-post-meta-icon vw-post-view-count vw-post-views-id-'.esc_attr($post_id).'" data-post-id="'.esc_attr($post_id).'" title="'.esc_attr__( 'Views', 'envirra' ).'">';
-		$output .= ' <i class="vw-icon icon-entypo-eye"></i>';
-		$output .= ' <span class="vw-post-view-number">'.vw_number_prefixes( $count ).'</span>';
+		// $output .= ' <i class="vw-icon icon-entypo-eye"></i>';
+		$output .= ' <span class="vw-post-view-number">'.vw_number_prefixes( $count ).' views</span>';
 		$output .= '</span>';
 
 		return $output;

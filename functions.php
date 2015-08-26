@@ -2,7 +2,7 @@
 /* -----------------------------------------------------------------------------
  * Constants
  * -------------------------------------------------------------------------- */
-if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.2.15' );
+if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.2.17' );
 if ( ! defined( 'VW_THEME_NAME' ) ) define( 'VW_THEME_NAME', 'ESPRESSO' );
 if ( ! defined( 'MINUTES_IN_SECONDS' ) ) define( 'MINUTES_IN_SECONDS', 60 );
 
@@ -822,4 +822,16 @@ function remove_admin_bar() {
 	if (!current_user_can('administrator') && !is_admin()) {
 	  show_admin_bar(false);
 	}
+}
+
+/* -----------------------------------------------------------------------------
+ * CUSTOM: Recalculate total shares with forgery.
+ * -------------------------------------------------------------------------- */
+add_filter('acf/update_value/key=field_540004d5673c7', 'my_acf_update_value', 10, 3);
+function my_acf_update_value ($value, $post_id, $field) {
+	$shares  = intval(get_post_meta( $post_id, VW_CONST_POST_SHARES_META_KEY, true ));
+	$forgery = intval(get_post_meta($post_id,'vw_post_shares_forgery_explicit',true));
+	$totalShares = $shares+$forgery;
+	update_post_meta( $post_id, 'vw_post_total_shares_forgery', $totalShares );
+	return $value;
 }

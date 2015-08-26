@@ -20,6 +20,7 @@ if ( ! function_exists( 'vw_mega_menu_edit_custom_field' ) ) {
 					<option value="classic" <?php selected( $item->vw_menu_type, 'classic' ); ?>><?php _e( 'Classic Menu', 'envirra' ) ?></option>
 					<option value="category" <?php selected( $item->vw_menu_type, 'category' ); ?>><?php _e( 'Category Mega Menu', 'envirra' ) ?></option>
 					<option value="links-4-cols" <?php selected( $item->vw_menu_type, 'links-4-cols' ); ?>><?php _e( '4 Columns Links Mega Menu', 'envirra' ) ?></option>
+					<option value="links-8-cols" <?php selected( $item->vw_menu_type, 'links-8-cols' ); ?>><?php _e( '8 Columns Links Mega Menu', 'envirra' ) ?></option>
 				</select>
 			</label>
 		</p>

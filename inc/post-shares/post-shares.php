@@ -89,6 +89,10 @@ if ( ! function_exists( 'vwpsh_count_share' ) ) {
 			$social_counter++;
 			update_post_meta( $post_id, $social_meta_key, $social_counter );
 
+			$forgery = intval(get_post_meta($post_id,'vw_post_shares_forgery_explicit',true));
+			$totalShares = $total_counter+$forgery;
+			update_post_meta( $post_id, 'vw_post_total_shares_forgery', $totalShares );
+
 			echo vw_number_prefixes( $total_counter );
 
 		} else {
@@ -105,11 +109,9 @@ if ( ! function_exists( 'vwpsh_get_total_shares' ) ) {
 		if ( empty( $post_id ) ) {
 			$post_id = get_the_id();
 		}
-		$shares  = intval(get_post_meta( $post_id, VW_CONST_POST_SHARES_META_KEY, true ));
-		$forgery = intval(get_post_meta($post_id,'vw_post_shares_forgery_explicit',true));
-		$totalShares = $shares+$forgery;
-		update_post_meta( $post_id, 'vw_post_total_shares_forgery', $totalShares );
-		return $totalShares;
+		// $shares  = intval(get_post_meta( $post_id, VW_CONST_POST_SHARES_META_KEY, true ));
+		$sharesForgery = intval(get_post_meta( $post_id, 'vw_post_total_shares_forgery', true ));
+		return $sharesForgery;
 	}
 }
 
