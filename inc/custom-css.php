@@ -39,7 +39,8 @@ if ( ! function_exists( 'vw_render_custom_css' ) ) {
 		.vw-accordion .ui-state-hover span,
 		.vw-breadcrumb a:hover,
 		/* h1 em, h2 em, h3 em, h4 em, h5 em, h6 em, */
-		.vw-post-share-big-number .vw-number
+		.vw-post-share-big-number .vw-number,
+		.vw-type-resize-tool__a
 		{
 			color: <?php echo $vw_espresso['accent_color'] ?>;
 		}

@@ -18,13 +18,53 @@ jQuery.noConflict();
 
 	$( document ).ready( function () {
 		// ### CUSTOM JS HERE ###
-		// Sticky Header 
+		
+			
+		// Sticky Type Resizer
+		var TypeResizer = {
+			init: function (o) {
+				this.vars(o); this.events();
+			},
+			vars: function (o) {
+				this.$stickyContents 	= o.$stickyContents;
+				this.$post 						= o.$post;
+				this.$me 							= this.$stickyContents.find('#js-sticky-contents-resize-tool');
+				this.$plusBtn  				= this.$me.find('#js-sticky-contents-resize-tool-plus');
+				this.$minusBtn 				= this.$me.find('#js-sticky-contents-resize-tool-minus');
+				this.$normal 					= this.$me.find('#js-sticky-contents-resize-tool-normal');
+				this.fontAddition = 0;
+				this.fontSize 		= 18;
+			},
+			events: function () {
+				this.$plusBtn.on('click', 	this.increaseFont.bind(this));
+				this.$minusBtn.on('click', 	this.decreaseFont.bind(this));
+				this.$normal.on('click', 		this.resetFontSize.bind(this));
+			},
+			increaseFont: function () {
+				this.fontAddition = this.clamp(++this.fontAddition);
+				this.setCurrentFontSize();
+			},
+			decreaseFont: function () {
+				this.fontAddition = this.clamp(--this.fontAddition);
+				this.setCurrentFontSize();
+			},
+			setCurrentFontSize: function () {
+				this.$post.css({ 'font-size':  (this.fontSize + this.fontAddition) + 'px' })
+			},
+			resetFontSize: function () { this.fontAddition = 0; this.setCurrentFontSize(); },
+			clamp: function (value) { return Math.max(Math.min(value, 10), -10); }
+		};
+
+
+		// Sticky Header
 		(function (undefined) {
 
 			var Main = function ($post) {
 				if (this.vars($post) === false) {return};
 				this.$stickyContentsItems.length && this.addContents();
 				this.loop(); this.defineQueries();
+				var typeResize = Object.create(TypeResizer);
+				typeResize.init({ $post: $post, $stickyContents: this.$stickyContents });
 			}
 
 			Main.prototype.vars = function ($post) {
@@ -51,7 +91,7 @@ jQuery.noConflict();
 
 					this.isMenuItems  = this.$items.length > 0;
 					this.desktopQuery = (this.isMenuItems) ? 1500 : 1220;
-					this.mobileQuery  = (this.isMenuItems) ? 767 : this.desktopQuery;
+					this.mobileQuery  = (this.isMenuItems) ? 1219 : this.desktopQuery;
 
 					this.isTabletQuery = !!this.isMenuItems;
 					this.isTabletQuery || this.$stickyContents.addClass('is-no-contents');
@@ -211,7 +251,8 @@ jQuery.noConflict();
 					    	it.state = 'desktop';
 					    	it.$stickyContents.removeClass('is-mobile-layout');
 				    		it.$stickyContents.removeClass('is-tablet-layout');
-				    		it.$items.length && it.$stickyContents.addClass('is-sticky-contents');
+
+				    		it.isMenuItems && it.$stickyContents.addClass('is-sticky-contents');
 					    	it.$stickyContents.css({ width: '170px' });
 					    	it.initSticky();
 					    },
@@ -221,7 +262,7 @@ jQuery.noConflict();
 					});
 
 					if (this.isTabletQuery) {
-						enquire.register("screen and (min-width:768px) and (max-width:" + this.desktopQuery + "px)", {
+						enquire.register("screen and (min-width:" + this.mobileQuery + "px) and (max-width:" + this.desktopQuery + "px)", {
 						    match : function() {
 						    	it.state = 'tablet';
 						    	it.$stickyContents.addClass('is-no-contents');
@@ -234,18 +275,19 @@ jQuery.noConflict();
 						    	it.$stickyContents.removeClass('is-no-contents');
 						    },
 						});
-						enquire.register("screen and (min-width:768px) and (max-width:1000px)", {
-						  match : function() { it.initSticky(); }
-						});
-						enquire.register("screen and (min-width:1000px) and (max-width:" + this.desktopQuery + "px)", {
-						  match : function() { it.initSticky(); }
-						});
+						// enquire.register("screen and (min-width:" + this.mobileQuery + "px) and (max-width:1000px)", {
+						//   match : function() { it.initSticky(); }
+						// });
+						// enquire.register("screen and (min-width:1000px) and (max-width:" + this.desktopQuery + "px)", {
+						//   match : function() { it.initSticky(); }
+						// });
 					}
 
 					enquire.register("screen and (max-width:" + this.mobileQuery + "px)", {
 					    match : function() {
 					    	it.isStickyInited && it.destroySticky();
 					    	it.state = 'mobile';
+					    	it.$stickyContents.removeClass('is-sticky-contents');
 					    	it.$stickyContents.addClass('is-mobile-layout');
 					    	setTimeout(function() {
 					    		it.$stickyContents.css({ display: 'block' });
@@ -880,7 +922,10 @@ jQuery.noConflict();
 			$isotope_list.each( function( i, el ) {
 				var $this = $( el );
 				$this.imagesLoaded( function () {
-					$this.isotope();
+					setTimeout(function () {
+						$this.isotope();
+					}, 5000);
+
 				} );
 			} );
 		}

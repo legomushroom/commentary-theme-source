@@ -2,7 +2,7 @@
 /* -----------------------------------------------------------------------------
  * Constants
  * -------------------------------------------------------------------------- */
-if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.2.17' );
+if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.2.34' );
 if ( ! defined( 'VW_THEME_NAME' ) ) define( 'VW_THEME_NAME', 'ESPRESSO' );
 if ( ! defined( 'MINUTES_IN_SECONDS' ) ) define( 'MINUTES_IN_SECONDS', 60 );
 
@@ -155,6 +155,14 @@ $GLOBALS['ALLOWED_HTML'] = array(
 		        'href' => array()
 		    )
 		);
+
+add_filter('vw_filter_post_footer_sections', 'vw_filter_post_footer');
+if ( ! function_exists( 'vw_filter_post_footer' ) ) {
+  function vw_filter_post_footer($arg) {
+    return $arg;
+  }
+}
+
 add_filter('the_excerpt', 'do_my_shortcode_in_excerpt');
 if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
 	function do_my_shortcode_in_excerpt($excerpt) {
@@ -204,7 +212,24 @@ function wv_my_post_thumbnail_fallback( $html, $post_id, $post_thumbnail_id, $si
 add_filter( 'the_content', 'theme_slug_filter_the_content' );
 function theme_slug_filter_the_content( $content ) {
 		$buttons = getShareButtons();
-    $custom_content = "<div id=\"js-sticky-contents\" class='intense sticky-contents clearfix'><div class=\"sticky-contents__items clearfix\"><div class=\"sticky-contents__arrow sticky-contents__arrow--left\"></div><div class=\"sticky-contents__arrow sticky-contents__arrow--right\"></div><div class=\"sticky-contents__items-inner\" id=\"js-sticky-content-items\"></div></div>" . $buttons . "</div>";
+    $custom_content = "<div id=\"js-sticky-contents\" class='intense sticky-contents clearfix'>
+    										<div class=\"sticky-contents__items clearfix\">
+    											<div class=\"sticky-contents__items-inner\" id=\"js-sticky-content-items\"></div>
+    										</div>"
+    										. $buttons .
+    										"<div class='vw-type-resize-tool' id='js-sticky-contents-resize-tool'>
+
+    											<div class='vw-type-resize-tool__inner'>
+	    											<div class='vw-type-resize-tool__button vw-type-resize-tool__button--plus' id='js-sticky-contents-resize-tool-plus'>
+	    												<i class='vw-icon icon-entypo-plus'></i>
+	    											</div>
+	    											<div class='vw-type-resize-tool__a' id='js-sticky-contents-resize-tool-normal'>A</div>
+	    											<div class='vw-type-resize-tool__button vw-type-resize-tool__button--minus' id='js-sticky-contents-resize-tool-minus'>
+	    												<i class='vw-icon icon-entypo-minus'></i>
+	    											</div>
+	    										</div>
+    										</div>
+    									</div>";
     $custom_content .= $content;
 
     return $custom_content;

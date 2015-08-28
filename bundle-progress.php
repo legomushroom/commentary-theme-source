@@ -115,6 +115,6 @@ foreach( $myposts as $post ):
 
   <?php do_action( 'vw_action_after_single_post' ); ?>
 
-  <?php vw_the_post_footer_sections(); ?>
+  <?php vw_the_post_footer_sections(false); ?>
 
 <?php endforeach; wp_reset_postdata(); ?>
