@@ -2194,11 +2194,19 @@ div.vw-tag-links a {
 }
 
 .vw-post-box .vw-post-box-thumbnail {
-    /*-webkit-transform: translateZ(0);
+    -webkit-transform: translateZ(0);
     -ms-transform: translateZ(0);
     -o-transform: translateZ(0);
-    transform: translateZ(0);*/
-}
+    transform: translateZ(0);
+    }
+    .mobile-device .vw-post-box .vw-post-box-thumbnail {
+        -webkit-transform: none;
+           -moz-transform: none;
+            -ms-transform: none;
+             -o-transform: none;
+                transform: none;
+    }
+
 
 .no-touch .vw-post-box:hover .vw-post-box-thumbnail .wp-post-image {
     -webkit-transform: scale(1.05) translate3d(0, 0, 0);
@@ -7527,14 +7535,13 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
       background: white;
   }
   
-  .mm-opened .sticky-contents.is-mobile-layout,
+  .mm-opened .sticky-contents,
   .mm-opened .bundle-progress-mobile {
-    opacity: 0;
-    -webkit-transition: opacity 0s ease-out;
-       -moz-transition: opacity 0s ease-out;
-        -ms-transition: opacity 0s ease-out;
-         -o-transition: opacity 0s ease-out;
-            transition: opacity 0s ease-out;
+    -webkit-transform: translateY(9999999999999px) translateZ(0);
+       -moz-transform: translateY(9999999999999px) translateZ(0);
+        -ms-transform: translateY(9999999999999px) translateZ(0);
+         -o-transform: translateY(9999999999999px) translateZ(0);
+            transform: translateY(9999999999999px) translateZ(0);
     }
 
 .sticky-contents__mobile-menu {

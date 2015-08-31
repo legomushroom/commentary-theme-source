@@ -83,7 +83,7 @@
     },
 
     checkWidgetDisplay: function () {
-      var scrollY = window.pageYOffset||document.scrollTop||document.body.scrollTop;
+      var scrollY = this.$w.scrollTop();
 
       if (scrollY === this.previousScrollY) { return; }
       this.previousScrollY = scrollY;

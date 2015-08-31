@@ -56,7 +56,7 @@ if ( ! class_exists( 'Vw_widget_bundle_progress' ) ) {
 
 			update_option("wv_bundle_progress_title_" . $post_type, $title_html);
 
-			$myposts = get_posts( apply_filters( 'vw_filter_widget_bundle_progress_query', array('post__in' => $post_ids, 'orderby' => 'post__in', 'post_type' => array('post', 'cmm_article'), 'post_status' => array('publish', 'pending', 'draft', 'auto-draft', 'future', 'private' )  ) ) );
+			$myposts = get_posts( apply_filters( 'vw_filter_widget_bundle_progress_query', array('post__in' => $post_ids, 'orderby' => 'post__in', 'post_type' => array('post', 'cmm_article'), 'post_status' => 'any' ) ) );
 
 			echo '<ul class="vw-bundle-progress" id="js-bundle-progress">';
 				$i = 0;
