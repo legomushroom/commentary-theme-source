@@ -1775,7 +1775,7 @@ div.vw-page-wrapper.is-no-padding {
     margin-top: 0;
     padding-bottom: 10px;
     /*border-bottom: 3px solid #3E3E3E;*/
-    font-size: 15px;
+    font-size: 20px;
     margin-bottom: 0;
 }
 .vw-post-meta-large .vw-post-meta-icons {
@@ -4676,6 +4676,7 @@ body.search .vw-page-content > .widget_search {
 }
 .vw-fixed-tab.vw-fixed-tab-3-cols > ul li {
     width: 33.333333%;
+    padding-left: 0;
 }
 .vw-fixed-tab .vw-fixed-tab-title {
     display: block;
@@ -8046,6 +8047,7 @@ html {
     }
     .bundle-progress-mobile__current-item h4 {
         line-height: 1.25;
+        text-transform: none;
     }
 
 .bundle-progress-mobile__panel {
@@ -8332,7 +8334,22 @@ div.ch-info-style4 p a {
     }
 
 
+.vw-bundle-progress {
+    overflow: hidden;
+    -webkit-transition: height .25s ease-out;
+       -moz-transition: height .25s ease-out;
+        -ms-transition: height .25s ease-out;
+         -o-transition: height .25s ease-out;
+            transition: height .25s ease-out;
+}
 
+.vw-bundle-progress > div {
+    -webkit-transition: all .25s ease-out;
+       -moz-transition: all .25s ease-out;
+        -ms-transition: all .25s ease-out;
+         -o-transition: all .25s ease-out;
+            transition: all .25s ease-out;
+}
 
 
 

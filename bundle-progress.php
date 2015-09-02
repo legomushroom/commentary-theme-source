@@ -71,7 +71,7 @@ foreach( $myposts as $post ):
   if ($ID === $post->ID) { continue; }
   setup_postdata($post); ?>
 
-  <article <?php post_class( 'vw-main-post' ); ?>>
+  <article <?php post_class( 'vw-main-post' ); ?> data-url="<?php echo get_permalink($post->ID); ?>" data-name="<?php echo $post->post_title; ?>" data-author-name="<?php echo get_the_author_meta('display_name', $post->post_author); ?>" data-author-link="<?php echo get_author_posts_url($post->post_author); ?>">
 
     <?php vw_the_breadcrumb(); ?>
 

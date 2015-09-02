@@ -24,16 +24,21 @@
       }
   })();
 
+
   var main = {
     init: function () {
       if (this.vars()) { return };
-      this.initEvents(); this.loop();
+      // this.shift();
+      this.initSync();
+      this.initEvents();
+      this.loop();
     },
     vars: function () {
       this.mainSelector   =  '#js-bundle-progress';
       this.$widget        = $(this.mainSelector);
-      this.$menuItems     = this.$widget.find('.js-bundle-progress-item');
-      this.$posts         = $('.vw-main-post');
+      // this.$menuItems     = this.$widget.find('.js-bundle-progress-item');
+      this.$posts         = $('.vw-page-wrapper').eq(0).find('.vw-main-post');
+      this.initialLength  = this.$posts.length; 
       this.$w             = $(window);
       this.$doc           = $(document);
       this.$htmlBody      = $('html, body');
@@ -46,23 +51,101 @@
     },
     getDimentions: function () {
       this.dimentions = [];
-      this.$posts.each(function (i, item) {
-        var $item = $(item);
-        var pos = $item.offset();
-        var $menuItem = this.$menuItems.eq(i);
-        var data = $menuItem.data();
-        var heightOffset = (i === this.$posts.length-1) ? this.viewOffset : 0;
-        this.dimentions.push({
-          start:        pos.top,
-          height:       $item.outerHeight() - heightOffset,
-          $item:        $item,
-          $menuItem:    $menuItem,
-          $progressbar: $menuItem.find('.js-bundle-progress-progressbar'),
-          url:          data.url,
-          name:         data.name,
-          index:        i
-        });
-      }.bind(this));
+      this.$posts.each(function (i, item) { this.pushDimention($(item)); }.bind(this));
+    },
+
+    initSync: function () {
+      var $doc = $(document);
+
+      // wrap :: [string] -> [string]
+      var wrapInBrackets = function (str) {
+        return '[' + str + ']';
+      }
+
+      var it = this;
+      var trigger = function (i, el) {
+        var $el  = $(el);
+        $doc.trigger('bp-page-view', [ $el ]);
+        it.addPost($el);
+      }
+
+      $doc.ajaxComplete(function (event, xhr, settings) {
+        if (!xhr.responseText) {return};
+        var match = xhr.responseText.match(/data\-ajax\-id\=\".+?\"/gim);
+        if (!match || !match.length) {return};
+        var wrappedMatch = match.map(wrapInBrackets);
+        var selector = wrappedMatch.join(' , ');
+        $(selector).each(trigger);
+      });
+
+    },
+
+    pushDimention: function ($item, i) {
+      
+      i = i || this.dimentions.length;
+      var pos = $item.offset(),
+          data = $item.data(),
+          heightOffset = (i === this.$posts.length-1) ? this.viewOffset : 0;
+    
+
+      var $newItem = $('<li class="vw-bundle-progress__item js-bundle-progress-item"></li>');
+      var $header = $('<div class="vw-bundle-progress__number font-header">' + (i+1) + '</div>');
+      var $progressbar = $('<div class="js-bundle-progress-progressbar vw-bundle-progress__progressbar"></div>');
+
+      if (this.dimentions[i] == null) { this.dimentions[i] = {}; }
+
+      this.dimentions[i].start = pos.top;
+      this.dimentions[i].height = $item.outerHeight() - heightOffset;
+      this.dimentions[i].$item = $item;
+      this.dimentions[i].url = data.url;
+      this.dimentions[i].name = data.name;
+      this.dimentions[i].name = data.name;
+      this.dimentions[i].authorName = data.authorName;
+      this.dimentions[i].authorLink = data.authorLink;
+      this.dimentions[i].index = i;
+      this.dimentions[i].$menuItem = $newItem;
+      this.dimentions[i].$progressbar = $progressbar;
+
+      var $title = $('<h4 class="vw-bundle-progress__title"><a id="js-bundle-progress-item" data-index="' + i + '" href="' + this.dimentions[i].url + '">' + this.dimentions[i].name + '</a></h4>');
+      var $author = $('<div class="vw-post-meta vw-post-meta-large1">'
+        + '<span class="vw-post-author">'
+          + '<a class="author-name" href="' + this.dimentions[i].authorLink + '" title="Posts by ' + this.dimentions[i].authorName + '" rel="author">' + this.dimentions[i].authorName + '</a>'
+        + '</span>'
+      + '</div>');
+
+      $newItem.append($header, $progressbar, $title, $author);
+      this.$widget.append($newItem);
+
+    },
+
+    addPost: function($post) {
+      this.pushDimention($post);
+      this.shift();
+    },
+
+    shift: function (end) {
+      var height  = 0;
+      var shift   = 0;
+      var end     = (end == null) ? this.dimentions.length : end;
+
+      if (end <= this.initialLength) { end = this.initialLength; }
+      var start   = start || (end-this.initialLength);
+      start = Math.max(start, 0);
+
+      for (var i = 0; i < end; i++) {
+        
+        if (i < start) {
+          shift += this.dimentions[i].$menuItem.outerHeight();
+          this.shiftedIndex = i;
+        } else {
+          height += this.dimentions[i].$menuItem.outerHeight();
+        }
+
+
+      };
+      height = height || 320;
+      this.$widget.parent().css({ 'height': height + 'px' });
+      this.$widget.css({ 'transform': 'translateY(-' + shift+ 'px)' });
     },
 
     initEvents: function () {
@@ -72,9 +155,7 @@
           e.preventDefault(); it.scrollTo($(this).data().index);
         }
       });
-      this.$w.on('resize', function () {
-        it.getDimentions();
-      });
+      this.$w.on('resize', this.getDimentions.bind(this) );
     },
 
     scrollTo: function (i) {
@@ -90,11 +171,14 @@
 
       this.currentItem = this.getCurrentItem(scrollY);
 
+      // if (!this.currentItem.$menuItem) { return; }
 
       if (this.currentItem !== this.previousItem) {
         (this.previousItem) && this.previousItem.$menuItem.removeClass('is-check');
         this.currentItem.$menuItem.addClass('is-check');
         this.setRead(this.currentItem.index);
+
+        this.shift(this.currentItem.index+1);
 
         this.setBrowserCurrent();
 
@@ -181,7 +265,7 @@
     this.$widget        = $('#js-bundle-progress-mobile');
     this.$menuItems     = this.$widget.find('.js-bundle-progress-item');
 
-    this.$posts         = $('.vw-main-post');
+    this.$posts         = $('.vw-page-wrapper').eq(0).find('.vw-main-post');
     this.$w             = $(window);
     this.$doc           = $(document);
     this.$htmlBody      = $('html, body');

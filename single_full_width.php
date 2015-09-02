@@ -13,7 +13,7 @@
 					<?php do_action( 'vw_action_before_single_post' ); ?>
 
 					<?php while ( have_posts() ) : the_post(); ?>
-						<article <?php post_class( 'vw-main-post clearfix' ); ?>>
+						<article <?php post_class( 'vw-main-post clearfix' ); ?> data-url="<?php echo get_permalink(get_the_ID()); ?>" data-name="<?php echo get_the_title(); ?>" data-author-name="<?php echo get_the_author(); ?>" data-author-link="<?php get_author_posts_url(get_the_author_meta( 'ID' )); ?>">
 							<?php // vw_the_post_share_box(); ?>
 
 							<span class="author vcard hidden"><span class="fn"><?php echo esc_attr( get_the_author() ); ?></span></span>
@@ -46,6 +46,8 @@
 				<?php endif; ?>
 
 				<?php include 'bundle-progress.php' ?>
+
+				<?php echo do_shortcode(vw_get_theme_option( 'post_footer_ajax_load_more' )); ?>
 
 			</div>
 

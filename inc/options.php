@@ -651,6 +651,14 @@ Redux::setSection( $vw_opt_name, array(
 			'title' => 'Post Footer - Custom Section 2',
 			'subtitle'=> 'Enter the content.',
 		),
+
+		array(
+			'id'=>'post_footer_ajax_load_more',
+			'type' => 'editor', 
+			'title' => 'Ajax load more shortcode',
+			'subtitle'=> 'Enter the content.',
+		),
+
 	),
 ) );
 
