@@ -47,8 +47,6 @@
 
 				<?php include 'bundle-progress.php' ?>
 
-				<?php echo do_shortcode(vw_get_theme_option( 'post_footer_ajax_load_more' )); ?>
-
 			</div>
 
 			<?php get_sidebar(); ?>

@@ -1,5 +1,5 @@
 <?php
-$widget_sidebar = is_active_widget( false, false, 'vw_widget_bundle_progress', true );
+  $widget_sidebar = is_active_widget( false, false, 'vw_widget_bundle_progress', true );
   if ( !$widget_sidebar ) { return; }
 
   $ID = get_the_ID();
@@ -20,40 +20,14 @@ $widget_sidebar = is_active_widget( false, false, 'vw_widget_bundle_progress', t
 
   <!-- MOBILE HEADER : START -->
 
-   <div class="bundle-progress-mobile" id="js-bundle-progress-mobile">
-
-    <div class="bundle-progress-mobile__items-wrapper">
-      <ul class="bundle-progress-mobile__items">
-
-      <?php
-        $i = 0;
-        foreach( $myposts as $post ):
-            setup_postdata( $post );
-            $post_link = get_permalink($post->ID);
-      ?>
-          <li class="js-bundle-progress-item vw-bundle-progress__item" data-url="<?php echo $post_link; ?>" data-index="<?php echo $i; ?>" data-name="<?php echo $post->post_title; ?>">
-            <div class="js-bundle-progress-progressbar vw-bundle-progress__progressbar "></div>
-            <h4 class="vw-bundle-progress__title"><a href="<?php echo $post_link; ?>"><?php echo $post->post_title; ?></a></h4>
-            <!-- <h5 class="vw-bundle-progress__author"><em> by <a id="js-bundle-progress-author" href="<?php echo get_author_posts_url(get_the_author_meta( 'ID' )) ?>"><?php echo get_the_author() ?></a></em></h5> -->
-            <div class="vw-post-meta vw-post-meta-large1">
-              <?php echo vw_the_author(); ?>
-            </div>
-          </li>
-
-      <?php
-        $i++;
-        endforeach;
-      ?>
-
-      <!-- <li class="bundle-progress-mobile__item"></li> -->
-
-      </ul>
-    </div>
+   <div class="bundle-progress-mobile is-open1" id="js-bundle-progress-mobile">
+    <!-- <div class="bundle-progress-mobile__items-wrapper"></div> -->
+    <ul class="bundle-progress-mobile__items"><div id="js-bundle-progress-mobile-items"></div></ul>
 
     <div class="bundle-progress-mobile__panel">
       <div class="vw-bundle-progress__progressbar" id="js-bundle-progress-mobile-panel-progressbar"></div>
       <div class="bundle-progress-mobile__current-item" id="js-bundle-progress-mobile-current-wrapper">
-        <h4 id="js-bundle-progress-mobile-current"><?php echo $title; ?></h4>
+        <h4 id="js-bundle-progress-mobile-current"><?php echo get_the_title(); ?></h4>
       </div>
       <div class="bundle-progress-mobile__title" id="js-bundle-progress-mobile-title">
         <h4><?php echo get_option('wv_bundle_progress_title'); ?></h4>
@@ -118,3 +92,5 @@ foreach( $myposts as $post ):
   <?php vw_the_post_footer_sections(false); ?>
 
 <?php endforeach; wp_reset_postdata(); ?>
+
+<?php echo do_shortcode(vw_get_theme_option( 'post_footer_ajax_load_more' )); ?>
