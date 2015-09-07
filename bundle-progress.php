@@ -51,7 +51,9 @@ foreach( $myposts as $post ):
 
     <?php vw_the_category(); ?>
 
-    <h1 class="entry-title"><?php the_title(); ?></h1>
+    <h1 class="entry-title">
+      <a href="<?php echo get_permalink($post->ID); ?>"><?php the_title(); ?></a>
+    </h1>
 
     <?php vw_the_subtitle(); ?>
 

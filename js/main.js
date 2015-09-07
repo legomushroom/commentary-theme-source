@@ -146,7 +146,7 @@ jQuery.noConflict();
 					this.$adminBar 			 = $('#wpadminbar');
 					this.isAdminBar 		 = !!this.$adminBar.length;
 					this.adminBarHeight  = this.$adminBar.outerHeight() || 0;
-					this.wHeight 				 = this.$w.outerHeight();
+					this.wHeight 			 	 = this.$w.outerHeight();
 					this.wWidth 				 = this.$w.outerWidth();
 					this.loop 					 = this.loop.bind(this);
 					this.$menu 					 = $('#vw-menu-main');
@@ -169,10 +169,11 @@ jQuery.noConflict();
 						this.wWidth  = this.$w.outerWidth();
 						this.getActiveArea();
 						this.containerWidth = this.$post.outerWidth()
+
 						clearTimeout(timeout);
-						// timeout = setTimeout((function () {
-						// 	this.getYs(); this.getMenuWidth();
-						// }).bind(this), 100);
+						timeout = setTimeout((function () {
+							this.getYs(); this.getMenuWidth();
+						}).bind(this), 100);
 					}.bind(this));
 				}
 			Main.prototype.getActiveArea = function () {
@@ -230,11 +231,10 @@ jQuery.noConflict();
 
 					var it = this;
 					this.$stickyContents.on('click', '.sticky-contents__item', function () {
-						var offset = 100;
+						var offset = -400;
 						offset += (it.isAdminBar) ? it.adminBarHeight : 0;
-						offset -= ((it.$w.outerWidth() < 1001) ? 0 : 0);
 						offset += ((it.$w.outerWidth() > this.desktopQuery) ? 0 : it.stickyContentsHeight);
-						$('html, body').animate({'scrollTop': $(this).data().y - offset + 25});
+						$('html, body').animate({'scrollTop': $(this).data().y - offset});
 					});
 				},
 			Main.prototype.getMenuItemsPositions = function () {
@@ -625,7 +625,7 @@ jQuery.noConflict();
 		// Tipsy
 		// 
 		if ( $.fn.tipsy ) {
-			$('.widget_vw_widget_author_list a, .vw-author-socials a, .vw-category-link, .vw-author-avatar, .author-name, .vw-post-date, .vw-post-shares-social, .bbp-author-avatar, .vw-post-comment-count, .vw-post-likes-count, .vw-post-view-count, .vw-post-share-count').tipsy( {
+			$('.vw-intense-tooltip, .widget_vw_widget_author_list a, .vw-author-socials a, .vw-category-link, .vw-author-avatar, .author-name, .vw-post-date, .vw-post-shares-social, .bbp-author-avatar, .vw-post-comment-count, .vw-post-likes-count, .vw-post-view-count, .vw-post-share-count').tipsy( {
 				fade: true,
 				gravity: 's',
 			} );
@@ -651,7 +651,7 @@ jQuery.noConflict();
 				vw_sticky_sidebar.hcSticky( {
 					stickTo: '.container',
 					wrapperClassName: 'vw-sticky-sidebar-wrapper',
-					offResolutions: [-768],
+					offResolutions: [-769],
 					top: offset,
 				} );
 

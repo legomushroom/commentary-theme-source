@@ -1672,7 +1672,7 @@ div.vw-page-wrapper.is-no-padding {
 .vw-main-post .entry-title {
     margin-top: 0px;
     margin-bottom: 5px;
-    font-size: 32px;
+    font-size: 43px;
     font-weight: bold;
     line-height: 1.1em;
     word-wrap: break-word;
@@ -8439,4 +8439,6 @@ button.alm-load-more-btn.loading:before {
     display: block;
 }
 
-
+.device-mockup .screen br {
+    display: none;
+}

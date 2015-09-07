@@ -61,6 +61,14 @@ if ( ! function_exists( 'vw_get_breadcrumb_items' ) ) {
 			$item['last'] = __( 'Home', 'envirra' );
 		}
 
+		// echo '[' . (function_exists( 'is_bbpress' ) && is_bbpress()) . ']';
+		// echo '[' . (function_exists( 'is_woocommerce' ) && is_woocommerce()) . ']';
+		// echo '[' . (is_home()) . ']';
+		// echo '[' . (is_singular()) . ']';
+		// echo '[' . (is_archive()) . ']';
+		// echo '[' . (is_search()) . ']';
+		// echo '[' . (is_404()) . ']';
+
 		/* Link to front page. */
 		if ( !is_front_page() && $args['show_home'] )
 			$item[] = '<span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="'. home_url( '/' ) .'" class="home">' . __( 'Home', 'envirra' ) . '</a></span>';
@@ -68,6 +76,8 @@ if ( ! function_exists( 'vw_get_breadcrumb_items' ) ) {
 		/* If bbPress is installed and we're on a bbPress page. */
 		if ( function_exists( 'is_bbpress' ) && is_bbpress() ) {
 			$item = array_merge( $item, vw_breadcrumb_get_bbpress_items() );
+
+
 		}
 
 		elseif ( function_exists( 'is_woocommerce' ) && is_woocommerce() ) {

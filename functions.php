@@ -2,7 +2,7 @@
 /* -----------------------------------------------------------------------------
  * Constants
  * -------------------------------------------------------------------------- */
-if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.2.65' );
+if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.2.74' );
 if ( ! defined( 'VW_THEME_NAME' ) ) define( 'VW_THEME_NAME', 'ESPRESSO' );
 if ( ! defined( 'MINUTES_IN_SECONDS' ) ) define( 'MINUTES_IN_SECONDS', 60 );
 
