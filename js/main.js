@@ -860,8 +860,14 @@ jQuery.noConflict();
 		}
 
 		$( this ).on( 'click', '.vw-page-navigation-pagination a', function( e ) {
-			e.preventDefault(); // prevent default linking
 			var $this = $( this );
+
+			if ( $this.hasClass( 'vw-no-pagination-ajax' ) ) {
+				return;
+			}
+
+			e.preventDefault(); // prevent default linking
+
 			var link = $this.attr( 'href' );
 			var $viewport = $('html, body');
 			var $container = $this.closest( '.vwspc-section, .vw-post-shortcode' );
