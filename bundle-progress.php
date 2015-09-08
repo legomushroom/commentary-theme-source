@@ -1,18 +1,11 @@
 <?php
-  $widget_sidebar = is_active_widget( false, false, 'vw_widget_bundle_progress', true );
-  if ( !$widget_sidebar ) { return; }
+  // $widget_sidebar = is_active_widget( false, false, 'vw_widget_bundle_progress', true );
+  // if ( !$widget_sidebar ) { return; }
 
   $ID = get_the_ID();
   $title = get_the_title();
-  $post_type = get_post_type();
-
-  $ids = get_option('wv_bundle_progress_posts_' . $post_type );
-  $ids   = explode(',', $ids);
-  $ids = array_map('absint', $ids);
-  $ids = array_filter($ids);
-  if ( empty( $ids ) ) { return; }
-
-  array_unshift($ids, get_the_ID());
+  
+  $ids = wv_get_bundle_progress_ids();
 
   $myposts = get_posts(apply_filters( 'vw_filter_bundle_progress_query', array('post__in' => $ids, 'orderby' => 'post__in', 'post_status' => 'any', 'post_type' => array( 'post', 'cmm_article' ) ) ) );
 
@@ -95,4 +88,14 @@ foreach( $myposts as $post ):
 
 <?php endforeach; wp_reset_postdata(); ?>
 
-<?php echo do_shortcode(vw_get_theme_option( 'post_footer_ajax_load_more' )); ?>
+<?php
+  $loadMore  = vw_get_theme_option( 'post_footer_ajax_load_more' );
+  $loadedIds = wv_get_bundle_progress_ids();
+  array_unshift($loadedIds, get_the_ID());
+  $loadedIdsString = implode(', ', $loadedIds);
+
+  $loadMore = str_replace(']', ' exclude="' . $loadedIdsString . '" ]', $loadMore);
+
+  echo do_shortcode($loadMore);
+  
+  ?>

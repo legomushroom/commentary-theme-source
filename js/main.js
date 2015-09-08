@@ -373,6 +373,11 @@ jQuery.noConflict();
 					// return;
 					this.checkItems(); requestAnimationFrame(this.loop);
 				}
+
+
+			window.CommentaryMagazine = (window.CommentaryMagazine == null) ? {} : window.CommentaryMagazine;
+
+			window.CommentaryMagazine.StickyContents = Main;
 		
 			setTimeout(function () {
 				var $posts = $('.vw-main-post');

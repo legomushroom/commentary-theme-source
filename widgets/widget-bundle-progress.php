@@ -12,7 +12,8 @@ if ( ! class_exists( 'Vw_widget_bundle_progress' ) ) {
 
 		private $default = array(
 			'title' => '',
-			'posts' => ''
+			'posts' => '',
+			'posts_quantity' => '5'
 		);
 
 		public function __construct() {
@@ -85,6 +86,7 @@ if ( ! class_exists( 'Vw_widget_bundle_progress' ) ) {
 			$new_instance = wp_parse_args( (array) $new_instance, $this->default );
 			$instance['title'] = wp_kses_data( $new_instance['title'] );
 			$instance['posts'] = $new_instance['posts'];
+			$instance['posts_quantity'] = $new_instance['posts_quantity'];
 			// $instance['role'] = strip_tags( $new_instance['role'] );
 
 			if ( function_exists( 'icl_register_string' ) ) {
@@ -101,6 +103,7 @@ if ( ! class_exists( 'Vw_widget_bundle_progress' ) ) {
 			}
 
 			update_option("wv_bundle_progress_posts_" . $post_type, implode( ',', $post_ids ) );
+			update_option("wv_bundle_progress_posts_quantity_" . $post_type, $instance['posts_quantity'] );
 
 			// Update title in option
 			$title_html = $this->get_bundle_title( $instance );
@@ -145,6 +148,7 @@ if ( ! class_exists( 'Vw_widget_bundle_progress' ) ) {
 			$title = $instance['title'];
 			// $role = strip_tags( $instance['role'] );
 			$posts = $instance['posts'];
+			$posts_quantity = $instance['posts_quantity'];
 			?>
 
 			<!-- title -->
@@ -168,6 +172,11 @@ if ( ! class_exists( 'Vw_widget_bundle_progress' ) ) {
 			<p>
 				<label for="<?php echo esc_attr( $this->get_field_id('posts') ); ?>">Posts to show:</label>
 				<input id="<?php echo esc_attr( $this->get_field_id('posts') ); ?>" name="<?php echo esc_attr( $this->get_field_name('posts') ); ?>" type="text" value="<?php echo esc_attr( $posts ); ?>" class="widefat">
+			</p>
+
+			<p>
+				<label for="<?php echo esc_attr( $this->get_field_id('posts_quantity') ); ?>">Quantity of posts to show:</label>
+				<input id="<?php echo esc_attr( $this->get_field_id('posts_quantity') ); ?>" name="<?php echo esc_attr( $this->get_field_name('posts_quantity') ); ?>" type="text" value="<?php echo esc_attr( $posts_quantity ); ?>" class="widefat">
 			</p>
 
 			<?php

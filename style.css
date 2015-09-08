@@ -993,8 +993,13 @@ button,
 .vw-page-title-section.vw-has-background .vw-post-meta,
 .vw-page-title-section.vw-has-background .vw-post-meta a,
 .vw-page-title-section.vw-has-background .vw-subtitle {
+    color: #FFF;
+}
+
+.vw-page-title-section.vw-has-background .vw-post-categories .vw-category-link {
     color: rgba(255, 255, 255, 0.8);
 }
+
 .vw-page-title-section.vw-has-background .vw-page-title-section-inner {
     margin-left: -15px;
     margin-right: -15px;
@@ -1749,7 +1754,8 @@ div.vw-page-wrapper.is-no-padding {
  * $POST META */
 .vw-post-meta {
     font-size: 13px;
-    font-style: italic;
+    /*font-style: italic;*/
+    text-transform: uppercase;
     font-weight: 300;
     letter-spacing: 1px;
     margin-bottom: 15px;
@@ -2266,6 +2272,11 @@ div.vw-tag-links a {
 .vw-post-box .avatar {
     margin-right: 0.5em;
 }
+
+.vw-post-box .vw-post-meta {
+    text-transform: uppercase;
+}
+
 .vw-post-box .vw-post-meta,
 .vw-post-box .vw-post-meta .vw-icon {
     font-size: 16px;
@@ -2274,6 +2285,7 @@ div.vw-tag-links a {
 .vw-post-box .vw-post-meta a {
     color: #999999;
 }
+
 .vw-post-box .vw-post-box-meta-right {
     margin-top: 10px;
     display: block;
@@ -2927,9 +2939,12 @@ div.vw-tag-links a {
 .vw-post-style-slide-large .vw-post-meta {
     padding-bottom: 10px;
     font-size: 15px;
+    text-transform: uppercase;
+    font-style: normal;
+    color: white;
 }
 .vw-post-style-slide-large .vw-post-meta a {
-    color: #B0B0B0;
+    color: white;
 }
 
 .vw-post-style-slide-large .vw-post-author .vw-icon {
@@ -8442,3 +8457,9 @@ button.alm-load-more-btn.loading:before {
 .device-mockup .screen br {
     display: none;
 }
+
+.alm-listing {
+    padding-left: 0;
+}
+
+

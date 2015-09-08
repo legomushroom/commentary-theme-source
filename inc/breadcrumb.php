@@ -60,15 +60,6 @@ if ( ! function_exists( 'vw_get_breadcrumb_items' ) ) {
 		if ( is_front_page() ) {
 			$item['last'] = __( 'Home', 'envirra' );
 		}
-
-		// echo '[' . (function_exists( 'is_bbpress' ) && is_bbpress()) . ']';
-		// echo '[' . (function_exists( 'is_woocommerce' ) && is_woocommerce()) . ']';
-		// echo '[' . (is_home()) . ']';
-		// echo '[' . (is_singular()) . ']';
-		// echo '[' . (is_archive()) . ']';
-		// echo '[' . (is_search()) . ']';
-		// echo '[' . (is_404()) . ']';
-
 		/* Link to front page. */
 		if ( !is_front_page() && $args['show_home'] )
 			$item[] = '<span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="'. home_url( '/' ) .'" class="home">' . __( 'Home', 'envirra' ) . '</a></span>';
@@ -100,29 +91,29 @@ if ( ! function_exists( 'vw_get_breadcrumb_items' ) ) {
 
 			$post_type_object = get_post_type_object( $post_type );
 
-			if ( 'post' === $wp_query->post->post_type ) {
+			if ( 'post' === $post->post_type ) {
 				// $item[] = '<span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="' . get_permalink( get_option( 'page_for_posts' ) ) . '">' . get_the_title( get_option( 'page_for_posts' ) ) . '</a></span>';
 				$categories = get_the_category( $post_id );
 				$item = array_merge( $item, vw_breadcrumb_get_term_parents( $categories[0]->term_id, $categories[0]->taxonomy ) );
 			}
 
-			if ( 'page' !== $wp_query->post->post_type ) {
+			if ( 'page' !== $post->post_type ) {
 
 				/* If there's an archive page, add it. */
 				
 				if ( function_exists( 'get_post_type_archive_link' ) && !empty( $post_type_object->has_archive ) )
 					$item[] = '<span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="' . get_post_type_archive_link( $post_type ) . '" title="' . esc_attr( $post_type_object->labels->name ) . '">' . esc_html( $post_type_object->labels->name ) . '</a></span>';
 
-				if ( isset( $args["singular_{$wp_query->post->post_type}_taxonomy"] ) && is_taxonomy_hierarchical( $args["singular_{$wp_query->post->post_type}_taxonomy"] ) ) {
-					$terms = wp_get_object_terms( $post_id, $args["singular_{$wp_query->post->post_type}_taxonomy"] );
-					$item = array_merge( $item, vw_breadcrumb_get_term_parents( $terms[0], $args["singular_{$wp_query->post->post_type}_taxonomy"] ) );
+				if ( isset( $args["singular_{$post->post_type}_taxonomy"] ) && is_taxonomy_hierarchical( $args["singular_{$post->post_type}_taxonomy"] ) ) {
+					$terms = wp_get_object_terms( $post_id, $args["singular_{$post->post_type}_taxonomy"] );
+					$item = array_merge( $item, vw_breadcrumb_get_term_parents( $terms[0], $args["singular_{$post->post_type}_taxonomy"] ) );
 				}
 
-				elseif ( isset( $args["singular_{$wp_query->post->post_type}_taxonomy"] ) )
-					$item[] = get_the_term_list( $post_id, $args["singular_{$wp_query->post->post_type}_taxonomy"], '', ', ', '' );
+				elseif ( isset( $args["singular_{$post->post_type}_taxonomy"] ) )
+					$item[] = get_the_term_list( $post_id, $args["singular_{$post->post_type}_taxonomy"], '', ', ', '' );
 			}
 
-			if ( ( is_post_type_hierarchical( $wp_query->post->post_type ) || 'attachment' === $wp_query->post->post_type ) && $parents = vw_breadcrumb_get_parents( $wp_query->post->post_parent ) ) {
+			if ( ( is_post_type_hierarchical( $post->post_type ) || 'attachment' === $post->post_type ) && $parents = vw_breadcrumb_get_parents( $post->post_parent ) ) {
 				$item = array_merge( $item, $parents );
 			}
 
@@ -161,7 +152,7 @@ if ( ! function_exists( 'vw_get_breadcrumb_items' ) ) {
 			}
 
 			else if ( is_author() )
-				$item['last'] = __( 'Archives by: ', 'envirra' ) . esc_html( get_the_author_meta( 'display_name', $wp_query->post->post_author ) );
+				$item['last'] = __( 'Archives by: ', 'envirra' ) . esc_html( get_the_author_meta( 'display_name', $post->post_author ) );
 		}
 
 		/* If viewing search results. */
@@ -353,5 +344,108 @@ if ( ! function_exists( 'vw_is_yoast_breadcrumb_enabled' ) ) {
 		$options = get_option( 'wpseo_internallinks' );
 
 		return function_exists( 'yoast_breadcrumb' ) && $options['breadcrumbs-enable'] === true;
+	}
+}
+
+
+
+if ( ! function_exists( 'vw_the_breadcrumb_single' ) ) {
+	function vw_the_breadcrumb_single( $args = array() ) {
+
+		if ( vw_is_yoast_breadcrumb_enabled() ) {
+			/* For Yoast Breadcrumb */
+			yoast_breadcrumb('<div class="vw-breadcrumb vw-breadcrumb-yoast">','</div>');
+
+		} else {
+			$defaults = array(
+				'title' => '',
+				'show_home' => true,
+				'singular_post_taxonomy'=> 'category',
+			);
+
+			$args = wp_parse_args( $args, $defaults );
+
+			$title = '';
+			if ( ! empty( $args['title'] ) ) {
+				$title = '<span class="vw-breadcrumb-title">' . $args['title'] . '</span>';
+			}
+
+			$separator = __( '<span class="vw-breadcrumb-separator">&raquo;</span>', 'envirra' );
+
+			$items = vw_get_breadcrumb_items_single( array(
+					'show_home' => $args['show_home'],
+				) );
+			
+			$breadcrumbs = '<div class="vw-breadcrumb vw-breadcrumb-envirra" xmlns:v="http://rdf.data-vocabulary.org/#">';
+			$breadcrumbs .= $title;
+			$breadcrumbs .= '<span>'.join( "{$separator}", $items ).'</span>';
+			$breadcrumbs .= '</div>';
+
+			echo $breadcrumbs;
+		}
+	}
+}
+
+
+
+if ( ! function_exists( 'vw_get_breadcrumb_items_single' ) ) {
+	function vw_get_breadcrumb_items_single( $args = array() ) {
+		$defaults = array(
+			'show_home' => true,
+		);
+
+		$args = wp_parse_args( $args, $defaults );
+
+		global $wp_query;
+
+		$item = array();
+
+		$show_on_front = get_option( 'show_on_front' );
+
+		if ( $args['show_home'] )
+			$item[] = '<span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="'. home_url( '/' ) .'" class="home">' . __( 'Home', 'envirra' ) . '</a></span>';
+
+		
+		$post = get_post(get_the_ID());
+		
+		$post_id = get_the_ID();
+
+		$post_type = $post->post_type;
+
+		$post_type_object = get_post_type_object( $post_type );
+
+		if ( 'post' === $post->post_type ) {
+			// $item[] = '<span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="' . get_permalink( get_option( 'page_for_posts' ) ) . '">' . get_the_title( get_option( 'page_for_posts' ) ) . '</a></span>';
+			$categories = get_the_category( $post_id );
+			$item = array_merge( $item, vw_breadcrumb_get_term_parents( $categories[0]->term_id, $categories[0]->taxonomy ) );
+		}
+
+		if ( 'page' !== $post->post_type ) {
+
+			/* If there's an archive page, add it. */
+			
+			if ( function_exists( 'get_post_type_archive_link' ) && !empty( $post_type_object->has_archive ) )
+				$item[] = '<span typeof="v:Breadcrumb"><a rel="v:url" property="v:title" href="' . get_post_type_archive_link( $post_type ) . '" title="' . esc_attr( $post_type_object->labels->name ) . '">' . esc_html( $post_type_object->labels->name ) . '</a></span>';
+
+			if ( isset( $args["singular_{$post->post_type}_taxonomy"] ) && is_taxonomy_hierarchical( $args["singular_{$post->post_type}_taxonomy"] ) ) {
+				$terms = wp_get_object_terms( $post_id, $args["singular_{$post->post_type}_taxonomy"] );
+				$item = array_merge( $item, vw_breadcrumb_get_term_parents( $terms[0], $args["singular_{$post->post_type}_taxonomy"] ) );
+			}
+
+			elseif ( isset( $args["singular_{$post->post_type}_taxonomy"] ) )
+				$item[] = get_the_term_list( $post_id, $args["singular_{$post->post_type}_taxonomy"], '', ', ', '' );
+		}
+
+		if ( ( is_post_type_hierarchical( $post->post_type ) || 'attachment' === $post->post_type ) && $parents = vw_breadcrumb_get_parents( $post->post_parent ) ) {
+			$item = array_merge( $item, $parents );
+		}
+
+		$item['last'] = get_the_title();
+
+		if ( isset( $item['last'] ) ) {
+			$item['last'] = sprintf( '<span class="vw-breadcrumb-item-last">%s</span>', $item['last'] );
+		}
+		
+		return apply_filters( 'vw_filter_breadcrumb_items_single', $item );
 	}
 }

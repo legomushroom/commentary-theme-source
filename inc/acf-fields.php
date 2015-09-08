@@ -150,6 +150,15 @@ if(function_exists("register_field_group"))
         'default_value' => 0,
       ),
       array (
+        'key' => 'field_542004d5673e2',
+        'label' => 'Excerpt substitute',
+        'name' => 'vw_post_excerpt_substitute',
+        'type' => 'text',
+        'instructions' => 'Enter the custom excerpt',
+        'message' => '',
+        'default_value' => '',
+      ),
+      array (
         'key' => 'field_540004d5673dd',
         'label' => 'Post Image Vertical Position',
         'name' => 'vw_post_vertical_position',

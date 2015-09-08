@@ -74,7 +74,6 @@
         this.pushDimention(items[i], i);
       };
     },
-
     notifyLockers: function ($el) {
       this.tryPandaHook(); this.$doc.trigger('bp-page-view', [ $el ]);
     },
@@ -148,6 +147,9 @@
 
     addPost: function($post) {
       this.pushDimention($post);
+      if (window.CommentaryMagazine && window.CommentaryMagazine.StickyContents) {
+        new window.CommentaryMagazine.StickyContents($post);
+      }
       this.shift();
     },
 
@@ -189,18 +191,6 @@
 
         var hammertime = new Hammer(this.$openBtn[0]);
         hammertime.on('tap', function(ev) { it.$mainEl.toggleClass('is-open'); });
-
-
-        // this.$menuItems.each(function (i, item) {
-        //  var hammertime = new Hammer(item);
-        //  hammertime.on('tap', function (e) {
-        //    if (e.target.getAttribute('id') === 'js-bundle-progress-author') { return }
-        //    if (!e.metaKey) {
-        //      e.preventDefault();
-        //      it.scrollTo($(item).data().index);
-        //    }
-        //  });
-        // });
 
       }
 

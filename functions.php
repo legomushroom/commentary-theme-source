@@ -2,7 +2,7 @@
 /* -----------------------------------------------------------------------------
  * Constants
  * -------------------------------------------------------------------------- */
-if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.2.74' );
+if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.2.77' );
 if ( ! defined( 'VW_THEME_NAME' ) ) define( 'VW_THEME_NAME', 'ESPRESSO' );
 if ( ! defined( 'MINUTES_IN_SECONDS' ) ) define( 'MINUTES_IN_SECONDS', 60 );
 
@@ -166,22 +166,14 @@ if ( ! function_exists( 'vw_filter_post_footer' ) ) {
 add_filter('the_excerpt', 'do_my_shortcode_in_excerpt');
 if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
 	function do_my_shortcode_in_excerpt($excerpt) {
-		$content = do_shortcode(get_the_content());
+
+    $customContent = get_post_meta(get_the_ID(),'vw_post_excerpt_substitute', true);
+    $content = ($customContent) ? $customContent : get_the_content();
+
+		$content = do_shortcode($content);
 		$content = str_replace(array("\r","\n"),"", $content);
 		$content = preg_replace('/<h[1|2|3|4|5|6].+?<\/h[1|2|3|4|5|6]>/sim', '', $content);
 		$content = preg_replace('/Contents\s?/i', '', $content);
-		// $args = array(
-		//     //formatting
-		//     'strong' => array(),
-		//     'em'     => array(),
-		//     'b'      => array(),
-		//     'i'      => array(),
-
-		//     //links
-		//     'a'     => array(
-		//         'href' => array()
-		//     )
-		// );
 	  return wp_kses(wp_trim_words($content, vw_get_theme_option('blog_excerpt_length')), $GLOBALS['ALLOWED_HTML']);
 	}
 }
@@ -747,6 +739,34 @@ if ( ! function_exists( 'vw_have_more_post' ) ) {
 }
 
 /* -----------------------------------------------------------------------------
+ * Get additional ids for bundle progress widget
+ * -------------------------------------------------------------------------- */
+if ( ! function_exists( 'wv_get_bundle_progress_ids' ) ) {
+  function wv_get_bundle_progress_ids() {
+    $post_type = get_post_type();
+
+    $ids = get_option('wv_bundle_progress_posts_' . $post_type );
+
+    $quantity = (int)get_option('wv_bundle_progress_posts_quantity_' . $post_type );
+
+    if ($ids) {
+      $ids = explode(',', $ids);
+    } else {
+      $recentPostIds = wp_get_recent_posts(array( 'numberposts' => $quantity, 'post_type' => array( 'post', 'cmm_article' ), 'post_status' => 'any' ));
+      $ids = array_map(function ($value) { return $value['ID'];  }, $recentPostIds);
+    }
+
+    $ids = array_map('absint', $ids);
+    $ids = array_filter($ids);
+    if ( empty( $ids ) ) { return; }
+    $ids = array_unique($ids);
+    $ids = array_slice($ids, 0, $quantity);
+    return $ids;
+  }
+}
+
+
+/* -----------------------------------------------------------------------------
  * Avoid duplicate post
  * -------------------------------------------------------------------------- */
 global $vw_duplicate_posts;
@@ -860,3 +880,4 @@ function my_acf_update_value ($value, $post_id, $field) {
 	update_post_meta( $post_id, 'vw_post_total_shares_forgery', $totalShares );
 	return $value;
 }
+
