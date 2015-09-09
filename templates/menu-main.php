@@ -40,6 +40,7 @@
 
 						<a class="vw-instant-search-button vw-main-menu-right__search">
 							<i class="vw-icon icon-entypo-search"></i>
+							<span class="vw-main-menu-right__search-word">search</span>
 						</a>
 
 						<span class="vw-scroll-to-top vw-main-menu-right__scroll-top"><i class="vw-icon icon-entypo-up-open"></i></span>

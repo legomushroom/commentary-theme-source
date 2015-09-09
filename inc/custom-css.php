@@ -120,7 +120,8 @@ if ( ! function_exists( 'vw_render_custom_css' ) ) {
 		.vw-quote, /*blockquote,*/
 		.vw-copyright,
 		.vw-mega-menu-type-links-4-cols .menu-item-depth-1 > .menu-link,
-		.vw-main-menu-right__login-link
+		.vw-main-menu-right__login-link, 
+		.vw-main-menu-right__search-word
 		{
 			font-family: <?php echo $vw_espresso['typography_header']['font-family'] ?>;
 		}

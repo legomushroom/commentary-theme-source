@@ -2781,6 +2781,10 @@ div.vw-tag-links a {
         height: 400px;
     }*/
 }
+.vw-post-loop-slider-large .vw-post-meta-separator, 
+.vw-post-loop-slider-large .vw-post-date {
+    display: none;
+}
 
 .vw-post-loop-slider-large-carousel .swiper-slide {
     display: inline-block;
@@ -8230,6 +8234,9 @@ html {
         display: inline-block;
         margin-top: 12px;
     }
+    /*.vw-main-menu-right__login-link .login {
+        text-decoration: none;
+    }*/
     .vw-main-menu-right__scroll-top {
         position: static;
         float: right;
@@ -8256,6 +8263,31 @@ html {
         }
         .vw-main-menu-right__search:hover {
             color: white;
+        }
+
+        .vw-main-menu-right__search-word {
+            display: none;
+            letter-spacing: 1px;
+            position: relative;
+            top: -1px;
+        }
+
+        @media all and (min-width: 1440px) {
+
+            .vw-main-menu-right__search {
+                width:      auto;
+                display:    inline-block;
+                padding-right: 10px;
+                padding-left: 6px;
+                }
+                .vw-main-menu-right__search:hover {
+                    text-decoration: none;
+                }
+
+            .vw-main-menu-right__search-word {
+                display:         inline;
+            }
+            
         }
 
 div#modal-login .submit .button {

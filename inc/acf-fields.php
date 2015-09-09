@@ -151,12 +151,12 @@ if(function_exists("register_field_group"))
       ),
       array (
         'key' => 'field_542004d5673e2',
-        'label' => 'Excerpt substitute',
-        'name' => 'vw_post_excerpt_substitute',
-        'type' => 'text',
-        'instructions' => 'Enter the custom excerpt',
+        'label' => 'Excerpt suppress',
+        'name' => 'vw_post_excerpt_suppress',
+        'type' => 'true_false',
+        'instructions' => 'Check if you want to suppress excerpt',
         'message' => '',
-        'default_value' => '',
+        'default_value' => 0,
       ),
       array (
         'key' => 'field_540004d5673dd',
