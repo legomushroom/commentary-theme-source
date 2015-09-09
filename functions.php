@@ -2,7 +2,7 @@
 /* -----------------------------------------------------------------------------
  * Constants
  * -------------------------------------------------------------------------- */
-if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.2.2' );
+if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.3.0' );
 if ( ! defined( 'VW_THEME_NAME' ) ) define( 'VW_THEME_NAME', 'ESPRESSO' );
 if ( ! defined( 'MINUTES_IN_SECONDS' ) ) define( 'MINUTES_IN_SECONDS', 60 );
 
@@ -263,33 +263,42 @@ if ( ! function_exists( 'vw_get_related_posts' ) ) {
 		if ( empty( $post_ID ) ) {
 			$post_ID = get_the_ID();
 		}
-
 		$args = array(
-			'post__not_in' => array($post_ID),  
-			'posts_per_page'=> $count, 
+			'post__not_in' => array($post_ID),
+			'posts_per_page'=> $count,
 			'ignore_sticky_posts'=> 1,
 			// 'meta_key' => '_thumbnail_id', //Only posts that have featured image
 		);
-
 		// Find the related posts
 		$tags = wp_get_post_tags( $post_ID, array( 'fields' => 'ids' ) );
 		if ( $tags ) {
 			// Find the related posts by tag
 			foreach( $tags as $tag ) {
-				$args['tag__in'][] = $tag;	
+				$args['tag__in'][] = $tag;
 			}
 		} else {
 			// Find the related posts by category when no tag.
 			$cats = wp_get_post_categories( $post_ID, array('fields' => 'ids') );
-
-			if ( ! $cats ) return;
-
-			foreach( $cats as $cat_ID ) {
-				$args['category__in'][] = $cat_ID;	
+			if ( $cats ) {
+				foreach ( $cats as $cat_ID ) {
+					$args['category__in'][] = $cat_ID;
+				}
 			}
 		}
-
-		return new WP_Query( apply_filters( 'vw_filter_related_post_query_args', $args ) );
+		
+		// Use main args by default
+		$query_args = $args;
+		// If no tags / categories, pass empty args to filter and bypass WP_Query
+		if ( empty( $args['tag__in'] ) && empty( $args['category__in'] ) ) {
+			$query_args = array();
+		}
+		$query_args = apply_filters( 'vw_filter_related_post_query_args', $query_args, $post_ID, $args );
+		// Allow filter to bypass WP_Query for related posts
+		// or custom taxonomies / filters to be used when there's no tag/category
+		if ( empty( $query_args ) ) {
+			return false;
+		}
+		return new WP_Query( $query_args );
 	}
 }
 
@@ -348,7 +357,7 @@ if ( ! function_exists( 'vw_get_post_layout' ) ) {
 			$post_layout = vw_get_theme_option( 'post_default_layout' );
 		}
 
-		return $post_layout;
+		return apply_filters( 'vw_filter_post_layout', $post_layout, $post );
 	}
 }
 

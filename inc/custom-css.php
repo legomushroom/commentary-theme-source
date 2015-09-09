@@ -179,6 +179,6 @@ if ( ! function_exists( 'vw_render_custom_css' ) ) {
 add_action( 'vw_action_render_custom_css', 'vw_render_custom_css_option' );
 if ( ! function_exists( 'vw_render_custom_css_option' ) ) {
 	function vw_render_custom_css_option() {
-		echo wp_kses_data( vw_get_theme_option( 'custom_css' ) );
+		echo wp_strip_all_tags( vw_get_theme_option( 'custom_css' ) );
 	}
 }

@@ -1,3 +1,48 @@
+### V1.3.0 - September 8th, 2015
+* IMPROVED: Excerpt more character
+* IMPROVED: Page composer
+* IMPROVED: Google+ Counter for Social Counter widget
+* IMPROVED: Sticky sidebar
+* IMPROVED: Structured data markup (Schema.org)
+* Internal improvements
+* FIXED: Custom css options
+* FIXED: Exclude category option in Post Slider
+
+```
+M themes\espresso\components\simple-page-composer\simple-page-composer.php
+M themes\espresso\components\sticky-sidebar\sticky-sidebar.php
+M themes\espresso\functions.php
+M themes\espresso\inc\custom-css.php
+M themes\espresso\inc\schema.org.php
+M themes\espresso\inc\setup-theme.php
+M themes\espresso\inc\shortcodes.php
+M themes\espresso\inc\template-tags.php
+M themes\espresso\js\main.js
+M themes\espresso\languages\default.pot
+M themes\espresso\plugins\espresso-shortcodes.zip
+M themes\espresso\plugins\espresso-theme-options-panel.zip
+M themes\espresso\templates\page-title.php
+M themes\espresso\templates\post-loop\post-large.php
+M themes\espresso\templates\post-loop\post-medium-1.php
+M themes\espresso\templates\post-loop\post-medium-2.php
+M themes\espresso\templates\post-loop\post-medium-3.php
+M themes\espresso\templates\post-loop\post-medium-4.php
+M themes\espresso\templates\post-loop\post-medium-5.php
+M themes\espresso\templates\post-loop\post-medium-6.php
+M themes\espresso\templates\post-loop\post-slide-large-carousel.php
+M themes\espresso\templates\post-loop\post-slide-large.php
+M themes\espresso\templates\post-loop\post-slide-medium-2.php
+M themes\espresso\templates\post-loop\post-slide-medium.php
+M themes\espresso\templates\post-loop\post-slide-small.php
+M themes\espresso\templates\post-loop\post-slide.php
+M themes\espresso\templates\post-loop\post-small-left-thumbnail.php
+M themes\espresso\templates\post-loop\post-small-top-thumbnail.php
+M themes\espresso\templates\post-loop\post-text-no-thumbnail.php
+M themes\espresso\widgets\widget-popular-post.php
+M themes\espresso\widgets\widget-post-tabbed.php
+M themes\espresso\widgets\widget-social-counter.php
+```
+
 ### V1.2.2 - June 26th, 2015
 * IMPROVED: Instagram counter for social counter widget
 * IMPROVED: Facebook counter for social widget

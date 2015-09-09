@@ -1,4 +1,7 @@
 <div class="vw-post-box vw-post-style-medium vw-post-style-medium-4 <?php vw_the_post_format_class(); ?>" <?php vw_itemtype('Article'); ?>>
+	
+	<?php vw_itemprop_meta( 'datePublished', get_the_time('c') ); ?>
+
 	<?php if ( has_post_thumbnail() ) : ?>
 	<a class="vw-post-box-thumbnail" href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark" data-mfp-src="<?php echo esc_url( vw_get_embed_video_url() ); ?>">
 		<?php the_post_thumbnail( VW_CONST_THUMBNAIL_SIZE_POST_MEDIUM ); ?>
@@ -11,7 +14,7 @@
 
 	<div class="vw-post-box-inner">
 
-		<h3 class="vw-post-box-title">
+		<h3 class="vw-post-box-title" <?php vw_itemprop('headline'); ?>>
 			<a href="<?php the_permalink(); ?>" class="" <?php vw_itemprop('url'); ?>>
 				<?php the_title(); ?>
 			</a>

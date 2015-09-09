@@ -238,9 +238,11 @@ if ( ! function_exists( 'vw_get_product_category_option' ) ) {
  * -------------------------------------------------------------------------- */
 if ( ! function_exists( 'vw_the_category' ) ) {
 	function vw_the_category( $classes='' ) {
-		$categories = get_the_category();
+		$terms = get_the_category();
+		
+		$terms = apply_filters( 'vw_filter_the_category', $terms );
 
-		if( $categories ){
+		if( $terms ){
 			echo '<div class="vw-post-categories"><div>';
 
 			if ( is_sticky() ) {
@@ -248,13 +250,13 @@ if ( ! function_exists( 'vw_the_category' ) ) {
 			}
 
 			$i = 1;
-			foreach( $categories as $category ) {
+			foreach( $terms as $term ) {
 				if ( $i++ > 1 || is_sticky() ) {
 					echo '<span class="vw-category-separator">/</span>';
 				}
 
-				$classes .= ' vw-category-link ' . vw_get_the_category_class( $category->term_id );
-				echo '<a class="'.esc_attr( $classes ).'" href="'.get_category_link( $category->term_id ).'" title="' . esc_attr( sprintf( __( "View all posts in %s", 'envirra' ), $category->name ) ) . '" rel="category">'.$category->cat_name.'</a>';
+				$classes .= ' vw-category-link ' . vw_get_the_category_class( $term->term_id );
+				echo '<a class="'.esc_attr( $classes ).'" href="'.esc_url( get_term_link( $term->term_id, $term->taxonomy ) ).'" title="' . esc_attr( sprintf( __( "View all posts in %s", 'envirra' ), $term->name ) ) . '" rel="category">'.$term->name.'</a>';
 			}
 			echo '</div></div>';
 		}
@@ -448,6 +450,7 @@ if ( ! function_exists( 'vw_the_embeded_audio' ) ) {
 if ( ! function_exists( 'vw_the_post_footer_sections' ) ) {
 	function vw_the_post_footer_sections() {
 		$sections = vw_get_theme_option( 'post_footer_sections' );
+		$sections = apply_filters( 'vw_filter_post_footer_sections', $sections );
 		if ( empty( $sections ) || empty( $sections['enabled'] ) ) return;
 
 		foreach ( $sections['enabled'] as $slug => $label ) {
@@ -455,11 +458,11 @@ if ( ! function_exists( 'vw_the_post_footer_sections' ) ) {
 				get_template_part( 'templates/post-navigation' );
 
 			} elseif ( 'about-author' == $slug ) {
-				get_template_part( 'templates/about-author' );
+				get_template_part( 'templates/about-author' ); 
 
 			} elseif ( 'related-posts' == $slug ) {
 				$the_query = vw_get_related_posts( vw_get_theme_option( 'related_post_count' ) );
-				if ( $the_query->have_posts() ) {
+				if ( $the_query && $the_query->have_posts() ) {
 					$GLOBALS['wp_query'] = $the_query;
 					get_template_part( 'templates/related-posts' );
 					wp_reset_query();
@@ -729,7 +732,7 @@ if ( ! function_exists( 'vw_the_post_slider' ) ) {
 
 		// ==== End temp query =====================================
 
-		query_posts( apply_filters( 'vw_filter_the_post_slider_query', $query_args ) );
+		query_posts( apply_filters( 'vw_filter_the_post_slider_query', $query_args, $args ) );
 		global $wp_query;
 		
 		if ( have_posts() ) {
