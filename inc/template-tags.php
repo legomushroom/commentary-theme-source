@@ -455,7 +455,8 @@ if ( ! function_exists( 'vw_the_post_footer_sections' ) ) {
 		if ($isFilter) {
 			$sections = apply_filters( 'vw_filter_post_footer_sections', $sections );
 		}
-
+		// $sections = apply_filters( 'vw_filter_post_footer_sections', $sections );
+		
 		if ( empty( $sections ) || empty( $sections['enabled'] ) ) return;
 
 		foreach ( $sections['enabled'] as $slug => $label ) {
@@ -463,7 +464,7 @@ if ( ! function_exists( 'vw_the_post_footer_sections' ) ) {
 				get_template_part( 'templates/post-navigation' );
 
 			} elseif ( 'about-author' == $slug ) {
-				get_template_part( 'templates/about-author' );
+				get_template_part( 'templates/about-author' ); 
 
 			} elseif ( 'related-posts' == $slug ) {
 				$the_query = vw_get_related_posts( vw_get_theme_option( 'related_post_count' ) );

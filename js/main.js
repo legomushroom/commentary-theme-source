@@ -870,9 +870,7 @@ jQuery.noConflict();
 			if ( $this.hasClass( 'vw-no-pagination-ajax' ) ) {
 				return;
 			}
-
 			e.preventDefault(); // prevent default linking
-
 			var link = $this.attr( 'href' );
 			var $viewport = $('html, body');
 			var $container = $this.closest( '.vwspc-section, .vw-post-shortcode' );

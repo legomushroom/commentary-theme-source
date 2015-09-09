@@ -81,7 +81,7 @@ if ( ! function_exists( 'vw_site_meta' ) ) {
 add_filter( 'excerpt_more', 'vw_custom_excerpt_more' );
 if ( ! function_exists( 'vw_custom_excerpt_more' ) ) {
 	function vw_custom_excerpt_more( $length ) {
-		return '';
+		return ' ...';
 	}
 }
 

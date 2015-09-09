@@ -657,12 +657,12 @@ if ( ! function_exists( 'vw_get_googleplus_count' ) ) {
 				$googleplus['page_url'] = $json->url;
 			}
 
-			if ( isset( $json->plusOneCount ) ) {
-				$googleplus['count'] = $json->plusOneCount;
-
-			} elseif ( isset( $json->circledByCount ) ) {
+			if ( isset( $json->circledByCount ) ) {
 				$googleplus['count'] = $json->circledByCount;
 
+			} elseif ( isset( $json->plusOneCount ) ) {
+				$googleplus['count'] = $json->plusOneCount;
+				
 			}
 		}
 

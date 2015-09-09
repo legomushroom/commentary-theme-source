@@ -1,4 +1,4 @@
-<div class="vw-post-box vw-post-style-text-no-thumbnail clearfix <?php vw_the_post_format_class(); ?>" <?php vw_itemtype('Article'); ?>>
+<div class="vw-post-box vw-post-style-text-no-thumbnail clearfix <?php vw_the_post_format_class(); ?>">
 
 	<div class="vw-post-box-inner">
 		
