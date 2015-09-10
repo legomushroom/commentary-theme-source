@@ -8223,7 +8223,7 @@ html {
 .vw-main-menu-right {
     float: right;
     position: relative;
-    height: 57px;
+    height: 64px;
     }
     .vw-main-menu-right__login-link {
         font-size: 24px;
@@ -8243,7 +8243,7 @@ html {
         opacity: 1;
         margin-left: 10px;
         height: 100%;
-        padding-top: 11px;
+        padding-top: 14px;
     }
     .vw-main-menu-right .vw-main-menu-right__scroll-top {
         background: transparent;
@@ -8254,7 +8254,7 @@ html {
         float: right;
         height: 100%;
         width: 40px;
-        padding-top: 13px;
+        padding-top: 17px;
         color: white;
         text-align: center;
         }

@@ -42,6 +42,8 @@
       this.mainSelector   = (!this.isMobile) ? '#js-bundle-progress' : '#js-bundle-progress-mobile-items';
 
       this.$widget        = $(this.mainSelector);
+
+      this.postsAdded     = 0;
       
       // this.$menuItems     = this.$widget.find('.js-bundle-progress-item');
       this.$posts         = $('.vw-main-post');
@@ -150,7 +152,9 @@
       if (window.CommentaryMagazine && window.CommentaryMagazine.StickyContents) {
         new window.CommentaryMagazine.StickyContents($post);
       }
-      this.shift();
+      (this.postsAdded++ > 1) && this.shift();
+
+      try{ FB.XFBML.parse();  } catch(ex){}
     },
 
     shift: function (end) {
