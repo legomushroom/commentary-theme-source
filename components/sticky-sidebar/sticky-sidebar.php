@@ -11,14 +11,12 @@ if ( ! is_admin() ) {
 
 if ( ! function_exists( 'vwssb_dynamic_sidebar_before' ) ) {
 	function vwssb_dynamic_sidebar_before() {
-		echo '<div class="vw-sticky-sidebar-wrapper">';
 		echo '<div class="vw-sticky-sidebar">';
 	}
 }
 
 if ( ! function_exists( 'vwssb_dynamic_sidebar_after' ) ) {
 	function vwssb_dynamic_sidebar_after() {
-		echo '</div>';
 		echo '</div>';
 	}
 }
