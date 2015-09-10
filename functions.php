@@ -2,7 +2,7 @@
 /* -----------------------------------------------------------------------------
  * Constants
  * -------------------------------------------------------------------------- */
-if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.3.5' );
+if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.3.11' );
 if ( ! defined( 'VW_THEME_NAME' ) ) define( 'VW_THEME_NAME', 'ESPRESSO' );
 if ( ! defined( 'MINUTES_IN_SECONDS' ) ) define( 'MINUTES_IN_SECONDS', 60 );
 
@@ -169,14 +169,18 @@ if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
 
     $isSuppress = get_post_meta(get_the_ID(), 'vw_post_excerpt_suppress', true);
     if (!$isSuppress) {
-      return do_shortcode($excerpt);
+      // return do_shortcode($excerpt);
+      $content = do_shortcode($excerpt);
       // return $excerpt;
       // $customContent = get_post_meta(get_the_ID(),'vw_post_excerpt_substitute', true);
       // $content = ($customContent) ? $customContent : get_the_content();
       // $content = get_the_content();
+
       // $content = str_replace(array("\r","\n"),"", $content);
-      // $content = preg_replace('/<h[1|2|3|4|5|6].+?<\/h[1|2|3|4|5|6]>/sim', '', $content);
+      $content = preg_replace('/<h[1|2|3|4|5|6].+?<\/h[1|2|3|4|5|6]>/sim', '', $content);
       // $content = preg_replace('/Contents\s?/i', '', $content);
+      $content = preg_replace('/\d.+Shares Facebook Twitter Google\+ Email A/im', '', $content);
+      return $content;
       // return wp_kses(wp_trim_words($content, vw_get_theme_option('blog_excerpt_length')), $GLOBALS['ALLOWED_HTML']);
     } else {
       return '';
