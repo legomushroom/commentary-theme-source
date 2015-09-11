@@ -5,7 +5,7 @@
 if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.3.11' );
 if ( ! defined( 'VW_THEME_NAME' ) ) define( 'VW_THEME_NAME', 'ESPRESSO' );
 if ( ! defined( 'MINUTES_IN_SECONDS' ) ) define( 'MINUTES_IN_SECONDS', 60 );
-w
+
 // Avatar size
 if ( ! defined( 'VW_CONST_AVATAR_SIZE_SMALL' ) ) define( 'VW_CONST_AVATAR_SIZE_SMALL', 25 );
 if ( ! defined( 'VW_CONST_AVATAR_SIZE_MEDIUM' ) ) define( 'VW_CONST_AVATAR_SIZE_MEDIUM', 80 );
