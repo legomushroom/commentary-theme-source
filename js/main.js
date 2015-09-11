@@ -630,9 +630,19 @@ jQuery.noConflict();
 		// Tipsy
 		// 
 		if ( $.fn.tipsy ) {
-			$('.vw-intense-tooltip, .widget_vw_widget_author_list a, .vw-author-socials a, .vw-category-link, .vw-author-avatar, .author-name, .vw-post-date, .vw-post-shares-social, .bbp-author-avatar, .vw-post-comment-count, .vw-post-likes-count, .vw-post-view-count, .vw-post-share-count').tipsy( {
+			$('.widget_vw_widget_author_list a, .vw-author-socials a, .vw-category-link, .vw-author-avatar, .author-name, .vw-post-date, .vw-post-shares-social, .bbp-author-avatar, .vw-post-comment-count, .vw-post-likes-count, .vw-post-view-count, .vw-post-share-count').tipsy( {
 				fade: true,
 				gravity: 's',
+			} );
+		}
+
+		if ( $.fn.tipsy ) {
+			$('.vw-intense-tooltip').tipsy( {
+				fade: true,
+				html: true,
+				gravity: function () {
+					return this.getAttribute('data-placement');
+				},
 			} );
 		}
 

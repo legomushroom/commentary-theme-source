@@ -748,6 +748,29 @@ if ( ! function_exists( 'vw_have_more_post' ) ) {
 }
 
 /* -----------------------------------------------------------------------------
+ * MLA style month
+ * -------------------------------------------------------------------------- */
+if ( ! function_exists( 'vw_mla' ) ) {
+  function vw_mla($string) {
+
+    $string = preg_replace('/January/',   'Jan.',   $string);
+    $string = preg_replace('/February/',  'Feb.',   $string);
+    $string = preg_replace('/March/',     'Mar.',   $string);
+    $string = preg_replace('/April/',     'Apr.',   $string);
+    $string = preg_replace('/May/',       'May',    $string);
+    $string = preg_replace('/June/',      'June',   $string);
+    $string = preg_replace('/July/',      'July',   $string);
+    $string = preg_replace('/August/',    'Aug.',   $string);
+    $string = preg_replace('/September/', 'Sept.',  $string);
+    $string = preg_replace('/October/',   'Oct.',   $string);
+    $string = preg_replace('/November/',  'Nov.',   $string);
+    $string = preg_replace('/December/',  'Dec.',   $string);
+
+    return $string;
+  }
+}
+
+/* -----------------------------------------------------------------------------
  * Get additional ids for bundle progress widget
  * -------------------------------------------------------------------------- */
 if ( ! function_exists( 'wv_get_bundle_progress_ids' ) ) {

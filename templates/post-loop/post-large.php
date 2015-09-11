@@ -24,9 +24,9 @@
 
 			<?php vw_the_author(); ?>
 
-			<span class="vw-post-meta-separator">/</span>
+			<!-- <span class="vw-post-meta-separator">/</span> -->
 
-			<?php vw_the_post_date(); ?>
+			<?php // vw_the_post_date(); ?>
 
 			<!-- 
 			<?php if ( comments_open() ) : ?>

@@ -93,9 +93,7 @@ foreach( $myposts as $post ):
   $loadedIds = wv_get_bundle_progress_ids();
   array_unshift($loadedIds, get_the_ID());
   $loadedIdsString = implode(', ', $loadedIds);
-
   $loadMore = str_replace(']', ' exclude="' . $loadedIdsString . '" ]', $loadMore);
-
   echo do_shortcode($loadMore);
   
   ?>

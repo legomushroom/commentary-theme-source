@@ -579,8 +579,7 @@ if ( ! function_exists( 'vw_the_post_date' ) ) {
 	function vw_the_post_date() {
 		// <i class="vw-icon icon-entypo-clock"></i>
 		?>
-
-		<a href="<?php the_permalink(); ?>" class="vw-post-date updated" title="<?php printf( esc_attr__('Permalink to %s', 'envirra'), the_title_attribute('echo=0') ); ?>" rel="bookmark"><time <?php vw_itemprop('datePublished'); ?> datetime="<?php echo get_the_time('c'); ?>"><?php echo get_the_time( get_option('date_format') ); ?></time></a><?php
+		<a href="<?php the_permalink(); ?>" class="vw-post-date updated" title="<?php printf( esc_attr__('Permalink to %s', 'envirra'), the_title_attribute('echo=0') ); ?>" rel="bookmark"><time <?php vw_itemprop('datePublished'); ?> datetime="<?php echo get_the_time('c'); ?>"><?php echo vw_mla(get_the_time( get_option('date_format') )); ?></time></a><?php
 	}
 }
 
