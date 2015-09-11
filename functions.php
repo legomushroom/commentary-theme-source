@@ -773,7 +773,7 @@ if ( ! function_exists( 'wv_get_bundle_progress_ids' ) ) {
 
 				$ids = get_posts( apply_filters( 'wv_bundle_progress_default_posts_query', $args, $post_type ) );
 
-				wp_cache_set( $post_type, $ids, 'wv_bundle_progress_recent_posts' );
+				wp_cache_set( $post_type, $ids, 'wv_bundle_progress_recent_posts', 15 * MINUTES_IN_SECONDS );
 			}
 		}
 
