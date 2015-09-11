@@ -42,20 +42,17 @@ if ( ! class_exists( 'Vw_widget_bundle_progress' ) ) {
 			// 	$instance['role'] = $this->default['role'];
 			// }
 
-			$post_ids = $this->get_bundle_post_ids( $instance );
+			$post_ids = wv_get_bundle_progress_ids();
+
+			if ( empty( $post_ids ) ) {
+				return;
+			}
+
 			$title_html = $this->get_bundle_title( $instance );
 
 			echo $before_widget;
 
 			if ( ! empty( $title_html ) ) echo $before_title . $title_html . $after_title;
-
-			$post_type = get_post_type();
-
-			update_option("wv_bundle_progress_posts_" . $post_type, implode( ',', $post_ids ) );
-
-			// array_unshift($post_ids, get_the_ID());
-
-			update_option("wv_bundle_progress_title_" . $post_type, $title_html);
 
 			// $myposts = get_posts( apply_filters( 'vw_filter_widget_bundle_progress_query', array('post__in' => $post_ids, 'orderby' => 'post__in', 'post_type' => array('post', 'cmm_article'), 'post_status' => 'any' ) ) );
 
@@ -170,7 +167,7 @@ if ( ! class_exists( 'Vw_widget_bundle_progress' ) ) {
  -->
 			<!-- posts -->
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id('posts') ); ?>">Posts to show:</label>
+				<label for="<?php echo esc_attr( $this->get_field_id('posts') ); ?>">Post IDs to show:</label>
 				<input id="<?php echo esc_attr( $this->get_field_id('posts') ); ?>" name="<?php echo esc_attr( $this->get_field_name('posts') ); ?>" type="text" value="<?php echo esc_attr( $posts ); ?>" class="widefat">
 			</p>
 

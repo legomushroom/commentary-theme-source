@@ -774,29 +774,45 @@ if ( ! function_exists( 'vw_mla' ) ) {
  * Get additional ids for bundle progress widget
  * -------------------------------------------------------------------------- */
 if ( ! function_exists( 'wv_get_bundle_progress_ids' ) ) {
-  function wv_get_bundle_progress_ids() {
-    $post_type = get_post_type();
+	function wv_get_bundle_progress_ids() {
 
-    $ids = get_option('wv_bundle_progress_posts_' . $post_type );
+		$post_type = get_post_type();
 
-    $quantity = (int)get_option('wv_bundle_progress_posts_quantity_' . $post_type );
+		$ids = get_option( 'wv_bundle_progress_posts_' . $post_type );
 
-    if ($ids) {
-      $ids = explode(',', $ids);
-    } else {
-      $recentPostIds = wp_get_recent_posts(array( 'numberposts' => $quantity, 'post_type' => array( 'post', 'cmm_article' ), 'post_status' => 'any' ));
-      $ids = array_map(function ($value) { return $value['ID'];  }, $recentPostIds);
-    }
+		$quantity = (int) get_option( 'wv_bundle_progress_posts_quantity_' . $post_type );
 
-    $ids = array_map('absint', $ids);
-    $ids = array_filter($ids);
-    if ( empty( $ids ) ) { return; }
-    $ids = array_unique($ids);
-    $ids = array_slice($ids, 0, $quantity);
-    return $ids;
-  }
+		if ( $ids ) {
+			$ids = explode( ',', $ids );
+		} else {
+			$ids = wp_cache_get( $post_type, 'wv_bundle_progress_recent_posts' );
+
+			if ( empty( $ids ) ) {
+				$args = array(
+					'fields'         => 'ids',
+					'posts_per_page' => $quantity,
+					'post_type'      => $post_type,
+				);
+
+				$ids = get_posts( apply_filters( 'wv_bundle_progress_default_posts_query', $args, $post_type ) );
+
+				wp_cache_set( $post_type, $ids, 'wv_bundle_progress_recent_posts', 15 * MINUTES_IN_SECONDS );
+			}
+		}
+
+		$ids = array_map( 'absint', $ids );
+		$ids = array_filter( $ids );
+
+		if ( empty( $ids ) ) {
+			return array();
+		}
+
+		$ids = array_unique( $ids );
+		$ids = array_slice( $ids, 0, $quantity );
+
+		return $ids;
+	}
 }
-
 
 /* -----------------------------------------------------------------------------
  * Avoid duplicate post
