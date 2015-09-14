@@ -175,7 +175,16 @@ jQuery.noConflict();
 							this.getYs(); this.getMenuWidth();
 						}).bind(this), 100);
 					}.bind(this));
+
+					this.bindPrint();
+
 				}
+			Main.prototype.print = function () {
+				window.print && window.print();
+			}
+			Main.prototype.bindPrint = function () {
+				this.$stickyContents.find('#js-sticky-contents-print').on('click', this.print.bind(this));
+			}
 			Main.prototype.getActiveArea = function () {
 					this.postActiveAreaTop = this.$post.offset().top - 120;
 					this.postActiveArea = this.postActiveAreaTop + this.$post.outerHeight() - this.wHeight + 180;
@@ -309,15 +318,25 @@ jQuery.noConflict();
 				},
 			Main.prototype.defineQueries = function () {
 					var it = this;
+
+					enquire.register("print", {
+					    match : function() {
+					    	it.isPrintOpen = true;
+					    },
+					    unmatch : function() {
+					    	it.isPrintOpen = false;
+					    },
+					});
+
 					enquire.register("screen and (min-width:" + this.desktopQuery + "px)", {
 					    match : function() {
 					    	it.state = 'desktop';
 					    	it.$stickyContents.removeClass('is-mobile-layout');
 				    		it.$stickyContents.removeClass('is-tablet-layout');
 
-				    		it.isMenuItems && it.$stickyContents.addClass('is-sticky-contents');
-					    	it.$stickyContents.css({ width: '170px' });
-					    	it.initSticky();
+								it.isMenuItems && it.$stickyContents.addClass('is-sticky-contents');
+								it.$stickyContents.css({ width: '170px' });
+								it.initSticky();
 					    },
 					    unmatch : function() {
 					    	// it.$stickyContents.removeClass('is-tablet-layout');
@@ -332,10 +351,9 @@ jQuery.noConflict();
 						    	it.$stickyContents.removeClass('is-sticky-contents');
 						    	it.$stickyContents.css({ width: it.containerWidth + 'px' });
 						    	it.initSticky();
-						    	// it.$stickyContents.hcSticky('reinit');
 						    },
 						    unmatch : function() {
-						    	it.$stickyContents.removeClass('is-no-contents');
+						    	!it.isPrintOpen && it.$stickyContents.removeClass('is-no-contents');
 						    },
 						});
 						// enquire.register("screen and (min-width:" + this.mobileQuery + "px) and (max-width:1000px)", {
@@ -374,7 +392,6 @@ jQuery.noConflict();
 					this.checkItems(); requestAnimationFrame(this.loop);
 				}
 
-
 			window.CommentaryMagazine = (window.CommentaryMagazine == null) ? {} : window.CommentaryMagazine;
 
 			window.CommentaryMagazine.StickyContents = Main;
@@ -385,6 +402,13 @@ jQuery.noConflict();
 			}, 1000);
 
 		})();
+
+		window.CommentaryMagazine = (window.CommentaryMagazine == null) ? {} : window.CommentaryMagazine;
+
+		window.CommentaryMagazine.print = function (e) {
+			window.print && window.print();
+			e && e.preventDefault();
+		}
 		
 		// ### END of CUSTOM JS ###
 

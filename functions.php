@@ -131,9 +131,13 @@ function getShareButtons ($className='') {
                   <i class="vw-icon icon-social-gplus"></i>
 									<span class="vw-button-label"> Google+ </span>
               </a>
-              <a href="mailto:%20?subject=An%20article%20I%20thought%20you\'d%20find%20interesting&body=Here%20it%20is,%20on%20Commentary%20Magazine:%20'. $post_url .'" target="_top" class="vw-post-share-box-button vw-post-shares-social-email">
+              <a href="mailto:%20?subject=An%20article%20I%20thought%20you\'d%20find%20interesting&body=Here%20it%20is,%20on%20Commentary%20Magazine:%20'. $post_url .'" target="_top" class="vw-post-share-box-button vw-post-shares-social-email" title="Share by Email">
                   <i class="vw-icon icon-social-email"></i>
 									<span class="vw-button-label"> Email </span>
+              </a>
+              <a target="_top" onclick="window.CommentaryMagazine.print()" class="vw-post-share-box-button vw-post-shares-social-print" id="js-sticky-contents-print" title="Print">
+                  <i class="vw-icon icon-social-print"></i>
+                  <span class="vw-button-label"> Print </span>
               </a>
               <div class="vw-mobile-nav-button-wrapper sticky-contents__mobile-menu">
 								<span class="vw-mobile-nav-button">

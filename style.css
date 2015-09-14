@@ -3213,11 +3213,15 @@ div.vw-tag-links a {
     text-decoration: none;
 }
 
-@media (max-width: 767px) {
-    .vw-post-share-box .vw-post-share-box-button {
+@media (max-width: 1060px) {
+    .vw-post-share-box.is-under-post .vw-button-label {
+        display: none;
+    }
+    .vw-post-share-box.is-under-post .vw-post-share-box-button {
         padding: 4px 8px;
     }
 }
+
 .vw-post-share-box .vw-post-share-box-button .vw-button-label {
     font-size: 15px;
     margin-left: 5px;
@@ -3230,6 +3234,11 @@ div.vw-tag-links a {
         display: none;
     }
 }
+
+.is-mobile-layout .vw-post-share-box-button.vw-post-shares-social-print {
+    display: none;
+}
+
 .vw-post-share-box .vw-post-share-box-button:hover {
     background-color: #3E3E3E;
     -webkit-transition: all 0.2s ease-out;
@@ -3250,6 +3259,11 @@ div.vw-tag-links a {
 }
 .vw-post-shares-social-email {
     background-color: #A9A9A9;
+}
+
+.vw-post-shares-social-print {
+    background-color: #D88835;
+    cursor: pointer;
 }
 
 .vw-post-share-big-number {
@@ -7334,6 +7348,10 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
     display: none;
   }
 
+  .sticky-contents.is-print-open .sticky-contents__items {
+      display: none !important;
+  }
+
   .sticky-contents.is-no-contents .sticky-contents__items {
       display: none;
   }
@@ -7469,6 +7487,7 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
     width:       39px;
     height:       39px;
     display:    block;
+    cursor:     pointer;
   }
   .sticky-contents .vw-post-share-box-button:first-of-type {
     margin-top: 0;
@@ -7478,6 +7497,8 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
   .is-mobile-layout .vw-post-share-box-button {
     margin: 0;
   }
+
+  
 
   .sticky-contents .vw-post-share-big-number {
     background: white;
@@ -7534,7 +7555,13 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
     margin-left:  4.5px;
   }
   .is-sticky-contents .vw-post-share-box-button:first-of-type {
-      margin-left: 0;
+    margin-left: 0;
+  }
+  .is-sticky-contents .vw-post-share-box-button {
+    width: 34px;
+    margin-left: 0;
+    font-size: 14px;
+    padding-top: 8px;
   }
 
   .is-mobile-layout .vw-post-share-box-button,
