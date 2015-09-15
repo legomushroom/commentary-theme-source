@@ -170,22 +170,23 @@ if ( ! function_exists( 'vw_filter_post_footer' ) ) {
 add_filter('the_excerpt', 'do_my_shortcode_in_excerpt');
 if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
 	function do_my_shortcode_in_excerpt($excerpt) {
-
     $isSuppress = get_post_meta(get_the_ID(), 'vw_post_excerpt_suppress', true);
+    
     if (!$isSuppress) {
-      // return do_shortcode($excerpt);
-      $content = do_shortcode($excerpt);
-      // return $excerpt;
-      // $customContent = get_post_meta(get_the_ID(),'vw_post_excerpt_substitute', true);
-      // $content = ($customContent) ? $customContent : get_the_content();
-      // $content = get_the_content();
 
-      // $content = str_replace(array("\r","\n"),"", $content);
-      $content = preg_replace('/<h[1|2|3|4|5|6].+?<\/h[1|2|3|4|5|6]>/sim', '', $content);
-      // $content = preg_replace('/Contents\s?/i', '', $content);
-      $content = preg_replace('/\d.+Shares Facebook Twitter Google\+ Email A/im', '', $content);
-      return $content;
-      // return wp_kses(wp_trim_words($content, vw_get_theme_option('blog_excerpt_length')), $GLOBALS['ALLOWED_HTML']);
+      if (has_excerpt()) {
+        return $excerpt;
+      } else {
+        global $more;
+        $more = 1;
+        $content = get_the_content();
+        $content = preg_replace('/\[(\S+)[^\]]*][^\[]*\[\/\1\]/im', '', $content);
+        $split = explode(' ', $content);
+        $split = array_slice($split, 0, (int)vw_get_theme_option('blog_excerpt_length'));
+        $content = join(' ', $split) . '...';
+        return $content;
+      }
+      
     } else {
       return '';
     }
@@ -214,33 +215,37 @@ function wv_my_post_thumbnail_fallback( $html, $post_id, $post_thumbnail_id, $si
   return $html;//'<span class="vw-thumbnail ' . $className . '" data-size="' . $size . '"><span class="wv-thumbnail__img">' . $html . '</span></span>';
 }
 
+function vw_get_the_sticky_content() {
+      $buttons = getShareButtons();
+      $custom_content = "<div id=\"js-sticky-contents\" class='intense sticky-contents clearfix'>
+                          <div class=\"sticky-contents__items clearfix\">
+                            <div class=\"sticky-contents__items-inner\" id=\"js-sticky-content-items\"></div>
+                          </div>"
+                          . $buttons .
+                          "<div class='vw-type-resize-tool' id='js-sticky-contents-resize-tool'>
 
+                            <div class='vw-type-resize-tool__inner'>
+                              <div class='vw-type-resize-tool__button vw-type-resize-tool__button--plus' id='js-sticky-contents-resize-tool-plus'>
+                                <i class='vw-icon icon-entypo-plus'></i>
+                              </div>
+                              <div class='vw-type-resize-tool__a' id='js-sticky-contents-resize-tool-normal'>A</div>
+                              <div class='vw-type-resize-tool__button vw-type-resize-tool__button--minus' id='js-sticky-contents-resize-tool-minus'>
+                                <i class='vw-icon icon-entypo-minus'></i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>";
+    return $custom_content;
+}
 
 add_filter( 'the_content', 'theme_slug_filter_the_content' );
 function theme_slug_filter_the_content( $content ) {
-		$buttons = getShareButtons();
-    $custom_content = "<div id=\"js-sticky-contents\" class='intense sticky-contents clearfix'>
-    										<div class=\"sticky-contents__items clearfix\">
-    											<div class=\"sticky-contents__items-inner\" id=\"js-sticky-content-items\"></div>
-    										</div>"
-    										. $buttons .
-    										"<div class='vw-type-resize-tool' id='js-sticky-contents-resize-tool'>
-
-    											<div class='vw-type-resize-tool__inner'>
-	    											<div class='vw-type-resize-tool__button vw-type-resize-tool__button--plus' id='js-sticky-contents-resize-tool-plus'>
-	    												<i class='vw-icon icon-entypo-plus'></i>
-	    											</div>
-	    											<div class='vw-type-resize-tool__a' id='js-sticky-contents-resize-tool-normal'>A</div>
-	    											<div class='vw-type-resize-tool__button vw-type-resize-tool__button--minus' id='js-sticky-contents-resize-tool-minus'>
-	    												<i class='vw-icon icon-entypo-minus'></i>
-	    											</div>
-	    										</div>
-    										</div>
-    									</div>";
+    $custom_content = vw_get_the_sticky_content();
     $custom_content .= $content;
-
     return $custom_content;
 }
+
+
 
 // Allow SVG files upload
 function cc_mime_types($mimes) {
@@ -924,11 +929,11 @@ function remove_admin_bar() {
 /* -----------------------------------------------------------------------------
  * CUSTOM: Recalculate total shares with forgery.
  * -------------------------------------------------------------------------- */
-add_filter('acf/update_value/key=field_540004d5673c7', 'my_acf_update_value', 10, 3);
-function my_acf_update_value ($value, $post_id, $field) {
+add_filter('acf/update_value/key=field_540004d5673c7', 'acf_update_shares_forgery', 10, 3);
+function acf_update_shares_forgery ($value, $post_id, $field) {
 	$shares  = intval(get_post_meta( $post_id, VW_CONST_POST_SHARES_META_KEY, true ));
 	$forgery = intval(get_post_meta($post_id,'vw_post_shares_forgery_explicit',true));
-	$totalShares = $shares+$forgery;
+	$totalShares = $shares + $forgery;
 	update_post_meta( $post_id, 'vw_post_total_shares_forgery', $totalShares );
 	return $value;
 }

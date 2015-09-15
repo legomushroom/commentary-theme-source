@@ -7,6 +7,7 @@
  * -------------------------------------------------------------------------- */
 if ( ! function_exists( 'vw_the_breadcrumb' ) ) {
 	function vw_the_breadcrumb( $args = array() ) {
+		return;
 
 		if ( vw_is_yoast_breadcrumb_enabled() ) {
 			/* For Yoast Breadcrumb */

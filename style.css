@@ -3214,6 +3214,13 @@ div.vw-tag-links a {
 }
 
 @media (max-width: 1060px) {
+    .vw-post-share-box-button.vw-post-shares-social-print {
+        display: none;
+
+    }
+}
+
+@media (max-width: 900px) {
     .vw-post-share-box.is-under-post .vw-button-label {
         display: none;
     }

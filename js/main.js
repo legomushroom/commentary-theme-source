@@ -176,15 +176,15 @@ jQuery.noConflict();
 						}).bind(this), 100);
 					}.bind(this));
 
-					this.bindPrint();
+					// this.bindPrint();
 
 				}
-			Main.prototype.print = function () {
-				window.print && window.print();
-			}
-			Main.prototype.bindPrint = function () {
-				this.$stickyContents.find('#js-sticky-contents-print').on('click', this.print.bind(this));
-			}
+			// Main.prototype.print = function () {
+			// 	window.print && window.print();
+			// }
+			// Main.prototype.bindPrint = function () {
+			// 	this.$stickyContents.find('#js-sticky-contents-print').on('click', this.print.bind(this));
+			// }
 			Main.prototype.getActiveArea = function () {
 					this.postActiveAreaTop = this.$post.offset().top - 120;
 					this.postActiveArea = this.postActiveAreaTop + this.$post.outerHeight() - this.wHeight + 180;
