@@ -76,8 +76,23 @@
         this.pushDimention(items[i], i);
       };
     },
+
+    getDimentionsDelayed: function () {
+      var it = this;
+      clearTimeout(this.dimentionsDelay);
+      this.dimentionsDelay = setTimeout(function () {
+        it.getDimentions();
+      }, 500);
+
+    },
+
     notifyLockers: function ($el) {
-      this.tryPandaHook(); this.$doc.trigger('bp-page-view', [ $el ]);
+      this.tryPandaHook();
+      var it = this;
+      $el.find(".onp-locker-call").bind('opanda-unlock, opanda-lock, opanda-cancel', function(){
+        it.getDimentionsDelayed();
+      });
+      this.$doc.trigger('bp-page-view', [ $el ]);
     },
 
     trigger: function (i, el) {
@@ -241,7 +256,7 @@
       this.setProgress(this.currentItem, scrollY);
     },
 
-    setBrowserCurrent: function () {
+    setBrowserCurrent: function ($el) {
       window.history && window.history.replaceState({}, '', this.currentItem.url);
       document.title = this.currentItem.name + ' | commentary';
 
@@ -255,8 +270,12 @@
         ga('send', 'pageview', this.currentItem.url);
         this.gaSent[this.currentItem.url] = true;
 
+
         var notifyLockers = function() {
           this.tryPandaHook();
+          this.currentItem.$item.find(".onp-locker-call").bind('opanda-unlock, opanda-lock, opanda-cancel', function(){
+            this.getDimentionsDelayed();
+          }.bind(this));
           this.$doc.trigger('bp-page-view', [ this.currentItem.$item, this.currentItem.index === 0 ]);
         }.bind(this);
         

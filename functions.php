@@ -175,11 +175,12 @@ if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
     if (!$isSuppress) {
 
       if (has_excerpt()) {
-        return $excerpt;
+        return html_entity_decode($excerpt);
       } else {
         global $more;
         $more = 1;
-        $content = get_the_content();
+        // return get_the_content();
+        $content = strip_tags(get_the_content());
         $content = preg_replace('/\[(\S+)[^\]]*][^\[]*\[\/\1\]/im', '', $content);
         $split = explode(' ', $content);
         $split = array_slice($split, 0, (int)vw_get_theme_option('blog_excerpt_length'));
