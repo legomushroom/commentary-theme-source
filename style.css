@@ -3766,6 +3766,32 @@ ul.vw-menu-location-main .main-menu-link {
     display: none;
 }
 
+/*.vw-menu-mobile-wrapper {
+    width: 100%;
+    z-index: 2000;
+    opacity: 0;
+    -webkit-transition: opacity .25s ease-out;
+       -moz-transition: opacity .25s ease-out;
+        -ms-transition: opacity .25s ease-out;
+         -o-transition: opacity .25s ease-out;
+            transition: opacity .25s ease-out;
+    -webkit-transform: translateX(-100%);
+       -moz-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+         -o-transform: translateX(-100%);
+            transform: translateX(-100%);
+    }
+    .vw-menu-mobile-wrapper.is-open {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+           -moz-transform: translateX(0);
+            -ms-transform: translateX(0);
+             -o-transform: translateX(0);
+                transform: translateX(0);
+    }
+*/
+
+
 /* -----------------------------------------------------------------------------
  * $BREADCRUMB
  * -------------------------------------------------------------------------- */

@@ -1,5 +1,5 @@
 <!-- Mobile Menu -->
-<nav class="vw-menu-mobile-wrapper mm-menu mm-horizontal mm-slide mm-offcanvas mm-center mm-current">
+<nav class="vw-menu-mobile-wrapper">
 
 	<?php
 	$menu_location = has_nav_menu( 'vw_menu_mobile' ) ?  'vw_menu_mobile': 'vw_menu_main';

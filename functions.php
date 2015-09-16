@@ -2,7 +2,7 @@
 /* -----------------------------------------------------------------------------
  * Constants
  * -------------------------------------------------------------------------- */
-if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.3.11' );
+if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.3.12' );
 if ( ! defined( 'VW_THEME_NAME' ) ) define( 'VW_THEME_NAME', 'ESPRESSO' );
 if ( ! defined( 'MINUTES_IN_SECONDS' ) ) define( 'MINUTES_IN_SECONDS', 60 );
 
@@ -217,7 +217,7 @@ function wv_my_post_thumbnail_fallback( $html, $post_id, $post_thumbnail_id, $si
 
 function vw_get_the_sticky_content() {
       $buttons = getShareButtons();
-      $custom_content = "<div id=\"js-sticky-contents\" class='intense sticky-contents clearfix'>
+      return "<div id=\"js-sticky-contents\" class='intense sticky-contents clearfix'>
                           <div class=\"sticky-contents__items clearfix\">
                             <div class=\"sticky-contents__items-inner\" id=\"js-sticky-content-items\"></div>
                           </div>"
@@ -235,7 +235,6 @@ function vw_get_the_sticky_content() {
                             </div>
                           </div>
                         </div>";
-    return $custom_content;
 }
 
 add_filter( 'the_content', 'theme_slug_filter_the_content' );
@@ -644,7 +643,11 @@ if ( ! function_exists( 'vw_get_author_avatar' ) ) {
 
 function vw_get_social_username($url='') {
   $split = explode('/', $url);
-  return $split[count($split)-1];
+  if ($split[count($split)-1]) {
+    return $split[count($split)-1];
+  } else {
+    return $split[count($split)-2];
+  }
 }
 
 

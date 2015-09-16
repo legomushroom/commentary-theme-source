@@ -465,10 +465,7 @@ jQuery.noConflict();
 		if ( $.fn.mmenu ) {
 			$(".vw-menu-mobile-wrapper").mmenu({
 				classes: "mm-slide",
-				offCanvas: {
-					position: "right",
-					// zposition : "front",
-				},
+				offCanvas: false
 				// clone:true,
 				// searchfield: true
 			});
@@ -483,9 +480,9 @@ jQuery.noConflict();
 		// ul: vw-menu-location-mobile mm-list mm-panel mm-opened mm-current
 
 
-		// $('.vw-mobile-nav-button-wrapper').on('click', function () {
-
-		// });
+		$('.vw-mobile-nav-button-wrapper').on('click', function () {
+			$('.vw-menu-mobile-wrapper').toggleClass('is-open');
+		});
 
 		// -----------------------------------------------------------------------------
 		// Fit video in the content area
