@@ -478,6 +478,15 @@ jQuery.noConflict();
 			});
 		}
 
+		// nav: vw-menu-mobile-wrapper mm-menu mm-horizontal mm-slide mm-offcanvas mm-center mm-current mm-right mm-opened
+		// li: nav-menu-item-426 main-menu-item  menu-item-even menu-item-depth-0 menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children
+		// ul: vw-menu-location-mobile mm-list mm-panel mm-opened mm-current
+
+
+		// $('.vw-mobile-nav-button-wrapper').on('click', function () {
+
+		// });
+
 		// -----------------------------------------------------------------------------
 		// Fit video in the content area
 		// 

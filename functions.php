@@ -639,6 +639,17 @@ if ( ! function_exists( 'vw_get_author_avatar' ) ) {
 }
 
 /* -----------------------------------------------------------------------------
+ * Get social network username from url
+ * -------------------------------------------------------------------------- */
+
+function vw_get_social_username($url='') {
+  $split = explode('/', $url);
+  return $split[count($split)-1];
+}
+
+
+
+/* -----------------------------------------------------------------------------
  * Build Template Path
  * -------------------------------------------------------------------------- */
 if ( ! function_exists( 'vw_build_template_path' ) ) {

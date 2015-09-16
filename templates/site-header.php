@@ -11,8 +11,10 @@
 							<span class="vw-hamburger-icon"><span></span></span>
 						</span>
 					</div>
-				
 				</div>
+
+				<div class="vw-black-line is-print"></div>
+
 			</div>
 		</div>
 	</div>

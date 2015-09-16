@@ -352,6 +352,7 @@ if ( ! function_exists( 'vw_is_yoast_breadcrumb_enabled' ) ) {
 
 if ( ! function_exists( 'vw_the_breadcrumb_single' ) ) {
 	function vw_the_breadcrumb_single( $args = array() ) {
+		return;
 
 		if ( vw_is_yoast_breadcrumb_enabled() ) {
 			/* For Yoast Breadcrumb */

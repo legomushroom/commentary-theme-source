@@ -77,7 +77,7 @@ if ( ! function_exists( 'vw_the_site_social_profiles' ) ) {
 		if ( ! empty( $url ) ) printf( '<a class="vw-site-social-profile-icon vw-site-social-dribbble" href="%s" title="Dribbble"><i class="vw-icon icon-social-dribbble"></i></a>', $url );
 
 		$url = vw_get_theme_option( 'social_facebook' );
-		if ( ! empty( $url ) ) printf( '<a class="vw-site-social-profile-icon vw-site-social-facebook" href="%s" title="Facebook"><i class="vw-icon icon-social-facebook"></i></a>', $url );
+		if ( ! empty( $url ) ) printf( '<a class="vw-site-social-profile-icon vw-site-social-facebook" href="%s" title="Facebook"><i class="vw-icon icon-social-facebook"></i><span class="vw-print-only">' . vw_get_social_username($url) . '</span></a>', $url );
 
 		$url = vw_get_theme_option( 'social_flickr' );
 		if ( ! empty( $url ) ) printf( '<a class="vw-site-social-profile-icon vw-site-social-flickr" href="%s" title="Flickr"><i class="vw-icon icon-social-flickr"></i></a>', $url );
@@ -89,7 +89,7 @@ if ( ! function_exists( 'vw_the_site_social_profiles' ) ) {
 		if ( ! empty( $url ) ) printf( '<a class="vw-site-social-profile-icon vw-site-social-github" href="%s" title="GitHub"><i class="vw-icon icon-social-github"></i></a>', $url );
 
 		$url = vw_get_theme_option( 'social_googleplus' );
-		if ( ! empty( $url ) ) printf( '<a class="vw-site-social-profile-icon vw-site-social-gplus" href="%s" title="Google+"><i class="vw-icon icon-social-gplus"></i></a>', $url );
+		if ( ! empty( $url ) ) printf( '<a class="vw-site-social-profile-icon vw-site-social-gplus" href="%s" title="Google+"><i class="vw-icon icon-social-gplus"></i><span class="vw-print-only">' . vw_get_social_username($url) . '</span></a>', $url );
 
 		$url = vw_get_theme_option( 'social_instagram' );
 		if ( ! empty( $url ) ) printf( '<a class="vw-site-social-profile-icon vw-site-social-instagram" href="%s" title="Instagram"><i class="vw-icon icon-social-instagram"></i></a>', $url );
@@ -113,7 +113,7 @@ if ( ! function_exists( 'vw_the_site_social_profiles' ) ) {
 		if ( ! empty( $url ) ) printf( '<a class="vw-site-social-profile-icon vw-site-social-tumblr" href="%s" title="Tumblr"><i class="vw-icon icon-social-tumblr"></i></a>', $url );
 
 		$url = vw_get_theme_option( 'social_twitter' );
-		if ( ! empty( $url ) ) printf( '<a class="vw-site-social-profile-icon vw-site-social-twitter" href="%s" title="Twitter"><i class="vw-icon icon-social-twitter"></i></a>', $url );
+		if ( ! empty( $url ) ) printf( '<a class="vw-site-social-profile-icon vw-site-social-twitter" href="%s" title="Twitter"><i class="vw-icon icon-social-twitter"></i><span class="vw-print-only">' . vw_get_social_username($url) . '</span></a>', $url );
 
 		$url = vw_get_theme_option( 'social_vimeo' );
 		if ( ! empty( $url ) ) printf( '<a class="vw-site-social-profile-icon vw-site-social-vimeo" href="%s" title="Vimeo"><i class="vw-icon icon-social-vimeo"></i></a>', $url );

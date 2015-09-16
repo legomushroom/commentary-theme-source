@@ -1683,6 +1683,11 @@ div.vw-page-wrapper.is-no-padding {
     word-wrap: break-word;
     text-transform: none;
 }
+
+.vw-main-post ~ .vw-main-post {
+    margin-top: 80px;
+}
+
 @media (max-width: 767px) {
     .vw-main-post .entry-title {
         font-size: 22px;
@@ -8526,6 +8531,87 @@ button.alm-load-more-btn.loading:before {
 
 .alm-listing {
     padding-left: 0;
+}
+
+
+/*@media print and (max-width: 540px) {
+    .vw-page-sidebar {
+        display: none;
+    }
+}*/
+
+.vw-black-line {
+    border-bottom: 3px solid #3E3E3E;
+}
+
+.vw-black-line.is-print {
+    display: none;
+}
+
+.vw-print-only {
+    display: none;
+}
+
+/*,*/
+@media print {
+    .sticky-contents,
+    .ml-modal,
+    .vw-author-socials,
+    .vw-post-share-box-button,
+    .vw-post-navigation,
+    .vw-sticky-wrapper,
+    .vw-breaking-news-bar,
+    .vw-footer-sidebar .swiper-container,
+    .vw-instant-search-button,
+    button.alm-load-more-btn,
+    .vw-page-sidebar,
+    .vw-top-bar-left {
+        display: none !important;
+    }
+
+    .vw-top-bar {
+        display: block !important;
+    }
+
+    .vw-page-content {
+        width: 100% !important;
+    }
+
+    .vw-top-bar-inner {
+        border: 0 !important;
+    }
+
+    .vw-print-only {
+        display: initial;
+    }
+
+    .vw-black-line.is-print {
+        display: block;
+    }
+
+    .vw-page-title-section-overlay {
+        box-shadow: none !important;
+    }
+
+    .vw-page-title-section-overlay .col-sm-12 {
+        padding-top: 60px !important;
+    }
+
+
+    /*.vw-page-title-section-overlay .row,
+    .vw-page-title-section-overlay .col-sm-12 {
+        box-shadow: none !important;
+        border: 0 !important;
+    }*/
+
+    .vw-category-link,
+    .vw-featured-image-caption {
+        padding: 0 !important;
+    }
+
+    .vw-post-categories > div {
+        padding: 0 !important;
+    }
 }
 
 
