@@ -7,7 +7,9 @@
   
   $ids = wv_get_bundle_progress_ids();
 
-  $myposts = get_posts(apply_filters( 'vw_filter_bundle_progress_query', array('post__in' => $ids, 'orderby' => 'post__in', 'post_status' => 'any', 'post_type' => array( 'post', 'cmm_article' ) ) ) );
+  $quantity = (int) get_option( 'wv_bundle_progress_posts_quantity_' . get_post_type() );
+
+  $myposts = get_posts(apply_filters( 'vw_filter_bundle_progress_query', array('post__in' => $ids, 'posts_per_page' => $quantity, 'orderby' => 'post__in', 'post_status' => 'any', 'post_type' => array( 'post', 'cmm_article' ) ) ) );
 
   ?>
 

@@ -46,9 +46,7 @@ if ( ! class_exists( 'Vw_widget_bundle_progress' ) ) {
 
 			$post_ids = wv_get_bundle_progress_ids();
 
-			if ( empty( $post_ids ) ) {
-				return;
-			}
+			if ( empty( $post_ids ) ) { return; }
 
 			$title_html = $this->get_bundle_title( $instance );
 

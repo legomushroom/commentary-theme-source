@@ -84,7 +84,8 @@ if ( ! function_exists( 'vw_register_scripts' ) ) {
 			wp_enqueue_style( 'vwcss-mmenu', get_template_directory_uri().'/js/jquery-mmenu/css/jquery.mmenu.custom.css', array(), VW_THEME_VERSION );
 
 			// Main script
-			wp_enqueue_script( 'vwjs-main', get_template_directory_uri().'/js/main.js', array( 'jquery' ), VW_THEME_VERSION, VW_CONST_ENQUEUE_SCRIPTS_ON_FOOTER );
+			wp_enqueue_script( 'fastclick', get_template_directory_uri().'/js/fastclick.js', array(), VW_THEME_VERSION, VW_CONST_ENQUEUE_SCRIPTS_ON_FOOTER );
+			wp_enqueue_script( 'vwjs-main', get_template_directory_uri().'/js/main.js', array( 'jquery', 'fastclick' ), VW_THEME_VERSION, VW_CONST_ENQUEUE_SCRIPTS_ON_FOOTER );
 			wp_enqueue_script( 'vwjs-headroom', get_template_directory_uri().'/js/headroom.min.js', array(), VW_THEME_VERSION, VW_CONST_ENQUEUE_SCRIPTS_ON_FOOTER );
 			wp_enqueue_script( 'vwjs-enquire', get_template_directory_uri().'/js/enquire.min.js', array(), VW_THEME_VERSION, VW_CONST_ENQUEUE_SCRIPTS_ON_FOOTER );
 			

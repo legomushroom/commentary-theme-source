@@ -3763,13 +3763,21 @@ ul.vw-menu-location-main .main-menu-link {
 }
 
 .vw-menu-mobile-wrapper {
-    display: none;
+    display: block;
 }
 
-/*.vw-menu-mobile-wrapper {
+.vw-menu-mobile-wrapper {
     width: 100%;
     z-index: 2000;
     opacity: 0;
+    position: fixed;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    /*max-width: auto;*/
+    top: 0;
+    left: 0;
     -webkit-transition: opacity .25s ease-out;
        -moz-transition: opacity .25s ease-out;
         -ms-transition: opacity .25s ease-out;
@@ -3789,7 +3797,100 @@ ul.vw-menu-location-main .main-menu-link {
              -o-transform: translateX(0);
                 transform: translateX(0);
     }
-*/
+
+    .admin-bar .vw-menu-mobile-wrapper {
+        margin-top: 30px;
+        padding-top: 30px;
+    }
+
+    @media all and (max-width: 782px) {
+        .admin-bar .vw-menu-mobile-wrapper {
+            margin-top: 45px;
+            padding-top: 45px;
+            }
+        }
+
+    .mm-menu > .mm-panel {
+        margin-top: 50px;
+        /*position: relative;*/
+    }
+
+    .mm-menu .mm-list {
+        padding-top: 0;
+        padding-bottom: 0;
+        border-top: 1px solid #2B2B2B;
+        }
+        /*.mm-menu .mm-list > li:last-of-type:after {
+            border-color: transparent;
+        }*/
+
+    .mm-list > li:not(.mm-subtitle):not(.mm-label):not(.mm-search):not(.mm-noresults):after {
+        margin-left: 0;
+    }
+    .mm-list .mm-subtitle {
+        overflow: hidden;
+    }
+
+    .mm-list a.mm-subclose:before {
+        bottom: 80%;
+    }
+
+    .mm-list a.mm-subopen:after {
+        bottom: 53%;
+    }
+
+    .vw-menu-mobile-wrapper .vw-instant-search-panel {
+        position: absolute;
+        top: 50px !important;
+    }
+
+    .vw-menu-mobile-wrapper__close,
+    .vw-menu-mobile-wrapper__search {
+        position: absolute;
+        top:   5px;
+        z-index: 1;
+        font-size: 24px;
+    }
+
+    .vw-menu-mobile-wrapper__search {
+        right: 50px;
+        font-size: 20px;
+        top: 8px;
+        }
+
+    i.vw-menu-mobile-wrapper__search:hover {
+        background: transparent;
+        color: white;
+    }
+
+    .vw-menu-mobile-wrapper__close {
+        right: 10px;
+        }
+        .vw-menu-mobile-wrapper__close:hover {
+            color: white;
+            cursor: pointer;
+        }
+
+    .vw-menu-mobile-wrapper .vw-logo-wrapper {
+        color: white;
+        height: 40px;
+        position: absolute;
+        z-index: 1;
+        left: 20px;
+        top: 7px;
+        display: inline-block;
+        width: auto;
+        opacity: .75;
+        }
+        .vw-menu-mobile-wrapper .vw-logo-wrapper:hover {
+            opacity: 1;
+        }
+        .vw-menu-mobile-wrapper .vw-logo-wrapper h1 {
+            color: inherit;
+            font-size: 24px;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
 
 
 /* -----------------------------------------------------------------------------
@@ -7912,6 +8013,7 @@ html {
 
 
 .widget_vw_widget_bundle_progress {
+    display: none;
     -webkit-transform: translateZ(0);
        -moz-transform: translateZ(0);
         -ms-transform: translateZ(0);
@@ -8591,7 +8693,10 @@ button.alm-load-more-btn.loading:before {
     .vw-instant-search-button,
     button.alm-load-more-btn,
     .vw-page-sidebar,
-    .vw-top-bar-left {
+    .vw-top-bar-left,
+    .vw-post-footer-section-custom,
+    .vw-custom-banner,
+    .vw-menu-location-bottom {
         display: none !important;
     }
 

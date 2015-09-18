@@ -1033,6 +1033,12 @@ Redux::setSection( $vw_opt_name, array(
 			),
 		),
 		array(
+			'id'		=> 'logo_mobile_menu',
+			'type'		=> 'media',
+			'title'		=> 'Original Logo', 
+			'subtitle'	=> 'Upload the mobile menu site logo.',
+		),
+		array(
 			'id' => 'fav_icon',
 			'type' => 'media',
 			'title' => 'Favicon (16x16)', 

@@ -19,7 +19,7 @@ jQuery.noConflict();
 	$( document ).ready( function () {
 		// ### CUSTOM JS HERE ###
 
-
+		FastClick.attach(document.body);
 
 		(function (undefined) {
 			var check = false;
@@ -480,9 +480,22 @@ jQuery.noConflict();
 		// ul: vw-menu-location-mobile mm-list mm-panel mm-opened mm-current
 
 
-		$('.vw-mobile-nav-button-wrapper').on('click', function () {
+		$('.vw-mobile-nav-button-wrapper').on('click', function (e) {
 			$('.vw-menu-mobile-wrapper').toggleClass('is-open');
+			e.stopPropagation();
 		});
+
+		$('#js-mobile-menu-cose-btn').on('click', function () {
+			$('.vw-menu-mobile-wrapper').removeClass('is-open');
+		});
+
+		// $(document.body).on('click', function () {
+		// 	$('.vw-menu-mobile-wrapper').removeClass('is-open');
+		// });
+
+		// $('#js-mobile-menu').on('click', function (e) {
+		// 	e.stopPropagation();
+		// });
 
 		// -----------------------------------------------------------------------------
 		// Fit video in the content area
@@ -692,11 +705,11 @@ jQuery.noConflict();
 
 			var vw_sticky_sidebar = $(".vwspc-section-sidebar .vw-sticky-sidebar, .vw-page-wrapper .vw-sticky-sidebar");
 
-			if ( vw_sticky_sidebar /* && ($('.vw-main-post').length  || $(window).width() > 1000  ) */) {
+			if ( vw_sticky_sidebar && !($('.wv-home-page').length)/* && ($('.vw-main-post').length  || $(window).width() > 1000  ) */) {
 				vw_sticky_sidebar.hcSticky( {
 					stickTo: '.container',
 					wrapperClassName: 'vw-sticky-sidebar-wrapper',
-					offResolutions: [-769],
+					offResolutions: [-768],
 					top: offset,
 				} );
 

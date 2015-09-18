@@ -28,7 +28,7 @@
 
 			<span class="vw-post-meta-separator">/</span>
 
-			<?php vw_the_post_date(); ?>
+			<?php // vw_the_post_date(); ?>
 			<!-- 
 			<span class="vw-post-meta-separator">/</span>
 			<?php vw_the_comment_link(); ?>

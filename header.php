@@ -21,7 +21,9 @@
 		}(document, 'script', 'facebook-jssdk'));</script>
 
 		<!-- Site Wrapper -->
-		<div class="vw-site-wrapper">
+		<div class="vw-site-wrapper <?php echo (is_front_page()) ? 'wv-home-page' : ''; ?>">
+
+			<?php get_template_part( 'templates/menu-mobile' ); ?>
 
 			<?php vw_the_site_top_bar(); ?>
 

@@ -25,7 +25,7 @@ if ( ! function_exists( 'vw_render_facebook_open_graph' ) ) {
 
 		<?php if ( is_singular() && have_posts() ) : setup_postdata( $post ); ?>
 			<meta property="og:title" content="<?php echo esc_attr( wp_strip_all_tags( get_the_title(), true ) ); ?>">
-			<meta property="og:description" content="<?php echo esc_attr( wp_strip_all_tags( get_the_excerpt(), true ) ); ?>">
+			<meta property="og:description" content="<?php echo esc_attr( wp_strip_all_tags( vw_get_clean_excerpt(), true ) ); ?>">
 			<meta property="og:url" content="<?php the_permalink(); ?>"/>
 			<?php if ( has_post_thumbnail() ) : $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_id() ), 'full' );	?>
 			<meta property="og:image" content="<?php echo esc_url( $thumbnail[0] ); ?>" />

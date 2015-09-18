@@ -68,7 +68,10 @@
       this.gaSent         = {};
       this.dimentions     = [];
 
-      if (this.$posts.length) { this.getDimentions(); } else { return true; }
+      if (this.$posts.length) {
+        $('.widget_vw_widget_bundle_progress').fadeIn();
+        this.getDimentions();
+      } else { return true; }
     },
     getDimentions: function () {
       var items = (!this.dimentions.length) ? this.$posts : this.dimentions;
@@ -87,6 +90,7 @@
     },
 
     notifyLockers: function ($el) {
+      $el = $($el);
       this.tryPandaHook();
       var it = this;
       $el.find(".onp-locker-call").bind('opanda-unlock, opanda-lock, opanda-cancel', function(){

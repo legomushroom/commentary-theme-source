@@ -2,7 +2,7 @@
 /* -----------------------------------------------------------------------------
  * Constants
  * -------------------------------------------------------------------------- */
-if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.3.12' );
+if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.3.13' );
 if ( ! defined( 'VW_THEME_NAME' ) ) define( 'VW_THEME_NAME', 'ESPRESSO' );
 if ( ! defined( 'MINUTES_IN_SECONDS' ) ) define( 'MINUTES_IN_SECONDS', 60 );
 
@@ -180,8 +180,9 @@ if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
         global $more;
         $more = 1;
         // return get_the_content();
-        $content = strip_tags(get_the_content());
+        $content = get_the_content();
         $content = preg_replace('/\[(\S+)[^\]]*][^\[]*\[\/\1\]/im', '', $content);
+        $content = strip_tags($content);
         $split = explode(' ', $content);
         $split = array_slice($split, 0, (int)vw_get_theme_option('blog_excerpt_length'));
         $content = join(' ', $split) . '...';
@@ -193,6 +194,10 @@ if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
     }
 
 	}
+}
+
+function vw_get_clean_excerpt () {
+  return do_my_shortcode_in_excerpt(get_the_excerpt());
 }
 
 add_filter( 'post_thumbnail_html', 'wv_my_post_thumbnail_fallback', 20, 5 );

@@ -20,7 +20,6 @@
 	</div>
 
 	<?php get_template_part( 'templates/menu-main' ); ?>
-	
-	<?php get_template_part( 'templates/menu-mobile' ); ?>
+
 </header>
 <!-- End Site Header : Left Logo -->

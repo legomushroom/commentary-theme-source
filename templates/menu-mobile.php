@@ -1,5 +1,10 @@
 <!-- Mobile Menu -->
-<nav class="vw-menu-mobile-wrapper">
+<nav class="vw-menu-mobile-wrapper" id="js-mobile-menu">
+
+	<?php get_template_part( 'templates/logo-mobile-menu' ); ?>
+
+	<i id="js-mobile-menu-cose-btn" class="vw-icon icon-entypo-cancel vw-menu-mobile-wrapper__close"></i>
+	<i id="js-mobile-menu-cose-btn" class="vw-icon icon-entypo-search vw-menu-mobile-wrapper__search vw-instant-search-button"></i>
 
 	<?php
 	$menu_location = has_nav_menu( 'vw_menu_mobile' ) ?  'vw_menu_mobile': 'vw_menu_main';
