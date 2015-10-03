@@ -19,6 +19,8 @@
 		<?php wp_footer(); ?>
 		<!-- End WP Footer -->
     <script src="<?= get_bloginfo("template_url"); ?>/bower_components/tap/dist/tap.min.js"></script>
+    
+    <iframe name="print_frame" width="0" height="0" style="width: 0; height: 0;" frameborder="0" src="about:blank" id="js-print-iframe"></iframe>
 
 	</body>
 

@@ -19,7 +19,7 @@ jQuery.noConflict();
 	$( document ).ready( function () {
 		// ### CUSTOM JS HERE ###
 
-		FastClick.attach(document.body);
+		// FastClick.attach(document.body);
 
 		(function (undefined) {
 			var check = false;
@@ -118,6 +118,9 @@ jQuery.noConflict();
 			clamp: function (value) { return Math.max(Math.min(value, 10), -10); }
 		};
 
+		var $frame = $('#js-print-iframe');
+		$frame.attr('src', '/commentary/print-page/');
+
 
 		// Sticky Header
 		(function (undefined) {
@@ -159,6 +162,8 @@ jQuery.noConflict();
 					this.isTabletQuery = !!this.isMenuItems;
 					this.isTabletQuery || this.$stickyContents.addClass('is-no-contents');
 
+					this.$printBtn = this.$stickyContents.find('#js-sticky-contents-print');
+
 					setTimeout((function () {
 						this.getActiveArea();
 					}.bind(this)), 200);
@@ -176,15 +181,41 @@ jQuery.noConflict();
 						}).bind(this), 100);
 					}.bind(this));
 
-					// this.bindPrint();
+					this.bindPrint();
 
 				}
-			// Main.prototype.print = function () {
-			// 	window.print && window.print();
-			// }
-			// Main.prototype.bindPrint = function () {
-			// 	this.$stickyContents.find('#js-sticky-contents-print').on('click', this.print.bind(this));
-			// }
+			Main.prototype.print = function (e) {
+				var $frame = $('#js-print-iframe');
+				this.$printBtn.addClass('is-loading');
+				// var doc = window.frames['print_frame'].document;
+
+
+				// $frame[0].document.head.innerHTML = $(document.head).html();
+				// $frame[0].document.body.innerHTML = $(document.body).html();
+				// $frame[0].onload = function () {
+				// 	console.log('onload');
+				// }
+
+				// $frame.attr('src', '/commentary/print-page/');
+				// $frame[0].onload = function () {
+				var $credits = this.$post.parent().children('.vw-about-author, .vw-related-posts');
+				var frame = window.frames['print_frame'];
+				// var isRemove = this.$post.parent().hasClass('vw-bundled-post');
+				frame.document.querySelector('.vw-page-content').innerHTML = this.$post.html() + $('<div />').append($credits).html();
+				// if (isRemove) {
+				// 	var blockEl = frame.document.querySelector('.vw-page-title-section-overlay');
+				// 	if (!blockEl) { return; };
+				// 	blockEl.parentNode.removeChild(blockEl);
+				// }
+				frame.window.focus();
+				this.$printBtn.removeClass('is-loading');
+				frame.window.print();
+				// }.bind(this);
+
+			}
+			Main.prototype.bindPrint = function () {
+				this.$printBtn.on('click', this.print.bind(this));
+			}
 			Main.prototype.getActiveArea = function () {
 					this.postActiveAreaTop = this.$post.offset().top - 120;
 					this.postActiveArea = this.postActiveAreaTop + this.$post.outerHeight() - this.wHeight + 180;
@@ -195,7 +226,7 @@ jQuery.noConflict();
 						this.$items 				 = this.$post.find('.intense.heading');
 						this.isMenuItems  = this.$items.length > 0;
 					}
-					this.isStickyInited && !this.isMenuItems && this.$stickyContents.css({ left: '0' });
+					// this.isStickyInited && !this.isMenuItems && this.$stickyContents.css({ left: '0' });
 					var offsetTop = ((this.$w.outerWidth() < 768) ? 15 : (this.menuHeight+15));
 					offsetTop += (this.isAdminBar) ? this.adminBarHeight : 0;
 					var it = this;
@@ -405,10 +436,11 @@ jQuery.noConflict();
 
 		window.CommentaryMagazine = (window.CommentaryMagazine == null) ? {} : window.CommentaryMagazine;
 
-		window.CommentaryMagazine.print = function (e) {
-			window.print && window.print();
-			e && e.preventDefault();
-		}
+		// window.CommentaryMagazine.print = function (e) {
+		// 	// console.log(this, e.target);
+		// 	window.print && window.print();
+		// 	e && e.preventDefault();
+		// }
 		
 		// ### END of CUSTOM JS ###
 
@@ -470,9 +502,9 @@ jQuery.noConflict();
 				// searchfield: true
 			});
 
-			$(".vw-mobile-nav-button").click(function() {
-				$(".vw-menu-mobile-wrapper").trigger("open.mm");
-			});
+			// $(".vw-mobile-nav-button").click(function() {
+			// 	$(".vw-menu-mobile-wrapper").trigger("open.mm");
+			// });
 		}
 
 		// nav: vw-menu-mobile-wrapper mm-menu mm-horizontal mm-slide mm-offcanvas mm-center mm-current mm-right mm-opened
@@ -481,13 +513,19 @@ jQuery.noConflict();
 
 
 		$('.vw-mobile-nav-button-wrapper').on('click', function (e) {
+			console.log('open 1');
 			$('.vw-menu-mobile-wrapper').toggleClass('is-open');
 			e.stopPropagation();
 		});
 
-		$('#js-mobile-menu-cose-btn').on('click', function () {
+		$(document.body).on('click', '#js-mobile-menu-close-btn', function () {
 			$('.vw-menu-mobile-wrapper').removeClass('is-open');
-		});
+		})
+
+		// $('#js-mobile-menu-close-btn').on('click', function (e) {
+		// 	$('.vw-menu-mobile-wrapper').removeClass('is-open');
+		// 	e.stopPropagation();
+		// });
 
 		// $(document.body).on('click', function () {
 		// 	$('.vw-menu-mobile-wrapper').removeClass('is-open');

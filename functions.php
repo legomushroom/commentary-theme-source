@@ -135,7 +135,7 @@ function getShareButtons ($className='') {
                   <i class="vw-icon icon-social-email"></i>
 									<span class="vw-button-label"> Email </span>
               </a>
-              <a target="_top" onclick="window.CommentaryMagazine.print()" class="vw-post-share-box-button vw-post-shares-social-print" id="js-sticky-contents-print" title="Print">
+              <a target="_top" class="vw-post-share-box-button vw-post-shares-social-print" id="js-sticky-contents-print" title="Print">
                   <i class="vw-icon icon-social-print"></i>
                   <span class="vw-button-label"> Print </span>
               </a>

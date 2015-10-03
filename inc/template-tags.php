@@ -408,11 +408,13 @@ if ( ! function_exists( 'vw_the_embeded_video' ) ) {
 
 			if ( ! empty( $video_oembed_url ) ) {
 				echo '<div class="vw-embeded-media vw-embeded-video vw-embeded-video-url">';
+				echo '<div class="vw-print-only"> video: ' . $video_oembed_url . '</div>';
 				echo wp_oembed_get( $video_oembed_url );
 				echo '</div>';
 
 			} else if ( ! empty( $video_oembed_code ) ) {
 				echo '<div class="vw-embeded-media vw-embeded-video vw-embeded-video-code">';
+				echo '<div class="vw-print-only"> video: ' . $video_oembed_url . '</div>';
 				echo $video_oembed_code;
 				echo '</div>';
 
