@@ -19,7 +19,7 @@ jQuery.noConflict();
 	$( document ).ready( function () {
 		// ### CUSTOM JS HERE ###
 
-		// FastClick.attach(document.body);
+		FastClick.attach(document.body);
 
 		(function (undefined) {
 			var check = false;
@@ -118,9 +118,18 @@ jQuery.noConflict();
 			clamp: function (value) { return Math.max(Math.min(value, 10), -10); }
 		};
 
-		var $frame = $('#js-print-iframe');
-		$frame.attr('src', '/commentary/print-page/');
+		// var $frame = $('#js-print-iframe');
+		// $frame.attr('src', '/print-page/');
+		// var iFrameLoaded = false;
 
+		// if (!window.CommentaryMagazine.isIframeLoaded) {
+		// 	$frame[0].onload = function () {
+		// 		window.CommentaryMagazine.isIframeLoaded = true;
+		// 		console.log('loaded');
+		// 		$(document).trigger('vw-iframe-loaded');
+		// 	};
+		// }
+		// console.log('start listen');
 
 		// Sticky Header
 		(function (undefined) {
@@ -185,36 +194,25 @@ jQuery.noConflict();
 
 				}
 			Main.prototype.print = function (e) {
-				var $frame = $('#js-print-iframe');
-				this.$printBtn.addClass('is-loading');
-				// var doc = window.frames['print_frame'].document;
-
-
-				// $frame[0].document.head.innerHTML = $(document.head).html();
-				// $frame[0].document.body.innerHTML = $(document.body).html();
-				// $frame[0].onload = function () {
-				// 	console.log('onload');
-				// }
-
-				// $frame.attr('src', '/commentary/print-page/');
-				// $frame[0].onload = function () {
+				// console.log('print');
 				var $credits = this.$post.parent().children('.vw-about-author, .vw-related-posts');
 				var frame = window.frames['print_frame'];
-				// var isRemove = this.$post.parent().hasClass('vw-bundled-post');
 				frame.document.querySelector('.vw-page-content').innerHTML = this.$post.html() + $('<div />').append($credits).html();
-				// if (isRemove) {
-				// 	var blockEl = frame.document.querySelector('.vw-page-title-section-overlay');
-				// 	if (!blockEl) { return; };
-				// 	blockEl.parentNode.removeChild(blockEl);
-				// }
 				frame.window.focus();
 				this.$printBtn.removeClass('is-loading');
 				frame.window.print();
-				// }.bind(this);
-
 			}
+
+			Main.prototype.tryToPrint = function () {
+				this.$printBtn.addClass('is-loading');
+				// this.print();
+				if (window.CommentaryMagazine.isIframeLoaded) { this.print(); }
+				else { $(document).on('vw-iframe-loaded', function () { this.print(); }.bind(this));
+				}
+			}
+
 			Main.prototype.bindPrint = function () {
-				this.$printBtn.on('click', this.print.bind(this));
+				this.$printBtn.on('click', this.tryToPrint.bind(this));
 			}
 			Main.prototype.getActiveArea = function () {
 					this.postActiveAreaTop = this.$post.offset().top - 120;
@@ -513,7 +511,7 @@ jQuery.noConflict();
 
 
 		$('.vw-mobile-nav-button-wrapper').on('click', function (e) {
-			console.log('open 1');
+			// console.log('open 1');
 			$('.vw-menu-mobile-wrapper').toggleClass('is-open');
 			e.stopPropagation();
 		});

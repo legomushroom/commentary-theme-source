@@ -518,6 +518,11 @@ button,
     float: left;
 }*/
 
+.vw-site-header {
+    -ms-overflow-y: hidden;
+        overflow-y: hidden;
+}
+
 .vw-site-header.vw-site-header-style-left-logo .vw-logo-wrapper,
 .vw-site-header.vw-site-header-style-left-logo .vw-header-ads-wrapper {
     display: table-cell;
@@ -8723,6 +8728,21 @@ button.alm-load-more-btn.loading:before {
     display: none;
 }
 
+.ml-modal {
+    z-index: 2001;
+}
+
+@media all and (max-width: 600px) {
+    .ml-content {
+        padding: 10px 20px;
+    }
+
+    .ml-close {
+        top: 0;
+        right: -4px;
+    }
+}
+
 /*,*/
 @media print {
     .sticky-contents,
@@ -8743,6 +8763,15 @@ button.alm-load-more-btn.loading:before {
         display: none !important;
     }
 
+    .wv-custom-blockquote {
+        float: left !important;
+        padding-right: 20px;
+    }
+
+    .wv-custom-blockquote.is-pull-right {
+        float: right !important;
+    }
+
     .vw-breaking-news-bar {
         border: 0;
         border-color: transparent !important;
@@ -8759,6 +8788,15 @@ button.alm-load-more-btn.loading:before {
     .vw-top-bar-inner,
     .vw-site-footer {
         border: 0 !important;
+    }
+
+    .vw-site-footer,
+    .vw-bottom-bar {
+        background-color: transparent !important;
+    }
+
+    .vw-site-footer-sidebars {
+        color: #111 !important;
     }
 
     .vw-print-only {
