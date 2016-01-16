@@ -226,9 +226,11 @@
 .mm-menu.mm-vertical .mm-list .mm-panel li:last-child:after {
     border-color: transparent;
 }
+
 .mm-menu.mm-vertical .mm-list li.mm-opened > .mm-panel {
     display: block;
 }
+
 .mm-menu.mm-vertical .mm-list > li > a.mm-subopen {
     height: 40px;
 }
@@ -236,6 +238,7 @@
     top: 16px;
     bottom: auto;
 }
+
 .mm-menu.mm-vertical .mm-list > li.mm-opened > a.mm-subopen:after {
     -webkit-transform: rotate(45deg);
        -moz-transform: rotate(45deg);
@@ -243,6 +246,7 @@
          -o-transform: rotate(45deg);
             transform: rotate(45deg);
 }
+
 .mm-menu.mm-vertical .mm-list > li.mm-label > a.mm-subopen {
     height: 25px;
 }
@@ -327,6 +331,7 @@ html.mm-blocking #mm-blocker {
     display: none;
     position: fixed;
 }
+
 .mm-menu.mm-current {
     display: block;
 }
@@ -453,6 +458,7 @@ html.mm-opened.mm-next .mm-page {
          -o-transform: translate(100%, 0);
             transform: translate(100%, 0);
 }
+
 .mm-menu.mm-front.mm-top {
     -webkit-transform: translate(0, -100%);
        -moz-transform: translate(0, -100%);
@@ -460,6 +466,7 @@ html.mm-opened.mm-next .mm-page {
          -o-transform: translate(0, -100%);
             transform: translate(0, -100%);
 }
+
 .mm-menu.mm-front.mm-bottom {
     -webkit-transform: translate(0, 100%);
        -moz-transform: translate(0, 100%);

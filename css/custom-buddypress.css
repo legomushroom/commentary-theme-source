@@ -6,6 +6,7 @@
     content: " ";
     display: table;
 }
+
 #buddypress:after {
     clear: both;
 }
@@ -200,10 +201,12 @@ body.buddypress .vw-page-title .bp-title-button {
 .bp_group #buddypress div#item-header #item-header-avatar img {
     margin-right: 0;
 }
+
 .bp_group #buddypress div#item-header #item-header-content {
     width: 54%;
     margin-left: 4%;
 }
+
 @media (max-width: 991px) {
     .bp_group #buddypress div#item-header div#item-actions {
         float: none;

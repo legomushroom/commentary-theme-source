@@ -57,20 +57,34 @@
 @-webkit-keyframes loading-spin {
     0% {
         -webkit-transform: rotate(0deg);
+           -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+             -o-transform: rotate(0deg);
+                transform: rotate(0deg);
     }
-
     100% {
         -webkit-transform: rotate(359deg);
+           -moz-transform: rotate(359deg);
+            -ms-transform: rotate(359deg);
+             -o-transform: rotate(359deg);
+                transform: rotate(359deg);
     }
 }
 
 @-moz-keyframes loading-spin {
     0% {
-        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+           -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+             -o-transform: rotate(0deg);
+                transform: rotate(0deg);
     }
-
     100% {
-        -moz-transform: rotate(359deg);
+        -webkit-transform: rotate(359deg);
+           -moz-transform: rotate(359deg);
+            -ms-transform: rotate(359deg);
+             -o-transform: rotate(359deg);
+                transform: rotate(359deg);
     }
 }
 
@@ -82,7 +96,6 @@
              -o-transform: rotate(0deg);
                 transform: rotate(0deg);
     }
-
     100% {
         -webkit-transform: rotate(359deg);
            -moz-transform: rotate(359deg);
@@ -174,6 +187,7 @@
     display: inline-block;
     vertical-align: top;
 }
+
 .vwspc-section-option.vwspc-section-option-2-columns .vwspc-section-option-field-wrapper {
     width: 69%;
     display: inline-block;
@@ -197,12 +211,15 @@
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
 }
+
 #vwspc-container .dropdown {
     position: relative;
 }
+
 #vwspc-container .dropdown-toggle:focus {
     outline: 0;
 }
+
 #vwspc-container .dropdown-menu {
     position: absolute;
     top: 100%;
@@ -223,16 +240,19 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
     background-clip: padding-box;
 }
+
 #vwspc-container .dropdown-menu.pull-right {
     right: 0;
     left: auto;
 }
+
 #vwspc-container .dropdown-menu .divider {
     height: 1px;
     margin: 9px 0;
     overflow: hidden;
     background-color: #E5E5E5;
 }
+
 #vwspc-container .dropdown-menu > li > a {
     display: block;
     padding: 3px 20px;
@@ -242,12 +262,14 @@
     color: #333333;
     white-space: nowrap;
 }
+
 #vwspc-container .dropdown-menu > li > a:hover,
 #vwspc-container .dropdown-menu > li > a:focus {
     text-decoration: none;
     color: #262626;
     background-color: #F5F5F5;
 }
+
 #vwspc-container .dropdown-menu > .active > a,
 #vwspc-container .dropdown-menu > .active > a:hover,
 #vwspc-container .dropdown-menu > .active > a:focus {
@@ -256,11 +278,13 @@
     outline: 0;
     background-color: #428BCA;
 }
+
 #vwspc-container .dropdown-menu > .disabled > a,
 #vwspc-container .dropdown-menu > .disabled > a:hover,
 #vwspc-container .dropdown-menu > .disabled > a:focus {
     color: #999999;
 }
+
 #vwspc-container .dropdown-menu > .disabled > a:hover,
 #vwspc-container .dropdown-menu > .disabled > a:focus {
     text-decoration: none;
@@ -269,20 +293,25 @@
     filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
     cursor: not-allowed;
 }
+
 #vwspc-container .open > .dropdown-menu {
     display: block;
 }
+
 #vwspc-container .open > a {
     outline: 0;
 }
+
 #vwspc-container .dropdown-menu-right {
     left: auto;
     right: 0;
 }
+
 #vwspc-container .dropdown-menu-left {
     left: 0;
     right: auto;
 }
+
 #vwspc-container .dropdown-header {
     display: block;
     padding: 3px 20px;
@@ -290,6 +319,7 @@
     line-height: 1.428571429;
     color: #999999;
 }
+
 #vwspc-container .dropdown-backdrop {
     position: fixed;
     left: 0;
@@ -298,22 +328,26 @@
     top: 0;
     z-index: 990;
 }
+
 #vwspc-container .pull-right > .dropdown-menu {
     right: 0;
     left: auto;
 }
+
 #vwspc-container .dropup .caret,
 #vwspc-container .navbar-fixed-bottom .dropdown .caret {
     border-top: 0;
     border-bottom: 4px solid;
     content: "";
 }
+
 #vwspc-container .dropup .dropdown-menu,
 #vwspc-container .navbar-fixed-bottom .dropdown .dropdown-menu {
     top: auto;
     bottom: 100%;
     margin-bottom: 1px;
 }
+
 @media (min-width: 768px) {
     #vwspc-container .navbar-right .dropdown-menu {
         left: auto;

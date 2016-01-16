@@ -7,7 +7,7 @@ if ( ! function_exists( 'vw_html_tag_schema' ) ) {
 	function vw_html_tag_schema() {
 		// Is single post
 		if( is_single() ) {
-			// vw_itemtype( 'Article' );
+			vw_itemtype( 'Article' );
 		}
 
 		// Is author page

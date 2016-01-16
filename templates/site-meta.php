@@ -1,15 +1,11 @@
 <!-- Site Meta From Theme -->
 <link rel="profile" href="http://gmpg.org/xfn/11">
 
-<link rel="pingback" href="<?php esc_attr( get_bloginfo( 'pingback_url' ) ); ?>">
+<link rel="pingback" href="<?php echo esc_url( get_bloginfo( 'pingback_url' ) ); ?>">
 
 <meta name="description" content="<?php echo esc_attr( get_bloginfo('description') ); ?>">
 
-<meta charset="<?php echo esc_attr( get_bloginfo('charset') ); ?>">
-
 <link href="//www.google-analytics.com" rel="dns-prefetch">
-
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
 

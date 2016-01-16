@@ -32,7 +32,7 @@ if ( ! function_exists( 'vw_the_breadcrumb' ) ) {
 					'show_home' => $args['show_home'],
 				) );
 			
-			$breadcrumbs = '<div class="vw-breadcrumb vw-breadcrumb-envirra" xmlns:v="http://rdf.data-vocabulary.org/#">';
+			$breadcrumbs = '<div class="vw-breadcrumb vw-breadcrumb-envirra">';
 			$breadcrumbs .= $title;
 			$breadcrumbs .= '<span>'.join( "{$separator}", $items ).'</span>';
 			$breadcrumbs .= '</div>';

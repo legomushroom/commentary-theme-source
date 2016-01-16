@@ -1,10 +1,11 @@
+@charset "UTF-8";
 /*
 Theme Name: ESPRESSO
 Theme URI: http://envirra.com/themes/espresso
 Author: envirra
 Author URI: http://themeforest.net/user/envirra?ref=envirra
 Description: Magazine WordPress Theme
-Version: 1.3.0
+Version: 1.3.1
 License: GPL
 License URI: http://www.gnu.org/licenses/gpl.html‎
 Tags: black, white, one-column, two-columns, three-columns, right-sidebar, fluid-layout, custom-colors, custom-menu, featured-images, post-formats, theme-options, translation-ready, photoblogging
@@ -305,6 +306,14 @@ a img.aligncenter {
     margin-bottom: 15px;
 }
 
+.sticky {
+    /* empty */
+}
+
+.gallery-caption {
+    /* empty */
+}
+
 .bypostauthor {
     background-color: transparent;
 }
@@ -315,6 +324,7 @@ a img.aligncenter {
     border: 1px solid #DDDDDD !important;
     padding: 3px;
 }
+
 .gallery .gallery-caption {
     margin-top: 0.5em;
     font-style: italic;
@@ -352,10 +362,14 @@ button,
             transition: all 0.2s ease-out;
 }
 .no-touch input[type=button]:hover,
-.no-touch input[type=submit]:hover,
-.no-touch button:hover,
-.no-touch .vw-button:hover,
-.no-touch .woocommerce a.button:hover,
+.no-touch
+  input[type=submit]:hover,
+.no-touch
+  button:hover,
+.no-touch
+  .vw-button:hover,
+.no-touch
+  .woocommerce a.button:hover,
 .no-touch .woocommerce button.button:hover,
 .no-touch .woocommerce input.button:hover,
 .no-touch .woocommerce #respond input#submit:hover {
@@ -449,12 +463,14 @@ button,
         max-width: 750px;
     }
 }
+
 @media (min-width: 992px) {
     body.vw-site-layout-boxed .vw-site-wrapper,
     body.vw-site-layout-boxed .container {
         max-width: 1000px;
     }
 }
+
 @media (min-width: 1200px) {
     body.vw-site-layout-boxed .vw-site-wrapper,
     body.vw-site-layout-boxed .container {
@@ -474,10 +490,12 @@ button,
     display: table-cell;
     vertical-align: middle;
 }
+
 .vw-site-header.vw-site-header-style-left-logo .vw-header-ads-wrapper {
     width: 100%;
     text-align: right;
 }
+
 @media (min-width: 992px) {
     .vw-site-header.vw-site-header-style-left-logo .vw-header-ads-wrapper {
         padding-left: 15px;
@@ -487,6 +505,7 @@ button,
         float: right;
     }
 }
+
 @media (max-width: 991px) {
     .vw-site-header.vw-site-header-style-left-logo .vw-header-ads-wrapper {
         display: block;
@@ -501,11 +520,13 @@ button,
 .vw-site-header.vw-site-header-style-right-menu .vw-menu-main-wrapper {
     background: transparent !important;
 }
+
 .vw-site-header.vw-site-header-style-right-menu .vw-logo-wrapper,
 .vw-site-header.vw-site-header-style-right-menu #vw-menu-main-sticky-wrapper {
     vertical-align: middle;
     display: inline-block;
 }
+
 .vw-site-header.vw-site-header-style-right-menu .vw-logo-wrapper,
 .vw-site-header.vw-site-header-style-right-menu #vw-menu-main .container {
     width: auto !important;
@@ -515,9 +536,11 @@ button,
 .vw-site-header.vw-site-header-style-centered-logo .vw-menu-main-inner {
     text-align: center;
 }
+
 .vw-site-header.vw-site-header-style-centered-logo .sub-menu {
     text-align: left;
 }
+
 @media (max-width: 767px) {
     .vw-site-header.vw-site-header-style-centered-logo .vw-site-header-inner {
         position: relative;
@@ -530,11 +553,13 @@ button,
         margin-top: -18px;
     }
 }
+
 .vw-site-header.vw-site-header-style-centered-logo .vw-menu-additional-logo {
     position: absolute;
     left: 0;
     top: 0;
 }
+
 .vw-site-header.vw-site-header-style-centered-logo .vw-header-ads-wrapper {
     margin-top: 2em;
 }
@@ -631,6 +656,10 @@ button,
     font-size: 11px;
 }
 
+.vw-bottom-bar-inner {
+    /* empty */
+}
+
 .vw-bottom-bar-left {
     float: left;
 }
@@ -677,7 +706,7 @@ button,
     display: none;
 }
 
-@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
     .vw-logo-2x {
         display: inline;
     }
@@ -800,12 +829,14 @@ button,
 .vw-page-content .vw-page-title-box .vw-label {
     margin-bottom: 10px;
 }
+
 .vw-page-content .vw-page-title-box .vw-page-title {
     margin-bottom: 10px;
     font-weight: inherit;
     letter-spacing: inherit;
     line-height: 1em;
 }
+
 .vw-page-content .vw-page-title-box .vw-page-description {
     font-size: 14px;
 }
@@ -849,14 +880,14 @@ button,
 }
 .vw-page-title-section.vw-has-background .vw-page-title-section-overlay {
     box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.05);
-    background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0) 99%, rgba(0, 0, 0, 0.08) 100%);
-    background:         linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0) 99%, rgba(0, 0, 0, 0.08) 100%);
+    background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 80%, transparent 99%, rgba(0, 0, 0, 0.08) 100%);
+    background:         linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 80%, transparent 99%, rgba(0, 0, 0, 0.08) 100%);
 }
 .vw-page-title-section.vw-has-background .backstretch:after {
     content: '';
     display: block;
-    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.1) 0, rgba(0, 0, 0, 0) 10px);
-    background-image:         linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0, rgba(0, 0, 0, 0) 10px);
+    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.1) 0, transparent 10px);
+    background-image:         linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0, transparent 10px);
     opacity: 0.25;
     width: 100%;
     height: 100%;
@@ -1074,6 +1105,7 @@ button,
         margin-bottom: 30px;
     }
 }
+
 .vw-page-content > article:first-child {
     margin-top: 15px;
 }
@@ -1094,6 +1126,7 @@ button,
         width: 66.6666666667%;
     }
 }
+
 .vw-sidebar-position-right .vw-page-sidebar,
 .vw-sidebar-position-left .vw-page-sidebar {
     position: relative;
@@ -1114,6 +1147,7 @@ button,
         left: 33.3333333333%;
     }
 }
+
 @media (min-width: 768px) {
     .vw-sidebar-position-left .vw-page-sidebar-left {
         right: 66.6666666667%;
@@ -1132,6 +1166,7 @@ button,
         width: 33.3333333333%;
     }
 }
+
 .vw-sidebar-position-mini-content-right .vw-page-content {
     position: relative;
     min-height: 1px;
@@ -1144,9 +1179,11 @@ button,
         width: 66.6666666667%;
     }
 }
+
 .vw-sidebar-position-mini-content-right .vw-page-sidebar-left {
     display: none;
 }
+
 @media (min-width: 1200px) {
     .vw-sidebar-position-mini-content-right .vw-page-content {
         position: relative;
@@ -1154,17 +1191,20 @@ button,
         padding-left: 15px;
         padding-right: 15px;
     }
-    @media (min-width: 768px) {
-        .vw-sidebar-position-mini-content-right .vw-page-content {
-            float: left;
-            width: 50%;
-        }
+}
+@media (min-width: 1200px) and (min-width: 768px) {
+    .vw-sidebar-position-mini-content-right .vw-page-content {
+        float: left;
+        width: 50%;
     }
-    @media (min-width: 768px) {
-        .vw-sidebar-position-mini-content-right .vw-page-content {
-            left: 16.6666666667%;
-        }
+}
+@media (min-width: 1200px) and (min-width: 768px) {
+    .vw-sidebar-position-mini-content-right .vw-page-content {
+        left: 16.6666666667%;
     }
+}
+
+@media (min-width: 1200px) {
     .vw-sidebar-position-mini-content-right .vw-page-sidebar-left {
         display: block;
         position: relative;
@@ -1172,16 +1212,16 @@ button,
         padding-left: 15px;
         padding-right: 15px;
     }
-    @media (min-width: 768px) {
-        .vw-sidebar-position-mini-content-right .vw-page-sidebar-left {
-            float: left;
-            width: 16.6666666667%;
-        }
+}
+@media (min-width: 1200px) and (min-width: 768px) {
+    .vw-sidebar-position-mini-content-right .vw-page-sidebar-left {
+        float: left;
+        width: 16.6666666667%;
     }
-    @media (min-width: 768px) {
-        .vw-sidebar-position-mini-content-right .vw-page-sidebar-left {
-            right: 50%;
-        }
+}
+@media (min-width: 1200px) and (min-width: 768px) {
+    .vw-sidebar-position-mini-content-right .vw-page-sidebar-left {
+        right: 50%;
     }
 }
 
@@ -1202,6 +1242,7 @@ button,
         right: 66.6666666667%;
     }
 }
+
 .vw-sidebar-position-left-content-mini .vw-page-content {
     position: relative;
     min-height: 1px;
@@ -1219,9 +1260,11 @@ button,
         left: 33.3333333333%;
     }
 }
+
 .vw-sidebar-position-left-content-mini .vw-page-sidebar-right {
     display: none;
 }
+
 @media (min-width: 1200px) {
     .vw-sidebar-position-left-content-mini .vw-page-content {
         position: relative;
@@ -1229,17 +1272,21 @@ button,
         padding-left: 15px;
         padding-right: 15px;
     }
-    @media (min-width: 768px) {
-        .vw-sidebar-position-left-content-mini .vw-page-content {
-            float: left;
-            width: 50%;
-        }
+}
+@media (min-width: 1200px) and (min-width: 768px) {
+    .vw-sidebar-position-left-content-mini .vw-page-content {
+        float: left;
+        width: 50%;
     }
-    @media (min-width: 768px) {
-        .vw-sidebar-position-left-content-mini .vw-page-sidebar-left {
-            right: 50%;
-        }
+}
+
+@media (min-width: 1200px) and (min-width: 768px) {
+    .vw-sidebar-position-left-content-mini .vw-page-sidebar-left {
+        right: 50%;
     }
+}
+
+@media (min-width: 1200px) {
     .vw-sidebar-position-left-content-mini .vw-page-sidebar-right {
         display: block;
         position: relative;
@@ -1247,11 +1294,11 @@ button,
         padding-left: 15px;
         padding-right: 15px;
     }
-    @media (min-width: 768px) {
-        .vw-sidebar-position-left-content-mini .vw-page-sidebar-right {
-            float: left;
-            width: 16.6666666667%;
-        }
+}
+@media (min-width: 1200px) and (min-width: 768px) {
+    .vw-sidebar-position-left-content-mini .vw-page-sidebar-right {
+        float: left;
+        width: 16.6666666667%;
     }
 }
 
@@ -1267,9 +1314,11 @@ button,
         width: 66.6666666667%;
     }
 }
+
 .vw-sidebar-position-content-mini-right .vw-page-sidebar-left {
     display: none;
 }
+
 .vw-sidebar-position-content-mini-right .vw-page-sidebar-right {
     position: relative;
     min-height: 1px;
@@ -1282,6 +1331,7 @@ button,
         width: 33.3333333333%;
     }
 }
+
 @media (min-width: 1200px) {
     .vw-sidebar-position-content-mini-right .vw-page-content {
         position: relative;
@@ -1289,12 +1339,15 @@ button,
         padding-left: 15px;
         padding-right: 15px;
     }
-    @media (min-width: 768px) {
-        .vw-sidebar-position-content-mini-right .vw-page-content {
-            float: left;
-            width: 50%;
-        }
+}
+@media (min-width: 1200px) and (min-width: 768px) {
+    .vw-sidebar-position-content-mini-right .vw-page-content {
+        float: left;
+        width: 50%;
     }
+}
+
+@media (min-width: 1200px) {
     .vw-sidebar-position-content-mini-right .vw-page-sidebar-left {
         display: block;
         position: relative;
@@ -1302,23 +1355,26 @@ button,
         padding-left: 15px;
         padding-right: 15px;
     }
-    @media (min-width: 768px) {
-        .vw-sidebar-position-content-mini-right .vw-page-sidebar-left {
-            float: left;
-            width: 16.6666666667%;
-        }
+}
+@media (min-width: 1200px) and (min-width: 768px) {
+    .vw-sidebar-position-content-mini-right .vw-page-sidebar-left {
+        float: left;
+        width: 16.6666666667%;
     }
+}
+
+@media (min-width: 1200px) {
     .vw-sidebar-position-content-mini-right .vw-page-sidebar-right {
         position: relative;
         min-height: 1px;
         padding-left: 15px;
         padding-right: 15px;
     }
-    @media (min-width: 768px) {
-        .vw-sidebar-position-content-mini-right .vw-page-sidebar-right {
-            float: left;
-            width: 33.3333333333%;
-        }
+}
+@media (min-width: 1200px) and (min-width: 768px) {
+    .vw-sidebar-position-content-mini-right .vw-page-sidebar-right {
+        float: left;
+        width: 33.3333333333%;
     }
 }
 
@@ -1334,6 +1390,7 @@ button,
         width: 100%;
     }
 }
+
 @media (min-width: 992px) {
     body.page .vw-sidebar-position-none .vw-page-content,
     body.post .vw-sidebar-position-none .vw-page-content {
@@ -1342,13 +1399,17 @@ button,
         padding-left: 15px;
         padding-right: 15px;
     }
-    @media (min-width: 768px) {
-        body.page .vw-sidebar-position-none .vw-page-content,
-        body.post .vw-sidebar-position-none .vw-page-content {
-            float: left;
-            width: 100%;
-        }
+}
+@media (min-width: 992px) and (min-width: 768px) {
+    body.page .vw-sidebar-position-none .vw-page-content,
+    body.post .vw-sidebar-position-none .vw-page-content {
+        float: left;
+        width: 100%;
     }
+}
+
+.vw-sticky-sidebar-wrapper {
+    position: relative;
 }
 
 /* -----------------------------------------------------------------------------
@@ -1367,6 +1428,7 @@ button,
         font-size: 22px;
     }
 }
+
 .vw-main-post .vw-subtitle {
     margin-top: 0.75em;
 }
@@ -1959,6 +2021,7 @@ button,
     margin-bottom: 0;
     min-height: 2.4em;
 }
+
 .vw-post-style-text-no-thumbnail.vw-has-review {
     padding-bottom: 30px;
 }
@@ -1970,9 +2033,11 @@ button,
     padding-top: 13px;
     border-top: 1px solid #EEEEEE;
 }
+
 .vw-post-style-small-left-thumbnail.vw-post-box {
     background-color: transparent;
 }
+
 .vw-post-style-small-left-thumbnail .vw-post-box-thumbnail {
     display: inline-block;
     float: left;
@@ -1980,25 +2045,30 @@ button,
 .vw-post-style-small-left-thumbnail .vw-post-box-thumbnail + .vw-post-box-inner {
     margin-left: 100px;
 }
+
 .vw-post-style-small-left-thumbnail .vw-post-box-title {
     margin-top: 0;
     margin-bottom: 5px;
     font-size: 14px;
 }
+
 .vw-post-style-small-left-thumbnail .vw-post-meta {
     border-bottom: none;
     padding-bottom: 0;
     margin-bottom: 0;
     font-size: 10px;
 }
+
 .vw-post-style-small-left-thumbnail .vw-post-meta-icon {
     padding-top: 0px;
     padding-bottom: 0px;
     margin-left: 0;
 }
+
 .vw-post-style-small-left-thumbnail .vw-icon {
     font-size: 12px;
 }
+
 .vw-post-style-small-left-thumbnail .vw-post-comment-count {
     margin-left: 5px;
 }
@@ -2022,22 +2092,27 @@ button,
     margin-top: 0;
     opacity: 0.7;
 }
+
 .vw-post-style-small-comment .vw-comment-author-avatar,
 .vw-post-style-small-comment .vw-comment-author {
     display: inline-block;
 }
+
 .vw-post-style-small-comment .vw-comment-author {
     text-transform: uppercase;
     font-size: 12px;
 }
+
 .vw-post-style-small-comment .vw-comment-author-avatar {
     float: left;
     margin-left: 15px;
 }
+
 .vw-post-style-small-comment .vw-comment-meta {
     margin-left: 60px;
     padding-left: 10px;
 }
+
 .vw-post-style-small-comment .vw-post-box-comment {
     position: relative;
     margin: 0 0 15px 0;
@@ -2059,6 +2134,7 @@ button,
     border-right: 10px solid transparent;
     border-top: 10px solid rgba(128, 128, 128, 0.15);
 }
+
 .vw-post-style-small-comment + .vw-post-style-small-comment {
     margin-top: 20px;
 }
@@ -2068,6 +2144,7 @@ button,
 .vw-post-style-medium .vw-post-box-title {
     margin-top: 0px;
 }
+
 .vw-post-style-medium .vw-post-box-thumbnail {
     margin-bottom: 15px;
 }
@@ -2075,18 +2152,22 @@ button,
     -webkit-filter: blur(2px);
             filter: blur(2px);
 }
+
 .vw-post-style-medium .vw-post-box-excerpt {
     margin-top: 15px;
 }
 .vw-post-style-medium .vw-post-box-excerpt :first-child {
     margin-top: 0;
 }
+
 .vw-post-style-medium .vw-post-box-excerpt :last-child {
     margin-bottom: 0;
 }
+
 .vw-post-style-medium .vw-post-share-icons {
     float: right;
 }
+
 @media (min-width: 768px) and (max-width: 991px) {
     .vw-post-style-medium .vw-post-box-title {
         font-size: 18px;
@@ -2096,6 +2177,7 @@ button,
 .vw-post-style-medium.vw-post-format-quote .vw-post-box-excerpt {
     opacity: 1;
 }
+
 .vw-post-style-medium.vw-post-format-quote blockquote {
     margin-left: 0;
     margin-right: 0;
@@ -2108,6 +2190,7 @@ button,
 .vw-post-style-medium.vw-post-format-link .vw-post-box-excerpt {
     opacity: 1;
 }
+
 .vw-post-style-medium.vw-post-format-link .vw-post-box-excerpt a {
     font-size: 31px;
     text-decoration: none;
@@ -2119,6 +2202,7 @@ button,
     top: 5px;
     left: 5px;
 }
+
 .vw-post-style-medium-1 .vw-post-box-title,
 .vw-post-style-medium-4 .vw-post-box-title {
     margin-bottom: 5px;
@@ -2135,9 +2219,11 @@ button,
 .vw-post-style-medium-5.vw-has-review .vw-post-box-title {
     padding-bottom: 25px;
 }
+
 .vw-post-style-medium-5 .vw-post-box-thumbnail {
     margin: 0;
 }
+
 .vw-post-style-medium-5 .vw-post-box-title,
 .vw-post-style-medium-5 .vw-post-categories {
     position: absolute;
@@ -2145,17 +2231,19 @@ button,
     padding: 10px;
     margin: 0;
 }
+
 .vw-post-style-medium-5 .vw-post-categories {
     top: 0;
     padding-bottom: 30px;
 }
+
 .vw-post-style-medium-5 .vw-post-box-title {
     bottom: 0px;
     padding-top: 30px;
     font-size: 16px;
     color: #FFFFFF;
-    background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
-    background:         linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
+    background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.75) 0%, transparent 100%);
+    background:         linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, transparent 100%);
 }
 
 .vw-post-style-medium-6 {
@@ -2238,6 +2326,7 @@ button,
         border-bottom: 1px solid #EEEEEE;
     }
 }
+
 @media (min-width: 992px) {
     .vw-post-loop-mix-1 .vw-block-grid-item:nth-child(-n+2):after,
     .vw-post-loop-mix-2-col-3 .vw-block-grid-item:nth-child(-n+2):after {
@@ -2266,6 +2355,7 @@ button,
     margin-top: 0px;
     margin-bottom: 5px;
 }
+
 .vw-post-style-large .vw-post-box-meta {
     font-size: 10px;
     letter-spacing: 1px;
@@ -2274,12 +2364,15 @@ button,
     margin-bottom: 1.5em;
     border-bottom: 3px solid rgba(128, 128, 128, 0.15);
 }
+
 .vw-post-style-large .vw-post-box-thumbnail {
     margin-bottom: 15px;
 }
+
 .vw-post-style-large .vw-post-box-footer {
     padding: 0;
 }
+
 .vw-post-style-large .vw-post-box-read-more {
     color: #3E3E3E;
     font-weight: bold;
@@ -2288,19 +2381,23 @@ button,
        -moz-transition: all 0.2s ease-out;
             transition: all 0.2s ease-out;
 }
+
 .vw-post-style-large .vw-post-share-icons {
     float: right;
 }
+
 .vw-post-style-large .author + .vw-post-date:before {
     display: inline-block;
     content: "·";
     margin: 0 5px;
 }
+
 .vw-post-style-large + .vw-post-style-large {
     margin-top: 25px;
     padding-top: 30px;
     border-top: 1px solid #EEEEEE;
 }
+
 .vw-post-style-large .vw-post-box-excerpt {
     margin-bottom: 15px;
 }
@@ -2366,6 +2463,10 @@ button,
 
 /* -------------------------------------
  * POST STYLE : SLIDER SMALL */
+.vw-post-loop-slider {
+    /* empty */
+}
+
 .vw-post-loop-slide-list .vw-post-box + .vw-post-box {
     margin-top: 20px;
 }
@@ -2386,6 +2487,7 @@ button,
     display: inline-block;
     width: auto;
 }
+
 .vw-post-loop-slider-large-carousel .vw-post-meta a {
     color: #B0B0B0;
 }
@@ -2428,9 +2530,10 @@ button,
 .vw-post-style-slide-medium .vw-post-box-inner {
     padding: 25px 10px 15px 10px;
     background: rgba(0, 0, 0, 0.5);
-    background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
-    background:         linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+    background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.65) 0%, transparent 100%);
+    background:         linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, transparent 100%);
 }
+
 .vw-post-style-slide-small .vw-post-box-title,
 .vw-post-style-slide-medium .vw-post-box-title {
     text-align: center;
@@ -2445,9 +2548,11 @@ button,
     margin-bottom: 10px;
     font-size: 24px;
 }
+
 .vw-post-style-slide-medium .vw-post-meta a {
     color: #B0B0B0;
 }
+
 .vw-post-style-slide-medium .vw-post-meta,
 .vw-post-style-slide-medium .vw-post-categories {
     display: block;
@@ -2531,8 +2636,8 @@ button,
     bottom: 0;
     z-index: 1;
     box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.05);
-    background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0) 1%, rgba(0, 0, 0, 0) 99%, rgba(0, 0, 0, 0.08) 100%);
-    background:         linear-gradient(to top, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0) 1%, rgba(0, 0, 0, 0) 99%, rgba(0, 0, 0, 0.08) 100%);
+    background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.08) 0%, transparent 1%, transparent 99%, rgba(0, 0, 0, 0.08) 100%);
+    background:         linear-gradient(to top, rgba(0, 0, 0, 0.08) 0%, transparent 1%, transparent 99%, rgba(0, 0, 0, 0.08) 100%);
 }
 .vw-post-style-slide-large .vw-post-meta {
     padding-bottom: 10px;
@@ -2552,6 +2657,7 @@ button,
          -o-transform-style: preserve-3d;
             transform-style: preserve-3d;
 }
+
 .vw-enable-kenburns .vw-post-loop-slider-large .wp-post-image {
     -webkit-backface-visibility: visible;
             backface-visibility: visible;
@@ -2591,11 +2697,13 @@ button,
     -webkit-transition: none !important;
             transition: none !important;
 }
+
 .vw-enable-kenburns .vw-post-loop-slider-large .swiper-slide.resetanim .wp-post-image {
     -webkit-animation-name: none;
        -moz-animation-name: none;
             animation-name: none;
 }
+
 .vw-enable-kenburns .vw-post-loop-slider-large .vw-kenburn-active .wp-post-image {
     -webkit-animation-name: kenburnsreverse;
        -moz-animation-name: kenburnsreverse;
@@ -2604,6 +2712,7 @@ button,
        -moz-animation-play-state: running;
             animation-play-state: running;
 }
+
 .vw-enable-kenburns .vw-post-loop-slider-large .vw-kenburn-active .vw-post-box-inner {
     -webkit-transform: translate3d(0, 0, 0);
        -moz-transform: translate3d(0, 0, 0);
@@ -2611,6 +2720,7 @@ button,
          -o-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0);
 }
+
 .vw-enable-kenburns .vw-post-loop-slider-large .swiper-slide .wp-post-image,
 .vw-enable-kenburns .vw-post-loop-slider-large .swiper-slide.vw-kenburn-origin-1 .wp-post-image {
     -webkit-transform-origin: top left;
@@ -2619,6 +2729,7 @@ button,
          -o-transform-origin: top left;
             transform-origin: top left;
 }
+
 .vw-enable-kenburns .vw-post-loop-slider-large .swiper-slide.vw-kenburn-origin-2 .wp-post-image {
     -webkit-transform-origin: top right;
        -moz-transform-origin: top right;
@@ -2626,6 +2737,7 @@ button,
          -o-transform-origin: top right;
             transform-origin: top right;
 }
+
 .vw-enable-kenburns .vw-post-loop-slider-large .swiper-slide.vw-kenburn-origin-3 .wp-post-image {
     -webkit-transform-origin: bottom left;
        -moz-transform-origin: bottom left;
@@ -2637,20 +2749,34 @@ button,
 @-webkit-keyframes kenburns {
     0% {
         -webkit-transform: scale(1.2) translate3d(0, 0, 0);
+           -moz-transform: scale(1.2) translate3d(0, 0, 0);
+            -ms-transform: scale(1.2) translate3d(0, 0, 0);
+             -o-transform: scale(1.2) translate3d(0, 0, 0);
+                transform: scale(1.2) translate3d(0, 0, 0);
     }
-
     100% {
         -webkit-transform: scale(1) translate3d(0, 0, 0);
+           -moz-transform: scale(1) translate3d(0, 0, 0);
+            -ms-transform: scale(1) translate3d(0, 0, 0);
+             -o-transform: scale(1) translate3d(0, 0, 0);
+                transform: scale(1) translate3d(0, 0, 0);
     }
 }
 
 @-moz-keyframes kenburns {
     0% {
-        -moz-transform: scale(1.2) translate3d(0, 0, 0);
+        -webkit-transform: scale(1.2) translate3d(0, 0, 0);
+           -moz-transform: scale(1.2) translate3d(0, 0, 0);
+            -ms-transform: scale(1.2) translate3d(0, 0, 0);
+             -o-transform: scale(1.2) translate3d(0, 0, 0);
+                transform: scale(1.2) translate3d(0, 0, 0);
     }
-
     100% {
-        -moz-transform: scale(1) translate3d(0, 0, 0);
+        -webkit-transform: scale(1) translate3d(0, 0, 0);
+           -moz-transform: scale(1) translate3d(0, 0, 0);
+            -ms-transform: scale(1) translate3d(0, 0, 0);
+             -o-transform: scale(1) translate3d(0, 0, 0);
+                transform: scale(1) translate3d(0, 0, 0);
     }
 }
 
@@ -2662,7 +2788,6 @@ button,
              -o-transform: scale(1.2) translate3d(0, 0, 0);
                 transform: scale(1.2) translate3d(0, 0, 0);
     }
-
     100% {
         -webkit-transform: scale(1) translate3d(0, 0, 0);
            -moz-transform: scale(1) translate3d(0, 0, 0);
@@ -2675,20 +2800,34 @@ button,
 @-webkit-keyframes kenburnsreverse {
     0% {
         -webkit-transform: scale(1) translate3d(0, 0, 0);
+           -moz-transform: scale(1) translate3d(0, 0, 0);
+            -ms-transform: scale(1) translate3d(0, 0, 0);
+             -o-transform: scale(1) translate3d(0, 0, 0);
+                transform: scale(1) translate3d(0, 0, 0);
     }
-
     100% {
         -webkit-transform: scale(1.2) translate3d(0, 0, 0);
+           -moz-transform: scale(1.2) translate3d(0, 0, 0);
+            -ms-transform: scale(1.2) translate3d(0, 0, 0);
+             -o-transform: scale(1.2) translate3d(0, 0, 0);
+                transform: scale(1.2) translate3d(0, 0, 0);
     }
 }
 
 @-moz-keyframes kenburnsreverse {
     0% {
-        -moz-transform: scale(1) translate3d(0, 0, 0);
+        -webkit-transform: scale(1) translate3d(0, 0, 0);
+           -moz-transform: scale(1) translate3d(0, 0, 0);
+            -ms-transform: scale(1) translate3d(0, 0, 0);
+             -o-transform: scale(1) translate3d(0, 0, 0);
+                transform: scale(1) translate3d(0, 0, 0);
     }
-
     100% {
-        -moz-transform: scale(1.2) translate3d(0, 0, 0);
+        -webkit-transform: scale(1.2) translate3d(0, 0, 0);
+           -moz-transform: scale(1.2) translate3d(0, 0, 0);
+            -ms-transform: scale(1.2) translate3d(0, 0, 0);
+             -o-transform: scale(1.2) translate3d(0, 0, 0);
+                transform: scale(1.2) translate3d(0, 0, 0);
     }
 }
 
@@ -2700,7 +2839,6 @@ button,
              -o-transform: scale(1) translate3d(0, 0, 0);
                 transform: scale(1) translate3d(0, 0, 0);
     }
-
     100% {
         -webkit-transform: scale(1.2) translate3d(0, 0, 0);
            -moz-transform: scale(1.2) translate3d(0, 0, 0);
@@ -2712,12 +2850,14 @@ button,
 
 .vw-post-style-slide-large-carousel .vw-post-box-inner {
     text-align: center;
-    background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
-    background:         linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%);
+    background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.65) 0%, transparent 100%);
+    background:         linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, transparent 100%);
 }
+
 .vw-post-style-slide-large-carousel .vw-post-box-title {
     margin-top: 5px;
 }
+
 .vw-post-style-slide-large-carousel .vw-post-meta {
     padding-bottom: 0;
 }
@@ -2729,12 +2869,15 @@ button,
     position: relative;
     top: -1em;
 }
+
 .vw-post-style-slide-carousel .vw-post-box-title {
     font-size: 32px;
 }
+
 .vw-post-style-slide-carousel .vw-post-box-inner {
     padding: 0;
 }
+
 .vw-post-style-slide-carousel .vw-post-box-inner-2 {
     position: relative;
     background: rgba(0, 0, 0, 0.65);
@@ -2755,22 +2898,27 @@ button,
        -moz-transition: all 0.2s ease-out;
             transition: all 0.2s ease-out;
 }
+
 .vw-post-share-icons .vw-icon {
     font-size: 10px;
     color: inherit;
 }
+
 .vw-post-share-icons .vw-post-shares-social-facebook:hover {
     background-color: #3B5998;
     color: #FFFFFF;
 }
+
 .vw-post-share-icons .vw-post-shares-social-twitter:hover {
     background-color: #00ACED;
     color: #FFFFFF;
 }
+
 .vw-post-share-icons .vw-post-shares-social-gplus:hover {
     background-color: #DD4B39;
     color: #FFFFFF;
 }
+
 .vw-post-share-icons .vw-post-shares-social-pinterest:hover {
     background-color: #CB2027;
     color: #FFFFFF;
@@ -2890,6 +3038,7 @@ button,
     padding: 0;
     list-style: none;
 }
+
 .vw-menu .menu-link {
     display: block;
     padding: 4px 6px;
@@ -2899,13 +3048,16 @@ button,
        -moz-transition: all 0.2s ease-out;
             transition: all 0.2s ease-out;
 }
+
 .vw-menu .main-menu-item,
 .vw-menu .main-menu-link {
     display: inline-block;
 }
+
 .vw-menu .sub-menu {
     min-width: 15em;
 }
+
 .vw-menu .menu-item > .sub-menu,
 .vw-menu .menu-item > .sub-menu-wrapper {
     display: none;
@@ -2915,18 +3067,20 @@ button,
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     -webkit-backface-visibility: hidden;
 }
+
 .vw-menu .menu-item-depth-1 > .sub-menu,
 .vw-menu .menu-item-depth-1 > .sub-menu-wrapper {
     right: -100%;
     top: 0;
 }
+
 .vw-menu .sub-menu-item {
     position: relative;
 }
 .vw-menu .sub-menu-item.menu-item-has-children > .sub-menu-link:after {
     content: '';
     display: inline-block;
-    content: '\e879';
+    content: "";
     font-family: "entypo";
     font-style: normal;
     font-weight: normal;
@@ -2934,20 +3088,22 @@ button,
     display: inline-block;
     text-decoration: inherit;
     width: 1em;
-    margin-right: 0.2em;
+    margin-right: .2em;
     text-align: center;
     font-variant: normal;
     text-transform: none;
     line-height: 1em;
-    margin-left: 0.2em;
+    margin-left: .2em;
     position: absolute;
     right: 5px;
     top: 50%;
     margin-top: -7px;
 }
+
 .vw-menu .sub-menu-item + .sub-menu-item {
     border-top: 1px solid #EEEEEE;
 }
+
 .vw-menu .sub-menu-link {
     padding: 8px 15px;
 }
@@ -2986,9 +3142,11 @@ button,
     width: 75%;
     float: left;
 }
+
 .vw-mega-menu-type-category .sub-menu.menu-depth-1 .sub-menu-wrapper {
     width: 100%;
 }
+
 .vw-mega-menu-type-category .sub-menu.menu-depth-2 {
     float: none;
     padding-bottom: 0;
@@ -3077,6 +3235,7 @@ button,
        -moz-transition: all 0.2s ease-out;
             transition: all 0.2s ease-out;
 }
+
 .vw-menu-location-top .menu-item-depth-0:hover:after,
 .vw-menu-location-top .menu-item-depth-0.current-post-ancestor:after,
 .vw-menu-location-top .menu-item-depth-0.current-menu-parent:after,
@@ -3084,12 +3243,15 @@ button,
 .vw-menu-location-top .menu-item-depth-0.current-menu-item:after {
     opacity: 1;
 }
+
 .vw-menu-location-top .menu-item-depth-0 > .sub-menu {
     margin-top: 3px;
 }
+
 .vw-menu-location-top .main-menu-link {
     padding: 8px 6px;
 }
+
 .vw-menu-location-top .sub-menu-item.menu-item-has-children > .sub-menu-link:after {
     margin-top: -5px;
 }
@@ -3108,6 +3270,7 @@ button,
     padding: 10px 12px;
     position: relative;
 }
+
 .vw-menu-location-main .main-menu-item + .main-menu-item {
     margin-left: 4px;
 }
@@ -3122,11 +3285,13 @@ button,
     background-color: #FFFFFF;
     opacity: 0.5;
 }
+
 @media (max-width: 767px) {
     .vw-menu-location-main {
         display: none;
     }
 }
+
 @media (min-width: 768px) and (max-width: 991px) {
     .vw-menu-location-main .sub-menu {
         min-width: 10em;
@@ -3173,6 +3338,10 @@ button,
 }
 
 /* Yoast Breadcrumb */
+.vw-breadcrumb-yoast {
+    /* empty */
+}
+
 /* -----------------------------------------------------------------------------
  * $BREAKING NEWS
  * -------------------------------------------------------------------------- */
@@ -3187,8 +3356,12 @@ button,
     right: 0;
     z-index: 1;
     height: 20px;
-    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.02) 50%, rgba(0, 0, 0, 0) 80%);
-    background:         linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.02) 50%, rgba(0, 0, 0, 0) 80%);
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.02) 50%, transparent 80%);
+    background:         linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.02) 50%, transparent 80%);
+}
+
+.vw-breaking-news {
+    /* empty */
 }
 
 /* -----------------------------------------------------------------------------
@@ -3218,6 +3391,7 @@ button,
     float: left;
     margin-right: 15px;
 }
+
 .comment .author,
 .comment .text {
     margin-left: 70px;
@@ -3229,6 +3403,7 @@ button,
     color: #AAAAAA;
     text-transform: uppercase;
 }
+
 .comment .author-name,
 .pingback .author-name {
     margin-top: 0.2em;
@@ -3239,6 +3414,7 @@ button,
 .pingback .author-name a {
     color: inherit;
 }
+
 .comment .text,
 .pingback .text {
     margin-top: 20px;
@@ -3406,6 +3582,7 @@ button,
 .vw-short-code-site-social-icons .vw-site-social-profile-icon + .vw-site-social-profile-icon {
     margin-left: 0;
 }
+
 .vw-top-bar .vw-site-social-profile-icon:hover,
 .vw-bottom-bar .vw-site-social-profile-icon:hover,
 .vw-short-code-site-social-icons .vw-site-social-profile-icon:hover {
@@ -3423,6 +3600,7 @@ button,
 .widget + .widget {
     margin-top: 30px;
 }
+
 .widget select {
     max-width: 100%;
 }
@@ -3551,6 +3729,10 @@ button,
     text-align: right;
 }
 
+#wp-calendar tfoot #prev {
+    /* empty */
+}
+
 /* -----------------------------------------------------------------------------
  * $WIDGET: TAG CLOUD
  * -------------------------------------------------------------------------- */
@@ -3618,6 +3800,7 @@ button,
 .vw-sidebar-position-left-content-mini .vw-page-sidebar-right .widget_vw_widget_author .vw-widget-author-avatar {
     padding-bottom: 15px;
 }
+
 .vw-sidebar-position-content-mini-right .vw-page-sidebar-left .widget_vw_widget_author .vw-widget-author-name,
 .vw-sidebar-position-mini-content-right .vw-page-sidebar-left .widget_vw_widget_author .vw-widget-author-name,
 .vw-sidebar-position-left-content-mini .vw-page-sidebar-right .widget_vw_widget_author .vw-widget-author-name {
@@ -3632,15 +3815,18 @@ button,
     list-style: none;
     padding: 0;
 }
+
 .widget_vw_widget_author_list li {
     display: inline-block;
     float: left;
     margin-right: 9px;
     margin-bottom: 10px;
 }
+
 .widget_vw_widget_author_list a {
     display: inline-block;
 }
+
 .widget_vw_widget_author_list .avatar {
     max-width: 80px;
 }
@@ -3662,6 +3848,7 @@ button,
     padding-top: 20px;
     border-top: 1px solid #F3F3F3;
 }
+
 .widget_vw_widget_categories .vw-widget-category-title {
     position: relative;
     display: block;
@@ -3679,6 +3866,7 @@ button,
 .widget_vw_widget_categories .vw-widget-category-title:hover .vw-widget-category-post-count {
     color: #FFFFFF;
 }
+
 .widget_vw_widget_categories .vw-widget-category-post-count {
     display: inline-block;
     padding: 0 4px;
@@ -3693,6 +3881,7 @@ button,
        -moz-transition: all 0.2s ease-out;
             transition: all 0.2s ease-out;
 }
+
 .widget_vw_widget_categories .vw-widget-category-description {
     font-size: 12px;
     font-style: italic;
@@ -3707,6 +3896,7 @@ button,
 .vw-sidebar-position-left-content-mini .vw-page-sidebar-right .widget_vw_widget_categories .vw-widget-category-title {
     font-size: 18px;
 }
+
 .vw-sidebar-position-content-mini-right .vw-page-sidebar-left .vw-widget-category-post-count,
 .vw-sidebar-position-mini-content-right .vw-page-sidebar-left .vw-widget-category-post-count,
 .vw-sidebar-position-left-content-mini .vw-page-sidebar-right .vw-widget-category-post-count {
@@ -3729,8 +3919,8 @@ button,
     -webkit-transition: all 0.2s ease-out;
        -moz-transition: all 0.2s ease-out;
             transition: all 0.2s ease-out;
-    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
-    background-image:         linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5), transparent);
+    background-image:         linear-gradient(to right, rgba(0, 0, 0, 0.5), transparent);
 }
 .vw-custom-banner-inner:hover {
     background-color: rgba(0, 0, 0, 0.7);
@@ -3816,6 +4006,7 @@ button,
     margin-right: 1.5em;
     width: 100px;
 }
+
 .vw-loggedin-form .vw-loggedin-form-links {
     padding-left: 20px;
     font-size: 0.9em;
@@ -3844,14 +4035,17 @@ button,
     margin-top: 10px;
     background-color: rgba(128, 128, 128, 0.05);
 }
+
 .widget_product_search .screen-reader-text,
 .widget_search .screen-reader-text {
     display: none;
 }
+
 .widget_product_search label,
 .widget_search label {
     display: block;
 }
+
 .widget_product_search #searchsubmit,
 .widget_product_search input[type=submit],
 .widget_product_search .search-submit,
@@ -3863,6 +4057,7 @@ button,
     top: 0;
     margin-right: 0;
 }
+
 .widget_product_search #s,
 .widget_product_search .search-field,
 .widget_search #s,
@@ -3925,9 +4120,11 @@ body.search .vw-page-content > .widget_search {
     background-color: #55ACEE;
     color: #FFFFFF;
 }
+
 .vw-social-counter-twitter:hover .vw-social-counter-icon {
-    background-color: #88C4F3;
+    background-color: #88C5F3;
 }
+
 .vw-social-counter-twitter:hover .vw-social-counter-count {
     color: #55ACEE;
 }
@@ -3936,9 +4133,11 @@ body.search .vw-page-content > .widget_search {
     background-color: #3D62B3;
     color: #FFFFFF;
 }
+
 .vw-social-counter-facebook:hover .vw-social-counter-icon {
-    background-color: #7791C9;
+    background-color: #7791CA;
 }
+
 .vw-social-counter-facebook:hover .vw-social-counter-count {
     color: #3D62B3;
 }
@@ -3947,9 +4146,11 @@ body.search .vw-page-content > .widget_search {
     background-color: #2D6B94;
     color: #FFFFFF;
 }
+
 .vw-social-counter-instagram:hover .vw-social-counter-icon {
     background-color: #6C97B4;
 }
+
 .vw-social-counter-instagram:hover .vw-social-counter-count {
     color: #2D6B94;
 }
@@ -3958,9 +4159,11 @@ body.search .vw-page-content > .widget_search {
     background-color: #CC181E;
     color: #FFFFFF;
 }
+
 .vw-social-counter-youtube:hover .vw-social-counter-icon {
-    background-color: #DB5D61;
+    background-color: #DB5D62;
 }
+
 .vw-social-counter-youtube:hover .vw-social-counter-count {
     color: #CC181E;
 }
@@ -3969,9 +4172,11 @@ body.search .vw-page-content > .widget_search {
     background-color: #D34836;
     color: #FFFFFF;
 }
+
 .vw-social-counter-googleplus:hover .vw-social-counter-icon {
-    background-color: #E07E72;
+    background-color: #E07F72;
 }
+
 .vw-social-counter-googleplus:hover .vw-social-counter-count {
     color: #D34836;
 }
@@ -3980,9 +4185,11 @@ body.search .vw-page-content > .widget_search {
     background-color: #1BB6EC;
     color: #FFFFFF;
 }
+
 .vw-social-counter-vimeo:hover .vw-social-counter-icon {
-    background-color: #5FCBF1;
+    background-color: #5FCCF2;
 }
+
 .vw-social-counter-vimeo:hover .vw-social-counter-count {
     color: #1BB6EC;
 }
@@ -3991,9 +4198,11 @@ body.search .vw-page-content > .widget_search {
     background-color: #FE4600;
     color: #FFFFFF;
 }
+
 .vw-social-counter-soundcloud:hover .vw-social-counter-icon {
-    background-color: #FE7D4C;
+    background-color: #FE7E4D;
 }
+
 .vw-social-counter-soundcloud:hover .vw-social-counter-count {
     color: #FE4600;
 }
@@ -4002,9 +4211,11 @@ body.search .vw-page-content > .widget_search {
     background-color: #CB2028;
     color: #FFFFFF;
 }
+
 .vw-social-counter-pinterest:hover .vw-social-counter-icon {
-    background-color: #DA6268;
+    background-color: #DB6369;
 }
+
 .vw-social-counter-pinterest:hover .vw-social-counter-count {
     color: #CB2028;
 }
@@ -4013,9 +4224,11 @@ body.search .vw-page-content > .widget_search {
     background-color: #44678D;
     color: #FFFFFF;
 }
+
 .vw-social-counter-vk:hover .vw-social-counter-icon {
-    background-color: #7C94AF;
+    background-color: #7C95AF;
 }
+
 .vw-social-counter-vk:hover .vw-social-counter-count {
     color: #44678D;
 }
@@ -4024,9 +4237,11 @@ body.search .vw-page-content > .widget_search {
     background-color: #E14D86;
     color: #FFFFFF;
 }
+
 .vw-social-counter-dribbble:hover .vw-social-counter-icon {
     background-color: #EA82AA;
 }
+
 .vw-social-counter-dribbble:hover .vw-social-counter-count {
     color: #E14D86;
 }
@@ -4058,9 +4273,11 @@ body.search .vw-page-content > .widget_search {
     display: table-cell;
     text-align: center;
 }
+
 .vw-fixed-tab.vw-fixed-tab-3-cols > ul li {
     width: 33.333333%;
 }
+
 .vw-fixed-tab .vw-fixed-tab-title {
     display: block;
     padding: 5px 0;
@@ -4071,6 +4288,7 @@ body.search .vw-page-content > .widget_search {
        -moz-transition: all 0.2s ease-out;
             transition: all 0.2s ease-out;
 }
+
 .vw-fixed-tab .vw-fixed-tab-content {
     display: none;
 }
@@ -4100,7 +4318,7 @@ body.search .vw-page-content > .widget_search {
     margin-top: 30px;
 }
 .vw-accordion .ui-icon:before {
-    content: '\e875';
+    content: "";
     font-family: "entypo";
     font-style: normal;
     font-weight: normal;
@@ -4108,12 +4326,12 @@ body.search .vw-page-content > .widget_search {
     display: inline-block;
     text-decoration: inherit;
     width: 1em;
-    margin-right: 0.2em;
+    margin-right: .2em;
     text-align: center;
     font-variant: normal;
     text-transform: none;
     line-height: 1em;
-    margin-left: 0.2em;
+    margin-left: .2em;
     font-size: 18px;
     color: #FFFFFF;
 }
@@ -4311,9 +4529,11 @@ body.search .vw-page-content > .widget_search {
 mark.vw-mark-style-yellow {
     background-color: #FFCC00;
 }
+
 mark.vw-mark-style-grey {
     background-color: #CCCCCC;
 }
+
 mark.vw-mark-style-dark {
     background-color: #000000;
     color: #FFFFFF;
@@ -4410,6 +4630,7 @@ mark.vw-mark-style-dark {
 .vw-tabs.vw-style-top-tab .vw-tab-titles {
     border-bottom: 3px solid #464646;
 }
+
 .vw-tabs.vw-style-top-tab .vw-tab-title {
     border: 1px solid transparent;
     padding: 10px 15px;
@@ -4424,6 +4645,7 @@ mark.vw-mark-style-dark {
     background-color: #C5AC57;
     color: #FFFFFF;
 }
+
 @media (max-width: 991px) {
     .vw-tabs.vw-style-top-tab .vw-tab-title {
         float: none;
@@ -4562,6 +4784,7 @@ mark.vw-mark-style-dark {
 .vwspc-section-post-slider-section:first-child {
     margin-top: -1px;
 }
+
 .vwspc-section-post-slider-section + .vwspc-section-post-slider-section {
     margin-top: 1%;
 }
@@ -4588,9 +4811,6 @@ mark.vw-mark-style-dark {
  * PAGE SECTION: POST SLIDER */
 .vw-menu-main-wrapper {
     position: relative;
-}
-
-@media (min-width: 768px) {
 }
 
 /* -------------------------------------
@@ -4793,6 +5013,7 @@ button.mfp-arrow {
     -webkit-box-shadow: none;
             box-shadow: none;
 }
+
 button::-moz-focus-inner {
     padding: 0;
     border: 0;
@@ -4856,7 +5077,7 @@ button::-moz-focus-inner {
     padding: 0;
     width: 90px;
     height: 110px;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
 }
 .mfp-arrow:active {
     margin-top: -54px;
@@ -5090,6 +5311,7 @@ img.mfp-img {
 .mfp-ie7 .mfp-img {
     padding: 0;
 }
+
 .mfp-ie7 .mfp-bottom-bar {
     width: 600px;
     left: 50%;
@@ -5097,12 +5319,15 @@ img.mfp-img {
     margin-top: 5px;
     padding-bottom: 5px;
 }
+
 .mfp-ie7 .mfp-container {
     padding: 0;
 }
+
 .mfp-ie7 .mfp-content {
     padding-top: 44px;
 }
+
 .mfp-ie7 .mfp-close {
     top: 0;
     right: 0;
@@ -5433,9 +5658,9 @@ img.mfp-img {
     -webkit-transform: translate3d(0, -50px, 0);
         -ms-transform: translate3d(0, -50px, 0);
             transform: translate3d(0, -50px, 0);
-    -webkit-transition: -webkit-transform 0.5s ease-out;
-        -ms-transition: -webkit-transform 0.5s ease-out;
-            transition:         transform 0.5s ease-out;
+    -webkit-transition: -webkit-transform .5s ease-out;
+        -ms-transition: -webkit-transform .5s ease-out;
+            transition:         transform .5s ease-out;
 }
 
 .pace.pace-active {
@@ -5556,14 +5781,16 @@ img.mfp-img {
 .vw-review-score-points .vw-review-item {
     color: #FFFFFF;
 }
+
 .vw-review-score-percentage .vw-review-item-score,
 .vw-review-score-points .vw-review-item-score {
     position: absolute;
     bottom: 5px;
     height: 10px;
-    background-image: url(images/stripe-white.png );
+    background-image: url("images/stripe-white.png");
     background-repeat: repeat;
 }
+
 .vw-review-score-percentage .vw-review-total-score,
 .vw-review-score-points .vw-review-total-score {
     font-size: 44px;
@@ -5581,6 +5808,7 @@ img.mfp-img {
 .vw-review-score-star .vw-review-score-number img + img {
     margin-left: 3px;
 }
+
 .vw-review-score-star .vw-review-item-score .vw-review-score-number {
     margin-top: 3px;
 }
@@ -5661,15 +5889,18 @@ img.mfp-img {
     display: block;
     width: auto;
 }
+
 .vw-review-position-top-floating .vw-review-total-score {
     line-height: normal;
 }
+
 .vw-review-position-top-floating .vw-review-pros-cons,
 .vw-review-position-top-floating .vw-review-pros,
 .vw-review-position-top-floating .vw-review-cons {
     display: block;
     width: auto;
 }
+
 .vw-review-position-top-floating .vw-review-pros,
 .vw-review-position-top-floating .vw-review-cons {
     padding-left: 0;
@@ -5711,6 +5942,7 @@ img.mfp-img {
 #vw_review_editor .field-review-score {
     display: none;
 }
+
 #vw_review_editor .review-scores {
     margin: 15px 0;
     background-color: #FFFFFF;
@@ -5778,6 +6010,7 @@ img.mfp-img {
         display: none !important;
     }
 }
+
 .vw-sticky-wrapper.is-sticky .vw-sticky {
     right: 0;
     left: 0;
@@ -6236,51 +6469,51 @@ html.mm-right.mm-opening .vw-sticky-wrapper.is-sticky .vw-sticky {
     z-index: 10;
 }
 .swiper-container-3d .swiper-slide-shadow-left {
-    background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+    background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.5)), to(transparent));
     /* Safari 4+, Chrome */
-    background-image: -webkit-linear-gradient(right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image: -webkit-linear-gradient(right, rgba(0, 0, 0, 0.5), transparent);
     /* Chrome 10+, Safari 5.1+, iOS 5+ */
-    background-image:    -moz-linear-gradient(right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image:    -moz-linear-gradient(right, rgba(0, 0, 0, 0.5), transparent);
     /* Firefox 3.6-15 */
-    background-image:      -o-linear-gradient(right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image:      -o-linear-gradient(right, rgba(0, 0, 0, 0.5), transparent);
     /* Opera 11.10-12.00 */
-    background-image: linear, to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0);
+    background-image: linear, to left, rgba(0, 0, 0, 0.5), transparent;
     /* Firefox 16+, IE10, Opera 12.50+ */
 }
 .swiper-container-3d .swiper-slide-shadow-right {
-    background-image: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+    background-image: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, 0.5)), to(transparent));
     /* Safari 4+, Chrome */
-    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5), transparent);
     /* Chrome 10+, Safari 5.1+, iOS 5+ */
-    background-image:    -moz-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image:    -moz-linear-gradient(left, rgba(0, 0, 0, 0.5), transparent);
     /* Firefox 3.6-15 */
-    background-image:      -o-linear-gradient(left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image:      -o-linear-gradient(left, rgba(0, 0, 0, 0.5), transparent);
     /* Opera 11.10-12.00 */
-    background-image: linear, to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0);
+    background-image: linear, to right, rgba(0, 0, 0, 0.5), transparent;
     /* Firefox 16+, IE10, Opera 12.50+ */
 }
 .swiper-container-3d .swiper-slide-shadow-top {
-    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(transparent));
     /* Safari 4+, Chrome */
-    background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5), transparent);
     /* Chrome 10+, Safari 5.1+, iOS 5+ */
-    background-image:    -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image:    -moz-linear-gradient(bottom, rgba(0, 0, 0, 0.5), transparent);
     /* Firefox 3.6-15 */
-    background-image:      -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image:      -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5), transparent);
     /* Opera 11.10-12.00 */
-    background-image: linear, to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0);
+    background-image: linear, to top, rgba(0, 0, 0, 0.5), transparent;
     /* Firefox 16+, IE10, Opera 12.50+ */
 }
 .swiper-container-3d .swiper-slide-shadow-bottom {
-    background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0)));
+    background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.5)), to(transparent));
     /* Safari 4+, Chrome */
-    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5), transparent);
     /* Chrome 10+, Safari 5.1+, iOS 5+ */
-    background-image:    -moz-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image:    -moz-linear-gradient(top, rgba(0, 0, 0, 0.5), transparent);
     /* Firefox 3.6-15 */
-    background-image:      -o-linear-gradient(top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+    background-image:      -o-linear-gradient(top, rgba(0, 0, 0, 0.5), transparent);
     /* Opera 11.10-12.00 */
-    background-image: linear, to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0);
+    background-image: linear, to bottom, rgba(0, 0, 0, 0.5), transparent;
     /* Firefox 16+, IE10, Opera 12.50+ */
 }
 
@@ -6298,9 +6531,11 @@ html.mm-right.mm-opening .vw-sticky-wrapper.is-sticky .vw-sticky {
          -o-transition-timing-function: ease-out;
             transition-timing-function: ease-out;
 }
+
 .swiper-container-fade .swiper-slide {
     pointer-events: none;
 }
+
 .swiper-container-fade .swiper-slide-active {
     pointer-events: auto;
 }
@@ -6447,12 +6682,12 @@ html.mm-right.mm-opening .vw-sticky-wrapper.is-sticky .vw-sticky {
 }
 
 .vw-swiper-arrow-left {
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAgVBMVEVMaXH///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+q+H6aAAAAKnRSTlMADBfZBf4SAQj79h3x4WTLO4OdLcNZUDOQipZ8sKW2uyPS7HWrbklD5ii40kXNAAABe0lEQVR4Xu2ZYbZCUBhF9aokJAghiQpn/gN8rTuJvd5b357A3n9w7+H9OwzDMAzDMAzD8A+wv+lYfy3lpD+VUg+klW4+6J+kmvS/pYb0n6UM9t9J/3Wv1w70l4F62P84gv5PoIL0zycVG9B/OSlB/ZGeB9Bfff0/oD8ftSX966g4BP3Dongg/bEW0h/GGlfQ/7PVmLP+qAL9h6eiC+lPdCL9m69/Jv2Fgg/oPz4UlKS/1/4K+ncd7H9JZ9Dv36U36c+kifQ3UgsPECnpv8EDQApfwFsp8/kHkH4FsQWdK6A/Q2zBwxXAR5GSLUjcYQg+js5swdMdiNkrCV8QVWhBGNMFQ6wxZwsWLStasI5unGDnqZgtqCLFIVzgJjp0pKUL5pObadmhPmELykDJhi4o2ILr3v2uATmLL1DPFrylbocWTNKLLWjdj1uS1N2c4e2iYQtqqWYLMumGF6SeB08oLT5gTGxBL+XwgFH4HlsweH8LwzAMwzAMwzAM4xc3sySaf5sEegAAAABJRU5ErkJggg== );
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAgVBMVEVMaXH///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+q+H6aAAAAKnRSTlMADBfZBf4SAQj79h3x4WTLO4OdLcNZUDOQipZ8sKW2uyPS7HWrbklD5ii40kXNAAABe0lEQVR4Xu2ZYbZCUBhF9aokJAghiQpn/gN8rTuJvd5b357A3n9w7+H9OwzDMAzDMAzD8A+wv+lYfy3lpD+VUg+klW4+6J+kmvS/pYb0n6UM9t9J/3Wv1w70l4F62P84gv5PoIL0zycVG9B/OSlB/ZGeB9Bfff0/oD8ftSX966g4BP3Dongg/bEW0h/GGlfQ/7PVmLP+qAL9h6eiC+lPdCL9m69/Jv2Fgg/oPz4UlKS/1/4K+ncd7H9JZ9Dv36U36c+kifQ3UgsPECnpv8EDQApfwFsp8/kHkH4FsQWdK6A/Q2zBwxXAR5GSLUjcYQg+js5swdMdiNkrCV8QVWhBGNMFQ6wxZwsWLStasI5unGDnqZgtqCLFIVzgJjp0pKUL5pObadmhPmELykDJhi4o2ILr3v2uATmLL1DPFrylbocWTNKLLWjdj1uS1N2c4e2iYQtqqWYLMumGF6SeB08oLT5gTGxBL+XwgFH4HlsweH8LwzAMwzAMwzAM4xc3sySaf5sEegAAAABJRU5ErkJggg==");
 }
 
 .vw-swiper-arrow-right {
     right: 0;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAgVBMVEVMaXH///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+q+H6aAAAAKnRSTlMADBfZBf4SAQj79h3x4WTLO4OdLcNZUDOQfIqWsKW2uyPS7HWrbklD5ijrbdJGAAABbklEQVR4Xu2aWZKCQBQE2WQTRAQVEFlVoe5/wDlGxhgvL1D5A3RV4/wrDMMwDMMwDMMII1igf7AGldSwBqVUogZRJ7UOSdRIK2vwkN6swUU6sQZP2iB46XBlDQYlN9QgHnGDWskHNXBrpV/WoFB6Rg3CWRlr4M3K7qyBr6VCDY65lh01mHJtE2uwKWcN9kX5ETWoFvkeanDPaINzpjlkDVIVrME3VeGiBp9ENWtwSzTGqMH1oAE36APU4CS9WIO39GSr8ypdWINWeuDzQYPPB11El/cSL+8t/zDSryM2vw/oTxKbP5L5N/hY8klUuPDBMGSPxjOc73toPaLz2YpaLWxJ3zd2ppg2dqiZcnaqOubsWOf5dD472IYzO1mHBTvauwV7beHWbH486nBl83Ui8wc2P+ilN3t1qRW+vG3hBlzCG0AXsb8wNGR+B29hJZzfwgPICg8QlTSQ+U5Uj7GDMsXO72EYhmEYhmEYhmH8AamNJJqtbZHzAAAAAElFTkSuQmCC );
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAgVBMVEVMaXH///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+q+H6aAAAAKnRSTlMADBfZBf4SAQj79h3x4WTLO4OdLcNZUDOQfIqWsKW2uyPS7HWrbklD5ijrbdJGAAABbklEQVR4Xu2aWZKCQBQE2WQTRAQVEFlVoe5/wDlGxhgvL1D5A3RV4/wrDMMwDMMwDMMII1igf7AGldSwBqVUogZRJ7UOSdRIK2vwkN6swUU6sQZP2iB46XBlDQYlN9QgHnGDWskHNXBrpV/WoFB6Rg3CWRlr4M3K7qyBr6VCDY65lh01mHJtE2uwKWcN9kX5ETWoFvkeanDPaINzpjlkDVIVrME3VeGiBp9ENWtwSzTGqMH1oAE36APU4CS9WIO39GSr8ypdWINWeuDzQYPPB11El/cSL+8t/zDSryM2vw/oTxKbP5L5N/hY8klUuPDBMGSPxjOc73toPaLz2YpaLWxJ3zd2ppg2dqiZcnaqOubsWOf5dD472IYzO1mHBTvauwV7beHWbH486nBl83Ui8wc2P+ilN3t1qRW+vG3hBlzCG0AXsb8wNGR+B29hJZzfwgPICg8QlTSQ+U5Uj7GDMsXO72EYhmEYhmEYhmH8AamNJJqtbZHzAAAAAElFTkSuQmCC");
 }
 
 /* -----------------------------------------------------------------------------
@@ -6492,6 +6727,7 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
     content: " ";
     display: table;
 }
+
 .qtrans_widget_end:after {
     clear: both;
 }
@@ -6594,24 +6830,24 @@ ul.qtrans_language_chooser .qtrans_flag_and_text {
 
 .vw-preloader-bg {
     /* preloader */
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSJyZ2IoMTI4LDEyOCwxMjgpIj4KICA8cGF0aCBvcGFjaXR5PSIuMjUiIGQ9Ik0xNiAwIEExNiAxNiAwIDAgMCAxNiAzMiBBMTYgMTYgMCAwIDAgMTYgMCBNMTYgNCBBMTIgMTIgMCAwIDEgMTYgMjggQTEyIDEyIDAgMCAxIDE2IDQiLz4KICA8cGF0aCBkPSJNMTYgMCBBMTYgMTYgMCAwIDEgMzIgMTYgTDI4IDE2IEExMiAxMiAwIDAgMCAxNiA0eiI+CiAgICA8YW5pbWF0ZVRyYW5zZm9ybSBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIHR5cGU9InJvdGF0ZSIgZnJvbT0iMCAxNiAxNiIgdG89IjM2MCAxNiAxNiIgZHVyPSIwLjhzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgLz4KICA8L3BhdGg+Cjwvc3ZnPgo= ) !important;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSJyZ2IoMTI4LDEyOCwxMjgpIj4KICA8cGF0aCBvcGFjaXR5PSIuMjUiIGQ9Ik0xNiAwIEExNiAxNiAwIDAgMCAxNiAzMiBBMTYgMTYgMCAwIDAgMTYgMCBNMTYgNCBBMTIgMTIgMCAwIDEgMTYgMjggQTEyIDEyIDAgMCAxIDE2IDQiLz4KICA8cGF0aCBkPSJNMTYgMCBBMTYgMTYgMCAwIDEgMzIgMTYgTDI4IDE2IEExMiAxMiAwIDAgMCAxNiA0eiI+CiAgICA8YW5pbWF0ZVRyYW5zZm9ybSBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIHR5cGU9InJvdGF0ZSIgZnJvbT0iMCAxNiAxNiIgdG89IjM2MCAxNiAxNiIgZHVyPSIwLjhzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgLz4KICA8L3BhdGg+Cjwvc3ZnPgo=") !important;
     background-size: 35px 35px;
 }
 .no-svg .vw-preloader-bg {
-    background-image: url(data:image/gif;base64,R0lGODlhRwBHAPZOAICAgIGBgYKCgoODg4WFhYaGhomJiYuLi42NjY6Ojo+Pj5CQkJKSkpSUlJWVlZiYmJmZmZubm56enp+fn6GhoaOjo6Wlpaampqqqqqurq6ysrK6urq+vr7CwsLS0tLW1tbm5ubq6ury8vL6+vsLCwsbGxsnJyc7OztPT09bW1tjY2NnZ2dvb297e3t/f3+Dg4OHh4eLi4uPj4+Tk5OXl5ebm5ufn5+jo6Onp6erq6uvr6+zs7O3t7e7u7u/v7/Dw8PHx8fLy8vPz8/T09PX19fb29vf39/j4+Pn5+fr6+vv7+/z8/P39/f7+/v///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAABHAEcAAAf+gE6Cg4SFhodDQjo0NC8vIQUHCQ4XISc7h5mam5yGQzsvLqKiji4fAKipqAkbKEmdsLGFSaCkoaOjp6q7AAcdNLLBmkmNpbjHprzKAA8rws9OSTq3yNW6y7wVOtCxO9XfudjYG0PcwzTg6dfivAkv5oZC1OnW7OIi8IO19N+PBfbj8oGal+6FDiGvCg1xYWJDAoCpLiR8poMfKUyydohgAFHCRFkV+en4KOxFBYAShHkr+KJcPicrHrLDIGsIQWQYXw4KYY9ELEc3SbnUSWjFAXbvOKHrR4MkUUFCOGJL4JSQkH4ugD3NNOSBuA/DgrpwVHWroCQOxCU1FLLai7L+ZqHKVPYAEbi3cZX+W+asUFuceTuJwFaXUJK7gWFJVebCar+hiTW5wEZzkFitkTmdVFYg4eFvkDNneoHthKCVyNaK3uRV2QVBS5EJWd3JxLID0cDBpS1oCDYaNt3y7tSaVwl5qXMOz8RT2Ya/o17MXq4pxTIJsY/tXr5jmbtv1DktKyA2/Ka5u4zhUm2+EHpV6qO3Z74BQ/0N94HOYz8fttv4pPRnSFAAjiJgIQUa9M12wx12k4LVhDbfQtXogNoxyvV3VTU7UIgMZgJmh8tsYjFIW4lOiDjKdBr+d9pYHx7YSIW9JSjhcp9VwyKBIIYHnXz6iHUjbUkU6MI2gxTE+U2Pw6ETVGg/rhjehjTOcteQiQUH2iEqAslbl6IwaRk4YgYG5lhwXRijaGe6kKEhZzqSWZv8GaLklXkRQw+Wjt3lpllU9vOmJlGu15ROQ7QpCpIgsZQVn5wMMY1YozAajKKkACeMIqTQcyg0hX5j4ZBJ0BJqNWVmZFFqjLRqJD2WmuPhqrTSw+JLRb5aq0WfbrXPrrW+sIOJ0BBDKbDH9JqYNKEcW6uyoknqbHRiddieIg8es99BBw7yyaT7GbQDQk8FAgA7 ) !important;
+    background-image: url("data:image/gif;base64,R0lGODlhRwBHAPZOAICAgIGBgYKCgoODg4WFhYaGhomJiYuLi42NjY6Ojo+Pj5CQkJKSkpSUlJWVlZiYmJmZmZubm56enp+fn6GhoaOjo6Wlpaampqqqqqurq6ysrK6urq+vr7CwsLS0tLW1tbm5ubq6ury8vL6+vsLCwsbGxsnJyc7OztPT09bW1tjY2NnZ2dvb297e3t/f3+Dg4OHh4eLi4uPj4+Tk5OXl5ebm5ufn5+jo6Onp6erq6uvr6+zs7O3t7e7u7u/v7/Dw8PHx8fLy8vPz8/T09PX19fb29vf39/j4+Pn5+fr6+vv7+/z8/P39/f7+/v///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAAAAAAALAAAAABHAEcAAAf+gE6Cg4SFhodDQjo0NC8vIQUHCQ4XISc7h5mam5yGQzsvLqKiji4fAKipqAkbKEmdsLGFSaCkoaOjp6q7AAcdNLLBmkmNpbjHprzKAA8rws9OSTq3yNW6y7wVOtCxO9XfudjYG0PcwzTg6dfivAkv5oZC1OnW7OIi8IO19N+PBfbj8oGal+6FDiGvCg1xYWJDAoCpLiR8poMfKUyydohgAFHCRFkV+en4KOxFBYAShHkr+KJcPicrHrLDIGsIQWQYXw4KYY9ELEc3SbnUSWjFAXbvOKHrR4MkUUFCOGJL4JSQkH4ugD3NNOSBuA/DgrpwVHWroCQOxCU1FLLai7L+ZqHKVPYAEbi3cZX+W+asUFuceTuJwFaXUJK7gWFJVebCar+hiTW5wEZzkFitkTmdVFYg4eFvkDNneoHthKCVyNaK3uRV2QVBS5EJWd3JxLID0cDBpS1oCDYaNt3y7tSaVwl5qXMOz8RT2Ya/o17MXq4pxTIJsY/tXr5jmbtv1DktKyA2/Ka5u4zhUm2+EHpV6qO3Z74BQ/0N94HOYz8fttv4pPRnSFAAjiJgIQUa9M12wx12k4LVhDbfQtXogNoxyvV3VTU7UIgMZgJmh8tsYjFIW4lOiDjKdBr+d9pYHx7YSIW9JSjhcp9VwyKBIIYHnXz6iHUjbUkU6MI2gxTE+U2Pw6ETVGg/rhjehjTOcteQiQUH2iEqAslbl6IwaRk4YgYG5lhwXRijaGe6kKEhZzqSWZv8GaLklXkRQw+Wjt3lpllU9vOmJlGu15ROQ7QpCpIgsZQVn5wMMY1YozAajKKkACeMIqTQcyg0hX5j4ZBJ0BJqNWVmZFFqjLRqJD2WmuPhqrTSw+JLRb5aq0WfbrXPrrW+sIOJ0BBDKbDH9JqYNKEcW6uyoknqbHRiddieIg8es99BBw7yyaT7GbQDQk8FAgA7") !important;
 }
 
 .vw-audio-icon-bg {
-    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNDNweCIgaGVpZ2h0PSI0M3B4IiB2aWV3Qm94PSIwIDAgNDMgNDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDQzIDQzIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsLW9wYWNpdHk9IjAuNjY2NyIgZD0iTTM1LjU1MSwzNS42QzMxLjY4NCwzOS41MzMsMjcsNDEuNSwyMS41LDQxLjUNCgkJYy01LjUzMywwLTEwLjI4My0xLjk2Ny0xNC4yNS01LjlDMy40MTcsMzEuNzMzLDEuNSwyNy4wMzMsMS41LDIxLjVjMC01LjUsMS45MTctMTAuMjMzLDUuNzUtMTQuMmMzLjk2Ny0zLjg2Niw4LjcxNy01LjgsMTQuMjUtNS44DQoJCWM1LjUsMCwxMC4xODQsMS45MzQsMTQuMDUxLDUuOEMzOS41MTcsMTEuMjY3LDQxLjUsMTYsNDEuNSwyMS41QzQxLjUsMjcuMDMzLDM5LjUxNywzMS43MzMsMzUuNTUxLDM1LjZ6IE0yMi41LDIzLjM5OQ0KCQljLTAuMzk5LDAuODY3LTAuMzk5LDEuODE3LDAsMi44NTFjMC4zNjcsMC45MzQsMS4wMzQsMS41NSwyLDEuODVjMC45LDAuMzY3LDEuODAxLDAuMjgzLDIuNy0wLjI1YzAuOTY3LTAuNSwxLjUxNy0xLjIzMywxLjY1LTIuMg0KCQljMC4xLTAuMzMzLDAuMTQ5LTAuNzY3LDAuMTQ5LTEuM2MwLTAuNzY3LDAtMS4xODQsMC0xLjI1VjExLjc1TDE3LjIsMTUuMnY5Ljc1Yy0wLjgtMC41LTEuNzE3LTAuNjE3LTIuNzUtMC4zNTENCgkJYy0xLDAuMjY3LTEuNjg0LDAuODUxLTIuMDUsMS43NWMtMC40MzQsMC44NjctMC40NjcsMS43NjctMC4xLDIuN2MwLjMzMywwLjk2NywwLjk4MywxLjYzNCwxLjk0OSwyDQoJCWMwLjg2NywwLjM2NiwxLjc2NywwLjI2NywyLjctMC4zYzAuODY3LTAuNDY3LDEuNDE3LTEuMTY3LDEuNjUtMi4xMDFjMC4xMzMtMC40MzMsMC4yLTAuOTgzLDAuMi0xLjY0OWMwLTAuNzMzLDAtMS4yODMsMC0xLjY1DQoJCVYxOC43bDguNjQ5LTIuNTUxdjUuODAxYy0wLjg5OS0wLjQ2Ny0xLjgxNi0wLjU2Ny0yLjc1LTAuMzAxQzIzLjYwMSwyMS45NSwyMi44NjcsMjIuNTMzLDIyLjUsMjMuMzk5eiIvPg0KCTxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsPSIjRkZGRkZGIiBkPSJNMjIuNSwyMy4zOTljMC4zNjctMC44NjYsMS4xMDEtMS40NDksMi4yLTEuNzUNCgkJYzAuOTM0LTAuMjY3LDEuODUxLTAuMTY2LDIuNzUsMC4zMDF2LTUuODAxTDE4LjgwMSwxOC43djYuNjQ5YzAsMC4zNjcsMCwwLjkxNywwLDEuNjVjMCwwLjY2Ni0wLjA2NywxLjIxNy0wLjIsMS42NDkNCgkJYy0wLjIzMywwLjkzNC0wLjc4MywxLjYzNC0xLjY1LDIuMTAxYy0wLjkzNCwwLjU2Ni0xLjgzMywwLjY2Ni0yLjcsMC4zYy0wLjk2Ni0wLjM2Ni0xLjYxNi0xLjAzMy0xLjk0OS0yDQoJCWMtMC4zNjctMC45MzQtMC4zMzQtMS44MzMsMC4xLTIuN2MwLjM2Ni0wLjg5OSwxLjA1LTEuNDgzLDIuMDUtMS43NWMxLjAzMy0wLjI2NywxLjk1LTAuMTQ5LDIuNzUsMC4zNTFWMTUuMkwyOSwxMS43NVYyMy4xDQoJCWMwLDAuMDY2LDAsMC40ODMsMCwxLjI1YzAsMC41MzMtMC4wNSwwLjk2Ny0wLjE0OSwxLjNjLTAuMTM0LDAuOTY3LTAuNjg0LDEuNy0xLjY1LDIuMmMtMC44OTksMC41MzMtMS44LDAuNjE3LTIuNywwLjI1DQoJCWMtMC45NjYtMC4zLTEuNjMzLTAuOTE2LTItMS44NUMyMi4xMDEsMjUuMjE3LDIyLjEwMSwyNC4yNjcsMjIuNSwyMy4zOTl6Ii8+DQoJDQoJCTxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbWl0ZXJsaW1pdD0iMyIgZD0iDQoJCU0zNS41NTEsMzUuNkMzMS42ODQsMzkuNTMzLDI3LDQxLjUsMjEuNSw0MS41Yy01LjUzMywwLTEwLjI4My0xLjk2Ny0xNC4yNS01LjlDMy40MTcsMzEuNzMzLDEuNSwyNy4wMzMsMS41LDIxLjUNCgkJYzAtNS41LDEuOTE3LTEwLjIzMyw1Ljc1LTE0LjJjMy45NjctMy44NjYsOC43MTctNS44LDE0LjI1LTUuOGM1LjUsMCwxMC4xODQsMS45MzQsMTQuMDUxLDUuOEMzOS41MTcsMTEuMjY3LDQxLjUsMTYsNDEuNSwyMS41DQoJCUM0MS41LDI3LjAzMywzOS41MTcsMzEuNzMzLDM1LjU1MSwzNS42eiIvPg0KPC9nPg0KPC9zdmc+DQo= );
+    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNDNweCIgaGVpZ2h0PSI0M3B4IiB2aWV3Qm94PSIwIDAgNDMgNDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDQzIDQzIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsLW9wYWNpdHk9IjAuNjY2NyIgZD0iTTM1LjU1MSwzNS42QzMxLjY4NCwzOS41MzMsMjcsNDEuNSwyMS41LDQxLjUNCgkJYy01LjUzMywwLTEwLjI4My0xLjk2Ny0xNC4yNS01LjlDMy40MTcsMzEuNzMzLDEuNSwyNy4wMzMsMS41LDIxLjVjMC01LjUsMS45MTctMTAuMjMzLDUuNzUtMTQuMmMzLjk2Ny0zLjg2Niw4LjcxNy01LjgsMTQuMjUtNS44DQoJCWM1LjUsMCwxMC4xODQsMS45MzQsMTQuMDUxLDUuOEMzOS41MTcsMTEuMjY3LDQxLjUsMTYsNDEuNSwyMS41QzQxLjUsMjcuMDMzLDM5LjUxNywzMS43MzMsMzUuNTUxLDM1LjZ6IE0yMi41LDIzLjM5OQ0KCQljLTAuMzk5LDAuODY3LTAuMzk5LDEuODE3LDAsMi44NTFjMC4zNjcsMC45MzQsMS4wMzQsMS41NSwyLDEuODVjMC45LDAuMzY3LDEuODAxLDAuMjgzLDIuNy0wLjI1YzAuOTY3LTAuNSwxLjUxNy0xLjIzMywxLjY1LTIuMg0KCQljMC4xLTAuMzMzLDAuMTQ5LTAuNzY3LDAuMTQ5LTEuM2MwLTAuNzY3LDAtMS4xODQsMC0xLjI1VjExLjc1TDE3LjIsMTUuMnY5Ljc1Yy0wLjgtMC41LTEuNzE3LTAuNjE3LTIuNzUtMC4zNTENCgkJYy0xLDAuMjY3LTEuNjg0LDAuODUxLTIuMDUsMS43NWMtMC40MzQsMC44NjctMC40NjcsMS43NjctMC4xLDIuN2MwLjMzMywwLjk2NywwLjk4MywxLjYzNCwxLjk0OSwyDQoJCWMwLjg2NywwLjM2NiwxLjc2NywwLjI2NywyLjctMC4zYzAuODY3LTAuNDY3LDEuNDE3LTEuMTY3LDEuNjUtMi4xMDFjMC4xMzMtMC40MzMsMC4yLTAuOTgzLDAuMi0xLjY0OWMwLTAuNzMzLDAtMS4yODMsMC0xLjY1DQoJCVYxOC43bDguNjQ5LTIuNTUxdjUuODAxYy0wLjg5OS0wLjQ2Ny0xLjgxNi0wLjU2Ny0yLjc1LTAuMzAxQzIzLjYwMSwyMS45NSwyMi44NjcsMjIuNTMzLDIyLjUsMjMuMzk5eiIvPg0KCTxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsPSIjRkZGRkZGIiBkPSJNMjIuNSwyMy4zOTljMC4zNjctMC44NjYsMS4xMDEtMS40NDksMi4yLTEuNzUNCgkJYzAuOTM0LTAuMjY3LDEuODUxLTAuMTY2LDIuNzUsMC4zMDF2LTUuODAxTDE4LjgwMSwxOC43djYuNjQ5YzAsMC4zNjcsMCwwLjkxNywwLDEuNjVjMCwwLjY2Ni0wLjA2NywxLjIxNy0wLjIsMS42NDkNCgkJYy0wLjIzMywwLjkzNC0wLjc4MywxLjYzNC0xLjY1LDIuMTAxYy0wLjkzNCwwLjU2Ni0xLjgzMywwLjY2Ni0yLjcsMC4zYy0wLjk2Ni0wLjM2Ni0xLjYxNi0xLjAzMy0xLjk0OS0yDQoJCWMtMC4zNjctMC45MzQtMC4zMzQtMS44MzMsMC4xLTIuN2MwLjM2Ni0wLjg5OSwxLjA1LTEuNDgzLDIuMDUtMS43NWMxLjAzMy0wLjI2NywxLjk1LTAuMTQ5LDIuNzUsMC4zNTFWMTUuMkwyOSwxMS43NVYyMy4xDQoJCWMwLDAuMDY2LDAsMC40ODMsMCwxLjI1YzAsMC41MzMtMC4wNSwwLjk2Ny0wLjE0OSwxLjNjLTAuMTM0LDAuOTY3LTAuNjg0LDEuNy0xLjY1LDIuMmMtMC44OTksMC41MzMtMS44LDAuNjE3LTIuNywwLjI1DQoJCWMtMC45NjYtMC4zLTEuNjMzLTAuOTE2LTItMS44NUMyMi4xMDEsMjUuMjE3LDIyLjEwMSwyNC4yNjcsMjIuNSwyMy4zOTl6Ii8+DQoJDQoJCTxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbWl0ZXJsaW1pdD0iMyIgZD0iDQoJCU0zNS41NTEsMzUuNkMzMS42ODQsMzkuNTMzLDI3LDQxLjUsMjEuNSw0MS41Yy01LjUzMywwLTEwLjI4My0xLjk2Ny0xNC4yNS01LjlDMy40MTcsMzEuNzMzLDEuNSwyNy4wMzMsMS41LDIxLjUNCgkJYzAtNS41LDEuOTE3LTEwLjIzMyw1Ljc1LTE0LjJjMy45NjctMy44NjYsOC43MTctNS44LDE0LjI1LTUuOGM1LjUsMCwxMC4xODQsMS45MzQsMTQuMDUxLDUuOEMzOS41MTcsMTEuMjY3LDQxLjUsMTYsNDEuNSwyMS41DQoJCUM0MS41LDI3LjAzMywzOS41MTcsMzEuNzMzLDM1LjU1MSwzNS42eiIvPg0KPC9nPg0KPC9zdmc+DQo=");
     background-size: 40px 40px;
 }
 
 .vw-video-icon-bg {
-    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNDNweCIgaGVpZ2h0PSI0M3B4IiB2aWV3Qm94PSIwIDAgNDMgNDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDQzIDQzIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsLW9wYWNpdHk9IjAuNjY2NyIgZD0iTTQxLjUsMjEuNWMwLDUuNTMzLTEuOTgzLDEwLjIzMy01Ljk0OSwxNC4xDQoJCUMzMS42ODQsMzkuNTMzLDI3LDQxLjUsMjEuNSw0MS41Yy01LjUzMywwLTEwLjI4My0xLjk2Ny0xNC4yNS01LjlDMy40MTcsMzEuNzMzLDEuNSwyNy4wMzMsMS41LDIxLjVjMC01LjUsMS45MTctMTAuMjMzLDUuNzUtMTQuMg0KCQljMy45NjctMy44NjYsOC43MTctNS44LDE0LjI1LTUuOGM1LjUsMCwxMC4xODQsMS45MzQsMTQuMDUxLDUuOEMzOS41MTcsMTEuMjY3LDQxLjUsMTYsNDEuNSwyMS41eiIvPg0KCQ0KCQk8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLW1pdGVybGltaXQ9IjMiIGQ9Ig0KCQlNNDEuNSwyMS41YzAsNS41MzMtMS45ODMsMTAuMjMzLTUuOTQ5LDE0LjFDMzEuNjg0LDM5LjUzMywyNyw0MS41LDIxLjUsNDEuNWMtNS41MzMsMC0xMC4yODMtMS45NjctMTQuMjUtNS45DQoJCUMzLjQxNywzMS43MzMsMS41LDI3LjAzMywxLjUsMjEuNWMwLTUuNSwxLjkxNy0xMC4yMzMsNS43NS0xNC4yYzMuOTY3LTMuODY2LDguNzE3LTUuOCwxNC4yNS01LjhjNS41LDAsMTAuMTg0LDEuOTM0LDE0LjA1MSw1LjgNCgkJQzM5LjUxNywxMS4yNjcsNDEuNSwxNiw0MS41LDIxLjV6Ii8+DQo8L2c+DQo8cG9seWdvbiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iI0ZGRkZGRiIgcG9pbnRzPSIzMSwyMS4yNSAxNiwzMCAxNiwxMyAiLz4NCjwvc3ZnPg0K );
+    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNDNweCIgaGVpZ2h0PSI0M3B4IiB2aWV3Qm94PSIwIDAgNDMgNDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDQzIDQzIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsLW9wYWNpdHk9IjAuNjY2NyIgZD0iTTQxLjUsMjEuNWMwLDUuNTMzLTEuOTgzLDEwLjIzMy01Ljk0OSwxNC4xDQoJCUMzMS42ODQsMzkuNTMzLDI3LDQxLjUsMjEuNSw0MS41Yy01LjUzMywwLTEwLjI4My0xLjk2Ny0xNC4yNS01LjlDMy40MTcsMzEuNzMzLDEuNSwyNy4wMzMsMS41LDIxLjVjMC01LjUsMS45MTctMTAuMjMzLDUuNzUtMTQuMg0KCQljMy45NjctMy44NjYsOC43MTctNS44LDE0LjI1LTUuOGM1LjUsMCwxMC4xODQsMS45MzQsMTQuMDUxLDUuOEMzOS41MTcsMTEuMjY3LDQxLjUsMTYsNDEuNSwyMS41eiIvPg0KCQ0KCQk8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRkZGRkZGIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLW1pdGVybGltaXQ9IjMiIGQ9Ig0KCQlNNDEuNSwyMS41YzAsNS41MzMtMS45ODMsMTAuMjMzLTUuOTQ5LDE0LjFDMzEuNjg0LDM5LjUzMywyNyw0MS41LDIxLjUsNDEuNWMtNS41MzMsMC0xMC4yODMtMS45NjctMTQuMjUtNS45DQoJCUMzLjQxNywzMS43MzMsMS41LDI3LjAzMywxLjUsMjEuNWMwLTUuNSwxLjkxNy0xMC4yMzMsNS43NS0xNC4yYzMuOTY3LTMuODY2LDguNzE3LTUuOCwxNC4yNS01LjhjNS41LDAsMTAuMTg0LDEuOTM0LDE0LjA1MSw1LjgNCgkJQzM5LjUxNywxMS4yNjcsNDEuNSwxNiw0MS41LDIxLjV6Ii8+DQo8L2c+DQo8cG9seWdvbiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iI0ZGRkZGRiIgcG9pbnRzPSIzMSwyMS4yNSAxNiwzMCAxNiwxMyAiLz4NCjwvc3ZnPg0K");
     background-size: 40px 40px;
 }
 
 .vw-gallery-icon-bg {
-    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNDNweCIgaGVpZ2h0PSI0M3B4IiB2aWV3Qm94PSIwIDAgNDMgNDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDQzIDQzIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsLW9wYWNpdHk9IjAuNjY2NyIgZD0iTTMwLjU1MSwxNi41YzAtMC4zMzQtMC4wODQtMC42MDEtMC4yNS0wLjgNCgkJYy0wLjItMC4yLTAuNS0wLjMwMS0wLjktMC4zMDFoLTIuOGwtMC41NS0xLjQ0OUMyNS43NSwxMy4zODMsMjUuMzg0LDEzLjEsMjQuOTUsMTMuMWgtNi44Yy0wLjUsMC0wLjg2NiwwLjI4My0xLjEsMC44NTENCgkJbC0wLjY1LDEuNDQ5aC0yLjg1Yy0wLjIzMywwLTAuNDY3LDAuMTAxLTAuNywwLjMwMWMtMC4yMzMsMC4xOTktMC4zNTEsMC40NjYtMC4zNTEsMC44djExLjJjMCwwLjM2NiwwLjExNywwLjY2NiwwLjM1MSwwLjg5OQ0KCQljMC4yMzMsMC4yLDAuNDY3LDAuMywwLjcsMC4zSDI5LjRjMC40LDAsMC43LTAuMSwwLjktMC4zYzAuMTY2LTAuMjMzLDAuMjUtMC41MzMsMC4yNS0wLjg5OVYxNi41eiBNMzUuNTUxLDM1LjYNCgkJQzMxLjY4NCwzOS41MzMsMjcsNDEuNSwyMS41LDQxLjVjLTUuNTMzLDAtMTAuMjgzLTEuOTY3LTE0LjI1LTUuOUMzLjQxNywzMS43MzMsMS41LDI3LjAzMywxLjUsMjEuNWMwLTUuNSwxLjkxNy0xMC4yMzMsNS43NS0xNC4yDQoJCWMzLjk2Ny0zLjg2Niw4LjcxNy01LjgsMTQuMjUtNS44YzUuNSwwLDEwLjE4NCwxLjkzNCwxNC4wNTEsNS44QzM5LjUxNywxMS4yNjcsNDEuNSwxNiw0MS41LDIxLjUNCgkJQzQxLjUsMjcuMDMzLDM5LjUxNywzMS43MzMsMzUuNTUxLDM1LjZ6IE0yNC43LDE4LjZjMC45MzQsMC45LDEuNCwxLjk4MywxLjQsMy4yNXMtMC40NjcsMi4zNjctMS40LDMuMw0KCQljLTAuODk5LDAuOTM0LTEuOTgzLDEuNC0zLjI1LDEuNGMtMS4zLDAtMi4zOTktMC40NjctMy4zLTEuNGMtMC45MzQtMC45MzMtMS40LTIuMDMzLTEuNC0zLjNzMC40NjctMi4zNSwxLjQtMy4yNQ0KCQljMC45LTAuOTM0LDItMS4zOTksMy4zLTEuMzk5QzIyLjcxNywxNy4yLDIzLjgwMSwxNy42NjYsMjQuNywxOC42eiBNMjMuNCwyMy44YzAuNTMzLTAuNTMzLDAuOC0xLjE4NCwwLjgtMS45NQ0KCQljMC0wLjczMy0wLjI2Ny0xLjM4My0wLjgtMS45NWMtMC41NjYtMC41MzMtMS4yMTctMC44LTEuOTUtMC44Yy0wLjc2NywwLTEuNDE2LDAuMjY3LTEuOTUsMC44Yy0wLjU2NiwwLjU2Ny0wLjg1LDEuMjE3LTAuODUsMS45NQ0KCQljMCwwLjc2NywwLjI4MywxLjQxNywwLjg1LDEuOTVjMC41MzQsMC41NjYsMS4xODQsMC44NSwxLjk1LDAuODVDMjIuMTg0LDI0LjY0OSwyMi44MzQsMjQuMzY2LDIzLjQsMjMuOHoiLz4NCgk8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iI0ZGRkZGRiIgZD0iTTMwLjU1MSwxNi41djExLjJjMCwwLjM2Ni0wLjA4NCwwLjY2Ni0wLjI1LDAuODk5DQoJCWMtMC4yLDAuMi0wLjUsMC4zLTAuOSwwLjNoLTE1Ljg1Yy0wLjIzMywwLTAuNDY3LTAuMS0wLjctMC4zQzEyLjYxNywyOC4zNjYsMTIuNSwyOC4wNjYsMTIuNSwyNy43VjE2LjUNCgkJYzAtMC4zMzQsMC4xMTctMC42MDEsMC4zNTEtMC44YzAuMjMzLTAuMiwwLjQ2Ny0wLjMwMSwwLjctMC4zMDFoMi44NWwwLjY1LTEuNDQ5YzAuMjMzLTAuNTY3LDAuNi0wLjg1MSwxLjEtMC44NTFoNi44DQoJCWMwLjQzNCwwLDAuOCwwLjI4MywxLjEwMSwwLjg1MWwwLjU1LDEuNDQ5aDIuOGMwLjQsMCwwLjcsMC4xMDEsMC45LDAuMzAxQzMwLjQ2NywxNS44OTksMzAuNTUxLDE2LjE2NiwzMC41NTEsMTYuNXogTTIzLjQsMjMuOA0KCQljLTAuNTY2LDAuNTY2LTEuMjE3LDAuODUtMS45NSwwLjg1Yy0wLjc2NywwLTEuNDE2LTAuMjgzLTEuOTUtMC44NWMtMC41NjYtMC41MzMtMC44NS0xLjE4NC0wLjg1LTEuOTUNCgkJYzAtMC43MzMsMC4yODMtMS4zODMsMC44NS0xLjk1YzAuNTM0LTAuNTMzLDEuMTg0LTAuOCwxLjk1LTAuOGMwLjczMywwLDEuMzg0LDAuMjY3LDEuOTUsMC44YzAuNTMzLDAuNTY3LDAuOCwxLjIxNywwLjgsMS45NQ0KCQlDMjQuMiwyMi42MTYsMjMuOTM0LDIzLjI2NywyMy40LDIzLjh6IE0yNC43LDE4LjZjLTAuODk5LTAuOTM0LTEuOTgzLTEuMzk5LTMuMjUtMS4zOTljLTEuMywwLTIuMzk5LDAuNDY2LTMuMywxLjM5OQ0KCQljLTAuOTM0LDAuOS0xLjQsMS45ODMtMS40LDMuMjVzMC40NjcsMi4zNjcsMS40LDMuM2MwLjksMC45MzQsMiwxLjQsMy4zLDEuNGMxLjI2NywwLDIuMzUxLTAuNDY3LDMuMjUtMS40DQoJCWMwLjkzNC0wLjkzMywxLjQtMi4wMzMsMS40LTMuM1MyNS42MzQsMTkuNSwyNC43LDE4LjZ6Ii8+DQoJDQoJCTxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbWl0ZXJsaW1pdD0iMyIgZD0iDQoJCU0zNS41NTEsMzUuNkMzMS42ODQsMzkuNTMzLDI3LDQxLjUsMjEuNSw0MS41Yy01LjUzMywwLTEwLjI4My0xLjk2Ny0xNC4yNS01LjlDMy40MTcsMzEuNzMzLDEuNSwyNy4wMzMsMS41LDIxLjUNCgkJYzAtNS41LDEuOTE3LTEwLjIzMyw1Ljc1LTE0LjJjMy45NjctMy44NjYsOC43MTctNS44LDE0LjI1LTUuOGM1LjUsMCwxMC4xODQsMS45MzQsMTQuMDUxLDUuOEMzOS41MTcsMTEuMjY3LDQxLjUsMTYsNDEuNSwyMS41DQoJCUM0MS41LDI3LjAzMywzOS41MTcsMzEuNzMzLDM1LjU1MSwzNS42eiIvPg0KPC9nPg0KPC9zdmc+DQo= );
+    background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNDNweCIgaGVpZ2h0PSI0M3B4IiB2aWV3Qm94PSIwIDAgNDMgNDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDQzIDQzIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsLW9wYWNpdHk9IjAuNjY2NyIgZD0iTTMwLjU1MSwxNi41YzAtMC4zMzQtMC4wODQtMC42MDEtMC4yNS0wLjgNCgkJYy0wLjItMC4yLTAuNS0wLjMwMS0wLjktMC4zMDFoLTIuOGwtMC41NS0xLjQ0OUMyNS43NSwxMy4zODMsMjUuMzg0LDEzLjEsMjQuOTUsMTMuMWgtNi44Yy0wLjUsMC0wLjg2NiwwLjI4My0xLjEsMC44NTENCgkJbC0wLjY1LDEuNDQ5aC0yLjg1Yy0wLjIzMywwLTAuNDY3LDAuMTAxLTAuNywwLjMwMWMtMC4yMzMsMC4xOTktMC4zNTEsMC40NjYtMC4zNTEsMC44djExLjJjMCwwLjM2NiwwLjExNywwLjY2NiwwLjM1MSwwLjg5OQ0KCQljMC4yMzMsMC4yLDAuNDY3LDAuMywwLjcsMC4zSDI5LjRjMC40LDAsMC43LTAuMSwwLjktMC4zYzAuMTY2LTAuMjMzLDAuMjUtMC41MzMsMC4yNS0wLjg5OVYxNi41eiBNMzUuNTUxLDM1LjYNCgkJQzMxLjY4NCwzOS41MzMsMjcsNDEuNSwyMS41LDQxLjVjLTUuNTMzLDAtMTAuMjgzLTEuOTY3LTE0LjI1LTUuOUMzLjQxNywzMS43MzMsMS41LDI3LjAzMywxLjUsMjEuNWMwLTUuNSwxLjkxNy0xMC4yMzMsNS43NS0xNC4yDQoJCWMzLjk2Ny0zLjg2Niw4LjcxNy01LjgsMTQuMjUtNS44YzUuNSwwLDEwLjE4NCwxLjkzNCwxNC4wNTEsNS44QzM5LjUxNywxMS4yNjcsNDEuNSwxNiw0MS41LDIxLjUNCgkJQzQxLjUsMjcuMDMzLDM5LjUxNywzMS43MzMsMzUuNTUxLDM1LjZ6IE0yNC43LDE4LjZjMC45MzQsMC45LDEuNCwxLjk4MywxLjQsMy4yNXMtMC40NjcsMi4zNjctMS40LDMuMw0KCQljLTAuODk5LDAuOTM0LTEuOTgzLDEuNC0zLjI1LDEuNGMtMS4zLDAtMi4zOTktMC40NjctMy4zLTEuNGMtMC45MzQtMC45MzMtMS40LTIuMDMzLTEuNC0zLjNzMC40NjctMi4zNSwxLjQtMy4yNQ0KCQljMC45LTAuOTM0LDItMS4zOTksMy4zLTEuMzk5QzIyLjcxNywxNy4yLDIzLjgwMSwxNy42NjYsMjQuNywxOC42eiBNMjMuNCwyMy44YzAuNTMzLTAuNTMzLDAuOC0xLjE4NCwwLjgtMS45NQ0KCQljMC0wLjczMy0wLjI2Ny0xLjM4My0wLjgtMS45NWMtMC41NjYtMC41MzMtMS4yMTctMC44LTEuOTUtMC44Yy0wLjc2NywwLTEuNDE2LDAuMjY3LTEuOTUsMC44Yy0wLjU2NiwwLjU2Ny0wLjg1LDEuMjE3LTAuODUsMS45NQ0KCQljMCwwLjc2NywwLjI4MywxLjQxNywwLjg1LDEuOTVjMC41MzQsMC41NjYsMS4xODQsMC44NSwxLjk1LDAuODVDMjIuMTg0LDI0LjY0OSwyMi44MzQsMjQuMzY2LDIzLjQsMjMuOHoiLz4NCgk8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iI0ZGRkZGRiIgZD0iTTMwLjU1MSwxNi41djExLjJjMCwwLjM2Ni0wLjA4NCwwLjY2Ni0wLjI1LDAuODk5DQoJCWMtMC4yLDAuMi0wLjUsMC4zLTAuOSwwLjNoLTE1Ljg1Yy0wLjIzMywwLTAuNDY3LTAuMS0wLjctMC4zQzEyLjYxNywyOC4zNjYsMTIuNSwyOC4wNjYsMTIuNSwyNy43VjE2LjUNCgkJYzAtMC4zMzQsMC4xMTctMC42MDEsMC4zNTEtMC44YzAuMjMzLTAuMiwwLjQ2Ny0wLjMwMSwwLjctMC4zMDFoMi44NWwwLjY1LTEuNDQ5YzAuMjMzLTAuNTY3LDAuNi0wLjg1MSwxLjEtMC44NTFoNi44DQoJCWMwLjQzNCwwLDAuOCwwLjI4MywxLjEwMSwwLjg1MWwwLjU1LDEuNDQ5aDIuOGMwLjQsMCwwLjcsMC4xMDEsMC45LDAuMzAxQzMwLjQ2NywxNS44OTksMzAuNTUxLDE2LjE2NiwzMC41NTEsMTYuNXogTTIzLjQsMjMuOA0KCQljLTAuNTY2LDAuNTY2LTEuMjE3LDAuODUtMS45NSwwLjg1Yy0wLjc2NywwLTEuNDE2LTAuMjgzLTEuOTUtMC44NWMtMC41NjYtMC41MzMtMC44NS0xLjE4NC0wLjg1LTEuOTUNCgkJYzAtMC43MzMsMC4yODMtMS4zODMsMC44NS0xLjk1YzAuNTM0LTAuNTMzLDEuMTg0LTAuOCwxLjk1LTAuOGMwLjczMywwLDEuMzg0LDAuMjY3LDEuOTUsMC44YzAuNTMzLDAuNTY3LDAuOCwxLjIxNywwLjgsMS45NQ0KCQlDMjQuMiwyMi42MTYsMjMuOTM0LDIzLjI2NywyMy40LDIzLjh6IE0yNC43LDE4LjZjLTAuODk5LTAuOTM0LTEuOTgzLTEuMzk5LTMuMjUtMS4zOTljLTEuMywwLTIuMzk5LDAuNDY2LTMuMywxLjM5OQ0KCQljLTAuOTM0LDAuOS0xLjQsMS45ODMtMS40LDMuMjVzMC40NjcsMi4zNjcsMS40LDMuM2MwLjksMC45MzQsMiwxLjQsMy4zLDEuNGMxLjI2NywwLDIuMzUxLTAuNDY3LDMuMjUtMS40DQoJCWMwLjkzNC0wLjkzMywxLjQtMi4wMzMsMS40LTMuM1MyNS42MzQsMTkuNSwyNC43LDE4LjZ6Ii8+DQoJDQoJCTxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsPSJub25lIiBzdHJva2U9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbWl0ZXJsaW1pdD0iMyIgZD0iDQoJCU0zNS41NTEsMzUuNkMzMS42ODQsMzkuNTMzLDI3LDQxLjUsMjEuNSw0MS41Yy01LjUzMywwLTEwLjI4My0xLjk2Ny0xNC4yNS01LjlDMy40MTcsMzEuNzMzLDEuNSwyNy4wMzMsMS41LDIxLjUNCgkJYzAtNS41LDEuOTE3LTEwLjIzMyw1Ljc1LTE0LjJjMy45NjctMy44NjYsOC43MTctNS44LDE0LjI1LTUuOGM1LjUsMCwxMC4xODQsMS45MzQsMTQuMDUxLDUuOEMzOS41MTcsMTEuMjY3LDQxLjUsMTYsNDEuNSwyMS41DQoJCUM0MS41LDI3LjAzMywzOS41MTcsMzEuNzMzLDM1LjU1MSwzNS42eiIvPg0KPC9nPg0KPC9zdmc+DQo=");
     background-size: 40px 40px;
 }

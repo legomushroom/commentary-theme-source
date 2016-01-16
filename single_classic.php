@@ -30,9 +30,11 @@
 
 							<?php if ( vw_get_paged() == 1 ) : ?>
 
-								<?php if ( ! has_post_format() ) vw_the_featured_image(); ?>
-
-								<?php vw_the_embeded_media(); ?>
+								<?php switch ( get_post_format() ) {
+									case 'video':  vw_the_embeded_video(); break;
+									case 'audio': vw_the_embeded_audio(); break;
+									default : vw_the_featured_image(); break;
+								} ?>
 								
 							<?php endif; ?>
 
