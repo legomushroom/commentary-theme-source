@@ -134,7 +134,7 @@ if ( ! function_exists( '_wp_render_title_tag' ) ) {
 	add_action( 'wp_head', 'vw_render_site_title' );
 	if ( ! function_exists( 'vw_render_site_title' ) ) {
 		function vw_render_site_title() {
-			?><title itemprop="name"><?php wp_title( '|', true, 'right' ); ?></title><?php
+			?><title><?php wp_title( '|', true, 'right' ); ?></title><?php
 		}
 	}
 }

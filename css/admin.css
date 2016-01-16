@@ -99,14 +99,16 @@
 .vw-review-score-points .vw-review-item {
     color: #FFFFFF;
 }
+
 .vw-review-score-percentage .vw-review-item-score,
 .vw-review-score-points .vw-review-item-score {
     position: absolute;
     bottom: 5px;
     height: 10px;
-    background-image: url(images/stripe-white.png );
+    background-image: url("images/stripe-white.png");
     background-repeat: repeat;
 }
+
 .vw-review-score-percentage .vw-review-total-score,
 .vw-review-score-points .vw-review-total-score {
     font-size: 44px;
@@ -124,6 +126,7 @@
 .vw-review-score-star .vw-review-score-number img + img {
     margin-left: 3px;
 }
+
 .vw-review-score-star .vw-review-item-score .vw-review-score-number {
     margin-top: 3px;
 }
@@ -204,15 +207,18 @@
     display: block;
     width: auto;
 }
+
 .vw-review-position-top-floating .vw-review-total-score {
     line-height: normal;
 }
+
 .vw-review-position-top-floating .vw-review-pros-cons,
 .vw-review-position-top-floating .vw-review-pros,
 .vw-review-position-top-floating .vw-review-cons {
     display: block;
     width: auto;
 }
+
 .vw-review-position-top-floating .vw-review-pros,
 .vw-review-position-top-floating .vw-review-cons {
     padding-left: 0;
@@ -254,6 +260,7 @@
 #vw_review_editor .field-review-score {
     display: none;
 }
+
 #vw_review_editor .review-scores {
     margin: 15px 0;
     background-color: #FFFFFF;
@@ -311,7 +318,7 @@
  * -------------------------------------------------------------------------- */
 .mceButton.mce_vw_shortcodes .mceIcon,
 .mce-vw_shortcodes .mce-ico {
-    background: url(../images/shortcode-icon.png );
+    background: url("../images/shortcode-icon.png");
 }
 
 /* -----------------------------------------------------------------------------
@@ -347,9 +354,11 @@
 .vwsce-field-body select {
     width: 100%;
 }
+
 .vwsce-field-body input[type=text].color-picker {
     width: 80px;
 }
+
 .vwsce-field-body textarea {
     height: 10em;
 }
@@ -362,6 +371,7 @@
 .vwsce-field.two-column-field .vwsce-field-description-container {
     width: 49%;
 }
+
 .vwsce-field.two-column-field .vwsce-field-description-container {
     float: right;
 }
@@ -376,6 +386,10 @@
 /* -----------------------------------------------------------------------------
  * Shortcode Editor: Icon Field
  * -------------------------------------------------------------------------- */
+.vwsce-field-icon {
+    /* empty */
+}
+
 .vwsce-available-icons {
     height: 275px;
     overflow-y: scroll;
@@ -428,6 +442,7 @@
     max-height: 400px;
     margin-top: 15px;
 }
+
 .vwsce-field-image .vwsce-insert-media {
     margin-right: 5px;
 }

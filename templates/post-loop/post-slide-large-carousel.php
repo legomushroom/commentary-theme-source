@@ -26,7 +26,7 @@
 
 			<div class="vw-post-meta">
 				<!-- Post date -->
-				<a href="<?php the_permalink(); ?>" class="vw-post-date" title="<?php printf( esc_attr__('Permalink to %s', 'envirra'), the_title_attribute('echo=0') ); ?>" rel="bookmark"><?php vw_the_post_date(); ?></a>
+				<?php vw_the_post_date(); ?>
 			</div>
 		</div>
 	</div>

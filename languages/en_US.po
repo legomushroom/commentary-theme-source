@@ -4,15 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: BlackMag 1.0.0\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/style\n"
-"POT-Creation-Date: 2015-04-01 03:17:15+00:00\n"
-"PO-Revision-Date: 2015-04-01 11:45+0700\n"
-"Last-Translator: chettapong <the.oppertunity@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: en_US\n"
+"POT-Creation-Date: 2015-09-12 13:34+0700\n"
+"PO-Revision-Date: 2015-09-12 13:34+0700\n"
+"Last-Translator: envirra <envirra@gmail.com>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.8.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: 404.php:19
@@ -103,15 +102,15 @@ msgstr ""
 msgid "Submit comment"
 msgstr ""
 
-#: functions.php:373
+#: functions.php:381
 msgid "%1$s at %2$s"
 msgstr ""
 
-#: functions.php:373
+#: functions.php:381
 msgid "(Edit)"
 msgstr ""
 
-#: functions.php:381
+#: functions.php:389
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
@@ -159,10 +158,22 @@ msgstr ""
 msgid "View all results &raquo;"
 msgstr ""
 
-#: inc/instant-search/instant-search.php:72 index.php:22
-#: templates/page-title.php:102
+#: inc/instant-search/instant-search.php:72 index.php:20
+#: templates/page-title.php:106
 msgid "Search"
 msgstr ""
+
+#: inc/plugin-activation.php:43
+msgid ""
+"The following plugin needs to be updated to its latest version to ensure "
+"maximum compatibility with this theme: %1$s. <br>Please delete the plugin "
+"and re-install."
+msgid_plural ""
+"The following plugins need to be updated to their latest version to ensure "
+"maximum compatibility with this theme: %1$s. <br>Please delete the plugins "
+"listed above and re-install."
+msgstr[0] ""
+msgstr[1] ""
 
 #: inc/post-likes/post-likes.php:13
 msgid "You already like this"
@@ -172,11 +183,11 @@ msgstr ""
 msgid "Likes"
 msgstr ""
 
-#: inc/post-shares/post-shares.php:40
+#: inc/post-shares/post-shares.php:38
 msgid "SHARE"
 msgstr ""
 
-#: inc/post-shares/post-shares.php:115 templates/post-share-box.php:19
+#: inc/post-shares/post-shares.php:113 templates/post-share-box.php:19
 msgid "Shares"
 msgstr ""
 
@@ -201,52 +212,52 @@ msgstr ""
 msgid "Page : "
 msgstr ""
 
-#: inc/template-tags.php:247
+#: inc/template-tags.php:249
 msgid "Sticky"
 msgstr ""
 
-#: inc/template-tags.php:257
+#: inc/template-tags.php:259
 msgid "View all posts in %s"
 msgstr ""
 
-#: inc/template-tags.php:489
+#: inc/template-tags.php:492
 msgid "Posts by"
 msgstr ""
 
-#: inc/template-tags.php:506
+#: inc/template-tags.php:509
 msgid "Posts by %s"
 msgstr ""
 
-#: inc/template-tags.php:573
-#: templates/post-loop/post-slide-large-carousel.php:12
-#: templates/post-loop/post-slide-large-carousel.php:16
-#: templates/post-loop/post-slide-large.php:14
-#: templates/post-loop/post-slide-medium-2.php:14
-#: templates/post-loop/post-slide-medium.php:14
-#: templates/post-loop/post-slide-small.php:10
-#: templates/post-loop/post-slide.php:11
+#: inc/template-tags.php:576
+#: templates/post-loop/post-slide-large-carousel.php:14
+#: templates/post-loop/post-slide-large-carousel.php:18
+#: templates/post-loop/post-slide-large.php:16
+#: templates/post-loop/post-slide-medium-2.php:16
+#: templates/post-loop/post-slide-medium.php:16
+#: templates/post-loop/post-slide-small.php:12
+#: templates/post-loop/post-slide.php:13
 #: templates/post-loop/post-small-comment.php:8
 #: templates/post-loop/post-small-comment.php:14
-#: templates/post-loop/post-small-left-thumbnail.php:9
-#: templates/post-loop/post-small-top-thumbnail.php:9
+#: templates/post-loop/post-small-left-thumbnail.php:14
+#: templates/post-loop/post-small-top-thumbnail.php:12
 #: templates/post-loop/post-text-no-thumbnail.php:6
 msgid "Permalink to %s"
 msgstr ""
 
-#: inc/template-tags.php:584
+#: inc/template-tags.php:587
 msgid "Comments"
 msgstr ""
 
-#: inc/template-tags.php:780 page.php:30 page_big_featured_image.php:23
+#: inc/template-tags.php:783 page.php:30 page_big_featured_image.php:23
 #: single_full_width.php:28
 msgid "Pages:"
 msgstr ""
 
-#: inc/template-tags.php:803
+#: inc/template-tags.php:806
 msgid "Previous"
 msgstr ""
 
-#: inc/template-tags.php:810
+#: inc/template-tags.php:813
 msgid "Next"
 msgstr ""
 
@@ -314,7 +325,7 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: inc/woocommerce.php:180 templates/page-title.php:26 woocommerce.php:44
+#: inc/woocommerce.php:180 templates/page-title.php:30 woocommerce.php:44
 msgid "Shop"
 msgstr ""
 
@@ -322,12 +333,28 @@ msgstr ""
 msgid "View your shopping cart"
 msgstr ""
 
-#: index.php:18 templates/page-title.php:98
+#: index.php:16 templates/page-title.php:102
 msgid "Search Result for &ldquo;%s&rdquo;"
 msgstr ""
 
-#: index.php:30
+#: index.php:28
 msgid "No posts or pages were found."
+msgstr ""
+
+#: pixelentity-themes-updater/class-envato-protected-api.php:67
+msgid "Please enter your Envato Marketplace Username."
+msgstr ""
+
+#: pixelentity-themes-updater/class-envato-protected-api.php:71
+msgid "Please enter your Envato Marketplace API Key."
+msgstr ""
+
+#: pixelentity-themes-updater/class-envato-protected-api.php:96
+msgid "The API \"set\" is a required parameter."
+msgstr ""
+
+#: pixelentity-themes-updater/class-envato-protected-api.php:167
+msgid "The Envato Marketplace \"item ID\" is a required parameter."
 msgstr ""
 
 #: single_classic.php:43 single_classic_no_featured_image.php:41
@@ -343,27 +370,27 @@ msgstr ""
 msgid "More Stories"
 msgstr ""
 
-#: templates/page-title.php:40
+#: templates/page-title.php:44
 msgid "Product"
 msgstr ""
 
-#: templates/page-title.php:67
+#: templates/page-title.php:71
 msgid "Forums"
 msgstr ""
 
-#: templates/page-title.php:111
+#: templates/page-title.php:115
 msgid "We Couldn't Find Your Page!"
 msgstr ""
 
-#: templates/page-title.php:117
+#: templates/page-title.php:121
 msgid "Blog"
 msgstr ""
 
-#: templates/page-title.php:124
+#: templates/page-title.php:128
 msgid "Archives"
 msgstr ""
 
-#: templates/post-loop/post-large.php:44
+#: templates/post-loop/post-large.php:46
 msgid "Read More"
 msgstr ""
 
@@ -429,6 +456,10 @@ msgstr ""
 
 #: templates/widgets/categories.php:12
 msgid "%s Posts"
+msgstr ""
+
+#: widgets/widget-feedburner.php:22
+msgid "Subscribe to feedburner via email"
 msgstr ""
 
 #: widgets/widget-feedburner.php:44
@@ -503,65 +534,65 @@ msgstr ""
 msgid "All Time"
 msgstr ""
 
-#: widgets/widget-social-counter.php:74
+#: widgets/widget-social-counter.php:77
 msgid "Follow our twitter"
 msgstr ""
 
-#: widgets/widget-social-counter.php:77 widgets/widget-social-counter.php:105
-#: widgets/widget-social-counter.php:161 widgets/widget-social-counter.php:175
-#: widgets/widget-social-counter.php:203
+#: widgets/widget-social-counter.php:80 widgets/widget-social-counter.php:108
+#: widgets/widget-social-counter.php:164 widgets/widget-social-counter.php:178
+#: widgets/widget-social-counter.php:206
 msgid "Followers"
 msgstr ""
 
-#: widgets/widget-social-counter.php:88
+#: widgets/widget-social-counter.php:91
 msgid "Like our facebook"
 msgstr ""
 
-#: widgets/widget-social-counter.php:91
+#: widgets/widget-social-counter.php:94
 msgid "Fans"
 msgstr ""
 
-#: widgets/widget-social-counter.php:102
+#: widgets/widget-social-counter.php:105
 msgid "Follow our instagram"
 msgstr ""
 
-#: widgets/widget-social-counter.php:116
+#: widgets/widget-social-counter.php:119
 msgid "Subscribe our youtube"
 msgstr ""
 
-#: widgets/widget-social-counter.php:119 widgets/widget-social-counter.php:147
+#: widgets/widget-social-counter.php:122 widgets/widget-social-counter.php:150
 msgid "Subscribers"
 msgstr ""
 
-#: widgets/widget-social-counter.php:130
+#: widgets/widget-social-counter.php:133
 msgid "+1 our page"
 msgstr ""
 
-#: widgets/widget-social-counter.php:133
+#: widgets/widget-social-counter.php:136
 msgid "People"
 msgstr ""
 
-#: widgets/widget-social-counter.php:144
+#: widgets/widget-social-counter.php:147
 msgid "Subscribe our page"
 msgstr ""
 
-#: widgets/widget-social-counter.php:158
+#: widgets/widget-social-counter.php:161
 msgid "Follow our Soundcloud"
 msgstr ""
 
-#: widgets/widget-social-counter.php:172
+#: widgets/widget-social-counter.php:175
 msgid "Follow our pinterest"
 msgstr ""
 
-#: widgets/widget-social-counter.php:186
+#: widgets/widget-social-counter.php:189
 msgid "Follow our vk"
 msgstr ""
 
-#: widgets/widget-social-counter.php:189
+#: widgets/widget-social-counter.php:192
 msgid "Members"
 msgstr ""
 
-#: widgets/widget-social-counter.php:200
+#: widgets/widget-social-counter.php:203
 msgid "Follow our Dribbble"
 msgstr ""
 
@@ -613,12 +644,12 @@ msgstr ""
 msgid "VW Simple Page Composer"
 msgstr ""
 
-#: functions.php:439
+#: functions.php:447
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr ""
 
-#: functions.php:442
+#: functions.php:450
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr ""

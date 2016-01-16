@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<!--[if lt IE 9]>         <html class="no-js lt-ie9 lt-ie10" <?php vw_html_tag_schema(); ?> <?php language_attributes(); ?>> <![endif]-->
-<!--[if IE 9]>         <html class="no-js lt-ie10" <?php vw_html_tag_schema(); ?> <?php language_attributes(); ?>> <![endif]-->
+<!--[if lte IE 9]>         <html class="no-js lt-ie9 lt-ie10" <?php vw_html_tag_schema(); ?> <?php language_attributes(); ?>> <![endif]-->
 <!--[if gt IE 9]><!--> <html class="no-js" <?php vw_html_tag_schema(); ?> <?php language_attributes(); ?>> <!--<![endif]-->
 	<head>
-			
+		<meta charset="<?php echo esc_attr( get_bloginfo('charset') ); ?>">
 		<!-- WP Header -->
 		<?php wp_head(); ?>
 		<!-- End WP Header -->

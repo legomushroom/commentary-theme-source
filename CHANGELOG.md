@@ -1,3 +1,37 @@
+### V1.3.1 - January 1st, 2016
+* IMPROVED: Wordpres 4.4 supports
+* IMPROVED: More search engine friendly
+* IMPROVED: Theme options panel engine
+* FIXED: Invalid position of sticky sidebar
+
+```
+M themes\espresso\components\simple-page-composer\css\simple-page-composer.css
+M themes\espresso\css\admin.css
+M themes\espresso\css\bootstrap-rtl.css
+M themes\espresso\css\bootstrap.css
+M themes\espresso\css\custom-bbpress-rtl.css
+M themes\espresso\css\custom-bbpress.css
+M themes\espresso\css\custom-buddypress-rtl.css
+M themes\espresso\css\custom-buddypress.css
+M themes\espresso\css\custom-woocommerce-rtl.css
+M themes\espresso\css\custom-woocommerce.css
+M themes\espresso\header.php
+M themes\espresso\inc\breadcrumb.php
+M themes\espresso\inc\schema.org.php
+M themes\espresso\inc\setup-theme.php
+M themes\espresso\inc\template-tags.php
+M themes\espresso\js\jquery-mmenu\css\jquery.mmenu.custom.css
+M themes\espresso\languages\default.pot
+M themes\espresso\languages\en_US.mo
+M themes\espresso\languages\en_US.po
+M themes\espresso\single_classic.php
+M themes\espresso\single_full_width.php
+M themes\espresso\style-rtl.css
+M themes\espresso\style.css
+M themes\espresso\templates\post-loop\post-slide-large-carousel.php
+M themes\espresso\templates\site-meta.php
+```
+
 ### V1.3.0 - September 8th, 2015
 * IMPROVED: Excerpt more character
 * IMPROVED: Page composer

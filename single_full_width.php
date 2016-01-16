@@ -19,6 +19,11 @@
 							<span class="author vcard hidden"><span class="fn"><?php echo esc_attr( get_the_author() ); ?></span></span>
 							<span class="updated hidden"><?php echo esc_attr( get_the_date( 'Y-m-d' ) ); ?></span>
 
+							<?php switch ( get_post_format() ) {
+								case 'video':  vw_the_embeded_video(); break;
+								case 'audio': vw_the_embeded_audio(); break;
+							} ?>
+
 							<div class="vw-post-content clearfix">
 								<?php if ( ! has_post_format( 'gallery' ) ) vw_the_embeded_media(); ?>
 								<?php the_content(); ?>
