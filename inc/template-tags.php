@@ -420,7 +420,6 @@ if ( ! function_exists( 'vw_the_embeded_video' ) ) {
 			}
 		}
 	}
-}
 
 
 if ( ! function_exists( 'vw_the_embeded_audio' ) ) {
