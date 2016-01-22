@@ -424,6 +424,7 @@ if ( ! function_exists( 'vw_the_embeded_video' ) ) {
 	}
 }
 
+
 if ( ! function_exists( 'vw_the_embeded_audio' ) ) {
 	function vw_the_embeded_audio() {
 		if ( has_post_format( 'audio' ) ) {
