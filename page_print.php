@@ -10,8 +10,8 @@
 <!--[if gt IE 9]><!--> <html class="no-js" <?php vw_html_tag_schema(); ?> <?php language_attributes(); ?>> <!--<![endif]-->
   <head>
     <!-- WP Header -->
-    <!-- <?php wp_head(); ?> -->
-    <link rel="stylesheet" href="style.css">
+    <?php wp_head(); ?>
+    <!-- <link rel="stylesheet" href="<?php bloginfo('template_directory');?>/style.css"> -->
     <!-- End WP Header -->
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
   </head>

@@ -2,7 +2,7 @@
 /* -----------------------------------------------------------------------------
  * Constants
  * -------------------------------------------------------------------------- */
-if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.3.13' );
+if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.3.15' );
 if ( ! defined( 'VW_THEME_NAME' ) ) define( 'VW_THEME_NAME', 'ESPRESSO' );
 if ( ! defined( 'MINUTES_IN_SECONDS' ) ) define( 'MINUTES_IN_SECONDS', 60 );
 
@@ -169,23 +169,28 @@ if ( ! function_exists( 'vw_filter_post_footer' ) ) {
 
 add_filter('the_excerpt', 'do_my_shortcode_in_excerpt');
 if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
-	function do_my_shortcode_in_excerpt($excerpt) {
+	function do_my_shortcode_in_excerpt($excerpt, $isIgnoreSuppress = false) {
     $isSuppress = get_post_meta(get_the_ID(), 'vw_post_excerpt_suppress', true);
-    
-    if (!$isSuppress) {
 
+    if (!$isSuppress || $isIgnoreSuppress) {
       if (has_excerpt()) {
         return html_entity_decode($excerpt);
       } else {
         global $more;
         $more = 1;
         // return get_the_content();
-        $content = get_the_content();
-        $content = preg_replace('/\[(\S+)[^\]]*][^\[]*\[\/\1\]/im', '', $content);
-        $content = strip_tags($content);
+        $content = do_shortcode(get_the_content());
+        // $dropcap = array();
+        // $match = preg_match_all('/\[intense\_dropcap.+\](.+)\[\/intense\_dropcap\]/', $content, $dropcap);
+        // if ($match) { $dropcap = trim($dropcap[1][0]); } else { $dropcap = ''; }
+        $content = preg_replace('/<h[1|2|3|4|5|6].+\>(.*)\<\/h[1|2|3|4|5|6]\>/im', '', $content);
+        $content = preg_replace('/\<span\sclass=[\'|\"]intense\sdropcap.+[\'|\"]\>\s?(.)\s?\n?\<\/span\>/im', '$1' , $content);
+        // $content = preg_replace('/\d+\sShares\sFacebook\sTwitter\sGoogle\+\sEmail\sPrint\sA\s?', '' , $content);
+        $content = strip_tags($content, '');
         $split = explode(' ', $content);
         $split = array_slice($split, 0, (int)vw_get_theme_option('blog_excerpt_length'));
         $content = join(' ', $split) . '...';
+
         return $content;
       }
       
@@ -196,8 +201,8 @@ if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
 	}
 }
 
-function vw_get_clean_excerpt () {
-  return do_my_shortcode_in_excerpt(get_the_excerpt());
+function vw_get_clean_excerpt ($isIgnoreSuppress) {
+  return do_my_shortcode_in_excerpt(get_the_excerpt(), $isIgnoreSuppress);
 }
 
 add_filter( 'post_thumbnail_html', 'wv_my_post_thumbnail_fallback', 20, 5 );
@@ -223,7 +228,7 @@ function wv_my_post_thumbnail_fallback( $html, $post_id, $post_thumbnail_id, $si
 
 function vw_get_the_sticky_content() {
       $buttons = getShareButtons();
-      return "<div id=\"js-sticky-contents\" class='intense sticky-contents clearfix'>
+      return "<div id=\"js-sticky-contents\" class='intense sticky-contents clearfix print-no'>
                           <div class=\"sticky-contents__items clearfix\">
                             <div class=\"sticky-contents__items-inner\" id=\"js-sticky-content-items\"></div>
                           </div>"

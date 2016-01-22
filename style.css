@@ -8759,7 +8759,9 @@ button.alm-load-more-btn.loading:before {
     .vw-top-bar-left,
     .vw-post-footer-section-custom,
     .vw-custom-banner,
-    .vw-menu-location-bottom {
+    .vw-menu-location-bottom,
+    .vw-related-posts,
+    .vw-main-post ins {
         display: none !important;
     }
 

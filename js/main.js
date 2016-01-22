@@ -171,7 +171,8 @@ jQuery.noConflict();
 					this.isTabletQuery = !!this.isMenuItems;
 					this.isTabletQuery || this.$stickyContents.addClass('is-no-contents');
 
-					this.$printBtn = this.$stickyContents.find('#js-sticky-contents-print');
+					this.$printBtn = this.$post.find('#js-sticky-contents-print');
+					// console.log(this.$printBtn.length);
 
 					setTimeout((function () {
 						this.getActiveArea();
@@ -194,10 +195,11 @@ jQuery.noConflict();
 
 				}
 			Main.prototype.print = function (e) {
-				// console.log('print');
 				var $credits = this.$post.parent().children('.vw-about-author, .vw-related-posts');
 				var frame = window.frames['print_frame'];
 				frame.document.querySelector('.vw-page-content').innerHTML = this.$post.html() + $('<div />').append($credits).html();
+				frame.window.history && frame.window.history.replaceState({}, '', document.location.href);
+				frame.document.title = document.title;
 				frame.window.focus();
 				this.$printBtn.removeClass('is-loading');
 				frame.window.print();
@@ -212,7 +214,8 @@ jQuery.noConflict();
 			}
 
 			Main.prototype.bindPrint = function () {
-				this.$printBtn.on('click', this.tryToPrint.bind(this));
+				// this.$post.on('click', '#js-sticky-contents-print', this.tryToPrint.bind(this));
+				// this.$printBtn.on('click', this.tryToPrint.bind(this));
 			}
 			Main.prototype.getActiveArea = function () {
 					this.postActiveAreaTop = this.$post.offset().top - 120;
