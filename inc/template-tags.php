@@ -419,30 +419,23 @@ if ( ! function_exists( 'vw_the_embeded_video' ) ) {
 				echo '</div>';
 
 			}
-
 		}
 	}
 }
 
-
 if ( ! function_exists( 'vw_the_embeded_audio' ) ) {
 	function vw_the_embeded_audio() {
-		if ( has_post_format( 'audio' ) ) {
-			$audio_oembed_url = get_post_meta( get_the_ID(), 'vw_post_format_audio_oembed_url', true );
-			$audio_oembed_code = get_post_meta( get_the_ID(), 'vw_post_format_audio_oembed_code', true );
-
-			if ( ! empty( $audio_oembed_url ) ) {
-				echo '<div class="vw-embeded-media vw-embeded-audio vw-embeded-audio-url">';
-				echo wp_oembed_get( $audio_oembed_url );
-				echo '</div>';
-
-			} else if ( ! empty( $audio_oembed_code ) ) {
-				echo '<div class="vw-embeded-media vw-embeded-audio vw-embeded-audio-code">';
-				echo $audio_oembed_code;
-				echo '</div>';
-
-			}
-
+		$audio_oembed_url = get_post_meta( get_the_ID(), 'vw_post_format_audio_oembed_url', true );
+		$audio_oembed_code = get_post_meta( get_the_ID(), 'vw_post_format_audio_oembed_code', true );
+		
+		if ( ! empty( $audio_oembed_url ) ) {
+			echo '<div class="vw-embeded-media vw-embeded-audio vw-embeded-audio-url">';
+			echo wp_oembed_get( $audio_oembed_url );
+			echo '</div>';
+		} else if ( ! empty( $audio_oembed_code ) ) {
+			echo '<div class="vw-embeded-media vw-embeded-audio vw-embeded-audio-code">';
+			echo $audio_oembed_code;
+			echo '</div>';
 		}
 	}
 }

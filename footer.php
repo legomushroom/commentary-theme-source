@@ -20,7 +20,7 @@
 		<!-- End WP Footer -->
     <script src="<?= get_bloginfo("template_url"); ?>/bower_components/tap/dist/tap.min.js"></script>
     
-    <iframe name="print_frame" width="0" height="0" style="width: 0; height: 0; position: absolute; left: -20000px;" frameborder="0" src="/commentary/print-page/" id="js-print-iframe" onload="window.CommentaryMagazine = (window.CommentaryMagazine == null) ? {} : window.CommentaryMagazine; window.CommentaryMagazine.isIframeLoaded = true; jQuery(document).trigger('vw-iframe-loaded')"></iframe>
+    <iframe name="print_frame" width="0" height="0" style="width: 0; height: 0; position: absolute" frameborder="0" src="/commentary/print-page/" id="js-print-iframe" onload="window.CommentaryMagazine = (window.CommentaryMagazine == null) ? {} : window.CommentaryMagazine; window.CommentaryMagazine.isIframeLoaded = true; jQuery(document).trigger('vw-iframe-loaded')"></iframe>
 
 	</body>
 

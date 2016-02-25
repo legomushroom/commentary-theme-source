@@ -214,7 +214,7 @@ jQuery.noConflict();
 			}
 
 			Main.prototype.bindPrint = function () {
-				// this.$post.on('click', '#js-sticky-contents-print', this.tryToPrint.bind(this));
+				this.$post.on('click', '#js-sticky-contents-print', this.tryToPrint.bind(this));
 				// this.$printBtn.on('click', this.tryToPrint.bind(this));
 			}
 			Main.prototype.getActiveArea = function () {
