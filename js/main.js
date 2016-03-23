@@ -1,3 +1,4 @@
+
 /*!
   LegoMushroom @legomushroom http://legomushroom.com
   MIT License 2014
@@ -195,10 +196,69 @@ jQuery.noConflict();
 
 				}
 			Main.prototype.print = function (e) {
-				var $credits = this.$post.parent().children('.vw-about-author, .vw-related-posts');
-				var frame = window.frames['print_frame'];
-				frame.document.querySelector('.vw-page-content').innerHTML = this.$post.html() + $('<div />').append($credits).html();
-				frame.window.history && frame.window.history.replaceState({}, '', document.location.href);
+				var $credits = this.$post.parent()
+												.children('.vw-about-author').clone();
+				var frame = window.frames['print_frame'],
+						$html = this.$post.clone();
+				$html.find('[style]').attr('style', '');
+				$html.find('#js-sticky-contents').remove();
+				$html.find('.vw-post-share-box.is-under-post, .vw-tag-links').remove();
+				$html.find('.hidden').remove();
+				$html.find('.vw-post-categories, .onp-sl').remove();
+				$html.find('.vw-embeded-video')
+					.find(':not(.vw-print-only)').remove();
+				$html.find('.vw-embeded-audio')
+					.find(':not(.vw-print-only)').remove();
+				var $as = $html.find('a');
+				$as.each(function (i, el) {
+					var $el = $(el);
+					$el.replaceWith('<span>' + $el.html()  + '</span>');
+				});
+
+				// var $featuredImage = $html.find('.vw-featured-image');
+				// $featuredImage.find('img')
+				// 	.attr('width', '100%')
+				// 	.attr('height', 'auto')
+					// .css({ float: 'left' });
+
+				// $featuredImage
+				// 	.replaceWith('<p>' + $featuredImage.html()  + '</p>');
+
+				var $entryTitle = $html.find('.entry-title');
+				if ($entryTitle[0]) {
+					$entryTitle.replaceWith('<h1>' + $entryTitle.html()  + '</h1>');
+					// $entryTitle.after('<hr />');
+				} else {
+					// $html.prepend('<hr />');
+					$html.prepend('<h1>' + document.title.replace(/\| commentary/, '')  + '</h1>');
+				}
+
+				$credits.find('.vw-author-avatar').remove();
+				
+				// $html.find('.vw-embeded-gallery img')
+				// 	.attr('width', '100%')
+				// 	.attr('height', 'auto')
+
+				$html.find('img, .vw-featured-image')
+					// .attr('width', '100%')
+					// .attr('height', 'auto')
+					.remove();
+
+				$html.find('.onp-sl').remove()
+				// console.log($html.find('[id*="onpLock"]').html())
+				$html.find('[id*="onpLock"]').remove()
+
+				var $content = $html.find('.vw-post-content, .vw-cont');
+				$content.find('h1').each(function (i, el) {
+					var $el = $(el); $el.replaceWith('<h2>' + $el.html() + '</h2>');
+				});
+
+
+				var credits = $('<div />').append($credits).html();
+				console.log(credits);
+				if ( credits ) { credits = '<hr />' + credits; };
+				frame.document.body.innerHTML = $html.html() + credits;
+				// window.history && window.history.replaceState({}, '', document.location.href);
 				frame.document.title = document.title;
 				frame.window.focus();
 				this.$printBtn.removeClass('is-loading');
@@ -208,9 +268,10 @@ jQuery.noConflict();
 			Main.prototype.tryToPrint = function () {
 				this.$printBtn.addClass('is-loading');
 				// this.print();
-				if (window.CommentaryMagazine.isIframeLoaded) { this.print(); }
-				else { $(document).on('vw-iframe-loaded', function () { this.print(); }.bind(this));
-				}
+				this.print();
+				// if (window.CommentaryMagazine.isIframeLoaded) { this.print(); }
+				// else { $(document).on('vw-iframe-loaded', function () { this.print(); }.bind(this));
+				// }
 			}
 
 			Main.prototype.bindPrint = function () {

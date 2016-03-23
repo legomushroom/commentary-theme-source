@@ -408,7 +408,7 @@ if ( ! function_exists( 'vw_the_embeded_video' ) ) {
 
 			if ( ! empty( $video_oembed_url ) ) {
 				echo '<div class="vw-embeded-media vw-embeded-video vw-embeded-video-url">';
-				echo '<div class="vw-print-only"> video: ' . $video_oembed_url . '</div>';
+				echo '<p class="vw-print-only"> video: ' . $video_oembed_url . '</p>';
 				echo wp_oembed_get( $video_oembed_url );
 				echo '</div>';
 
@@ -430,6 +430,7 @@ if ( ! function_exists( 'vw_the_embeded_audio' ) ) {
 		
 		if ( ! empty( $audio_oembed_url ) ) {
 			echo '<div class="vw-embeded-media vw-embeded-audio vw-embeded-audio-url">';
+			echo '<p class="vw-print-only"> audio: ' . $audio_oembed_url . '</p>';
 			echo wp_oembed_get( $audio_oembed_url );
 			echo '</div>';
 		} else if ( ! empty( $audio_oembed_code ) ) {

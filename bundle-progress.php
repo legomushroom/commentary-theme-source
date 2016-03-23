@@ -40,17 +40,19 @@ foreach( $myposts as $post ):
   if ($ID === $post->ID) { continue; }
   setup_postdata($post); ?>
 
-  <div class="vw-bundled-post">
+  <span class="vw-bundled-post" style="display: block">
 
-  <article <?php post_class( 'vw-main-post' ); ?> data-url="<?php echo get_permalink($post->ID); ?>" data-name="<?php echo $post->post_title; ?>" data-author-name="<?php echo get_the_author_meta('display_name', $post->post_author); ?>" data-author-link="<?php echo get_author_posts_url($post->post_author); ?>">
+  <span style="display: block" <?php post_class( 'vw-main-post' ); ?> data-url="<?php echo get_permalink($post->ID); ?>" data-name="<?php echo $post->post_title; ?>" data-author-name="<?php echo get_the_author_meta('display_name', $post->post_author); ?>" data-author-link="<?php echo get_author_posts_url($post->post_author); ?>">
 
     <?php vw_the_breadcrumb(); ?>
 
     <?php vw_the_category(); ?>
 
-    <h1 class="entry-title">
-      <a href="<?php echo get_permalink($post->ID); ?>"><?php the_title(); ?></a>
-    </h1>
+    <!-- <hr class="vw-post-categories-hr" style="display: none"> -->
+  
+    <h2 class="entry-title reader-title">
+      <a id="container" class="font-size8" href="<?php echo get_permalink($post->ID); ?>"><?php the_title(); ?></a>
+    </h2>
 
     <?php vw_the_subtitle(); ?>
 
@@ -61,7 +63,8 @@ foreach( $myposts as $post ):
 
     <?php // vw_the_post_share_box(); ?>
 
-    <div class="vw-post-content clearfix">
+    <!-- <span class="vw-post-content clearfix" style="display: block"> -->
+    <span class="vw-cont clearfix" style="display: block">
       <?php if ( vw_get_paged() == 1 ) : ?>
 
         <?php if ( ! has_post_format() ) vw_the_featured_image(); ?>
@@ -76,7 +79,7 @@ foreach( $myposts as $post ):
         $content = str_replace(']]>', ']]&gt;', $content);
         echo $content;
       ?>
-    </div>
+    </span>
 
     <?php vw_the_link_pages(); ?>
 
@@ -84,13 +87,13 @@ foreach( $myposts as $post ):
 
     <?php echo getShareButtons('is-under-post'); ?>
 
-  </article><!-- #post-## -->
+  </span><!-- #post-## ARTICLE -->
 
   <?php do_action( 'vw_action_after_single_post' ); ?>
 
   <?php vw_the_post_footer_sections(false); ?>
 
-  </div>
+  </span>
 
 <?php endforeach; wp_reset_postdata(); ?>
 

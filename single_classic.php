@@ -40,7 +40,9 @@
                 
               <?php endif; ?>
 
-              <div class="vw-post-content clearfix"><?php the_content(); ?></div>
+              <div class="vw-post-content clearfix">
+                <?php the_content(); ?>
+              </div>
 
               <?php vw_the_link_pages(); ?>
 
@@ -51,9 +53,9 @@
             </article><!-- #post-## -->
 
           <?php endwhile; ?>
-
+          
           <?php do_action( 'vw_action_after_single_post' ); ?>
-
+          
           <?php vw_the_post_footer_sections(); ?>
 
           <?php include 'bundle-progress.php' ?>
