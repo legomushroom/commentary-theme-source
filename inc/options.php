@@ -1244,7 +1244,7 @@ Colors
  */
 
 Redux::setSection( $vw_opt_name, array(
-	'title'      => 'Colors',
+	'title'      => 'Colors / Background',
 	'desc'       => 'These are options for theme colors and background.',
 	'id'         => 'vw-options-colors',
 	'icon'       => 'el el-tint',

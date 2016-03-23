@@ -1,3 +1,7 @@
+### V1.3.2 - February 29th, 2016
+* IMPROVED: Theme options panel plugin
+* IMPROVED: Internal code
+
 ### V1.3.1 - January 1st, 2016
 * IMPROVED: Wordpres 4.4 supports
 * IMPROVED: More search engine friendly

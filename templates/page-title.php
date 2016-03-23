@@ -87,10 +87,8 @@ if ( is_single() && have_posts() ) { the_post(); }
 									<?php vw_the_category(); ?>
 									<h1 class="vw-page-title"><?php the_title(); ?></h1>
 
-									<?php if ( ! vw_is_custom_post_type() || apply_filters( 'vw_filter_is_custom_single_page_title', false ) ) : ?>
-										<?php vw_the_subtitle(); ?>
-										<?php vw_the_post_meta_large() ?>
-									<?php endif; ?>
+									<?php vw_the_subtitle(); ?>
+									<?php vw_the_post_meta_large() ?>
 								</div>
 
 							<?php elseif ( is_search() ) : ?>
