@@ -449,6 +449,7 @@ if ( ! function_exists( 'vw_the_post_footer_sections' ) ) {
 
 		$sections = vw_get_theme_option( 'post_footer_sections' );
 
+		// lm
 		if ($isFilter) {
 			$sections = apply_filters( 'vw_filter_post_footer_sections', $sections );
 		}
@@ -735,7 +736,7 @@ if ( ! function_exists( 'vw_the_post_slider' ) ) {
 
 		// ==== End temp query =====================================
 
-		query_posts( apply_filters( 'vw_filter_the_post_slider_query', $query_args, $args ) );
+		query_posts( apply_filters( 'vw_filter_the_post_slider_query', $query_args ) );
 		global $wp_query;
 
 		if ( have_posts() ) {

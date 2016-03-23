@@ -575,7 +575,7 @@ if ( ! function_exists( 'vw_shortcode_posts' ) ) {
 			$query_args['orderby'] = 'post_date';
 		}
 
-		query_posts( apply_filters( 'vw_filter_shortcode_posts_query', $query_args, $atts ) );
+		query_posts( $query_args, $atts );
 
 		$template_file = sprintf( 'templates/post-loop/loop-%s.php', $layout );
 

@@ -2,7 +2,7 @@
 /* -----------------------------------------------------------------------------
  * Constants
  * -------------------------------------------------------------------------- */
-if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.3.25' );
+if ( ! defined( 'VW_THEME_VERSION' ) ) define( 'VW_THEME_VERSION', '1.3.2' );
 if ( ! defined( 'VW_THEME_NAME' ) ) define( 'VW_THEME_NAME', 'ESPRESSO' );
 if ( ! defined( 'MINUTES_IN_SECONDS' ) ) define( 'MINUTES_IN_SECONDS', 60 );
 
@@ -465,18 +465,7 @@ if ( ! function_exists( 'vw_get_related_posts' ) ) {
 				}
 			}
 		}
-    // Use main args by default
-    $query_args = $args;
-    // If no tags / categories, pass empty args to filter and bypass WP_Query
-    if ( empty( $args['tag__in'] ) && empty( $args['category__in'] ) ) {
-      $query_args = array();
-    }
-    $query_args = apply_filters( 'vw_filter_related_post_query_args', $query_args, $post_ID, $args );
-    // Allow filter to bypass WP_Query for related posts
-    // or custom taxonomies / filters to be used when there's no tag/category
-    if ( empty( $query_args ) ) {
-      return false;
-    }
+
 		return new WP_Query( $query_args );
 	}
 }
