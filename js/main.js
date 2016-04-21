@@ -198,21 +198,33 @@ jQuery.noConflict();
 			Main.prototype.print = function (e) {
 				var $credits = this.$post.parent()
 												.children('.vw-about-author').clone();
-				var frame = window.frames['print_frame'],
+				var frame = document.querySelector('#js-print-iframe'),
 						$html = this.$post.clone();
+
 				$html.find('[style]').attr('style', '');
 				$html.find('#js-sticky-contents').remove();
 				$html.find('.vw-post-share-box.is-under-post, .vw-tag-links').remove();
 				$html.find('.hidden').remove();
 				$html.find('.vw-post-categories, .onp-sl').remove();
+				$html.find('.intense-hover-box').remove()
+				$html.find('.commentary-exclude-from-print').remove()
+				$html.find('.vw-before-post-content').remove()
+				$html.find('.vw-after-post-content').remove()
 				$html.find('.vw-embeded-video')
 					.find(':not(.vw-print-only)').remove();
 				$html.find('.vw-embeded-audio')
 					.find(':not(.vw-print-only)').remove();
+				
 				var $as = $html.find('a');
 				$as.each(function (i, el) {
 					var $el = $(el);
-					$el.replaceWith('<span>' + $el.html()  + '</span>');
+					$el.replaceWith('<span>' + $el.html() + '</span>');
+				});
+
+				var $dropCaps = $html.find('.intense.dropcap');
+				$dropCaps.each( function (i, el) {
+					var $el = $(el);
+					$el.replaceWith('<span>' + $el.text().trim() + '</span>');
 				});
 
 				// var $featuredImage = $html.find('.vw-featured-image');
@@ -255,14 +267,25 @@ jQuery.noConflict();
 
 
 				var credits = $('<div />').append($credits).html();
-				console.log(credits);
+
 				if ( credits ) { credits = '<hr />' + credits; };
-				frame.document.body.innerHTML = $html.html() + credits;
-				// window.history && window.history.replaceState({}, '', document.location.href);
-				frame.document.title = document.title;
-				frame.window.focus();
-				this.$printBtn.removeClass('is-loading');
-				frame.window.print();
+
+				var it = this;
+				frame.contentWindow.document.open("text/html", "replace");
+				// frame.document.body.innerHTML = ;
+				frame.contentWindow.document.onreadystatechange = function () {
+					if (frame.contentWindow.document.readyState === "complete") {
+					    frame.contentWindow.document.body.focus();
+					    frame.contentWindow.print();
+					    it.$printBtn.removeClass('is-loading');
+					}
+				}
+				frame.contentWindow.document.write($html.html() + credits);
+				frame.contentWindow.document.close();
+
+				// frame.document.title = document.title;
+				// frame.window.focus();
+				// frame.window.print();
 			}
 
 			Main.prototype.tryToPrint = function () {
