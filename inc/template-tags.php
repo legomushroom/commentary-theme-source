@@ -736,7 +736,7 @@ if ( ! function_exists( 'vw_the_post_slider' ) ) {
 
 		// ==== End temp query =====================================
 
-		query_posts( apply_filters( 'vw_filter_the_post_slider_query', $query_args ) );
+		query_posts( apply_filters( 'vw_filter_the_post_slider_query', $query_args, $args ) );
 		global $wp_query;
 
 		if ( have_posts() ) {
