@@ -107,23 +107,43 @@
     },
 
     initSync: function () {
-      var $doc = $(document);
-
-      // wrap :: [string] -> [string]
-      var wrapInBrackets = function (str) {
-        return '[' + str + ']';
-      }
 
       var it = this;
-
-      $doc.ajaxComplete(function (event, xhr, settings) {
-        if (!xhr.responseText) {return};
-        var match = xhr.responseText.match(/data\-ajax\-id\=\".+?\"/gim);
-        if (!match || !match.length) {return};
-        var wrappedMatch = match.map(wrapInBrackets);
-        var selector = wrappedMatch.join(' , ');
+      $(document).on('vw-ajax-more-load', function ( e, data ) {
+        var selector = '[data-ajax-id=' + data.id + ']';
         $(selector).each(it.trigger.bind(it));
       });
+
+      // setTimeout( function () {
+      //   $('.vw-main-post').each(it.trigger.bind(it));
+      //   console.log('trigger 3');
+      // }, 100 );
+
+      // old one
+      // $doc.ajaxComplete(function (event, xhr, settings) {
+      //   if (!xhr.responseText) {return};
+      //   var match = xhr.responseText.match(/data\-ajax\-id\=\\\".+?\\\"/gim);
+      //   if (!match || !match.length) {return};
+      //   var wrappedMatch = match.map( wrapInBrackets ).map( removeSlashes );
+      //   var selector = wrappedMatch.join(' , ');
+      //   console.log(selector);
+      //   $(selector).each(it.trigger.bind(it));
+      // });
+
+      // var $doc = $(document);
+      // // wrap :: String -> String
+      // var wrapInBrackets = function (str) {
+      //   return '[' + str + ']';
+      // }
+      // // remove \ :: String -> String
+      // var removeSlashes = function (str) {
+      //   var index = str.indexOf("\\");
+      //   while( index >= 0 ){
+      //      str   = str.replace("\\","");
+      //      index = str.indexOf("\\");
+      //   }
+      //   return str;
+      // }
 
     },
 
@@ -270,16 +290,16 @@
 
       if (!this.gaSent[this.currentItem.url]) {
         // this.$doc.trigger('bp-page-view', [ this.currentItem.$item, this.currentItem.index === 0 ]);
-        
-        ga('send', 'pageview', this.currentItem.url);
-        this.gaSent[this.currentItem.url] = true;
-
 
         var notifyLockers = function() {
           this.tryPandaHook();
           this.currentItem.$item.find(".onp-locker-call").bind('opanda-unlock, opanda-lock, opanda-cancel', function(){
             this.getDimentionsDelayed();
           }.bind(this));
+  
+          ga('send', 'pageview', this.currentItem.url);
+          this.gaSent[this.currentItem.url] = true;
+
           this.$doc.trigger('bp-page-view', [ this.currentItem.$item, this.currentItem.index === 0 ]);
         }.bind(this);
         
