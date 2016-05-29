@@ -178,11 +178,11 @@ if ( ! function_exists( 'do_my_shortcode_in_excerpt' ) ) {
       } else {
         global $more;
         $more = 1;
-        // return get_the_content();
-        $content = do_shortcode(get_the_content());
-        // $dropcap = array();
-        // $match = preg_match_all('/\[intense\_dropcap.+\](.+)\[\/intense\_dropcap\]/', $content, $dropcap);
-        // if ($match) { $dropcap = trim($dropcap[1][0]); } else { $dropcap = ''; }
+        
+        $content = get_the_content();
+        $content = preg_replace('/\[woocommerce_one_page_checkout.+\]/im', '', $content);
+        $content = do_shortcode($content);
+        
         $content = preg_replace('/<h[1|2|3|4|5|6].+\>(.*)\<\/h[1|2|3|4|5|6]\>/im', '', $content);
         $content = preg_replace('/\<span\sclass=[\'|\"]intense\sdropcap.+[\'|\"]\>\s?(.)\s?\n?\<\/span\>/im', '$1' , $content);
         // $content = preg_replace('/\d+\sShares\sFacebook\sTwitter\sGoogle\+\sEmail\sPrint\sA\s?', '' , $content);
