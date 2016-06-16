@@ -36,7 +36,10 @@
 								
 							<?php endif; ?>
 
-							<div class="vw-post-content clearfix"><?php the_content(); ?></div>
+							<div class="vw-post-content clearfix">
+								<?php echo vw_get_the_sticky_content(); ?>
+								<?php the_content(); ?>	
+							</div>
 
 							<?php vw_the_link_pages(); ?>
 

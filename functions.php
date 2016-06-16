@@ -248,14 +248,12 @@ function vw_get_the_sticky_content() {
                         </div>";
 }
 
-add_filter( 'the_content', 'theme_slug_filter_the_content' );
-function theme_slug_filter_the_content( $content ) {
-    $custom_content = vw_get_the_sticky_content();
-    $custom_content .= $content;
-    return $custom_content;
-}
-
-
+// add_filter( 'the_content', 'theme_slug_filter_the_content' );
+// function theme_slug_filter_the_content( $content ) {
+//     $custom_content = vw_get_the_sticky_content();
+//     $custom_content .= $content;
+//     return $custom_content;
+// }
 
 // Allow SVG files upload
 function cc_mime_types($mimes) {
@@ -952,3 +950,19 @@ function acf_update_shares_forgery ($value, $post_id, $field) {
 	return $value;
 }
 
+
+/* -----------------------------------------------------------------------------
+ * CUSTOM: Recalculate total shares with forgery.
+ * -------------------------------------------------------------------------- */
+  // removes Order Notes Title - Additional Information
+  add_filter( 'woocommerce_enable_order_notes_field', '__return_false' );
+  //remove Order Notes Field
+  add_filter( 'woocommerce_checkout_fields' , 'remove_order_notes' );
+
+  function remove_order_notes( $fields ) {
+       unset($fields['order']['order_comments']);
+       unset($fields['billing']['billing_company']);
+       unset($fields['billing']['billing_phone']);
+
+       return $fields;
+  }

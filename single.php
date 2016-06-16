@@ -1,5 +1,6 @@
 <?php get_header(); ?>
 
+
 <?php
 $post_layout = vw_get_post_layout();
 

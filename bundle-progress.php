@@ -73,11 +73,16 @@ foreach( $myposts as $post ):
 
       <?php endif; ?>
 
+      <!-- <div class="vw-post-content clearfix"> -->
+        <?php echo vw_get_the_sticky_content(); ?>
+        <?php the_content(); ?>
+      <!-- </div> -->
+
       <?php
-        $content = $post->post_content;
-        $content = apply_filters('the_content', $content);
-        $content = str_replace(']]>', ']]&gt;', $content);
-        echo $content;
+        // $content = $post->post_content;
+        // $content = apply_filters('the_content', $content);
+        // $content = str_replace(']]>', ']]&gt;', $content);
+        // echo $content;
       ?>
     </span>
 

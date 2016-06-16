@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<!-- <?php if ( ! is_woocommerce() ) { get_header(); } ; ?> -->
 
 <?php get_template_part( '/templates/page-title' ); ?>
 
@@ -26,6 +27,9 @@
 
 							<div class="vw-post-content clearfix">
 								<?php if ( ! has_post_format( 'gallery' ) ) vw_the_embeded_media(); ?>
+								
+								<?php echo vw_get_the_sticky_content(); ?>
+
 								<?php the_content(); ?>
 							</div>
 

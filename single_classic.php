@@ -1,3 +1,4 @@
+
 <?php get_header(); ?>
 
 <div class="vw-page-wrapper clearfix <?php vw_the_sidebar_position_class(); ?>">
@@ -41,6 +42,7 @@
               <?php endif; ?>
 
               <div class="vw-post-content clearfix">
+                <?php echo vw_get_the_sticky_content(); ?>
                 <?php the_content(); ?>
               </div>
 
