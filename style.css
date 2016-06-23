@@ -8864,3 +8864,18 @@ button.alm-load-more-btn.loading:before {
     margin-top: 70px;
 }
 
+/* custom */
+#additional-settings {
+    background: white;
+    padding: 10px 20px;
+    left: 0;
+    box-shadow: 0 7px 10px rgba(0, 0, 0, .3);
+    bottom: -37px !important;
+    /* border-bottom-left-radius: 3px; */
+    /* border-bottom-right-radius: 3px; */
+}
+
+#additional-settings .modal-login-nav {
+    font-size: 16px;
+}
+
