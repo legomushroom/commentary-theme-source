@@ -8866,7 +8866,7 @@ button.alm-load-more-btn.loading:before {
 
 /* custom */
 #additional-settings {
-    background: white;
+    background: inherit;
     padding: 10px 20px;
     left: 0;
     box-shadow: 0 7px 10px rgba(0, 0, 0, .3);
