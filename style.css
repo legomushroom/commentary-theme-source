@@ -8456,7 +8456,7 @@ html {
         margin-top: 13px;
         height: 100%;
         display: inline-block;
-        margin-top: 12px;
+        margin-top: 9px;
     }
     /*.vw-main-menu-right__login-link .login {
         text-decoration: none;
@@ -8870,12 +8870,133 @@ button.alm-load-more-btn.loading:before {
     padding: 10px 20px;
     left: 0;
     box-shadow: 0 7px 10px rgba(0, 0, 0, .3);
-    bottom: -37px !important;
+    bottom: -36px !important;
     /* border-bottom-left-radius: 3px; */
     /* border-bottom-right-radius: 3px; */
 }
-
 #additional-settings .modal-login-nav {
     font-size: 16px;
 }
 
+/* custom */
+.woocommerce #payment #place_order {
+    font-family: custom_font_2 !important;
+    background: #ec2127;
+}
+.woocommerce #payment #place_order:hover {
+    background: #3E3E3E;
+}
+
+.rhlogin .btn {
+    border-radius: 0;
+    background: #000;
+    border: 0;
+    box-shadow: none;
+    font-size: 24px !important;
+    font-family: 'custom_font_2', sans-serif;
+}
+
+.modal.rhlogin .btn {
+    font-size: 18px !important;
+    padding: 2px 20px 0;
+    font-family: 'custom_font_2', sans-serif;
+}
+
+.modal.rhlogin .btn:hover,
+.rhlogin .btn:hover {
+    background: #ec2127 !important;
+}
+
+.modal.rhlogin .modal-header {
+    height: 40px !important;
+    font-family: 'custom_font_2', sans-serif;
+}
+
+.modal.rhlogin .input {
+    height: 30px !important;
+    width: 100%;
+    background-color: white !important;
+    border-radius: 0;
+    border: 1px solid black !important;
+    margin-top: 5px !important;
+}
+
+.modal.rhlogin label {
+    font-size: 14px;
+}
+
+.modal.rhlogin .close {
+    color: black;
+    opacity: 1;
+    font-size: 15px;
+    margin-top: -10px;
+}
+
+.modal.rhlogin .close:hover {
+    color: black;
+    opacity: .75;
+    background: transparent;
+}
+
+.modal.rhlogin .btn-default {
+    background: transparent !important;
+}
+
+.modal.rhlogin .btn-default:hover {
+    background: transparent !important;   
+    text-decoration: underline;
+    border: 0 !important;
+}
+
+.modal.rhlogin .modal-login-links {
+    position: absolute;
+    bottom: 20px;
+}
+
+.modal.rhlogin .modal-footer {
+    border: 0 !important;
+    background: transparent !important;
+}
+
+.modal.rhlogin #loginform {
+    width: 100%;
+    padding: 15px 20px;
+    border-bottom: 1px solid;
+}
+
+.modal.rhlogin .action-logout {
+    margin-top: 26px;
+}
+
+.modal.rhlogin .modal-body {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.modal.rhlogin {
+    border: 0;
+    margin: -160px 0 0 -280px;
+}
+
+.modal.rhlogin * {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+
+.rhlogin .btn {
+    background: transparent !important;
+    border: transparent !important;
+    font: inherit !important;
+    color: white !important;
+    border-radius: 0 !important;
+    padding: 2px 10px 0 !important;
+    text-decoration: none;
+}
+
+/*.rhlogin .btn:hover {
+    color: white;
+    background: transparent;
+}*/

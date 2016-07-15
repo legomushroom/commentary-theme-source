@@ -966,3 +966,14 @@ function remove_order_notes( $fields ) {
 
      return $fields;
 }
+
+
+
+add_action( 'login_enqueue_scripts', 'my_login_logo' );
+function my_login_logo() {
+    echo '<style type="text/css" link="'. get_stylesheet_directory_uri() .'/styles.css"></style>';
+
+    // wp_head();
+}
+
+

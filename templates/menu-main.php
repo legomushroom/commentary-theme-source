@@ -35,7 +35,7 @@
 					<div class="vw-main-menu-right">
 
 						<span class="vw-main-menu-right__login-link">
-							<?php add_modal_login_link($login_text = 'Log In', $logout_text = 'Log Out'); ?>
+							<?php echo do_shortcode("[modal_login_button label='Log In' description='Login to the site, a modal form will pop up' type='btn-inverse' size='btn-large' align='rhl-float-right' logout_label='Log Out' logout_description='Logout from the site' logout_type='btn-danger']"); ?>
 						</span>
 
 						<a class="vw-instant-search-button vw-main-menu-right__search">

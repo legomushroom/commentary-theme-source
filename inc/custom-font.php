@@ -23,6 +23,7 @@ if ( ! function_exists('vw_url_strip_protocol') ) {
 }
 
 add_action( 'wp_head', 'vw_render_custom_font', 99 );
+add_action( 'login_enqueue_scripts', 'vw_render_custom_font', 99 );
 if ( ! function_exists( 'vw_render_custom_font' ) ) {
 	function vw_render_custom_font() {
 		?>
