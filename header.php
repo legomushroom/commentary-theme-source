@@ -26,6 +26,48 @@
 		
 	</head>
 	<body id="site-top" <?php body_class(); ?>>
+		<!-- LOG IN MODAL :: START -->
+		<div class="vw-login-modal-overlay" id="js-vw-modal-login-overlay"></div>
+		<div class="vw-login-modal-form" id="js-vw-modal-login-form">
+				<i class="vw-icon icon-entypo-cancel" id="js-vw-modal-login-close"></i>
+				<h3>Log In</h3>
+				<form action="<?php echo wp_login_url( get_permalink() ); ?>" method="post">
+					<p class="vw-login-form-username">
+						<input type="text" name="log" id="log" placeholder="Username" size="33" />
+					</p>
+					<p class="vw-login-form-pass">
+						<input type="password" name="pwd" id="pwd" placeholder="Password" size="33" />
+					</p>
+					<p>
+						<label for="rememberme" class="vw-login-form-remember"><input name="rememberme" id="rememberme" type="checkbox" checked="checked" value="forever" /> <?php _e( 'Remember Me' , 'envirra' ) ?></label>
+						<a class="vw-login-form-lost-password" href="<?php echo wp_lostpassword_url( get_permalink() ); ?>"><?php _e( 'Lost your password?' , 'envirra' ) ?></a></p>
+
+					<input type="submit" name="submit" value="<?php _e( 'Log in' , 'envirra' ) ?>" class="vw-login-form-login-button" />
+					<?php if ( get_option('users_can_register') ) : ?>
+						<a class="vw-login-form-register-button btn" href="<?php echo wp_registration_url(); ?>"><?php _e( 'Register' , 'envirra' ) ?></a>
+					<?php endif; ?>
+					<input type="hidden" name="redirect_to" value="<?php echo esc_url( $_SERVER['REQUEST_URI'] ); ?>"/>
+				</form>
+			</div>
+		<script>
+      ;(function (undefined) {
+        var $ = jQuery;
+        // var $overlay  = $('#js-vw-modal-login-overlay');
+        // var $modal    = $('#js-vw-modal-login-form');
+        $(document.body).on('click', '#js-vw-modal-login', function (e) {
+          $('#js-vw-modal-login-overlay').fadeIn(350);
+          $('#js-vw-modal-login-form').fadeIn(350);
+          e.preventDefault();
+          return false;
+        });
+
+        $(document.body).on('click', '#js-vw-modal-login-overlay, #js-vw-modal-login-close', function () {
+          $('#js-vw-modal-login-overlay').fadeOut(350);
+          $('#js-vw-modal-login-form').fadeOut(350);
+        });
+      })();
+    </script>
+		<!-- LOG IN MODAL :: END -->
 		<div id="fb-root"></div>
 		<script>(function(d, s, id) {
 		  var js, fjs = d.getElementsByTagName(s)[0];

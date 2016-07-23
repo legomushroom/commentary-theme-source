@@ -8456,7 +8456,7 @@ html {
         margin-top: 13px;
         height: 100%;
         display: inline-block;
-        margin-top: 9px;
+        margin-top: 13px;
     }
     /*.vw-main-menu-right__login-link .login {
         text-decoration: none;
@@ -8994,6 +8994,67 @@ button.alm-load-more-btn.loading:before {
     border-radius: 0 !important;
     padding: 2px 10px 0 !important;
     text-decoration: none;
+}
+
+.vw-login-modal-overlay {
+    display: none;
+    background-color: rgba(0,0,0,.75);
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2000;
+    cursor: pointer;
+/*    -webkit-transition: opacity .25s ease-out;
+       -moz-transition: opacity .25s ease-out;
+        -ms-transition: opacity .25s ease-out;
+         -o-transition: opacity .25s ease-out;
+            transition: opacity .25s ease-out;*/
+}
+
+/*.vw-login-modal-overlay:hover {
+    opacity: .85;
+}*/
+
+.vw-login-modal-form {
+    display: none;
+    cursor: default;
+    position: fixed;
+    max-width: 420px;
+    min-width: 420px;
+    z-index: 2001;
+    background: #FFF;
+    top: 50%;
+    left: 50%;
+    padding: 20px 50px;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+    -webkit-transform: translate(-50%, -50%);
+       -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+         -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+}
+
+.vw-login-modal-form .vw-login-form-lost-password {
+    float: right;
+    position: absolute;
+    bottom: 28px;
+    right: 50px;
+}
+
+.vw-login-modal-form .vw-icon {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.vw-login-modal-form .vw-icon:hover {
+    opacity: .85;
 }
 
 /*.rhlogin .btn:hover {

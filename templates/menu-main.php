@@ -35,7 +35,16 @@
 					<div class="vw-main-menu-right">
 
 						<span class="vw-main-menu-right__login-link">
-							<?php echo do_shortcode("[modal_login_button label='Log In' description='Login to the site, a modal form will pop up' type='btn-inverse' size='btn-large' align='rhl-float-right' logout_label='Log Out' logout_description='Logout from the site' logout_type='btn-danger']"); ?>
+							<?php global $user_ID;
+								if ( $user_ID ) { ?>
+									<a href="/my-account/">My account</a> &nbsp;
+									<a href="<?php echo wp_logout_url( get_permalink() ); ?>"><?php _e( 'Logout' , 'envirra' ) ?> </a>
+							<?php } else { ?>
+								<a href="/wp-login.php" id="js-vw-modal-login">Log In</a>
+							<?php } ?>
+							<!-- <a href="<?php echo admin_url( 'profile.php' ); ?>"><?php _e( 'Your Profile' , 'envirra' ) ?> </a>
+							<a href="<?php echo wp_logout_url( get_permalink() ); ?>"><?php _e( 'Logout' , 'envirra' ) ?> </a> -->
+							<?php // echo do_shortcode("[modal_login_button label='Log In' description='Login to the site, a modal form will pop up' type='btn-inverse' size='btn-large' align='rhl-float-right' logout_label='Log Out' logout_description='Logout from the site' logout_type='btn-danger']"); ?>
 						</span>
 
 						<a class="vw-instant-search-button vw-main-menu-right__search">

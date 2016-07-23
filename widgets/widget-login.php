@@ -52,8 +52,8 @@ if ( ! class_exists( 'Vw_widget_login' ) ) {
 
 				<div class="vw-login-form">
 					<form action="<?php echo wp_login_url( get_permalink() ); ?>" method="post">
-						<p class="vw-login-form-username"><input type="text" name="log" id="log" value="<?php echo esc_attr__( 'Username' , 'envirra' ); ?>" onfocus="if (this.value == '<?php echo esc_js( __( 'Username' , 'envirra' ) ); ?>') {this.value = '';}" onblur="if (this.value == '') {this.value = '<?php echo esc_js( __( 'Username' , 'envirra' ) ); ?>';}"  size="33" /></p>
-						<p class="vw-login-form-pass"><input type="password" name="pwd" id="pwd" value="<?php echo esc_attr__( 'Password' , 'envirra' ) ?>" onfocus="if (this.value == '<?php echo esc_js( __( 'Password' , 'envirra' ) ) ?>') {this.value = '';}" onblur="if (this.value == '') {this.value = '<?php echo esc_js( __( 'Password' , 'envirra' ) ); ?>';}" size="33" /></p>
+						<p class="vw-login-form-username"><input type="text" name="log" id="log" size="33" /></p>
+						<p class="vw-login-form-pass"><input type="password" name="pwd" id="pwd" size="33" /></p>
 						<p>
 							<label for="rememberme" class="vw-login-form-remember"><input name="rememberme" id="rememberme" type="checkbox" checked="checked" value="forever" /> <?php _e( 'Remember Me' , 'envirra' ) ?></label>
 							<a class="vw-login-form-lost-password" href="<?php echo wp_lostpassword_url( get_permalink() ); ?>"><?php _e( 'Lost your password?' , 'envirra' ) ?></a></p>
